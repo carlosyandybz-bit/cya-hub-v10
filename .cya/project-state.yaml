@@ -101,7 +101,7 @@ legacy_policy_established:
   prohibited:
     - modify_legacy
     - migrate_legacy
-    - deploy_legacy
+    - deploy_into_legacy
     - write_to_legacy
     - reuse_legacy_secrets
 
