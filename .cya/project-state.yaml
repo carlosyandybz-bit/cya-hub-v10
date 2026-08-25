@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.2
-active_action: await_user_review_of_0_2_closeout
+active_action: await_user_approval_to_start_0_3
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -22,12 +22,14 @@ user_authority_policy:
 
 phase_0_current:
   status: IN_PROGRESS
-  last_completed_subphase: 0.1
+  last_completed_subphase: 0.2
+  last_completed_subphase_name: aislamiento_absoluto_respecto_al_legacy_y_politica_de_reutilizacion
   last_completed_subphase_status: PASS
-  active_subphase: 0.2
-  active_subphase_name: aislamiento_absoluto_respecto_al_legacy_y_politica_de_reutilizacion
-  active_subphase_status: PENDING_USER_APPROVAL
-  closure_gate: PENDING_USER_APPROVAL
+  closure_gate_0_2: PASS
+  closure_requirements_pending_0_2: []
+  next_subphase: 0.3
+  next_subphase_name: naming_repositorio_workspace_ramas_y_entornos
+  next_subphase_status: PENDING_USER_APPROVAL_TO_START
 
 legacy_policy_established:
   mode: READ_ONLY
@@ -53,17 +55,15 @@ implementation_decision_source_policy:
 next_action:
   type: USER_REVIEW_GATE
   phase: 0
-  subphase: 0.2
-  action: review_0_2_policy_application_and_decide_closeout
+  subphase: 0.3
+  action: decide_whether_to_start_0_3
   blocked_until_user: true
 
 prohibited_progression:
-  - do_not_close_0_2_without_explicit_user_acceptance
   - do_not_start_0_3_without_explicit_user_approval
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
 
-blockers:
-  - 0_2_closeout_requires_explicit_user_acceptance
+blockers: []
 
 approved_infrastructure:
   hosting: hostinger_already_paid
