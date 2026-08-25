@@ -6,9 +6,8 @@
 
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
-**Last completed subphase:** 0.1 — Alcance, principios y metodología operativa — PASS  
-**Active subphase:** 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización — EN CURSO / PENDING USER APPROVAL PARA CIERRE  
-**Active action:** user review of the applied 0.2 legacy and decision-source policy  
+**Last completed subphase:** 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización — PASS  
+**Active action:** none; awaiting explicit user approval before starting 0.3  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -32,17 +31,17 @@ The user has explicitly established the following policy:
 - No direct reuse from legacy has been authorized by this policy.
 - Existing prohibitions remain: do not modify, migrate, deploy into, write to or reuse secrets from legacy.
 
-## 0.2 — Closeout position
+## 0.2 — Closeout
 
-The policy has been applied to the living governance and operational state.
+**Result: PASS.**
 
-**0.2 is not PASS.** Its closeout is **PENDING USER APPROVAL** and requires explicit user acceptance.
+The policy was applied to the living governance and operational state, reviewed by the user and explicitly approved for closure.
 
 ## Next action
 
-**USER REVIEW GATE:** review the 0.2 policy application and decide whether 0.2 may be closed.
+**PENDING USER APPROVAL:** decide whether to start 0.3 — Naming, repositorio, workspace, ramas y entornos.
 
-Do **not** mark 0.2 PASS, start 0.3, construct T01–T11 or execute any other new project action without explicit user approval for that exact action.
+0.3 has **not** been started. Do not begin 0.3, construct T01–T11 or execute any other new project action without explicit user approval for that exact action.
 
 ## Deferred — do not execute without explicit approval
 
