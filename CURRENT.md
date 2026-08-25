@@ -4,44 +4,41 @@
 
 ## Current position
 
-**Global status:** PRE-FASE 0 — PASS / READY FOR PHASE 0  
-**Phase:** Pre-0 complete → Phase 0 ready  
-**Subphase:** Context/governance bootstrap closed  
-**Active action:** handoff to dedicated Phase 0 chat  
+**Global status:** FASE 0 — EN CURSO  
+**Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
+**Subphase:** 0.1 — Alcance, principios y metodología operativa — EN CURSO  
+**Active action:** initial context verification completed; define the acceptance criteria and documentary closeout package for 0.1  
 **Incremental cost target:** 0 EUR
 
-## Bootstrap gate result
+## Phase 0 entry gate
 
 **Result:** PASS  
-**Gate:** clean-context reconstruction  
-**Validated from:** Project Instructions + CYA Hub v10 Drive context + `CURRENT.md` + `.cya/project-state.yaml` + `.cya/tool-registry.yaml` + `AGENTS.md`  
-**Validated capabilities:** current phase, mandatory Guide review, approved tool policy, next action, legacy read-only isolation.
+**Pre-Phase 0 status:** PASS / CLOSED  
+**Gate evidence:** clean-context reconstruction already passed before this chat.  
+**Revalidated at Phase 0 start from:** living Drive Roadmap + living Tool Guide + `CURRENT.md` + `.cya/project-state.yaml` + `.cya/tool-registry.yaml` + `AGENTS.md`.  
+**Pending Pre-Phase 0 blockers:** none.
 
-## Completed
+## Initial Phase 0 verification
 
-- Progressive, ordered working methodology defined.
-- Roadmap Vivo created in Google Drive.
-- Guía Maestra de Herramientas, Agentes y Planning Operativo created, reviewed and expanded with access/context/chat-lifecycle rules.
-- Mandatory Guide review before every relevant action established.
-- Unregistered actions must be documented before execution, then executed only if immediate; otherwise deferred and recorded.
-- Conversation-length and chat-handoff policy established.
-- `USER ACTION REQUIRED` protocol established.
-- GitHub `cya-hub-v10` access verified.
-- Google Drive access verified.
-- Maximum app-specific access enabled where currently supported.
-- Repository context layer installed: `AGENTS.md`, `.cya/tool-registry.yaml`, `.cya/project-state.yaml`, `.cya/planning-template.md`, `.cya/chatgpt-project-instructions.md`, `.cya/bootstrap-checklist.md`.
-- README points to the operational control files.
-- ChatGPT Project Instructions configured by the user.
-- CYA Hub v10 Drive context/source available to the project.
-- Clean-context reconstruction gate passed.
+- Living Tool Guide reviewed before action.
+- Living Roadmap reviewed and confirmed as the documentary source of truth for the current phase.
+- Repository state reconstructed from the required operational files.
+- `.cya/tool-registry.yaml` confirms documentation governance via Google Drive and repository state work via GitHub at 0 EUR incremental cost.
+- No technical tool construction is required for the opening of 0.1.
+- T01–T11 remain pending/deferred according to their declared activation points; none is activated by this status transition.
+- CYA Hub v3 and every other legacy resource remain untouched and READ-ONLY unless explicitly authorized later as reference.
 
-**Initial bootstrap evidence commit:** `865d8177f237a8557870845e360cdedf88251baf`
+## 0.1 — Current closeout position
+
+0.1 is open and **not yet eligible for PASS**. The existing governance already covers progressive work, evidence, cost discipline, tool planning, user-only operations, conversation lifecycle and legacy isolation.
+
+A documentary closure package must still define and evidence the complete operating methodology for this phase before 0.1 can be marked complete. In particular, the latest project operating split — ChatGPT as documentation/specification/governance layer and Antigravity as the implementation environment — is not yet reflected in the living Tool Guide or machine-readable registry and must be registered before it is used operationally.
 
 ## Next action
 
-Open a dedicated **FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP** chat and begin with **0.1 — Alcance, principios y metodología operativa**.
+Prepare and execute the **0.1 documentary closeout only**: define explicit acceptance criteria, register the approved ChatGPT ↔ Antigravity operating split in the correct governance locations, align the relevant living documentation/state, validate the evidence, and only then decide whether 0.1 can be marked ✅.
 
-The Phase 0 chat must first review the living Tool Guide and Roadmap, read repository state files, identify the acceptance gate, and only then decide whether any technical tool construction is immediately required.
+Do **not** advance to 0.2 and do **not** construct T01 Browser Lab, T02 Quality Gate, T03 Security Gate or any other technical capability during this step.
 
 ## Deferred — do not execute out of order
 
@@ -65,4 +62,4 @@ The Phase 0 chat must first review the living Tool Guide and Roadmap, read repos
 
 ## Chat lifecycle
 
-This conversation has reached a phase boundary and is already context-heavy. Start Phase 0 in a new dedicated chat. Before every later handoff, update this file, `.cya/project-state.yaml`, the Roadmap and applicable phase documentation, then provide the exact handoff prompt.
+This is the dedicated Phase 0 chat. Keep it scoped to Phase 0 while context remains manageable. Before any later phase/chat handoff, update this file, `.cya/project-state.yaml`, the Roadmap and applicable phase documentation, then provide the exact handoff prompt.
