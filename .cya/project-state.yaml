@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
+active_action: define_exact_sensitive_credential_separation_policy_by_environment_with_user_approval
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -118,6 +118,11 @@ phase_0_0_4:
       - variable_classification
       - residence_policy
       - naming_convention
+    next_decision_focus:
+      name: sensitive_credential_separation_by_environment
+      selection_status: APPROVED_BY_USER
+      selection_scope: decision_focus_only
+      concrete_separation_rules_approved: NONE_YET
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -242,7 +247,8 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  action: define_next_exact_concrete_variables_and_secrets_policy_decision
+  decision_focus: sensitive_credential_separation_by_environment
+  action: define_exact_sensitive_credential_separation_policy_by_environment
   blocked_until_user: true
 
 prohibited_progression:
