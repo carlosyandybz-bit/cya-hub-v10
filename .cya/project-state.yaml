@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.2
-active_action: define_exact_legacy_reuse_policy
+active_action: await_user_review_of_0_2_closeout
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -26,14 +26,18 @@ phase_0_current:
   last_completed_subphase_status: PASS
   active_subphase: 0.2
   active_subphase_name: aislamiento_absoluto_respecto_al_legacy_y_politica_de_reutilizacion
-  active_subphase_status: IN_PROGRESS
+  active_subphase_status: PENDING_USER_APPROVAL
+  closure_gate: PENDING_USER_APPROVAL
 
 legacy_policy_established:
   mode: READ_ONLY
   includes_all_legacy: true
   cya_hub_v3_included: true
   consultation_requires_explicit_user_authorization: true
-  consultation_scope: functional_or_historical_reference_only
+  consultation_location: user_designated_decision_area
+  consultation_purpose: decision_reference_only
+  implementation_source_from_legacy: prohibited
+  direct_legacy_reuse_authorized: false
   prohibited:
     - modify_legacy
     - migrate_legacy
@@ -41,22 +45,16 @@ legacy_policy_established:
     - write_to_legacy
     - reuse_legacy_secrets
 
-legacy_policy_open_decision:
-  status: PENDING_USER_DECISION
-  question: whether_direct_reuse_of_legacy_artifacts_is_ever_permitted_and_under_what_exact_conditions
-  artifact_examples:
-    - code
-    - components
-    - assets
-    - configuration
-    - data_structures
-    - other_artifacts
+implementation_decision_source_policy:
+  source_of_truth_for_decisions: cya_hub_v10_decision_documents
+  legacy_is_not_implementation_source: true
+  implementation_chats_use_decision_documents: true
 
 next_action:
-  type: USER_DECISION_GATE
+  type: USER_REVIEW_GATE
   phase: 0
   subphase: 0.2
-  action: decide_exact_legacy_reuse_policy
+  action: review_0_2_policy_application_and_decide_closeout
   blocked_until_user: true
 
 prohibited_progression:
@@ -65,7 +63,7 @@ prohibited_progression:
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
 
 blockers:
-  - exact_legacy_reuse_policy_requires_user_decision
+  - 0_2_closeout_requires_explicit_user_acceptance
 
 approved_infrastructure:
   hosting: hostinger_already_paid
