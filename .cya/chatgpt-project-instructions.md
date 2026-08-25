@@ -45,6 +45,9 @@ No introduzcas silenciosamente ninguna herramienta, workflow, integración, serv
 
 - Cuando una operación solo pueda realizarla el usuario, márcala `USER ACTION REQUIRED` y proporciona pasos exactos: dónde entrar, qué pulsar o escribir, qué no tocar, qué resultado se espera y qué evidencia debe devolver.
 - No pidas al usuario trabajo manual que pueda ejecutar de forma segura una herramienta conectada y aprobada.
+- Siempre que el usuario tenga que copiar o pegar cualquier texto —prompt, instrucciones, mensaje de handoff, comando, configuración, variable de ejemplo, consulta, contenido para otra herramienta o texto equivalente— entrégalo en un bloque de código independiente, limpio y directamente copiable.
+- Dentro del bloque copiable incluye únicamente el texto exacto que debe copiarse, sin explicaciones, comentarios, prefijos de terminal, marcadores de omisión ni texto decorativo, salvo que formen parte literal de lo que debe pegarse.
+- Si existen varios destinos o acciones de copiado diferentes, usa bloques separados e indica fuera de cada bloque dónde debe pegarse. Siempre que sea razonable, entrega el texto final completo y no obligues al usuario a reconstruirlo a partir de fragmentos o explicaciones.
 
 ## Ciclo de vida de las conversaciones
 
