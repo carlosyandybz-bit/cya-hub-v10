@@ -8,7 +8,7 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización — PASS  
 **Active subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — EN CURSO  
-**Active action:** obtain the exact user-approved 0.3 decisions without inferring defaults  
+**Active action:** obtain the exact user-approved workspace policy without inferring defaults  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -26,22 +26,27 @@
 
 The legacy and decision-source policy was applied to the living governance and operational state, reviewed by the user and explicitly approved for closure.
 
-## 0.3 — Opening state
+## 0.3 — Approved naming decisions
 
-The user explicitly authorized starting 0.3.
+The user explicitly approved:
 
-Facts already materialized in the current sources:
+- Official project name: **CYA Hub v10**.
+- Official repository name: `cya-hub-v10`.
 
-- Project: **CYA Hub v10**.
-- Current technical source-of-truth repository: `carlosyandybz-bit/cya-hub-v10`.
+This approval defines naming only. It does not define workspace, branch, environment or closeout policy.
 
-No additional naming convention, workspace policy, branch model or environment model is inferred from those existing facts.
+## 0.3 — Pending decisions
 
-The Roadmap defines 0.3 only as **Naming, repositorio, workspace, ramas y entornos**. Its internal decisions and acceptance criteria are not yet defined in the living sources and therefore require explicit user decisions before they can be recorded as project policy.
+Still undefined and requiring explicit user decision:
+
+- Workspace policy.
+- Branch policy.
+- Environment policy.
+- Acceptance criteria for closing 0.3.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact 0.3 policy, beginning with the first unresolved decision. No default workspace, branch strategy, environment set or naming convention may be selected automatically.
+**PENDING USER DECISION:** define the exact workspace policy. No workspace structure or convention may be selected automatically.
 
 Do **not** mark 0.3 PASS, start 0.4, construct T01–T11 or execute any other new project action without explicit user approval for that exact action.
 
