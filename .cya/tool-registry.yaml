@@ -6,6 +6,12 @@ policy:
   require_tool_plan_before_significant_action: true
   unregistered_action_behavior: propose_and_obtain_user_approval_before_registration_or_execution
   legacy_mode: read_only_reference_only
+  legacy_consultation_requires_explicit_user_authorization: true
+  legacy_consultation_location: user_designated_decision_area
+  legacy_consultation_purpose: decision_reference_only
+  legacy_direct_reuse_authorized: false
+  legacy_implementation_source: prohibited
+  implementation_decision_source: cya_hub_v10_decision_documents
   evidence_required_for_pass: true
   no_assumptions: true
   missing_ambiguous_or_conflicting_authority_behavior: ask_user_before_action
