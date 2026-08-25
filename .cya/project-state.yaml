@@ -1,0 +1,61 @@
+project: CYA Hub v10
+status: PRE_PHASE_0_CONTEXT_BOOTSTRAP
+phase: pre-0
+subphase: context-layer
+active_action: establish persistent context, visible progress and project instructions
+
+sources_of_truth:
+  roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
+  tool_guide_drive: https://docs.google.com/document/d/1eDWjwqQhk8lQNeiDuzShzD9tJbtvzlqIk-jEazGXF0A/edit
+  code_repository: https://github.com/carlosyandybz-bit/cya-hub-v10
+
+completed:
+  - methodology_progressive_and_ordered
+  - roadmap_vivo_created
+  - tool_guide_created_and_reviewed
+  - mandatory_pre_action_guide_review_defined
+  - conversation_lifecycle_defined
+  - user_action_required_protocol_defined
+  - github_access_verified
+  - google_drive_access_verified
+  - app_specific_full_access_enabled_where_supported
+  - agents_context_layer_started
+
+in_progress:
+  - agents_md_and_cya_registry_bootstrap
+  - visible_current_status_panel
+  - chatgpt_project_instructions_canonical_copy
+
+next_action:
+  type: USER_ACTION_REQUIRED
+  action: configure ChatGPT Project Instructions and add CYA Hub v10 Drive folder as Project Source
+  blocked_until_user: true
+
+blockers:
+  - ChatGPT Project UI configuration cannot be changed by the available project tools
+
+available_access:
+  github: full_access
+  google_drive: full_access
+  hostinger: full_access_plugin_horizons_only
+  supabase: full_access_but_not_architecturally_approved
+  figma: full_access_but_deferred_to_phase_3
+  posthog: full_access_but_deferred_until_runtime
+  gmail: full_access_but_not_approved_for_project_use
+  vercel: full_access_but_not_approved_for_project_use
+  linear: full_access_but_not_approved_for_project_use
+  convex: full_access_but_not_approved_for_project_use
+  google_calendar: not_installed
+  google_contacts: not_installed
+
+approved_infrastructure:
+  hosting: hostinger_already_paid
+  domain: already_paid
+  repository: github_public
+  ci_runner: github_actions
+  incremental_cost_target_eur: 0
+
+conversation_policy:
+  recommend_new_chat_on_phase_boundary: true
+  warn_before_context_degradation: true
+  handoff_requires_state_update: true

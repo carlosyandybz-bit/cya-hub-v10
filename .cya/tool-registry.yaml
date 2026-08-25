@@ -1,0 +1,200 @@
+version: 1
+project: CYA Hub v10
+policy:
+  default_incremental_cost_eur: 0
+  require_guide_review_before_action: true
+  require_tool_plan_before_significant_action: true
+  unregistered_action_behavior: register_before_execution
+  legacy_mode: read_only_reference_only
+  evidence_required_for_pass: true
+
+actions:
+  documentation_governance:
+    primary: google_drive
+    secondary: github_markdown
+    evidence:
+      - updated_living_document
+    cost_eur: 0
+
+  repository_read_write:
+    primary: github
+    evidence:
+      - commit_or_diff_or_pr
+    cost_eur: 0
+
+  technical_planning:
+    primary: chatgpt
+    supporting:
+      - google_drive
+      - github
+    requires:
+      - guide_review
+      - tool_plan
+    evidence:
+      - recorded_plan
+
+  automated_build_lint_test:
+    primary: cya_quality_gate
+    runner: github_actions
+    status: pending
+    evidence:
+      - workflow_run
+      - job_status
+      - relevant_logs
+
+  browser_real_url_test:
+    primary: cya_browser_lab
+    engine: playwright_chromium
+    runner: github_actions
+    status: pending
+    evidence:
+      - structured_result
+      - console_errors_when_present
+      - screenshot_on_failure
+      - trace_when_needed
+
+  visual_qa:
+    primary: cya_visual_qa
+    engine: playwright
+    status: pending
+    evidence:
+      - viewport_result
+      - selective_screenshots
+
+  accessibility_qa:
+    primary: cya_accessibility_lab
+    engine: axe_core_playwright
+    status: pending
+    evidence:
+      - findings
+      - severity
+      - rerun_after_fix
+
+  performance_qa:
+    primary: cya_performance_lab
+    engine: lighthouse_ci
+    status: pending
+    evidence:
+      - metrics
+      - budget_result_when_defined
+
+  security_scan:
+    primary: cya_security_gate
+    runner: github_security_and_actions
+    status: pending
+    evidence:
+      - findings
+      - severity
+      - remediation_status
+      - rerun
+
+  backend_change:
+    primary: cya_backend_control
+    status: deferred_until_phase_2_architecture
+    evidence:
+      - versioned_migration_or_reproducible_procedure
+      - validation
+
+  authentication_authorization_change:
+    primary: cya_backend_control
+    supporting:
+      - cya_security_gate
+    status: deferred_until_phase_2_architecture
+    evidence:
+      - authorization_tests
+      - security_validation
+
+  deployment:
+    primary: cya_deploy_bridge
+    target: hostinger
+    status: pending_hosting_capability_verification
+    evidence:
+      - deployed_commit_or_release
+      - deployment_result
+      - post_deploy_smoke
+
+  runtime_health:
+    primary: cya_runtime_health
+    supporting:
+      - cya_browser_lab
+    status: deferred_until_executable_app
+    evidence:
+      - health_result
+      - smoke_result
+
+  observability:
+    primary: cya_observability_bridge
+    status: deferred_until_executable_app
+    evidence:
+      - traceable_event_error_request_or_metric
+
+  design_work:
+    primary: chatgpt_specification
+    secondary: cya_design_bridge
+    status: design_bridge_deferred_until_phase_3
+    evidence:
+      - design_reference
+      - implementation_correspondence
+
+  user_only_operation:
+    primary: user_action_required_protocol
+    evidence:
+      - user_confirmation_or_requested_artifact
+    rules:
+      - exact_steps_required
+      - expected_result_required
+      - prohibited_changes_required
+
+  destructive_action:
+    primary: owning_service_tool
+    requires:
+      - explicit_scope
+      - pre_verification
+      - rollback_when_available
+      - evidence
+
+capabilities:
+  cya_browser_lab:
+    id: T01
+    status: pending
+    activation: phase_0
+  cya_quality_gate:
+    id: T02
+    status: pending
+    activation: phase_0_progressive
+  cya_security_gate:
+    id: T03
+    status: pending
+    activation: phase_0
+  cya_deploy_bridge:
+    id: T04
+    status: pending
+    activation: phase_0_bootstrap_then_phase_4_completion
+  cya_runtime_health:
+    id: T05
+    status: deferred
+    activation: phase_4
+  cya_visual_qa:
+    id: T06
+    status: pending_base
+    activation: phase_0_base_phase_3_intensive
+  cya_performance_lab:
+    id: T07
+    status: deferred
+    activation: phase_4_and_phase_8
+  cya_accessibility_lab:
+    id: T08
+    status: pending_base
+    activation: phase_0_base_phase_3_rules
+  cya_backend_control:
+    id: T09
+    status: deferred
+    activation: phase_2
+  cya_observability_bridge:
+    id: T10
+    status: deferred
+    activation: phase_4_to_8
+  cya_design_bridge:
+    id: T11
+    status: deferred
+    activation: phase_3
