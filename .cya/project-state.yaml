@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.1
-active_action: define_0_1_acceptance_criteria_and_documentary_closeout
+active_action: apply_approved_no_assumptions_and_user_approval_policy
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -38,51 +38,50 @@ bootstrap_evidence:
   closeout_commit_current: f14c960e8d3fc57c553be1856ce976206d917f0d
   gate: clean_context_reconstruction
   result: PASS
-  verified:
-    - identify_current_phase
-    - identify_mandatory_guide_review_rule
-    - identify_tool_policy
-    - identify_next_action
-    - no_legacy_write_intent
+
+user_authority_policy:
+  no_assumptions: true
+  missing_ambiguous_or_conflicting_information: ask_user_before_action
+  explicit_user_review_required: true
+  explicit_user_acceptance_required_before_execution_or_closure: true
+  explicit_instruction_scope: exact_action_and_scope_only
+  pass_requires_user_acceptance: true
+  progression_requires_user_acceptance: true
+  pending_approval_state: PENDING_USER_APPROVAL
+  unapproved_tools_or_workflows: prohibited
+  antigravity: not_part_of_project
 
 phase_0_entry_gate:
   result: PASS
   pre_phase_0_blockers: []
   starts_at: 0.1
   revalidated_on_phase_start: true
-  requires_on_chat_start:
-    - review_tool_guide
-    - review_roadmap
-    - read_current
-    - read_project_state
-    - read_tool_registry
-    - read_agents_md_when_repository_involved
-    - identify_acceptance_gate
 
 phase_0_current:
   status: IN_PROGRESS
   subphase: 0.1
   subphase_name: alcance_principios_y_metodologia_operativa
   subphase_status: IN_PROGRESS
-  closure_gate: PENDING
+  closure_gate: PENDING_USER_APPROVAL
   closure_requirements_pending:
-    - define_explicit_0_1_acceptance_criteria
-    - register_chatgpt_documentation_antigravity_implementation_operating_split_before_operational_use
-    - align_living_governance_and_machine_readable_state
-    - produce_documentary_evidence_for_0_1
-    - validate_0_1_before_marking_complete
+    - finish_applying_approved_user_authority_policy
+    - verify_living_governance_and_machine_readable_state_alignment
+    - present_0_1_evidence_to_user
+    - obtain_explicit_user_acceptance_before_pass
   prohibited_progression:
-    - do_not_advance_to_0_2_before_0_1_pass
-    - do_not_build_t01_to_t11_out_of_order
+    - do_not_mark_0_1_pass_without_explicit_user_acceptance
+    - do_not_advance_to_0_2_without_explicit_user_acceptance
+    - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
 
 next_action:
-  type: DOCUMENTATION_GOVERNANCE
+  type: USER_REVIEW_GATE
   phase: 0
   subphase: 0.1
-  action: prepare_and_execute_0_1_documentary_closeout_only
-  blocked_until_user: false
+  action: review_0_1_policy_application_and_decide_closeout
+  blocked_until_user: true
 
-blockers: []
+blockers:
+  - 0_1_closeout_requires_explicit_user_acceptance
 
 available_access:
   github: full_access
@@ -98,7 +97,7 @@ available_access:
   google_calendar: not_installed
   google_contacts: not_installed
 
-global_permission_note: full_access_global_mode_unavailable_app_specific_permissions_used
+global_permission_note: connected_access_does_not_constitute_authorization
 
 approved_infrastructure:
   hosting: hostinger_already_paid
@@ -111,3 +110,4 @@ conversation_policy:
   recommend_new_chat_on_phase_boundary: true
   warn_before_context_degradation: true
   handoff_requires_state_update: true
+  phase_or_subphase_progression_requires_explicit_user_acceptance: true
