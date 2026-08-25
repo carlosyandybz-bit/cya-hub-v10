@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.1
-active_action: await_user_review_of_0_1_closeout
+active_action: await_user_approval_to_start_0_2
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -35,6 +35,7 @@ completed:
   - user_authority_policy_approved_and_applied
   - antigravity_inference_withdrawn
   - living_governance_and_machine_readable_state_aligned_for_user_review
+  - phase_0_0_1_user_approved_and_closed_pass
 
 bootstrap_evidence:
   initial_commit: 865d8177f237a8557870845e360cdedf88251baf
@@ -62,27 +63,26 @@ phase_0_entry_gate:
 
 phase_0_current:
   status: IN_PROGRESS
-  subphase: 0.1
-  subphase_name: alcance_principios_y_metodologia_operativa
-  subphase_status: PENDING_USER_APPROVAL
-  closure_gate: PENDING_USER_APPROVAL
-  closure_requirements_pending:
-    - present_0_1_evidence_to_user
-    - obtain_explicit_user_acceptance_before_pass
+  last_completed_subphase: 0.1
+  last_completed_subphase_name: alcance_principios_y_metodologia_operativa
+  last_completed_subphase_status: PASS
+  closure_gate_0_1: PASS
+  closure_requirements_pending_0_1: []
+  next_subphase: 0.2
+  next_subphase_name: aislamiento_absoluto_respecto_al_legacy_y_politica_de_reutilizacion
+  next_subphase_status: PENDING_USER_APPROVAL_TO_START
   prohibited_progression:
-    - do_not_mark_0_1_pass_without_explicit_user_acceptance
-    - do_not_advance_to_0_2_without_explicit_user_acceptance
+    - do_not_start_0_2_without_explicit_user_approval
     - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
 
 next_action:
   type: USER_REVIEW_GATE
   phase: 0
-  subphase: 0.1
-  action: review_0_1_policy_application_and_decide_closeout
+  subphase: 0.2
+  action: decide_whether_to_start_0_2
   blocked_until_user: true
 
-blockers:
-  - 0_1_closeout_requires_explicit_user_acceptance
+blockers: []
 
 available_access:
   github: full_access
