@@ -8,7 +8,7 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización — PASS  
 **Active subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — EN CURSO  
-**Active action:** obtain the exact user-approved workspace policy without inferring defaults  
+**Active action:** obtain the exact user-approved branch policy without inferring defaults  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -26,27 +26,27 @@
 
 The legacy and decision-source policy was applied to the living governance and operational state, reviewed by the user and explicitly approved for closure.
 
-## 0.3 — Approved naming decisions
+## 0.3 — Approved decisions
 
 The user explicitly approved:
 
 - Official project name: **CYA Hub v10**.
 - Official repository name: `cya-hub-v10`.
-
-This approval defines naming only. It does not define workspace, branch, environment or closeout policy.
+- Workspace policy: the `cya-hub-v10` repository is the single versioned technical workspace for CYA Hub v10.
+- Subphase 0.3 does not establish any internal subdivision, monorepo or additional workspace system.
+- Any later internal workspace structure requires a later architectural need and explicit user approval before it becomes project policy.
 
 ## 0.3 — Pending decisions
 
 Still undefined and requiring explicit user decision:
 
-- Workspace policy.
 - Branch policy.
 - Environment policy.
 - Acceptance criteria for closing 0.3.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact workspace policy. No workspace structure or convention may be selected automatically.
+**PENDING USER DECISION:** define the exact branch policy. No branch model or convention may be selected automatically.
 
 Do **not** mark 0.3 PASS, start 0.4, construct T01–T11 or execute any other new project action without explicit user approval for that exact action.
 
