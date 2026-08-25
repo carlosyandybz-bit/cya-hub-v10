@@ -8,13 +8,13 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización — PASS  
 **Active subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — EN CURSO  
-**Active action:** obtain the exact user-approved environment policy without inferring defaults  
+**Active action:** obtain the exact user-approved acceptance criteria for closing 0.3 without inferring defaults  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
 
 - No agent may assume, infer, extrapolate, select defaults, complete missing decisions or introduce tools, workflows, services, procedures, architecture or criteria that the user has not explicitly established or approved.
-- If information is missing, ambiguous, contradictory or admits several possible choices, the agent must stop and ask the user before acting.
+- If information is missing, ambiguous, contradictory or admits several choices, the agent must stop and ask the user before acting.
 - Every proposal, decision, documentary modification, technical change, tool, procedure, action, audit result, acceptance criterion, state change and phase/subphase progression requires explicit user review and acceptance before it is considered approved, closed or executable.
 - An explicit user instruction authorizes only the exact action and scope stated; it does not authorize derived or opportunistic work.
 - No PASS, ✅, gate closure or progression may be recorded without explicit user acceptance.
@@ -40,24 +40,33 @@ The user explicitly approved:
 - There is no permanent `develop` branch.
 - The branch policy applies to all versioned repository artifacts, including code, documentation, GitHub Actions workflows and project tooling such as CYA Browser Lab when that tooling is built under its separately authorized subphase.
 - This branch-policy decision does not authorize construction or activation of T01 CYA Browser Lab or any other pending tooling.
+- Environment policy defines three logical environments: `VALIDATION`, `STAGING` and `PRODUCTION`.
+- `VALIDATION` is temporary and associated with change branches and GitHub Actions/project tooling when each tool is separately authorized; it does not require a permanent server.
+- `STAGING` is the deployed pre-production environment for integral validation and acceptance and must represent production sufficiently for that acceptance to be valid.
+- `PRODUCTION` is the real CYA Hub v10 environment. Hostinger remains the hosting target, subject to the separately planned verification of real hosting capabilities.
+- Integration into `main` does not itself authorize or trigger a production deployment.
+- No permanent `development` environment or mandatory preview-environment system is established by 0.3.
+- The physical location and deployment mechanism for staging remain deferred until infrastructure capabilities are verified.
+- Variables, secrets and per-environment credentials are outside 0.3 and remain for their separately governed scope.
+- This environment-policy decision does not construct, activate or deploy any environment or pending Txx tooling.
 
 ## 0.3 — Pending decisions
 
 Still undefined and requiring explicit user decision:
 
-- Environment policy.
 - Acceptance criteria for closing 0.3.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact environment policy. No environment model or convention may be selected automatically.
+**PENDING USER DECISION:** define the exact acceptance criteria for closing 0.3. No closeout criterion may be selected automatically.
 
-Do **not** mark 0.3 PASS, start 0.4, construct T01–T11 or execute any other new project action without explicit user approval for that exact action.
+Do **not** mark 0.3 PASS, start 0.4, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
 ## Deferred — do not execute without explicit approval
 
 - 0.4 and every later Phase 0 subphase.
 - T01–T11 and any other technical capability not explicitly approved for execution.
+- Physical staging implementation and environment deployment details until their applicable approved subphase/action.
 
 ## Living sources
 
