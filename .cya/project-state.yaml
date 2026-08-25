@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.3
-active_action: define_exact_environment_policy
+active_action: define_exact_acceptance_criteria_for_0_3
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -57,10 +57,36 @@ phase_0_0_3_approved_decisions:
       - project_tooling_when_separately_authorized
     cya_browser_lab_covered_when_built: true
     authorizes_t01_construction_or_activation: false
+  environments:
+    status: APPROVED_BY_USER
+    logical_environments:
+      - VALIDATION
+      - STAGING
+      - PRODUCTION
+    validation:
+      type: temporary_logical_environment
+      associated_with: change_branches_and_authorized_github_actions_tooling
+      permanent_server_required: false
+    staging:
+      type: deployed_preproduction_environment
+      purpose: integral_validation_and_acceptance
+      production_equivalence_required: sufficient_for_valid_acceptance
+      physical_location: DEFERRED_UNTIL_INFRASTRUCTURE_CAPABILITY_VERIFICATION
+      deployment_mechanism: DEFERRED_UNTIL_INFRASTRUCTURE_CAPABILITY_VERIFICATION
+    production:
+      type: real_environment
+      hosting_target: hostinger
+      hosting_target_subject_to_capability_verification: true
+    main_integration_authorizes_or_triggers_production_deploy: false
+    permanent_development_environment_established: false
+    mandatory_preview_environments_established: false
+    future_preview_or_development_environment_requires_explicit_user_approval: true
+    variables_secrets_and_per_environment_credentials_in_scope_of_0_3: false
+    authorizes_environment_creation_or_deployment: false
+    authorizes_pending_txx_tooling: false
 
 phase_0_0_3_pending_decisions:
   status: PENDING_USER_DECISION
-  environment_policy: UNDEFINED
   acceptance_criteria: UNDEFINED
 
 legacy_policy_established:
@@ -75,7 +101,7 @@ legacy_policy_established:
   prohibited:
     - modify_legacy
     - migrate_legacy
-    - deploy_into_legacy
+    - deploy_legacy
     - write_to_legacy
     - reuse_legacy_secrets
 
@@ -88,16 +114,17 @@ next_action:
   type: USER_DECISION_GATE
   phase: 0
   subphase: 0.3
-  action: define_exact_environment_policy
+  action: define_exact_acceptance_criteria_for_0_3
   blocked_until_user: true
 
 prohibited_progression:
   - do_not_close_0_3_without_explicit_user_acceptance
   - do_not_start_0_4_without_explicit_user_approval
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
+  - do_not_create_or_deploy_environments_without_explicit_user_approval_for_the_exact_action
 
 blockers:
-  - environment_and_acceptance_criteria_require_user_decisions
+  - acceptance_criteria_for_0_3_require_user_decision
 
 approved_infrastructure:
   hosting: hostinger_already_paid
