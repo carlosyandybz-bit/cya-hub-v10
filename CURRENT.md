@@ -7,8 +7,8 @@
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.1 — Alcance, principios y metodología operativa — PASS  
-**Active subphase:** 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización — EN CURSO  
-**Active action:** determine the exact user-approved reuse policy for legacy beyond read-only consultation as functional/historical reference  
+**Active subphase:** 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización — EN CURSO / PENDING USER APPROVAL PARA CIERRE  
+**Active action:** user review of the applied 0.2 legacy and decision-source policy  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -20,21 +20,29 @@
 - No PASS, ✅, gate closure or progression may be recorded without explicit user acceptance.
 - Antigravity is not part of CYA Hub v10 unless the user explicitly changes that decision.
 
-## 0.2 — Established legacy rules
+## 0.2 — Applied legacy policy
 
-Already established and authoritative:
+The user has explicitly established the following policy:
 
-- CYA Hub v3 and every other legacy project are LEGACY / READ-ONLY.
-- Never modify, migrate, deploy into, write to or reuse secrets from legacy repositories, databases, hosting, Drive folders, environments or integrations.
-- Legacy may only be consulted as an explicit functional/historical reference when the user authorizes that exact consultation.
+- CYA Hub v3 and every other legacy project remain **LEGACY / READ-ONLY**.
+- Legacy may be consulted only with explicit user authorization and only in the user-designated decision area.
+- That consultation is for decision reference only; legacy is never an implementation source.
+- The result of the decision process is CYA Hub v10 decision documentation.
+- Implementation chats and agents use the CYA Hub v10 decision documents as the source of truth for the decisions they implement.
+- No direct reuse from legacy has been authorized by this policy.
+- Existing prohibitions remain: do not modify, migrate, deploy into, write to or reuse secrets from legacy.
 
-## Open decision in 0.2
+## 0.2 — Closeout position
 
-The existing sources do not define whether any direct reuse from legacy, beyond information obtained through explicitly authorized functional/historical consultation, may ever be permitted.
+The policy has been applied to the living governance and operational state.
 
-**PENDING USER DECISION:** define whether any such direct reuse is permitted and, if so, under what exact conditions.
+**0.2 is not PASS.** Its closeout is **PENDING USER APPROVAL** and requires explicit user acceptance.
 
-0.2 is **EN CURSO** and is not eligible for PASS until the resulting policy is explicitly reviewed and accepted by the user.
+## Next action
+
+**USER REVIEW GATE:** review the 0.2 policy application and decide whether 0.2 may be closed.
+
+Do **not** mark 0.2 PASS, start 0.3, construct T01–T11 or execute any other new project action without explicit user approval for that exact action.
 
 ## Deferred — do not execute without explicit approval
 
