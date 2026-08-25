@@ -6,8 +6,8 @@
 
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
-**Subphase:** 0.1 — Alcance, principios y metodología operativa — EN CURSO / PENDING USER APPROVAL PARA CIERRE  
-**Active action:** user review of the applied 0.1 governance policy and closeout evidence  
+**Last completed subphase:** 0.1 — Alcance, principios y metodología operativa — PASS  
+**Active action:** none; awaiting explicit user approval before starting 0.2  
 **Incremental cost target:** 0 EUR
 
 ## Phase 0 entry gate
@@ -26,19 +26,19 @@
 - No PASS, ✅, gate closure or progression may be recorded without explicit user acceptance. Pending closure must be represented as `PENDING USER APPROVAL` or equivalent.
 - Antigravity is not part of CYA Hub v10 and must not be used, planned or introduced unless the user explicitly changes that decision and approves the corresponding governance update first.
 
-## 0.1 — Current closeout position
+## 0.1 — Closeout
 
-The user-approved no-assumptions and explicit-approval policy has been applied to the living Tool Guide, Roadmap and repository operational context.
+**Result: PASS.**
 
-The previous ChatGPT ↔ Antigravity operating split was an unauthorized inference and is withdrawn. No replacement implementation environment, agent or workflow is assumed.
+The no-assumptions and explicit-approval policy was applied to the living Tool Guide, Roadmap and repository operational context. The user reviewed the resulting governance state and explicitly approved the closure of 0.1.
 
-**0.1 is not PASS.** Its closeout is now **PENDING USER APPROVAL**. Evidence has been produced and must be reviewed and accepted explicitly by the user before any closure or progression.
+The previous ChatGPT ↔ Antigravity operating split remains withdrawn as an unauthorized inference. No replacement implementation environment, agent or workflow is assumed.
 
 ## Next action
 
-**USER REVIEW GATE:** review the 0.1 policy application and evidence and decide whether 0.1 may be closed.
+**PENDING USER APPROVAL:** decide whether to start 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización.
 
-Do **not** mark 0.1 PASS, advance to 0.2 or construct T01–T11 without a new explicit user approval for that exact action.
+0.2 has **not** been started. Do not begin 0.2, construct T01–T11 or execute any other new project action without explicit user approval for that exact action.
 
 ## Deferred — do not execute without explicit approval
 
@@ -53,4 +53,4 @@ Do **not** mark 0.1 PASS, advance to 0.2 or construct T01–T11 without a new ex
 
 ## Chat lifecycle
 
-This is the dedicated Phase 0 chat. No phase/subphase handoff or progression occurs without explicit user approval.
+This is the dedicated Phase 0 chat. No new subphase, phase handoff or progression occurs without explicit user approval.
