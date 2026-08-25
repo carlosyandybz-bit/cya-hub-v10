@@ -30,9 +30,9 @@ Already established and authoritative:
 
 ## Open decision in 0.2
 
-The existing sources do not yet define whether any legacy artifact other than information learned through reference consultation may ever be reused in CYA Hub v10. No policy is inferred.
+The existing sources do not define whether any direct reuse from legacy, beyond information obtained through explicitly authorized functional/historical consultation, may ever be permitted.
 
-**PENDING USER DECISION:** determine whether direct reuse of legacy code, components, assets, configuration, data structures or other artifacts is ever permitted, and under what exact conditions.
+**PENDING USER DECISION:** define whether any such direct reuse is permitted and, if so, under what exact conditions.
 
 0.2 is **EN CURSO** and is not eligible for PASS until the resulting policy is explicitly reviewed and accepted by the user.
 
