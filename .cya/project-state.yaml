@@ -1,8 +1,8 @@
 project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
-subphase: 0.3
-active_action: present_0_3_closeout_evidence_for_explicit_user_acceptance
+subphase: null
+active_action: await_explicit_user_approval_to_start_0_4
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -22,13 +22,14 @@ user_authority_policy:
 
 phase_0_current:
   status: IN_PROGRESS
-  last_completed_subphase: 0.2
-  last_completed_subphase_name: aislamiento_absoluto_respecto_al_legacy_y_politica_de_reutilizacion
+  last_completed_subphase: 0.3
+  last_completed_subphase_name: naming_repositorio_workspace_ramas_y_entornos
   last_completed_subphase_status: PASS
-  active_subphase: 0.3
-  active_subphase_name: naming_repositorio_workspace_ramas_y_entornos
-  active_subphase_status: IN_PROGRESS
-  closure_gate_0_3: PENDING_USER_APPROVAL
+  active_subphase: null
+  active_subphase_status: NONE
+  closure_gate_0_3: PASS
+  next_subphase: 0.4
+  next_subphase_status: PENDING_NOT_STARTED
 
 phase_0_0_3_approved_decisions:
   naming:
@@ -96,6 +97,14 @@ phase_0_0_3_approved_decisions:
 phase_0_0_3_pending_decisions:
   status: NONE
 
+phase_0_0_3_closeout:
+  status: PASS
+  evidence_presented_to_user: true
+  user_explicitly_accepted_closeout: true
+  starts_0_4: false
+  authorizes_t01_to_t11: false
+  authorizes_environment_creation_or_deployment: false
+
 legacy_policy_established:
   mode: READ_ONLY
   includes_all_legacy: true
@@ -118,14 +127,13 @@ implementation_decision_source_policy:
   implementation_chats_use_decision_documents: true
 
 next_action:
-  type: USER_APPROVAL_GATE
+  type: USER_DECISION_GATE
   phase: 0
-  subphase: 0.3
-  action: review_0_3_closeout_evidence_and_accept_or_reject_closeout
+  subphase: 0.4
+  action: approve_or_reject_start_0_4
   blocked_until_user: true
 
 prohibited_progression:
-  - do_not_close_0_3_without_explicit_user_acceptance
   - do_not_start_0_4_without_explicit_user_approval
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
   - do_not_create_or_deploy_environments_without_explicit_user_approval_for_the_exact_action
