@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: define_exact_variables_and_secrets_policy_with_user_approval
+active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -114,8 +114,36 @@ phase_0_0_4:
     name: variables_and_secrets_policy
     selection_status: APPROVED_BY_USER
     selection_scope: work_focus_only
-    concrete_policy_decisions_approved: NONE_YET
-  internal_decisions_approved: NONE_YET
+    concrete_policy_decisions_approved:
+      - variable_classification
+  approved_decisions:
+    variable_classification:
+      status: APPROVED_BY_USER
+      applies_to: all_cya_hub_v10_configuration_items
+      categories:
+        public_versionable:
+          label: PUBLIC / VERSIONABLE
+          definition: non_sensitive_information_that_may_exist_in_github
+        environment_specific_non_secret:
+          label: ENVIRONMENT-SPECIFIC / NON-SECRET
+          definition: non_secret_information_whose_value_may_vary_by_environment
+          environments:
+            - VALIDATION
+            - STAGING
+            - PRODUCTION
+        secret_sensitive:
+          label: SECRET / SENSITIVE
+          definition: tokens_passwords_keys_credentials_and_any_value_that_must_not_be_exposed
+          versionable: false
+      does_not_define:
+        - storage_locations
+        - secret_managers
+        - variable_names
+        - values
+        - concrete_environment_mappings
+        - variable_or_secret_change_procedures
+  internal_decisions_approved:
+    - variable_classification
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
@@ -149,7 +177,7 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  action: define_exact_first_concrete_variables_and_secrets_policy_decision
+  action: define_next_exact_concrete_variables_and_secrets_policy_decision
   blocked_until_user: true
 
 prohibited_progression:
