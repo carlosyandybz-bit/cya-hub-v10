@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
+active_action: define_exact_variable_and_secret_naming_convention_with_user_approval
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -117,6 +117,11 @@ phase_0_0_4:
     concrete_policy_decisions_approved:
       - variable_classification
       - residence_policy
+    next_decision_focus:
+      name: naming_convention
+      selection_status: APPROVED_BY_USER
+      selection_scope: decision_focus_only
+      concrete_naming_rules_approved: NONE_YET
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -203,7 +208,8 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  action: define_next_exact_concrete_variables_and_secrets_policy_decision
+  decision_focus: naming_convention
+  action: define_exact_variable_and_secret_naming_convention
   blocked_until_user: true
 
 prohibited_progression:
