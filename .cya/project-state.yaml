@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.1
-active_action: apply_approved_no_assumptions_and_user_approval_policy
+active_action: await_user_review_of_0_1_closeout
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -32,6 +32,9 @@ completed:
   - clean_context_reconstruction_passed
   - phase_0_entry_revalidated
   - phase_0_opened
+  - user_authority_policy_approved_and_applied
+  - antigravity_inference_withdrawn
+  - living_governance_and_machine_readable_state_aligned_for_user_review
 
 bootstrap_evidence:
   initial_commit: 865d8177f237a8557870845e360cdedf88251baf
@@ -61,11 +64,9 @@ phase_0_current:
   status: IN_PROGRESS
   subphase: 0.1
   subphase_name: alcance_principios_y_metodologia_operativa
-  subphase_status: IN_PROGRESS
+  subphase_status: PENDING_USER_APPROVAL
   closure_gate: PENDING_USER_APPROVAL
   closure_requirements_pending:
-    - finish_applying_approved_user_authority_policy
-    - verify_living_governance_and_machine_readable_state_alignment
     - present_0_1_evidence_to_user
     - obtain_explicit_user_acceptance_before_pass
   prohibited_progression:
