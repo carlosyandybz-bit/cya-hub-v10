@@ -4,9 +4,18 @@ policy:
   default_incremental_cost_eur: 0
   require_guide_review_before_action: true
   require_tool_plan_before_significant_action: true
-  unregistered_action_behavior: register_before_execution
+  unregistered_action_behavior: propose_and_obtain_user_approval_before_registration_or_execution
   legacy_mode: read_only_reference_only
   evidence_required_for_pass: true
+  no_assumptions: true
+  missing_ambiguous_or_conflicting_authority_behavior: ask_user_before_action
+  require_explicit_user_review_and_acceptance: true
+  require_user_approval_before_execution: true
+  require_user_approval_before_pass_or_progression: true
+  explicit_user_instruction_scope: exact_action_and_scope_only
+  pending_user_approval_state: PENDING_USER_APPROVAL
+  connected_access_is_not_authorization: true
+  unapproved_tool_workflow_service_or_procedure: prohibited
 
 actions:
   documentation_governance:
@@ -14,12 +23,16 @@ actions:
     secondary: github_markdown
     evidence:
       - updated_living_document
+    requires:
+      - explicit_user_approval_for_exact_change
     cost_eur: 0
 
   repository_read_write:
     primary: github
     evidence:
       - commit_or_diff_or_pr
+    requires:
+      - explicit_user_approval_for_exact_change
     cost_eur: 0
 
   technical_planning:
@@ -30,6 +43,7 @@ actions:
     requires:
       - guide_review
       - tool_plan
+      - explicit_user_approval_before_execution
     evidence:
       - recorded_plan
 
@@ -148,6 +162,7 @@ actions:
   destructive_action:
     primary: owning_service_tool
     requires:
+      - explicit_user_approval_for_exact_action
       - explicit_scope
       - pre_verification
       - rollback_when_available
