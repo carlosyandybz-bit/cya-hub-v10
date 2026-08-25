@@ -8,7 +8,7 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización — PASS  
 **Active subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — EN CURSO  
-**Active action:** obtain the exact user-approved acceptance criteria for closing 0.3 without inferring defaults  
+**Active action:** present 0.3 closeout evidence and obtain explicit user acceptance or rejection of the closeout  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -49,16 +49,18 @@ The user explicitly approved:
 - The physical location and deployment mechanism for staging remain deferred until infrastructure capabilities are verified.
 - Variables, secrets and per-environment credentials are outside 0.3 and remain for their separately governed scope.
 - This environment-policy decision does not construct, activate or deploy any environment or pending Txx tooling.
+- Closeout criteria: naming, repository, workspace, branches and environments must all be registered and coherent; no decision intrinsic to 0.3 may remain pending; Roadmap Vivo, `CURRENT.md` and `.cya/project-state.yaml` must agree; and the user must review the closeout evidence and explicitly approve the closeout.
+- Approval of the closeout criteria does not itself constitute PASS or closure of 0.3.
 
-## 0.3 — Pending decisions
+## 0.3 — Decision status
 
-Still undefined and requiring explicit user decision:
+All decision areas intrinsic to 0.3, including its closeout criteria, are now defined and approved by the user.
 
-- Acceptance criteria for closing 0.3.
+The subphase is **not closed**. Its closeout remains **PENDING USER APPROVAL** until the user reviews the closeout evidence and explicitly accepts or rejects the closure.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact acceptance criteria for closing 0.3. No closeout criterion may be selected automatically.
+**PENDING USER APPROVAL:** review the 0.3 closeout evidence and explicitly accept or reject closing 0.3.
 
 Do **not** mark 0.3 PASS, start 0.4, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
