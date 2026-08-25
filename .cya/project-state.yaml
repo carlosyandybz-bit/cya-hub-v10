@@ -1,8 +1,8 @@
 project: CYA Hub v10
-status: BLOCKED_USER_ACTION
-phase: pre-0
-subphase: context-layer
-active_action: configure ChatGPT Project Instructions and add CYA Hub v10 Drive folder as Project Source
+status: READY_FOR_PHASE_0
+phase: pre-0-complete
+subphase: context-governance-bootstrap-closed
+active_action: handoff_to_dedicated_phase_0_chat
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -27,20 +27,30 @@ completed:
   - bootstrap_checklist_created
   - current_status_panel_created
   - readme_control_links_created
+  - chatgpt_project_instructions_configured
+  - v10_drive_context_available
+  - clean_context_reconstruction_passed
 
 bootstrap_evidence:
-  commit: 865d8177f237a8557870845e360cdedf88251baf
+  initial_commit: 865d8177f237a8557870845e360cdedf88251baf
+  closeout_commit_current: f14c960e8d3fc57c553be1856ce976206d917f0d
+  gate: clean_context_reconstruction
+  result: PASS
+  verified:
+    - identify_current_phase
+    - identify_mandatory_guide_review_rule
+    - identify_tool_policy
+    - identify_next_action
+    - no_legacy_write_intent
 
 next_action:
-  type: USER_ACTION_REQUIRED
-  action: configure ChatGPT Project Instructions and add CYA Hub v10 Drive folder as Project Source
-  blocked_until_user: true
-  expected_evidence:
-    - project_instructions_visible
-    - v10_drive_source_visible
+  type: CHAT_HANDOFF
+  phase: 0
+  subphase: 0.1
+  action: open_dedicated_phase_0_chat_and_begin_scope_principles_methodology
+  blocked_until_user: false
 
-blockers:
-  - ChatGPT Project UI configuration cannot be changed by the currently available project tools
+blockers: []
 
 available_access:
   github: full_access
@@ -65,14 +75,17 @@ approved_infrastructure:
   ci_runner: github_actions
   incremental_cost_target_eur: 0
 
-verification_gate:
-  name: clean_context_reconstruction
-  pass_requires:
-    - identify_current_phase
-    - identify_mandatory_guide_review_rule
-    - identify_tool_policy
-    - identify_next_action
-    - no_legacy_write_intent
+phase_0_entry_gate:
+  result: PASS
+  starts_at: 0.1
+  requires_on_chat_start:
+    - review_tool_guide
+    - review_roadmap
+    - read_current
+    - read_project_state
+    - read_tool_registry
+    - read_agents_md_when_repository_involved
+    - identify_acceptance_gate
 
 conversation_policy:
   recommend_new_chat_on_phase_boundary: true
