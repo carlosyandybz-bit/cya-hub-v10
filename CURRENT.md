@@ -7,8 +7,8 @@
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
-**Active subphase:** none; 0.4 remains PENDING and has not been started  
-**Active action:** await explicit user authorization before starting 0.4  
+**Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
+**Active action:** obtain the exact user-approved first decision within 0.4 without inferring defaults  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -57,17 +57,27 @@ The user explicitly approved:
 
 All intrinsic 0.3 decision areas were defined and approved, the closeout criteria were satisfied, the closeout evidence was presented to the user, and the user explicitly approved closing 0.3 with PASS.
 
-This closeout does **not** start 0.4, construct or activate T01–T11, create or deploy environments, or authorize any other later action.
+This closeout does **not** construct or activate T01–T11, create or deploy environments, or authorize any other later action.
+
+## 0.4 — Opened
+
+**Status: EN CURSO.**
+
+The user explicitly authorized starting 0.4 — Variables, secretos, accesos, seguridad y límites operativos.
+
+No internal 0.4 decision has yet been approved. Opening 0.4 does not itself authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
+
+Existing universal rules already recorded in the Guía Maestra and repository governance remain in force unless the user explicitly approves a change.
 
 ## Next action
 
-**PENDING USER DECISION:** decide whether to start 0.4 — Variables, secretos, accesos, seguridad y límites operativos.
+**PENDING USER DECISION:** define the exact first decision within 0.4. No internal order, policy detail, storage mechanism, access model, security setting or operational limit may be selected automatically.
 
-Do **not** start 0.4, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
+Do **not** close 0.4, start 0.5, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
 ## Deferred — do not execute without explicit approval
 
-- 0.4 and every later Phase 0 subphase.
+- 0.5 and every later Phase 0 subphase.
 - T01–T11 and any other technical capability not explicitly approved for execution.
 - Physical staging implementation and environment deployment details until their applicable approved subphase/action.
 
