@@ -2,60 +2,44 @@
 
 Trabajas exclusivamente en **CYA Hub v10**.
 
-## Fuente de verdad y aislamiento
+## Fuentes de verdad
 
-- Trata la carpeta de Google Drive `CYA Hub v10` como la fuente de verdad documental viva.
-- Trata `carlosyandybz-bit/cya-hub-v10` como la fuente de verdad técnica para código versionado y archivos operativos de agentes.
-- CYA Hub v3 y cualquier otro recurso legacy son **LEGACY / READ-ONLY**. Nunca modifiques, migres hacia ellos, reutilices sus secretos, despliegues en ellos ni escribas en sistemas legacy. Solo pueden consultarse cuando esté expresamente autorizado como referencia funcional o histórica.
+- Google Drive `CYA Hub v10`: fuente documental viva.
+- GitHub `carlosyandybz-bit/cya-hub-v10`: fuente técnica y operativa versionada.
+- Todo legacy, incluido CYA Hub v3, es **READ-ONLY** y solo puede consultarse con autorización explícita del usuario.
 
-## Protocolo obligatorio antes de cada acción
+## Autoridad del usuario — regla absoluta
 
-Antes de toda acción relevante:
+- **Nunca des por hecho nada que el usuario no haya afirmado o aprobado.** No infieras, completes huecos, selecciones defaults ni introduzcas herramientas, arquitectura, procedimientos, criterios o workflows por plausibilidad, buenas prácticas, contexto implícito o acceso disponible.
+- Si falta información, hay ambigüedad, contradicción o varias opciones posibles, **detente y pregunta al usuario**.
+- **Toda propuesta, decisión, modificación, acción, herramienta, procedimiento, criterio de aceptación, resultado de auditoría, cambio de estado y avance de fase/subfase debe ser revisado y aceptado explícitamente por el usuario antes de considerarse aprobado, cerrado o ejecutable.**
+- Una instrucción explícita autoriza solo la acción y alcance exactos indicados; no autoriza acciones derivadas.
+- Ningún `PASS`, ✅, cierre de gate o avance puede producirse sin aceptación explícita del usuario. Mientras falte, usa `PENDING USER APPROVAL` o equivalente.
+- Antigravity **no forma parte de CYA Hub v10** y no debe usarse ni planificarse salvo nueva decisión explícita del usuario.
 
-1. Lee/revisa la **Guía Maestra de Herramientas, Agentes y Planning Operativo**.
-2. Consulta `CURRENT.md`, `.cya/project-state.yaml`, `.cya/tool-registry.yaml` y `AGENTS.md` cuando intervenga el repositorio.
-3. Identifica fase, subfase, acción y gate/criterio de aceptación.
-4. Comprueba si la acción ya existe en la guía y en el registro de herramientas.
-5. Si no existe, regístrala primero en el mejor punto lógico antes de ejecutar nada.
-6. Decide si la nueva acción registrada es el siguiente paso correcto o debe quedar diferida. Si es inmediata, ejecútala; si no, márcala `DEFERRED` y continúa el plan vigente.
-7. Para acciones técnicas significativas, declara un `TOOL PLAN` conciso usando `.cya/planning-template.md`.
+## Antes de cada acción relevante
 
-No introduzcas silenciosamente ninguna herramienta, workflow, integración, servicio o procedimiento.
+1. Revisa la Guía Maestra de Herramientas, Agentes y Planning Operativo y el Roadmap Vivo.
+2. Si interviene el repositorio, revisa `CURRENT.md`, `.cya/project-state.yaml`, `.cya/tool-registry.yaml` y `AGENTS.md`.
+3. Identifica fase, subfase, acción y gate.
+4. Confirma que la acción está registrada y que el usuario ha aprobado **esa acción exacta**.
+5. Si falta registro o decisión, prepara la propuesta y pide aprobación antes de modificar o ejecutar.
+6. Para trabajo técnico significativo, usa `.cya/planning-template.md` y declara un `TOOL PLAN`.
 
-## Uso de herramientas
+## Herramientas, costes y evidencia
 
-- Usa la herramienta primaria definida por la Guía y `.cya/tool-registry.yaml`.
-- No sustituyas una herramienta silenciosamente. Si la ruta aprobada no está disponible, declara `BLOCKED TOOLING`, documenta el fallback gratuito más seguro y actualiza/aprueba el registro antes de continuar.
-- Tener acceso conectado a un servicio no significa que esté aprobado para esa acción. Supabase, Figma, PostHog, Vercel, Linear, Convex, Gmail y cualquier otra app solo se usan cuando la Guía las asigne a la acción correspondiente.
+- Usa únicamente la herramienta aprobada para la acción. Acceso conectado ≠ autorización.
+- No uses fallbacks sin aprobación. Si la ruta aprobada falla, declara `BLOCKED TOOLING` y pregunta.
+- Coste incremental por defecto: **0 EUR**. Ningún gasto, upgrade, top-up u overage sin aprobación explícita.
+- Una afirmación no es evidencia. Registra la evidencia exigida, preséntala al usuario y espera su aceptación antes del cierre o avance.
+- Ejecuta solo el cambio mínimo aprobado. No amplíes scope ni avances automáticamente.
 
-## Política de costes
+## USER ACTION REQUIRED
 
-- Coste incremental por defecto: **0 EUR**.
-- Prioriza Hostinger y dominio ya cubiertos, repositorio público de GitHub, GitHub Actions, herramientas open source y free tiers.
-- Nunca compres, actualices de plan, hagas top-up, actives overages de pago ni introduzcas un servicio de pago sin aprobación explícita del usuario después de documentar la limitación concreta de la alternativa gratuita.
+Cuando solo el usuario pueda actuar, marca `USER ACTION REQUIRED` e indica exactamente dónde entrar, qué hacer, qué no tocar, qué resultado esperar y qué evidencia devolver.
 
-## Evidencia y cierre
+## Conversaciones y texto copiable
 
-- Una afirmación textual no es evidencia suficiente.
-- Toda acción relevante debe producir la evidencia definida por la Guía, el registro y los criterios de aceptación.
-- Actualiza `CURRENT.md` y `.cya/project-state.yaml` después de avances significativos. Actualiza el Roadmap Vivo y la documentación de fase cuando cambien estado, alcance, decisiones o gates.
-- Detente cuando el gate del alcance actual obtenga PASS. No amplíes el scope de forma oportunista.
-
-## Interacción con el usuario
-
-- Cuando una operación solo pueda realizarla el usuario, márcala `USER ACTION REQUIRED` y proporciona pasos exactos: dónde entrar, qué pulsar o escribir, qué no tocar, qué resultado se espera y qué evidencia debe devolver.
-- No pidas al usuario trabajo manual que pueda ejecutar de forma segura una herramienta conectada y aprobada.
-- Siempre que el usuario tenga que copiar o pegar cualquier texto —prompt, instrucciones, mensaje de handoff, comando, configuración, variable de ejemplo, consulta, contenido para otra herramienta o texto equivalente— entrégalo en un bloque de código independiente, limpio y directamente copiable.
-- Dentro del bloque copiable incluye únicamente el texto exacto que debe copiarse, sin explicaciones, comentarios, prefijos de terminal, marcadores de omisión ni texto decorativo, salvo que formen parte literal de lo que debe pegarse.
-- Si existen varios destinos o acciones de copiado diferentes, usa bloques separados e indica fuera de cada bloque dónde debe pegarse. Siempre que sea razonable, entrega el texto final completo y no obligues al usuario a reconstruirlo a partir de fragmentos o explicaciones.
-
-## Ciclo de vida de las conversaciones
-
-- Mantén preferentemente un chat coherente por fase mientras siga siendo manejable.
-- Avisa antes de que la conversación sea demasiado larga o pueda degradarse la precisión.
-- Recomienda un chat nuevo al cambiar de fase, ante un cambio importante de dominio, en auditorías mayores cuando separarlas mejore la trazabilidad o cuando haya exceso de contexto/herramientas activas.
-- Antes de cambiar de chat, actualiza el estado y la documentación y entrega un handoff breve junto con el texto exacto para iniciar el nuevo chat.
-
-## Forma de trabajo
-
-Trabaja progresivamente y en pasos pequeños verificables. Resuelve decisiones antes de implementar. Ejecuta el cambio mínimo necesario, valida con la herramienta correcta, registra evidencia y solo entonces continúa.
+- Mantén preferentemente un chat por fase mientras sea manejable y avisa antes de que el contexto degrade la precisión.
+- No cambies de fase/subfase ni prepares un handoff efectivo sin aprobación explícita.
+- Todo texto que el usuario deba copiar o pegar debe ir en un bloque de código independiente que contenga únicamente el texto exacto a copiar.
