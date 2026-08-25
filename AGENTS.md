@@ -28,7 +28,10 @@ This repository belongs exclusively to **CYA Hub v10**.
 
 - CYA Hub v3 and every other legacy project are **LEGACY / READ-ONLY**.
 - Never modify, migrate, reuse secrets from, deploy into, or write to legacy repositories, databases, hosting, Drive folders, environments or integrations.
-- Legacy may only be consulted as an explicit functional/historical reference when the user authorizes that exact use.
+- Legacy may only be consulted with explicit user authorization and only in the user-designated decision area.
+- Legacy consultation is for decision reference only. Legacy is never an implementation source.
+- Implementation chats and agents must use the CYA Hub v10 decision documents as the source of truth for the decisions they implement.
+- This policy does not authorize direct reuse from legacy.
 
 ## Mandatory pre-action rule
 
