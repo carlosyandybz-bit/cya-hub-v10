@@ -8,8 +8,8 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
-**Active work block:** política de variables y secretos — focus approved; concrete policy decisions pending  
-**Active action:** obtain the exact user-approved variables-and-secrets policy decisions without inferring categories, storage locations, managers, names or values  
+**Active work block:** política de variables y secretos — classification approved; remaining concrete policy decisions pending  
+**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring storage locations, managers, names, values or environment mappings  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -66,15 +66,25 @@ This closeout does **not** construct or activate T01–T11, create or deploy env
 
 The user explicitly authorized starting 0.4 — Variables, secretos, accesos, seguridad y límites operativos.
 
-The user explicitly approved beginning 0.4 with the **política de variables y secretos** work block. This approval selects only the work focus. It does not approve categories, storage locations, secret managers, variable names, secret values, per-environment mappings, changes to variables/secrets, or any other concrete policy rule.
+The user explicitly approved beginning 0.4 with the **política de variables y secretos** work block.
 
-No concrete internal 0.4 policy decision has yet been approved. Opening 0.4 and selecting this work block do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
+### 0.4 — Approved variable classification
+
+The user explicitly approved classifying every CYA Hub v10 configuration item into exactly three categories:
+
+- **PUBLIC / VERSIONABLE:** non-sensitive information that may exist in GitHub.
+- **ENVIRONMENT-SPECIFIC / NON-SECRET:** non-secret information whose value may vary between `VALIDATION`, `STAGING` and `PRODUCTION`.
+- **SECRET / SENSITIVE:** tokens, passwords, keys, credentials and any value that must not be exposed; it is never versioned.
+
+This classification does not define storage locations, secret managers, variable names, values, concrete per-environment mappings, or any procedure for creating/changing variables or secrets.
+
+Opening 0.4 and approving this classification do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
 
 Existing universal rules already recorded in the Guía Maestra and repository governance remain in force unless the user explicitly approves a change.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact first concrete decision for the variables-and-secrets policy. No category, storage mechanism, secret manager, naming rule, environment mapping or operational procedure may be selected automatically.
+**PENDING USER DECISION:** define the next exact concrete decision for the variables-and-secrets policy. No storage mechanism, secret manager, naming rule, environment mapping or operational procedure may be selected automatically.
 
 Do **not** close 0.4, start 0.5, create/change variables or secrets, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
