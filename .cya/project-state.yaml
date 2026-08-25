@@ -1,8 +1,8 @@
 project: CYA Hub v10
-status: PRE_PHASE_0_CONTEXT_BOOTSTRAP
+status: BLOCKED_USER_ACTION
 phase: pre-0
 subphase: context-layer
-active_action: establish persistent context, visible progress and project instructions
+active_action: configure ChatGPT Project Instructions and add CYA Hub v10 Drive folder as Project Source
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -12,27 +12,35 @@ sources_of_truth:
 completed:
   - methodology_progressive_and_ordered
   - roadmap_vivo_created
-  - tool_guide_created_and_reviewed
+  - tool_guide_created_reviewed_and_expanded
   - mandatory_pre_action_guide_review_defined
+  - unregistered_action_register_before_execution_defined
   - conversation_lifecycle_defined
   - user_action_required_protocol_defined
   - github_access_verified
   - google_drive_access_verified
   - app_specific_full_access_enabled_where_supported
-  - agents_context_layer_started
+  - agents_md_created
+  - tool_registry_created
+  - planning_template_created
+  - canonical_project_instructions_created
+  - bootstrap_checklist_created
+  - current_status_panel_created
+  - readme_control_links_created
 
-in_progress:
-  - agents_md_and_cya_registry_bootstrap
-  - visible_current_status_panel
-  - chatgpt_project_instructions_canonical_copy
+bootstrap_evidence:
+  commit: 865d8177f237a8557870845e360cdedf88251baf
 
 next_action:
   type: USER_ACTION_REQUIRED
   action: configure ChatGPT Project Instructions and add CYA Hub v10 Drive folder as Project Source
   blocked_until_user: true
+  expected_evidence:
+    - project_instructions_visible
+    - v10_drive_source_visible
 
 blockers:
-  - ChatGPT Project UI configuration cannot be changed by the available project tools
+  - ChatGPT Project UI configuration cannot be changed by the currently available project tools
 
 available_access:
   github: full_access
@@ -48,12 +56,23 @@ available_access:
   google_calendar: not_installed
   google_contacts: not_installed
 
+global_permission_note: full_access_global_mode_unavailable_app_specific_permissions_used
+
 approved_infrastructure:
   hosting: hostinger_already_paid
   domain: already_paid
   repository: github_public
   ci_runner: github_actions
   incremental_cost_target_eur: 0
+
+verification_gate:
+  name: clean_context_reconstruction
+  pass_requires:
+    - identify_current_phase
+    - identify_mandatory_guide_review_rule
+    - identify_tool_policy
+    - identify_next_action
+    - no_legacy_write_intent
 
 conversation_policy:
   recommend_new_chat_on_phase_boundary: true

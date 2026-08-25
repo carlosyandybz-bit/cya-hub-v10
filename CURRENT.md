@@ -4,49 +4,52 @@
 
 ## Current position
 
-**Global status:** PRE-FASE 0 — CONTEXT / GOVERNANCE BOOTSTRAP  
+**Global status:** PRE-FASE 0 — BLOCKED USER ACTION  
 **Phase:** Pre-0  
 **Subphase:** Context layer  
-**Active action:** establish persistent agent context, visible progress and ChatGPT Project bootstrap  
+**Active action:** configure ChatGPT Project Instructions and Project Sources  
 **Incremental cost target:** 0 EUR
 
 ## Current TOOL PLAN
 
-**Primary tools:** Google Drive + GitHub + ChatGPT Project configuration  
-**Purpose:** make every future chat/agent recover the approved state before acting  
-**Evidence:** living guide update + repository context files + project configuration confirmation  
-**Gate:** a new chat must be able to reconstruct the current state without relying on hidden conversational context
+**Primary tools:** ChatGPT Project configuration + Google Drive Project Source  
+**Purpose:** ensure every future chat starts from the approved living context  
+**Evidence required:** project instructions visible + CYA Hub v10 Drive source visible  
+**Gate:** a clean test chat must reconstruct phase, guide-review rule, tool policy and next action without relying on this conversation
 
 ## Completed
 
 - Progressive, ordered working methodology defined.
 - Roadmap Vivo created in Google Drive.
-- Guía Maestra de Herramientas, Agentes y Planning Operativo created and reviewed.
+- Guía Maestra de Herramientas, Agentes y Planning Operativo created, reviewed and expanded with access/context/chat-lifecycle rules.
 - Mandatory guide review before every relevant action established.
-- Rule added: unregistered actions must be documented before execution.
+- Rule established: unregistered actions are documented before execution, then executed only if immediate; otherwise deferred and recorded.
 - Conversation-length and chat-handoff policy established.
 - `USER ACTION REQUIRED` protocol established.
 - GitHub `cya-hub-v10` access verified.
 - Google Drive access verified.
-- Maximum app-specific access enabled where the platform currently permits it.
-- Persistent repository context layer being installed.
+- Maximum app-specific access enabled where currently supported.
+- Repository context layer installed: `AGENTS.md`, `.cya/tool-registry.yaml`, `.cya/project-state.yaml`, `.cya/planning-template.md`, `.cya/chatgpt-project-instructions.md`, `.cya/bootstrap-checklist.md`.
+- README now points to the operational control files.
 
-## User action required next
+**Bootstrap evidence commit:** `865d8177f237a8557870845e360cdedf88251baf`
+
+## USER ACTION REQUIRED — now
 
 ### Configure the ChatGPT Project
 
-1. Open the ChatGPT project **CYA Hub v10** settings.
-2. Open **Project Instructions**.
-3. Paste the canonical text from `.cya/chatgpt-project-instructions.md`.
-4. Add the Google Drive folder **CYA Hub v10** as a Project Source if the Project Sources UI allows adding the connected Drive folder/link.
-5. Do not add legacy folders or legacy repositories as project sources.
-6. Return to this chat and confirm that both Project Instructions and the v10 Drive source are visible.
+1. Open the ChatGPT project **CYA Hub v10**.
+2. Open the project settings/customization area and locate **Project Instructions**.
+3. Paste the canonical instructions from `.cya/chatgpt-project-instructions.md` exactly as provided by ChatGPT in the current handoff.
+4. In **Project Sources**, add the connected Google Drive folder **CYA Hub v10** if the UI supports selecting/adding the folder or its Drive link.
+5. Ensure only v10 sources are added. Do **not** add CYA Hub v3, legacy Drive folders or legacy repositories.
+6. Return to this chat and confirm that the instructions and v10 Drive source are visible. A screenshot is ideal if convenient.
 
-**Expected evidence:** confirmation or screenshot showing the project instructions/source configuration.
+**Expected evidence:** confirmation or screenshot showing both settings.
 
-## Next system action after user confirmation
+## Next system action after your confirmation
 
-Run a clean-context verification: start a fresh test chat inside the project and verify that it can identify the current phase, the mandatory guide-review rule, the current tool policy and the next action by consulting project sources/repository state.
+Perform the clean-context verification. If it passes, mark the context bootstrap PASS, update the Roadmap and open the dedicated **Fase 0** chat. If it fails, repair the context layer before any Phase 0 technical work.
 
 ## Deferred — do not execute yet
 
