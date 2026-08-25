@@ -1,8 +1,8 @@
 project: CYA Hub v10
-status: READY_FOR_PHASE_0
-phase: pre-0-complete
-subphase: context-governance-bootstrap-closed
-active_action: handoff_to_dedicated_phase_0_chat
+status: PHASE_0_IN_PROGRESS
+phase: 0
+subphase: 0.1
+active_action: define_0_1_acceptance_criteria_and_documentary_closeout
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -30,6 +30,8 @@ completed:
   - chatgpt_project_instructions_configured
   - v10_drive_context_available
   - clean_context_reconstruction_passed
+  - phase_0_entry_revalidated
+  - phase_0_opened
 
 bootstrap_evidence:
   initial_commit: 865d8177f237a8557870845e360cdedf88251baf
@@ -43,11 +45,41 @@ bootstrap_evidence:
     - identify_next_action
     - no_legacy_write_intent
 
+phase_0_entry_gate:
+  result: PASS
+  pre_phase_0_blockers: []
+  starts_at: 0.1
+  revalidated_on_phase_start: true
+  requires_on_chat_start:
+    - review_tool_guide
+    - review_roadmap
+    - read_current
+    - read_project_state
+    - read_tool_registry
+    - read_agents_md_when_repository_involved
+    - identify_acceptance_gate
+
+phase_0_current:
+  status: IN_PROGRESS
+  subphase: 0.1
+  subphase_name: alcance_principios_y_metodologia_operativa
+  subphase_status: IN_PROGRESS
+  closure_gate: PENDING
+  closure_requirements_pending:
+    - define_explicit_0_1_acceptance_criteria
+    - register_chatgpt_documentation_antigravity_implementation_operating_split_before_operational_use
+    - align_living_governance_and_machine_readable_state
+    - produce_documentary_evidence_for_0_1
+    - validate_0_1_before_marking_complete
+  prohibited_progression:
+    - do_not_advance_to_0_2_before_0_1_pass
+    - do_not_build_t01_to_t11_out_of_order
+
 next_action:
-  type: CHAT_HANDOFF
+  type: DOCUMENTATION_GOVERNANCE
   phase: 0
   subphase: 0.1
-  action: open_dedicated_phase_0_chat_and_begin_scope_principles_methodology
+  action: prepare_and_execute_0_1_documentary_closeout_only
   blocked_until_user: false
 
 blockers: []
@@ -74,18 +106,6 @@ approved_infrastructure:
   repository: github_public
   ci_runner: github_actions
   incremental_cost_target_eur: 0
-
-phase_0_entry_gate:
-  result: PASS
-  starts_at: 0.1
-  requires_on_chat_start:
-    - review_tool_guide
-    - review_roadmap
-    - read_current
-    - read_project_state
-    - read_tool_registry
-    - read_agents_md_when_repository_involved
-    - identify_acceptance_gate
 
 conversation_policy:
   recommend_new_chat_on_phase_boundary: true
