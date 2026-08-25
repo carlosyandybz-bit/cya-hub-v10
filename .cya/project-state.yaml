@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.3
-active_action: define_exact_branch_policy
+active_action: define_exact_environment_policy
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -43,10 +43,23 @@ phase_0_0_3_approved_decisions:
     monorepo_established_in_0_3: false
     additional_workspace_system_established_in_0_3: false
     future_internal_structure_requires_architectural_need_and_explicit_user_approval: true
+  branches:
+    status: APPROVED_BY_USER
+    stable_principal_branch: main
+    change_branches: temporary_per_specific_change
+    integration_target: main
+    permanent_develop_branch: false
+    scope: all_versioned_repository_artifacts
+    includes:
+      - code
+      - documentation
+      - github_actions_workflows
+      - project_tooling_when_separately_authorized
+    cya_browser_lab_covered_when_built: true
+    authorizes_t01_construction_or_activation: false
 
 phase_0_0_3_pending_decisions:
   status: PENDING_USER_DECISION
-  branch_policy: UNDEFINED
   environment_policy: UNDEFINED
   acceptance_criteria: UNDEFINED
 
@@ -75,7 +88,7 @@ next_action:
   type: USER_DECISION_GATE
   phase: 0
   subphase: 0.3
-  action: define_exact_branch_policy
+  action: define_exact_environment_policy
   blocked_until_user: true
 
 prohibited_progression:
@@ -84,7 +97,7 @@ prohibited_progression:
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
 
 blockers:
-  - branch_environment_and_acceptance_criteria_require_user_decisions
+  - environment_and_acceptance_criteria_require_user_decisions
 
 approved_infrastructure:
   hosting: hostinger_already_paid
