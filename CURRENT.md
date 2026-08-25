@@ -7,7 +7,7 @@
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Subphase:** 0.1 — Alcance, principios y metodología operativa — EN CURSO  
-**Active action:** correct governance assumptions and define the acceptance criteria/documentary closeout package for 0.1  
+**Active action:** apply the user-approved no-assumptions and explicit-approval policy across living governance and operational context  
 **Incremental cost target:** 0 EUR
 
 ## Phase 0 entry gate
@@ -15,52 +15,46 @@
 **Result:** PASS  
 **Pre-Phase 0 status:** PASS / CLOSED  
 **Gate evidence:** clean-context reconstruction already passed before this chat.  
-**Revalidated at Phase 0 start from:** living Drive Roadmap + living Tool Guide + `CURRENT.md` + `.cya/project-state.yaml` + `.cya/tool-registry.yaml` + `AGENTS.md`.  
 **Pending Pre-Phase 0 blockers:** none.
 
-## Initial Phase 0 verification
+## Mandatory no-assumptions and user-approval policy
 
-- Living Tool Guide reviewed before action.
-- Living Roadmap reviewed and confirmed as the documentary source of truth for the current phase.
-- Repository state reconstructed from the required operational files.
-- `.cya/tool-registry.yaml` confirms documentation governance via Google Drive and repository state work via GitHub at 0 EUR incremental cost.
-- No technical tool construction is required for the opening of 0.1.
-- T01–T11 remain pending/deferred according to their declared activation points; none is activated by this status transition.
-- CYA Hub v3 and every other legacy resource remain untouched and READ-ONLY unless explicitly authorized later as reference.
-
-## Mandatory no-assumptions rule
-
-- **No agent may assume, infer, extrapolate, select a default, complete a missing decision or introduce a tool/workflow/service/procedure from information that the user has not explicitly established in the approved living documentation.**
-- If the required fact, decision, scope, tool, architecture, workflow, criterion or permission is absent, ambiguous or contradictory in the approved sources, the agent must **stop and ask the user before proceeding**.
-- A plausible inference is not authorization.
-- Connected access, prior experience, industry convention, model knowledge or convenience never substitutes explicit project authority.
-- Antigravity is **not part of CYA Hub v10** and must not be used, planned or referenced as an implementation environment unless the user explicitly changes this decision in the future and the governance sources are updated first.
+- No agent may assume, infer, extrapolate, select defaults, complete missing decisions or introduce tools, workflows, services, procedures, architecture or criteria that the user has not explicitly established or approved.
+- If information is missing, ambiguous, contradictory or admits several possible choices, the agent must stop and ask the user before acting.
+- Plausibility, best practices, prior experience, model knowledge, conventions or connected access do not constitute authorization.
+- Every proposal, decision, documentary modification, technical change, tool, procedure, action, audit result, acceptance criterion, state change and phase/subphase progression requires explicit user review and acceptance before it is considered approved, closed or executable.
+- An explicit user instruction authorizes only the exact action and scope stated; it does not authorize derived or opportunistic work.
+- No PASS, ✅, gate closure or progression may be recorded without explicit user acceptance. Pending closure must be represented as `PENDING USER APPROVAL` or equivalent.
+- Antigravity is not part of CYA Hub v10 and must not be used, planned or introduced unless the user explicitly changes that decision and approves the corresponding governance update first.
 
 ## 0.1 — Current closeout position
 
-0.1 is open and **not yet eligible for PASS**. The existing governance already covers progressive work, evidence, cost discipline, tool planning, user-only operations, conversation lifecycle and legacy isolation.
+0.1 remains **EN CURSO**. The user has explicitly approved the no-assumptions and user-approval policy and authorized its application to the governance sources.
 
-The previous reference to a ChatGPT ↔ Antigravity operating split was an unauthorized inference and has been withdrawn. The 0.1 closeout must instead formalize and evidence the new mandatory no-assumptions rule across the living governance and machine-readable agent context.
+The previous ChatGPT ↔ Antigravity operating split was an unauthorized inference and is withdrawn. No replacement implementation environment, agent or workflow is assumed.
+
+The policy application itself is authorized. Closing 0.1 is a separate decision and remains **PENDING USER APPROVAL** after the resulting evidence is presented.
 
 ## Next action
 
-Complete the **0.1 documentary closeout only**: define explicit acceptance criteria, validate that the no-assumptions rule is present and coherent across the approved governance/context sources, produce documentary evidence, and only then decide whether 0.1 can be marked ✅.
+Finish applying and verifying the approved policy across the living Guide, Roadmap and repository operational context. Then present the 0.1 evidence to the user for review.
 
-Do **not** advance to 0.2 and do **not** construct T01 Browser Lab, T02 Quality Gate, T03 Security Gate or any other technical capability during this step.
+Do **not** mark 0.1 PASS, advance to 0.2 or construct T01–T11 without a new explicit user approval for that exact action.
 
-## Deferred — do not execute out of order
+## Deferred — do not execute without explicit approval
 
-- T01 CYA Browser Lab — Phase 0 according to the Roadmap/tool dependencies.
-- T02 CYA Quality Gate — Phase 0 progressive.
-- T03 CYA Security Gate — Phase 0.
-- T04 CYA Deploy Bridge — bootstrap after Hostinger capability verification.
-- T05 Runtime Health — executable app required.
-- T06 Visual QA — Phase 0 base, intensive from Phase 3.
-- T07 Performance Lab — Phase 4/8.
-- T08 Accessibility Lab — Phase 0 base, full rules from Phase 3.
-- T09 Backend Control — Phase 2 architecture decision.
-- T10 Observability Bridge — executable app required.
-- T11 Design Bridge — Phase 3.
+- 0.2 and every later Phase 0 subphase.
+- T01 CYA Browser Lab.
+- T02 CYA Quality Gate.
+- T03 CYA Security Gate.
+- T04 CYA Deploy Bridge.
+- T05 CYA Runtime Health.
+- T06 CYA Visual QA.
+- T07 CYA Performance Lab.
+- T08 CYA Accessibility Lab.
+- T09 CYA Backend Control.
+- T10 CYA Observability Bridge.
+- T11 CYA Design Bridge.
 
 ## Living sources
 
@@ -70,4 +64,4 @@ Do **not** advance to 0.2 and do **not** construct T01 Browser Lab, T02 Quality 
 
 ## Chat lifecycle
 
-This is the dedicated Phase 0 chat. Keep it scoped to Phase 0 while context remains manageable. Before any later phase/chat handoff, update this file, `.cya/project-state.yaml`, the Roadmap and applicable phase documentation, then provide the exact handoff prompt.
+This is the dedicated Phase 0 chat. Keep it scoped to Phase 0 while context remains manageable. No phase/subphase handoff or progression occurs without explicit user approval.
