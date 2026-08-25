@@ -6,15 +6,14 @@
 
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
-**Subphase:** 0.1 — Alcance, principios y metodología operativa — EN CURSO  
-**Active action:** apply the user-approved no-assumptions and explicit-approval policy across living governance and operational context  
+**Subphase:** 0.1 — Alcance, principios y metodología operativa — EN CURSO / PENDING USER APPROVAL PARA CIERRE  
+**Active action:** user review of the applied 0.1 governance policy and closeout evidence  
 **Incremental cost target:** 0 EUR
 
 ## Phase 0 entry gate
 
 **Result:** PASS  
 **Pre-Phase 0 status:** PASS / CLOSED  
-**Gate evidence:** clean-context reconstruction already passed before this chat.  
 **Pending Pre-Phase 0 blockers:** none.
 
 ## Mandatory no-assumptions and user-approval policy
@@ -29,32 +28,22 @@
 
 ## 0.1 — Current closeout position
 
-0.1 remains **EN CURSO**. The user has explicitly approved the no-assumptions and user-approval policy and authorized its application to the governance sources.
+The user-approved no-assumptions and explicit-approval policy has been applied to the living Tool Guide, Roadmap and repository operational context.
 
 The previous ChatGPT ↔ Antigravity operating split was an unauthorized inference and is withdrawn. No replacement implementation environment, agent or workflow is assumed.
 
-The policy application itself is authorized. Closing 0.1 is a separate decision and remains **PENDING USER APPROVAL** after the resulting evidence is presented.
+**0.1 is not PASS.** Its closeout is now **PENDING USER APPROVAL**. Evidence has been produced and must be reviewed and accepted explicitly by the user before any closure or progression.
 
 ## Next action
 
-Finish applying and verifying the approved policy across the living Guide, Roadmap and repository operational context. Then present the 0.1 evidence to the user for review.
+**USER REVIEW GATE:** review the 0.1 policy application and evidence and decide whether 0.1 may be closed.
 
 Do **not** mark 0.1 PASS, advance to 0.2 or construct T01–T11 without a new explicit user approval for that exact action.
 
 ## Deferred — do not execute without explicit approval
 
 - 0.2 and every later Phase 0 subphase.
-- T01 CYA Browser Lab.
-- T02 CYA Quality Gate.
-- T03 CYA Security Gate.
-- T04 CYA Deploy Bridge.
-- T05 CYA Runtime Health.
-- T06 CYA Visual QA.
-- T07 CYA Performance Lab.
-- T08 CYA Accessibility Lab.
-- T09 CYA Backend Control.
-- T10 CYA Observability Bridge.
-- T11 CYA Design Bridge.
+- T01–T11 and any other technical capability not explicitly approved for execution.
 
 ## Living sources
 
@@ -64,4 +53,4 @@ Do **not** mark 0.1 PASS, advance to 0.2 or construct T01–T11 without a new ex
 
 ## Chat lifecycle
 
-This is the dedicated Phase 0 chat. Keep it scoped to Phase 0 while context remains manageable. No phase/subphase handoff or progression occurs without explicit user approval.
+This is the dedicated Phase 0 chat. No phase/subphase handoff or progression occurs without explicit user approval.
