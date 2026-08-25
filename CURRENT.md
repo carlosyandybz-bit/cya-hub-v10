@@ -8,7 +8,7 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.2 — Aislamiento absoluto respecto al legacy y política de reutilización — PASS  
 **Active subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — EN CURSO  
-**Active action:** obtain the exact user-approved branch policy without inferring defaults  
+**Active action:** obtain the exact user-approved environment policy without inferring defaults  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -35,18 +35,22 @@ The user explicitly approved:
 - Workspace policy: the `cya-hub-v10` repository is the single versioned technical workspace for CYA Hub v10.
 - Subphase 0.3 does not establish any internal subdivision, monorepo or additional workspace system.
 - Any later internal workspace structure requires a later architectural need and explicit user approval before it becomes project policy.
+- Branch policy: `main` is the stable principal branch.
+- Each specific change is worked in a temporary branch and then integrated into `main`.
+- There is no permanent `develop` branch.
+- The branch policy applies to all versioned repository artifacts, including code, documentation, GitHub Actions workflows and project tooling such as CYA Browser Lab when that tooling is built under its separately authorized subphase.
+- This branch-policy decision does not authorize construction or activation of T01 CYA Browser Lab or any other pending tooling.
 
 ## 0.3 — Pending decisions
 
 Still undefined and requiring explicit user decision:
 
-- Branch policy.
 - Environment policy.
 - Acceptance criteria for closing 0.3.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact branch policy. No branch model or convention may be selected automatically.
+**PENDING USER DECISION:** define the exact environment policy. No environment model or convention may be selected automatically.
 
 Do **not** mark 0.3 PASS, start 0.4, construct T01–T11 or execute any other new project action without explicit user approval for that exact action.
 
