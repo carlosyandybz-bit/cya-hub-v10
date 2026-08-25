@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.3
-active_action: obtain_exact_user_approved_0_3_decisions
+active_action: define_exact_workspace_policy
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -30,14 +30,14 @@ phase_0_current:
   active_subphase_status: IN_PROGRESS
   closure_gate_0_3: NOT_READY
 
-phase_0_0_3_existing_facts:
-  project_name: CYA Hub v10
-  current_repository: carlosyandybz-bit/cya-hub-v10
-  note: existing_facts_do_not_imply_unapproved_policy
+phase_0_0_3_approved_decisions:
+  naming:
+    status: APPROVED_BY_USER
+    project_name: CYA Hub v10
+    repository_name: cya-hub-v10
 
 phase_0_0_3_pending_decisions:
   status: PENDING_USER_DECISION
-  naming_policy: UNDEFINED
   workspace_policy: UNDEFINED
   branch_policy: UNDEFINED
   environment_policy: UNDEFINED
@@ -68,7 +68,7 @@ next_action:
   type: USER_DECISION_GATE
   phase: 0
   subphase: 0.3
-  action: define_first_unresolved_0_3_decision
+  action: define_exact_workspace_policy
   blocked_until_user: true
 
 prohibited_progression:
@@ -77,7 +77,7 @@ prohibited_progression:
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
 
 blockers:
-  - exact_0_3_policy_requires_user_decisions
+  - workspace_branch_environment_and_acceptance_criteria_require_user_decisions
 
 approved_infrastructure:
   hosting: hostinger_already_paid
