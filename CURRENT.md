@@ -4,63 +4,55 @@
 
 ## Current position
 
-**Global status:** PRE-FASE 0 — BLOCKED USER ACTION  
-**Phase:** Pre-0  
-**Subphase:** Context layer  
-**Active action:** configure ChatGPT Project Instructions and Project Sources  
+**Global status:** PRE-FASE 0 — PASS / READY FOR PHASE 0  
+**Phase:** Pre-0 complete → Phase 0 ready  
+**Subphase:** Context/governance bootstrap closed  
+**Active action:** handoff to dedicated Phase 0 chat  
 **Incremental cost target:** 0 EUR
 
-## Current TOOL PLAN
+## Bootstrap gate result
 
-**Primary tools:** ChatGPT Project configuration + Google Drive Project Source  
-**Purpose:** ensure every future chat starts from the approved living context  
-**Evidence required:** project instructions visible + CYA Hub v10 Drive source visible  
-**Gate:** a clean test chat must reconstruct phase, guide-review rule, tool policy and next action without relying on this conversation
+**Result:** PASS  
+**Gate:** clean-context reconstruction  
+**Validated from:** Project Instructions + CYA Hub v10 Drive context + `CURRENT.md` + `.cya/project-state.yaml` + `.cya/tool-registry.yaml` + `AGENTS.md`  
+**Validated capabilities:** current phase, mandatory Guide review, approved tool policy, next action, legacy read-only isolation.
 
 ## Completed
 
 - Progressive, ordered working methodology defined.
 - Roadmap Vivo created in Google Drive.
 - Guía Maestra de Herramientas, Agentes y Planning Operativo created, reviewed and expanded with access/context/chat-lifecycle rules.
-- Mandatory guide review before every relevant action established.
-- Rule established: unregistered actions are documented before execution, then executed only if immediate; otherwise deferred and recorded.
+- Mandatory Guide review before every relevant action established.
+- Unregistered actions must be documented before execution, then executed only if immediate; otherwise deferred and recorded.
 - Conversation-length and chat-handoff policy established.
 - `USER ACTION REQUIRED` protocol established.
 - GitHub `cya-hub-v10` access verified.
 - Google Drive access verified.
 - Maximum app-specific access enabled where currently supported.
 - Repository context layer installed: `AGENTS.md`, `.cya/tool-registry.yaml`, `.cya/project-state.yaml`, `.cya/planning-template.md`, `.cya/chatgpt-project-instructions.md`, `.cya/bootstrap-checklist.md`.
-- README now points to the operational control files.
+- README points to the operational control files.
+- ChatGPT Project Instructions configured by the user.
+- CYA Hub v10 Drive context/source available to the project.
+- Clean-context reconstruction gate passed.
 
-**Bootstrap evidence commit:** `865d8177f237a8557870845e360cdedf88251baf`
+**Initial bootstrap evidence commit:** `865d8177f237a8557870845e360cdedf88251baf`
 
-## USER ACTION REQUIRED — now
+## Next action
 
-### Configure the ChatGPT Project
+Open a dedicated **FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP** chat and begin with **0.1 — Alcance, principios y metodología operativa**.
 
-1. Open the ChatGPT project **CYA Hub v10**.
-2. Open the project settings/customization area and locate **Project Instructions**.
-3. Paste the canonical instructions from `.cya/chatgpt-project-instructions.md` exactly as provided by ChatGPT in the current handoff.
-4. In **Project Sources**, add the connected Google Drive folder **CYA Hub v10** if the UI supports selecting/adding the folder or its Drive link.
-5. Ensure only v10 sources are added. Do **not** add CYA Hub v3, legacy Drive folders or legacy repositories.
-6. Return to this chat and confirm that the instructions and v10 Drive source are visible. A screenshot is ideal if convenient.
+The Phase 0 chat must first review the living Tool Guide and Roadmap, read repository state files, identify the acceptance gate, and only then decide whether any technical tool construction is immediately required.
 
-**Expected evidence:** confirmation or screenshot showing both settings.
+## Deferred — do not execute out of order
 
-## Next system action after your confirmation
-
-Perform the clean-context verification. If it passes, mark the context bootstrap PASS, update the Roadmap and open the dedicated **Fase 0** chat. If it fails, repair the context layer before any Phase 0 technical work.
-
-## Deferred — do not execute yet
-
-- T01 CYA Browser Lab — Phase 0 after context/bootstrap governance is validated.
+- T01 CYA Browser Lab — Phase 0 according to the Roadmap/tool dependencies.
 - T02 CYA Quality Gate — Phase 0 progressive.
 - T03 CYA Security Gate — Phase 0.
 - T04 CYA Deploy Bridge — bootstrap after Hostinger capability verification.
 - T05 Runtime Health — executable app required.
-- T06 Visual QA — base later, intensive from Phase 3.
+- T06 Visual QA — Phase 0 base, intensive from Phase 3.
 - T07 Performance Lab — Phase 4/8.
-- T08 Accessibility Lab — base later, full rules from Phase 3.
+- T08 Accessibility Lab — Phase 0 base, full rules from Phase 3.
 - T09 Backend Control — Phase 2 architecture decision.
 - T10 Observability Bridge — executable app required.
 - T11 Design Bridge — Phase 3.
@@ -73,4 +65,4 @@ Perform the clean-context verification. If it passes, mark the context bootstrap
 
 ## Chat lifecycle
 
-The assistant must recommend a new chat before context length threatens precision. Before any handoff, update this file, `.cya/project-state.yaml`, the Roadmap and applicable phase documentation, then provide the exact handoff prompt.
+This conversation has reached a phase boundary and is already context-heavy. Start Phase 0 in a new dedicated chat. Before every later handoff, update this file, `.cya/project-state.yaml`, the Roadmap and applicable phase documentation, then provide the exact handoff prompt.
