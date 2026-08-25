@@ -8,8 +8,8 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
-**Active work block:** política de variables y secretos — classification and residence policy approved; naming convention selected as next decision; concrete naming convention pending  
-**Active action:** define the exact variable-and-secret naming convention with user approval without inferring any prefix, casing, format, structure or concrete name  
+**Active work block:** política de variables y secretos — classification, residence policy and naming convention approved; remaining concrete policy decisions pending  
+**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific managers, values, concrete environment mappings or operational procedures  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -86,17 +86,28 @@ The user explicitly approved the following residence rules without selecting any
 
 This residence policy does not select GitHub Secrets, Hostinger or any other concrete manager/mechanism, does not define variable names or values, and does not authorize creating or changing variables or secrets.
 
-### 0.4 — Naming convention selected as next decision
+### 0.4 — Approved naming convention
 
-The user explicitly approved that the next decision to work on is the **naming convention for variables and secrets**. This approval selects only the next decision focus. It does not approve any prefix, casing, format, structure, naming pattern or concrete variable/secret name.
+The user explicitly approved the complete naming convention for variables and secrets:
 
-Opening 0.4 and approving these policies or decision focus do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
+- Names use **UPPER_SNAKE_CASE** with only letters `A-Z`, numbers and `_`.
+- A name describes what the configuration represents in a stable and understandable way.
+- The environment is not included in the name: the same logical key keeps the same name in `VALIDATION`, `STAGING` and `PRODUCTION`; the environment-specific value or residence changes, not the name.
+- Prefixes such as `PUBLIC_`, `SECRET_` or similar are not added only to represent the approved classification; classification is managed separately.
+- No global `CYA_` prefix is established by default.
+- If an approved future technology requires a specific prefix or format, that exception is decided when that technology has been approved.
+- Names must be explicit enough to avoid generic context-free keys such as `KEY`, `TOKEN`, `URL` or `SECRET`.
+- `SERVICE_API_KEY` versus `KEY` is a structural example only and does not introduce any real service.
+
+This naming convention does not create variables, select managers, define values or authorize creating or changing variables or secrets.
+
+Opening 0.4 and approving these policies do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
 
 Existing universal rules already recorded in the Guía Maestra and repository governance remain in force unless the user explicitly approves a change.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact naming convention for variables and secrets. No prefix, casing, format, structure, naming pattern or concrete name may be selected automatically.
+**PENDING USER DECISION:** define the next exact concrete decision for the variables-and-secrets policy. No specific storage mechanism, secret manager, value, concrete environment mapping or operational procedure may be selected automatically.
 
 Do **not** close 0.4, start 0.5, create/change variables or secrets, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
