@@ -7,7 +7,7 @@
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Subphase:** 0.1 — Alcance, principios y metodología operativa — EN CURSO  
-**Active action:** initial context verification completed; define the acceptance criteria and documentary closeout package for 0.1  
+**Active action:** correct governance assumptions and define the acceptance criteria/documentary closeout package for 0.1  
 **Incremental cost target:** 0 EUR
 
 ## Phase 0 entry gate
@@ -28,15 +28,23 @@
 - T01–T11 remain pending/deferred according to their declared activation points; none is activated by this status transition.
 - CYA Hub v3 and every other legacy resource remain untouched and READ-ONLY unless explicitly authorized later as reference.
 
+## Mandatory no-assumptions rule
+
+- **No agent may assume, infer, extrapolate, select a default, complete a missing decision or introduce a tool/workflow/service/procedure from information that the user has not explicitly established in the approved living documentation.**
+- If the required fact, decision, scope, tool, architecture, workflow, criterion or permission is absent, ambiguous or contradictory in the approved sources, the agent must **stop and ask the user before proceeding**.
+- A plausible inference is not authorization.
+- Connected access, prior experience, industry convention, model knowledge or convenience never substitutes explicit project authority.
+- Antigravity is **not part of CYA Hub v10** and must not be used, planned or referenced as an implementation environment unless the user explicitly changes this decision in the future and the governance sources are updated first.
+
 ## 0.1 — Current closeout position
 
 0.1 is open and **not yet eligible for PASS**. The existing governance already covers progressive work, evidence, cost discipline, tool planning, user-only operations, conversation lifecycle and legacy isolation.
 
-A documentary closure package must still define and evidence the complete operating methodology for this phase before 0.1 can be marked complete. In particular, the latest project operating split — ChatGPT as documentation/specification/governance layer and Antigravity as the implementation environment — is not yet reflected in the living Tool Guide or machine-readable registry and must be registered before it is used operationally.
+The previous reference to a ChatGPT ↔ Antigravity operating split was an unauthorized inference and has been withdrawn. The 0.1 closeout must instead formalize and evidence the new mandatory no-assumptions rule across the living governance and machine-readable agent context.
 
 ## Next action
 
-Prepare and execute the **0.1 documentary closeout only**: define explicit acceptance criteria, register the approved ChatGPT ↔ Antigravity operating split in the correct governance locations, align the relevant living documentation/state, validate the evidence, and only then decide whether 0.1 can be marked ✅.
+Complete the **0.1 documentary closeout only**: define explicit acceptance criteria, validate that the no-assumptions rule is present and coherent across the approved governance/context sources, produce documentary evidence, and only then decide whether 0.1 can be marked ✅.
 
 Do **not** advance to 0.2 and do **not** construct T01 Browser Lab, T02 Quality Gate, T03 Security Gate or any other technical capability during this step.
 
