@@ -1,8 +1,8 @@
 project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
-subphase: null
-active_action: await_explicit_user_approval_to_start_0_4
+subphase: 0.4
+active_action: obtain_exact_user_approved_first_decision_within_0_4
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -25,10 +25,11 @@ phase_0_current:
   last_completed_subphase: 0.3
   last_completed_subphase_name: naming_repositorio_workspace_ramas_y_entornos
   last_completed_subphase_status: PASS
-  active_subphase: null
-  active_subphase_status: NONE
+  active_subphase: 0.4
+  active_subphase_name: variables_secretos_accesos_seguridad_y_limites_operativos
+  active_subphase_status: IN_PROGRESS
   closure_gate_0_3: PASS
-  next_subphase: 0.4
+  next_subphase: 0.5
   next_subphase_status: PENDING_NOT_STARTED
 
 phase_0_0_3_approved_decisions:
@@ -105,6 +106,18 @@ phase_0_0_3_closeout:
   authorizes_t01_to_t11: false
   authorizes_environment_creation_or_deployment: false
 
+phase_0_0_4:
+  status: IN_PROGRESS
+  start_authorization: APPROVED_BY_USER
+  user_explicitly_authorized_start: true
+  internal_decisions_approved: NONE_YET
+  closure_gate: NOT_READY
+  authorizes_variable_or_secret_changes: false
+  authorizes_access_changes: false
+  authorizes_security_setting_changes: false
+  authorizes_txx_construction_or_activation: false
+  authorizes_environment_creation_or_deployment: false
+
 legacy_policy_established:
   mode: READ_ONLY
   includes_all_legacy: true
@@ -130,11 +143,12 @@ next_action:
   type: USER_DECISION_GATE
   phase: 0
   subphase: 0.4
-  action: approve_or_reject_start_0_4
+  action: define_exact_first_decision_within_0_4
   blocked_until_user: true
 
 prohibited_progression:
-  - do_not_start_0_4_without_explicit_user_approval
+  - do_not_close_0_4_without_explicit_user_acceptance
+  - do_not_start_0_5_without_explicit_user_approval
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
   - do_not_create_or_deploy_environments_without_explicit_user_approval_for_the_exact_action
 
