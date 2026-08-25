@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.3
-active_action: define_exact_acceptance_criteria_for_0_3
+active_action: present_0_3_closeout_evidence_for_explicit_user_acceptance
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -28,7 +28,7 @@ phase_0_current:
   active_subphase: 0.3
   active_subphase_name: naming_repositorio_workspace_ramas_y_entornos
   active_subphase_status: IN_PROGRESS
-  closure_gate_0_3: NOT_READY
+  closure_gate_0_3: PENDING_USER_APPROVAL
 
 phase_0_0_3_approved_decisions:
   naming:
@@ -84,10 +84,17 @@ phase_0_0_3_approved_decisions:
     variables_secrets_and_per_environment_credentials_in_scope_of_0_3: false
     authorizes_environment_creation_or_deployment: false
     authorizes_pending_txx_tooling: false
+  acceptance_criteria:
+    status: APPROVED_BY_USER
+    naming_repository_workspace_branches_and_environments_registered_and_coherent: true
+    no_intrinsic_0_3_decision_pending_required: true
+    roadmap_current_and_project_state_must_agree: true
+    user_must_review_closeout_evidence: true
+    explicit_user_closeout_acceptance_required: true
+    approval_of_criteria_itself_closes_0_3: false
 
 phase_0_0_3_pending_decisions:
-  status: PENDING_USER_DECISION
-  acceptance_criteria: UNDEFINED
+  status: NONE
 
 legacy_policy_established:
   mode: READ_ONLY
@@ -111,10 +118,10 @@ implementation_decision_source_policy:
   implementation_chats_use_decision_documents: true
 
 next_action:
-  type: USER_DECISION_GATE
+  type: USER_APPROVAL_GATE
   phase: 0
   subphase: 0.3
-  action: define_exact_acceptance_criteria_for_0_3
+  action: review_0_3_closeout_evidence_and_accept_or_reject_closeout
   blocked_until_user: true
 
 prohibited_progression:
@@ -123,8 +130,7 @@ prohibited_progression:
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
   - do_not_create_or_deploy_environments_without_explicit_user_approval_for_the_exact_action
 
-blockers:
-  - acceptance_criteria_for_0_3_require_user_decision
+blockers: []
 
 approved_infrastructure:
   hosting: hostinger_already_paid
