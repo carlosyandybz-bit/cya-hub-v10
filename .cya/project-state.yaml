@@ -1,8 +1,8 @@
 project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
-subphase: 0.2
-active_action: await_user_approval_to_start_0_3
+subphase: 0.3
+active_action: obtain_exact_user_approved_0_3_decisions
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -25,11 +25,23 @@ phase_0_current:
   last_completed_subphase: 0.2
   last_completed_subphase_name: aislamiento_absoluto_respecto_al_legacy_y_politica_de_reutilizacion
   last_completed_subphase_status: PASS
-  closure_gate_0_2: PASS
-  closure_requirements_pending_0_2: []
-  next_subphase: 0.3
-  next_subphase_name: naming_repositorio_workspace_ramas_y_entornos
-  next_subphase_status: PENDING_USER_APPROVAL_TO_START
+  active_subphase: 0.3
+  active_subphase_name: naming_repositorio_workspace_ramas_y_entornos
+  active_subphase_status: IN_PROGRESS
+  closure_gate_0_3: NOT_READY
+
+phase_0_0_3_existing_facts:
+  project_name: CYA Hub v10
+  current_repository: carlosyandybz-bit/cya-hub-v10
+  note: existing_facts_do_not_imply_unapproved_policy
+
+phase_0_0_3_pending_decisions:
+  status: PENDING_USER_DECISION
+  naming_policy: UNDEFINED
+  workspace_policy: UNDEFINED
+  branch_policy: UNDEFINED
+  environment_policy: UNDEFINED
+  acceptance_criteria: UNDEFINED
 
 legacy_policy_established:
   mode: READ_ONLY
@@ -53,17 +65,19 @@ implementation_decision_source_policy:
   implementation_chats_use_decision_documents: true
 
 next_action:
-  type: USER_REVIEW_GATE
+  type: USER_DECISION_GATE
   phase: 0
   subphase: 0.3
-  action: decide_whether_to_start_0_3
+  action: define_first_unresolved_0_3_decision
   blocked_until_user: true
 
 prohibited_progression:
-  - do_not_start_0_3_without_explicit_user_approval
+  - do_not_close_0_3_without_explicit_user_acceptance
+  - do_not_start_0_4_without_explicit_user_approval
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
 
-blockers: []
+blockers:
+  - exact_0_3_policy_requires_user_decisions
 
 approved_infrastructure:
   hosting: hostinger_already_paid
