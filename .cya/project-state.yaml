@@ -116,6 +116,7 @@ phase_0_0_4:
     selection_scope: work_focus_only
     concrete_policy_decisions_approved:
       - variable_classification
+      - residence_policy
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -142,8 +143,33 @@ phase_0_0_4:
         - values
         - concrete_environment_mappings
         - variable_or_secret_change_procedures
+    residence_policy:
+      status: APPROVED_BY_USER
+      public_versionable:
+        repository_residence_allowed: true
+      environment_specific_non_secret:
+        must_be_separated_by_environment: true
+        environments:
+          - VALIDATION
+          - STAGING
+          - PRODUCTION
+        physical_storage_location: UNDEFINED
+      secret_sensitive:
+        allowed_residence: authorized_secret_manager_for_corresponding_environment_or_service_only
+        versioned_github_content_allowed: false
+      specific_manager_or_mechanism_selected: false
+      explicitly_not_selected:
+        - github_secrets
+        - hostinger
+        - any_other_specific_manager_or_mechanism
+      does_not_define:
+        - variable_names
+        - values
+        - concrete_environment_mappings
+        - variable_or_secret_change_procedures
   internal_decisions_approved:
     - variable_classification
+    - residence_policy
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
