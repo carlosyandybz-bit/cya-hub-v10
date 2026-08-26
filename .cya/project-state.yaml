@@ -1,8 +1,8 @@
 project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
-subphase: 0.7
-active_action: await_explicit_user_authorization_to_start_0_8
+subphase: 0.8
+active_action: define_and_submit_0_8_acceptance_criteria_and_t01_tool_plan_for_user_approval
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -63,14 +63,14 @@ phase_0_current:
   last_completed_subphase: 0.7
   last_completed_subphase_name: gobernanza_de_herramientas_y_tool_plan_obligatorio
   last_completed_subphase_status: PASS
-  active_subphase: 0.7
-  active_subphase_name: gobernanza_de_herramientas_y_tool_plan_obligatorio
-  active_subphase_status: PASS
+  active_subphase: 0.8
+  active_subphase_name: construccion_y_prueba_de_t01_cya_browser_lab
+  active_subphase_status: IN_PROGRESS
   closure_gate_0_4: PASS
   closure_gate_0_5: PASS
   closure_gate_0_6: PASS
   closure_gate_0_7: PASS
-  next_subphase: 0.8
+  next_subphase: 0.9
   next_subphase_status: PENDING_NOT_STARTED
 
 phase_0_0_1:
@@ -1070,6 +1070,14 @@ phase_0_0_7:
     result: PASS
     starts_0_8: false
 
+phase_0_0_8:
+  status: IN_PROGRESS
+  start_authorization: APPROVED_BY_USER
+  t01_status: PENDING
+  current_gate: acceptance_criteria_and_technical_tool_plan_pending_explicit_user_approval
+  technical_execution_authorized: false
+  authorizes_starting_0_9: false
+
 legacy_policy_established:
   origin_subphase: 0.2
   mode: READ_ONLY
@@ -1086,11 +1094,10 @@ next_action:
   phase: 0
   subphase: 0.8
   work_block: cya_browser_lab
-  action: await_explicit_user_authorization_to_start_0_8
+  action: approve_0_8_acceptance_criteria_and_t01_technical_tool_plan_before_execution
   blocked_until_user: true
 
 prohibited_progression:
-  - do_not_start_0_8_without_explicit_user_approval
   - do_not_patch_or_apply_workaround_for_error_without_explicit_prior_user_acceptance
   - do_not_declare_error_resolved_without_root_cause_correct_fix_and_applicable_validation
   - do_not_create_or_change_variables_or_secrets_without_explicit_user_approval
