@@ -185,6 +185,7 @@ phase_0_0_4:
     - environment_specific_non_secret_residence_policy
     - configuration_inventory_filename
     - configuration_inventory_logical_structure
+    - configuration_inventory_state_vocabulary
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -305,7 +306,6 @@ phase_0_0_4:
           - rotation
           - access
       explicitly_undecided:
-        - allowed_state_values
         - reference_format
         - additional_required_or_optional_rules
         - schema_version
@@ -313,6 +313,30 @@ phase_0_0_4:
       authorizes_inventory_file_creation: false
       authorizes_real_configuration_items_or_values: false
       authorizes_secret_manager_or_automation: false
+    configuration_inventory_state_vocabulary:
+      status: APPROVED_BY_USER
+      applies_to: environments_each_state_field
+      allowed_values:
+        - NOT_CONFIGURED
+        - CONFIGURED
+        - ACTIVE
+        - PENDING_REMOVAL
+        - RETIRED
+      semantics:
+        NOT_CONFIGURED: applies_to_environment_but_not_configured
+        CONFIGURED: configured_but_not_yet_sufficiently_validated_for_operational_use
+        ACTIVE: configured_and_validated_for_intended_use
+        PENDING_REMOVAL: removal_determined_but_not_yet_executed
+        RETIRED: no_longer_operational_in_environment_retained_only_for_historical_traceability
+      automatic_or_inferred_state_changes: prohibited
+      state_change_requires_applicable_authorization: true
+      authorizes_inventory_file_creation: false
+      authorizes_variable_or_secret_changes: false
+      authorizes_removal_execution: false
+      authorizes_access_changes: false
+      authorizes_secret_manager_or_environment_mechanism_selection: false
+      authorizes_environment_deployment: false
+      authorizes_txx_activation: false
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
