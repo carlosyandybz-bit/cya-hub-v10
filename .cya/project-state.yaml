@@ -80,7 +80,7 @@ phase_0_0_1:
     ask_user_on_missing_ambiguity_or_conflict: true
     connected_access_best_practice_convention_not_authority: true
     all_proposals_decisions_changes_actions_criteria_audits_state_changes_and_progression_require_explicit_user_acceptance: true
-    explicit_user_instruction_scope_exact_only: true
+    explicit_instruction_scope_exact_only: true
     pass_gate_or_progression_without_user_acceptance: prohibited
     antigravity_part_of_project: false
     guide_review_before_relevant_action: required
