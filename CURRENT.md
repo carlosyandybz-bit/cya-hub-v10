@@ -9,7 +9,7 @@
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
 **Active work block:** política de variables y secretos  
-**Approved concrete decisions in 0.4:** 12  
+**Approved concrete decisions in 0.4:** 13  
 **Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific secret managers, variable values, automation, concrete environment mappings, access changes or operational procedures  
 **Incremental cost target:** 0 EUR
 
@@ -213,16 +213,30 @@ Approved meaning:
 - `classification` uses only the three approved categories;
 - `residence_reference` only references an approved residence when applicable and never a value;
 - `rules_references` may reference approved `expiration`, `rotation` and `access` rules;
-- state value vocabulary, reference format, further required/optional rules, schema version and additional metadata remain undecided.
+- reference format, further required/optional rules, schema version and additional metadata remain undecided.
 
 Decision 12 does **not** authorize creating `.cya/configuration-inventory.yaml`, adding real variables, values, secrets, services, managers or automation.
+
+### Decision 13 — Inventory state vocabulary per environment
+
+The `state` field admits exactly these five values:
+
+- `NOT_CONFIGURED` — the item applies to the environment but is not yet configured.
+- `CONFIGURED` — it is configured, but there is not yet sufficient validation evidence to consider it operational.
+- `ACTIVE` — it is configured and validated for its intended use.
+- `PENDING_REMOVAL` — it has been determined that the item should be removed, but removal has not yet been executed.
+- `RETIRED` — it is no longer operational in that environment and is retained only for historical traceability.
+
+No chat, agent, tool or process may change `state` automatically or by inference. Every state change remains subject to the applicable authorization.
+
+Decision 13 does **not** authorize creating `.cya/configuration-inventory.yaml`, creating/changing variables or secrets, executing removals, changing access, selecting managers/environment mechanisms, deploying environments or activating Txx tooling.
 
 ## 0.4 — Current gate
 
 **Status:** EN CURSO.  
 **Closure gate:** NOT READY.
 
-The 12 approved decisions do not authorize:
+The 13 approved decisions do not authorize:
 
 - creating `.cya/configuration-inventory.yaml`;
 - creating or changing variables or secrets;
