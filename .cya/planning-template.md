@@ -30,6 +30,23 @@ An approved TOOL PLAN is an execution contract. It must not be rewritten retrosp
 
 If the primary route fails, is unavailable or lacks sufficient access, stop and record `BLOCKED_TOOLING`. Do not switch route unless the fallback has explicit user approval for the exact case and scope.
 
+## Codex implementation guard
+
+Complete this section whenever the action creates or modifies application implementation.
+
+**Is this implementation creation/modification:** no / yes  
+**Codex is the registered primary route for this implementation:** not applicable / yes  
+**Codex available:** not applicable / yes / no  
+**Included plan usage checked when the client exposes it:** not applicable / yes / unavailable  
+**Included plan usage sufficient for this task:** not applicable / yes / no / unknown  
+**Would the task require purchased/flexible credits, paid overage, credit purchase or auto-recharge:** not applicable / no / yes / unknown  
+**Paid Codex usage explicitly authorized for this exact task:** not applicable / no / yes — approval reference:  
+**Validation operations reserved to chats and excluded from Codex prompt:** not applicable / yes  
+
+If Codex is unavailable, record `BLOCKED_TOOLING` unless an implementation fallback has been explicitly approved for the exact case and scope. If included plan usage is exhausted/insufficient, or paid-credit consumption is required without explicit authorization, record `BLOCKED_COST`. If usage is unknown and there is a realistic risk of consuming paid credits, do not assume free capacity; return to the user for decision.
+
+A prompt or agent instruction is not an account-level billing control. The TOOL PLAN records the project policy and the visible usage check; actual charging remains governed by the account/client controls.
+
 ## Scope
 
 **Allowed scope:**  
