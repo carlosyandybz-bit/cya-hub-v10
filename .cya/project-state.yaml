@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: define_exact_access_to_secrets_policy_with_user_approval
+active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -121,11 +121,7 @@ phase_0_0_4:
       - sensitive_credential_separation_by_environment
       - secret_exposure_and_documentation_policy
       - secret_lifecycle_policy
-    next_decision_focus:
-      name: access_to_secrets_policy
-      selection_status: APPROVED_BY_USER
-      selection_scope: decision_focus_only
-      concrete_access_rules_approved: NONE_YET
+      - access_to_secrets_policy
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -347,6 +343,60 @@ phase_0_0_4:
         - secret_revocation
         - secret_deletion
         - secret_retirement
+    access_to_secrets_policy:
+      status: APPROVED_BY_USER
+      access_subjects:
+        allowed_only_when_specifically_authorized_and_approved_need_exists: true
+        possible_subject_types:
+          - person
+          - service
+          - tool
+          - process
+      authorization_scope:
+        limited_to_necessary_secret_service_and_environment: true
+        system_or_application_access_implies_all_secret_access: false
+      production_secret_access:
+        reinforced_isolation: true
+        derived_from_validation_access: false
+        derived_from_staging_access: false
+        derived_from_repository_access: false
+      access_for_convenience_or_technical_possibility_only: prohibited
+      secret_value_disclosure:
+        when_process_can_operate_without_exposing_value: not_necessary
+      connected_project_actors:
+        chatgpt_agents_automations_and_tools_receive_secret_values_by_connection_alone: false
+        future_effective_access_requires_expressly_authorized_action_and_scope: true
+      access_authorization_documentation_without_secret_value:
+        required_metadata:
+          - authorized_subject
+          - secret_name
+          - environment
+          - purpose
+          - scope
+          - state
+      access_no_longer_needed:
+        state: pending_removal_or_reduction
+        automatic_permission_modification_or_revocation_authorized: false
+        exact_execution_authorization_required: true
+      access_change_actions:
+        separate_action_required_for:
+          - grant
+          - expand
+          - reduce
+          - revoke
+        policy_approval_executes_any_access_change: false
+      does_not_select:
+        - secret_managers
+        - concrete_users
+        - concrete_roles
+        - provider_permissions
+        - technology_specific_procedures
+      does_not_authorize:
+        - access_grant
+        - access_expansion
+        - access_reduction
+        - access_revocation
+        - secret_manager_selection
   internal_decisions_approved:
     - variable_classification
     - residence_policy
@@ -354,6 +404,7 @@ phase_0_0_4:
     - sensitive_credential_separation_by_environment
     - secret_exposure_and_documentation_policy
     - secret_lifecycle_policy
+    - access_to_secrets_policy
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
@@ -387,8 +438,7 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  decision_focus: access_to_secrets_policy
-  action: define_exact_access_to_secrets_policy
+  action: define_next_exact_concrete_variables_and_secrets_policy_decision
   blocked_until_user: true
 
 prohibited_progression:
