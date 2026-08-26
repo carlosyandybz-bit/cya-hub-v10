@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.8
-active_action: incorporate_approved_0_8_decision_1_into_complete_t01_acceptance_criteria_and_submit_with_technical_tool_plan_for_user_approval
+active_action: obtain_explicit_user_approval_for_exact_representative_mobile_and_desktop_profiles_then_explicit_execution_authorization_for_t01
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -1073,7 +1073,8 @@ phase_0_0_7:
 phase_0_0_8:
   status: IN_PROGRESS
   start_authorization: APPROVED_BY_USER
-  approved_decision_count: 1
+  approved_decision_count: 16
+  decision_package_status: APPROVED_BY_USER
   approved_decisions:
     visual_interface_errors_and_uiux_improvements:
       status: APPROVED_BY_USER
@@ -1114,8 +1115,160 @@ phase_0_0_8:
       authorizes_workflow_construction: false
       approves_complete_acceptance_criteria_package: false
       approves_technical_tool_plan: false
+    composition:
+      status: APPROVED_BY_USER
+      automatic_capture: playwright_chromium
+      visual_improvement_review: chatgpt_from_generated_visual_evidence
+      external_paid_ai_api_inside_workflow: false
+    t01_technical_versions:
+      status: APPROVED_BY_USER
+      node: 24.20.0_LTS
+      npm: 11.19.0
+      playwright: 1.62.1
+      browser: chromium_bundled_with_playwright_1_62_1
+      runner: ubuntu-24.04
+      actions:
+        checkout_7_0_1_sha: 3d3c42e5aac5ba805825da76410c181273ba90b1
+        setup_node_7_0_0_sha: 820762786026740c76f36085b0efc47a31fe5020
+        upload_artifact_7_0_1_sha: 043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      selects_application_stack: false
+    technical_isolation:
+      status: APPROVED_BY_USER
+      isolated_from_future_application_stack: true
+      npm_for_t01_forces_app_npm: false
+      selects_application_framework_backend_database_or_architecture: false
+    planned_versioned_structure:
+      status: APPROVED_BY_USER
+      context_directory: tools/browser-lab/
+      workflow_path: .github/workflows/t01-browser-lab.yml
+      authorizes_file_creation_by_decision_alone: false
+    initial_invocation:
+      status: APPROVED_BY_USER
+      trigger: workflow_dispatch_manual_only
+      github_issues_interface: DEFERRED_REQUIRES_FUTURE_APPROVAL
+    initial_input:
+      status: APPROVED_BY_USER
+      input: target_url
+      public_https_only: true
+      credentials_cookies_tokens_auth_headers_or_secrets: prohibited
+    url_safety:
+      status: APPROVED_BY_USER
+      embedded_credentials: prohibited
+      localhost_loopback_link_local_private_or_reserved_destinations: prohibited
+      redirects_may_bypass_restrictions: false
+      authenticated_or_private_network_targets: prohibited
+    representative_contexts:
+      status: APPROVED_BY_USER_WITH_EXACT_PROFILES_PENDING
+      mobile_context_priority: true
+      representative_mobile_context_required: true
+      representative_desktop_context_required: true
+      exact_mobile_profile_or_dimensions: PENDING_USER_APPROVAL
+      exact_desktop_profile_or_dimensions: PENDING_USER_APPROVAL
+      t06_retains_exhaustive_responsive_tablet_multi_viewport_and_visual_regression: true
+      t01_engine: chromium
+      t01_proves_iphone_safari_webkit_compatibility: false
+      iphone_browser_engine_coverage_decision: DEFERRED_TO_APPLICABLE_QA_COMPATIBILITY_POINT
+    technical_error_observation:
+      status: APPROVED_BY_USER
+      captures:
+        - console_error
+        - uncaught_page_exception
+        - failed_request
+        - problematic_http_response
+      distinguishes_main_navigation_from_resource_or_subrequest_failures: true
+    objective_ui_anomaly_heuristics:
+      status: APPROVED_BY_USER
+      detects_reasonable_signs_of:
+        - horizontal_overflow
+        - apparently_clipped_content
+        - visible_elements_outside_relevant_bounds
+        - apparently_unusable_covered_or_inaccessible_controls
+      heuristic_may_overstate_evidence: false
+    uiux_improvement_review:
+      status: APPROVED_BY_USER
+      reviews:
+        - clarity
+        - visual_hierarchy
+        - legibility
+        - spacing
+        - alignment
+        - consistency
+        - user_feedback
+        - control_placement
+      possible_improvement_auto_fails_run: false
+    evidence_and_artifacts:
+      status: APPROVED_BY_USER
+      required:
+        - structured_json
+        - github_step_summary
+        - representative_screenshot_for_each_executed_context
+      trace: only_when_diagnostically_useful_or_failure_requires_it
+      video: disabled
+      artifact_retention_days: 7
+      generated_artifacts_are_canonical_versioned_sources: false
+    validation_tests:
+      status: APPROVED_BY_USER
+      deterministic_self_test_requires:
+        - controlled_console_error
+        - controlled_failed_request
+        - controlled_ui_anomaly
+      real_https_validation_target: https://example.com
+      target_is_permanent_default: false
+    activation_prerequisites:
+      status: APPROVED_BY_USER
+      requires_before_active_request:
+        - reproducible_installation
+        - successful_self_test
+        - successful_real_https_run
+        - evidence_generation
+        - visual_evidence_review
+        - invocation_limits_dependencies_access_documented
+        - affected_governance_sources_synchronized
+      active_transition_requires_explicit_user_acceptance: true
+    first_version_limits:
+      status: APPROVED_BY_USER
+      excluded:
+        - authentication
+        - secrets
+        - sessions
+        - automatic_multi_page_crawling
+        - github_issues_commands
+        - exhaustive_responsive_matrix
+        - systematic_tablet
+        - visual_regression
+        - accessibility
+        - performance
+        - deployment
+        - external_ai_api
+      expansion_requires_new_explicit_approval: true
+  transversal_product_requirement:
+    status: APPROVED_BY_USER
+    canonical_owner: roadmap_phase_1_subphase_1_8
+    registration_is_anticipated_and_does_not_start_phase_1: true
+    primary_functional_context:
+      - iphone_smartphones
+      - android_smartphones
+    mobile_first_product_priority: true
+    pc_must_remain_complete_and_correct: true
+    pc_may_be_degraded_or_incomplete: false
+    does_not_yet_select:
+      - pwa_or_native_architecture
+      - breakpoints
+      - exact_device_profiles
+      - safari_or_webkit_coverage
+      - concrete_compatibility_matrix
+  technical_tool_plan:
+    status: APPROVED_BY_USER
+    approval_automatically_authorizes_execution: false
+    technical_execution_status: NOT_STARTED
+    workflow_or_tool_files_created_under_this_authorization: false
+    tests_executed_under_this_authorization: false
+    pre_execution_gates:
+      - exact_representative_mobile_profile_or_dimensions_approved
+      - exact_representative_desktop_profile_or_dimensions_approved
+      - explicit_user_authorization_to_execute_t01_construction_and_testing
   t01_status: PENDING
-  current_gate: acceptance_criteria_and_technical_tool_plan_pending_explicit_user_approval
+  current_gate: exact_representative_mobile_and_desktop_profiles_and_explicit_execution_authorization_pending_user_approval
   technical_execution_authorized: false
   authorizes_starting_0_9: false
 
@@ -1135,7 +1288,7 @@ next_action:
   phase: 0
   subphase: 0.8
   work_block: cya_browser_lab
-  action: approve_complete_0_8_t01_acceptance_criteria_including_decision_1_and_technical_tool_plan_before_execution
+  action: approve_exact_representative_mobile_and_desktop_profiles_then_explicitly_authorize_t01_construction_and_testing
   blocked_until_user: true
 
 prohibited_progression:
