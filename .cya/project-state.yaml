@@ -1,8 +1,8 @@
 project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
-subphase: 0.5
-active_action: await_explicit_user_instruction_and_authorization_before_starting_0_6
+subphase: 0.6
+active_action: verify_0_6_closure_criteria_present_evidence_and_request_explicit_user_acceptance
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -63,12 +63,13 @@ phase_0_current:
   last_completed_subphase: 0.5
   last_completed_subphase_name: convenciones_tecnicas_minimas_y_baseline_de_calidad
   last_completed_subphase_status: PASS
-  active_subphase: 0.5
-  active_subphase_name: convenciones_tecnicas_minimas_y_baseline_de_calidad
-  active_subphase_status: PASS
+  active_subphase: 0.6
+  active_subphase_name: definition_of_done_evidencias_qa_y_protocolo_de_cambios
+  active_subphase_status: IN_PROGRESS
   closure_gate_0_4: PASS
   closure_gate_0_5: PASS
-  next_subphase: 0.6
+  closure_gate_0_6: NOT_READY
+  next_subphase: 0.7
   next_subphase_status: PENDING_NOT_STARTED
 
 phase_0_0_1:
@@ -651,6 +652,184 @@ phase_0_0_5:
     user_explicitly_accepted: true
     result: PASS
 
+phase_0_0_6:
+  status: IN_PROGRESS
+  start_basis: USER_APPROVED_ALL_19_PROPOSED_DECISIONS_PLUS_ROOT_CAUSE_RULE
+  approved_decision_count: 20
+  approved_decisions:
+    scope_boundary:
+      status: APPROVED_BY_USER
+      technology_neutral_dod_evidence_qa_change_protocol_only: true
+      constructs_tools_or_workflows: false
+      selects_technologies: false
+    universal_definition_of_done:
+      status: APPROVED_BY_USER
+      implemented_alone_equals_done: false
+      requires_exact_approved_scope: true
+      requires_acceptance_criteria_satisfied: true
+      requires_applicable_qa: true
+      requires_traceable_evidence: true
+      blocking_findings_allowed_for_done: false
+      requires_affected_source_synchronization: true
+      requires_known_rollback_or_reversibility_state: true
+      done_equals_subphase_or_phase_pass: false
+    acceptance_criteria_before_execution:
+      status: APPROVED_BY_USER
+      significant_technical_change_requires_prior_approved_acceptance_criteria: true
+      silent_criterion_change_during_execution: prohibited
+      retrospective_criterion_adjustment_to_justify_pass: prohibited
+    evidence_correspondence:
+      status: APPROVED_BY_USER
+      each_relevant_claim_requires_matching_evidence: true
+      one_evidence_type_substitutes_different_validation: false
+      code: commit_diff_or_pr
+      ci: workflow_run_job_or_check
+      browser: navigation_result_and_relevant_evidence
+      security: finding_severity_decision_correction_and_rerun_when_applicable
+      deployment: deployed_revision_deployment_result_and_post_deploy_smoke
+      data: migration_or_reproducible_procedure_and_validation
+      ui: visual_evidence_when_visual_claim
+      documentation: updated_living_document
+    evidence_traceability_and_freshness:
+      status: APPROVED_BY_USER
+      tied_to_exact_change_or_revision: true
+      relevant_change_after_validation_invalidates_affected_evidence: true
+      affected_rerun_required: true
+      prior_revision_pass_validates_later_revision_automatically: false
+    minimum_safe_evidence:
+      status: APPROVED_BY_USER
+      retain_only_sufficient_evidence: true
+      screenshots_only_when_visual_value: true
+      full_traces_or_logs_only_when_needed_or_useful: true
+      routine_unnecessary_heavy_artifacts: prohibited
+      secrets_or_reconstructable_sensitive_information_allowed: false
+    impact_driven_qa:
+      status: APPROVED_BY_USER
+      covers_changed_behavior: true
+      covers_directly_affected_interfaces_or_behaviors: true
+      covers_identified_real_dependencies: true
+      identical_test_battery_for_every_change_required: false
+      concrete_matrix_deferred_until_stack_and_tools_approved: true
+    regression_policy:
+      status: APPROVED_BY_USER
+      selective_regression_required_for_reasonably_affected_areas: true
+      integral_regression_required_when_gate_risk_phase_or_scope_requires: true
+      full_suite_automatic_for_every_trivial_change: false
+    automatic_and_manual_qa:
+      status: APPROVED_BY_USER
+      automate_when_approved_tool_can_correctly_verify: true
+      manual_when_requirement_nature_requires: true
+      automation_may_replace_validation_it_cannot_demonstrate: false
+      relevant_manual_check_requires_traceable_evidence_or_report: true
+    finding_gate_effect:
+      status: APPROVED_BY_USER
+      allowed_gate_effect_values:
+        - BLOCKING
+        - NON_BLOCKING
+      blocking_prevents_done_or_pass: true
+      non_blocking_pass_with_findings_requires_documented_understood_noncontradictory_and_user_accepted: true
+      universal_low_medium_high_critical_scale_established: false
+    failure_correction_and_rerun:
+      status: APPROVED_BY_USER
+      failed_mandatory_check_remains_unsatisfied_until_new_valid_evidence: true
+      correction_alone_closes_finding: false
+      failed_check_rerun_required: true
+      checks_reasonably_affected_by_fix_rerun_required: true
+      corrected_claim_without_rerun_accepted: false
+    qa_exception_protocol:
+      status: APPROVED_BY_USER
+      requires_rule_or_check_identification: true
+      requires_concrete_technical_reason: true
+      requires_exact_scope: true
+      requires_known_risk: true
+      requires_compensating_validation_when_available: true
+      requires_temporary_or_permanent_classification: true
+      requires_future_review_condition_when_applicable: true
+      requires_explicit_user_approval: true
+      silent_bypass_for_pass: prohibited
+    standard_change_protocol:
+      status: APPROVED_BY_USER
+      sequence:
+        - scope
+        - acceptance_criteria
+        - tool_plan_when_applicable
+        - approval
+        - temporary_branch_for_versioned_change
+        - minimum_change
+        - qa
+        - evidence
+        - documentary_and_state_synchronization
+        - result_presentation
+        - acceptance_or_closeout_gate
+      merge_equals_functional_acceptance_or_pass: false
+    scope_change_during_execution:
+      status: APPROVED_BY_USER
+      opportunistic_scope_expansion: prohibited
+      new_scope_returns_to_user_for_explicit_approval: true
+      original_scope_may_continue_only_if_independent: true
+    rollback_and_reversibility:
+      status: APPROVED_BY_USER
+      significant_change_requires_known_reversal_or_irreversibility: true
+      destructive_or_irreversible_action_requires_explicit_exact_authorization: true
+      failure_detection_automatically_authorizes_rollback: false
+      preapproved_rollback_conditions_may_authorize_within_exact_scope: true
+    documentary_synchronization:
+      status: APPROVED_BY_USER
+      update_only_actually_affected_sources: true
+      decision_updates_canonical_owner: true
+      project_state_change_updates_operational_sources: true
+      competing_canonical_copies: prohibited
+    closeout_evidence_package:
+      status: APPROVED_BY_USER
+      includes:
+        - approved_scope
+        - implemented_decision_or_criterion
+        - branch_pr_commit_or_equivalent_reference
+        - qa_performed
+        - results
+        - open_findings
+        - reruns
+        - rollback_state
+        - updated_documentation_and_state
+        - deferred_items
+        - pending_user_gate
+      new_mandatory_evidence_file_created_by_0_6: false
+    historical_pass_validity:
+      status: APPROVED_BY_USER
+      pass_bound_to_evaluated_revision_state_evidence_and_scope: true
+      later_regression_rewrites_historical_pass: false
+      later_regression_creates_new_finding_or_change: true
+    subphase_0_6_closure_criteria:
+      status: APPROVED_BY_USER
+      criteria:
+        all_intrinsic_dod_evidence_qa_change_rules_approved: true_required_for_closure
+        no_intrinsic_0_6_decision_pending: true_required_for_closure
+        stack_tool_specific_matrices_explicitly_deferred_not_inferred: true_required_for_closure
+        t01_to_t11_or_workflow_construction_required_for_closure: false
+        modifies_technology_or_selects_stack: false
+        roadmap_current_project_state_synchronized: true_required_for_closure
+        closure_evidence_presented_to_user: true_required_for_closure
+        explicit_user_acceptance_required_for_pass: true
+        closeout_automatically_starts_0_7: false
+    root_cause_first_and_no_unauthorized_patching:
+      status: APPROVED_BY_USER
+      root_cause_identification_required_before_normal_fix: true
+      correct_fix_targets_root_cause: true
+      superficial_patch_workaround_or_symptom_masking_as_final_solution: prohibited
+      temporary_patch_or_workaround_requires_explicit_prior_user_acceptance: true
+      urgency_convenience_pass_pressure_or_technical_possibility_is_authorization: false
+      unknown_root_cause_may_be_declared_resolved_by_superficial_mitigation: false
+      unknown_root_cause_remains_open_or_blocked_as_applicable: true
+      post_root_cause_fix_qa_evidence_and_rerun_required: true
+  common_scope_decisions_1_20:
+    authorizes_txx_or_workflow_construction: false
+    selects_concrete_stack_or_architecture: false
+    selects_language_framework_backend_runtime_package_manager_formatter_linter_database_or_library: false
+    authorizes_application_environment_variable_secret_access_or_deployment_changes: false
+    authorizes_closing_0_6: false
+    authorizes_starting_0_7: false
+  closure_gate: NOT_READY
+
 legacy_policy_established:
   origin_subphase: 0.2
   mode: READ_ONLY
@@ -666,11 +845,15 @@ next_action:
   type: USER_DECISION_GATE
   phase: 0
   subphase: 0.6
-  action: await_explicit_user_instruction_and_authorization_to_start_0_6
+  work_block: definition_of_done_evidence_qa_and_change_protocol
+  action: review_0_6_closure_evidence_and_explicitly_accept_or_reject_closure
   blocked_until_user: true
 
 prohibited_progression:
-  - do_not_start_0_6_without_explicit_user_approval
+  - do_not_close_0_6_without_explicit_user_acceptance
+  - do_not_start_0_7_without_explicit_user_approval
+  - do_not_patch_or_apply_workaround_for_error_without_explicit_prior_user_acceptance
+  - do_not_declare_error_resolved_without_root_cause_correct_fix_and_applicable_validation
   - do_not_create_or_change_variables_or_secrets_without_explicit_user_approval
   - do_not_modify_access_without_explicit_user_approval
   - do_not_create_configuration_inventory_file_without_explicit_user_approval
