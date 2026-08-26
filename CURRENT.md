@@ -537,7 +537,7 @@ The complete canonical text is recorded under **0.7** in the Roadmap. Operationa
 13. Full TOOL PLAN is mandatory for significant technical/governance actions; pure READ-ONLY inspection may omit it unless specifically required.
 14. TOOL PLAN includes authorization, primary/supporting/fallback, scope, evidence/validation, rollback, secrets/access, cost, result/evidence IDs and next action; error correction also references 0.6 root-cause rules and any approved patch exception.
 15. Approved TOOL PLAN is an execution contract; material changes stop affected work and return to user approval rather than retroactive rewriting.
-16. Proposal/decision, TOOL PLAN and technical execution are distinct authorizations; predeclared exact documentary synchronization may be covered by decision acceptance.
+16. Proposal/decision, TOOL PLAN and technical execution are distinct authorizations; predeclared exact documentary synchronization may be covered by the decision acceptance.
 17. Tool execution success does not equal PASS; criteria, evidence and user acceptance remain separate.
 18. Incremental cost defaults to 0 EUR; paid actions remain `BLOCKED_COST` until the approved cost-analysis and user authorization exist.
 19. Access is limited to approved need; secrets remain under 0.4; USER ACTION REQUIRED is used only when user intervention is actually necessary and an approved connected tool cannot safely perform it.
