@@ -1,8 +1,8 @@
 project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
-subphase: 0.6
-active_action: await_explicit_user_instruction_and_authorization_before_starting_0_7
+subphase: 0.7
+active_action: present_complete_0_7_tool_governance_decision_set_for_explicit_user_review_and_approval
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -63,13 +63,14 @@ phase_0_current:
   last_completed_subphase: 0.6
   last_completed_subphase_name: definition_of_done_evidencias_qa_y_protocolo_de_cambios
   last_completed_subphase_status: PASS
-  active_subphase: 0.6
-  active_subphase_name: definition_of_done_evidencias_qa_y_protocolo_de_cambios
-  active_subphase_status: PASS
+  active_subphase: 0.7
+  active_subphase_name: gobernanza_de_herramientas_y_tool_plan_obligatorio
+  active_subphase_status: IN_PROGRESS
   closure_gate_0_4: PASS
   closure_gate_0_5: PASS
   closure_gate_0_6: PASS
-  next_subphase: 0.7
+  closure_gate_0_7: NOT_READY
+  next_subphase: 0.8
   next_subphase_status: PENDING_NOT_STARTED
 
 phase_0_0_1:
@@ -835,6 +836,16 @@ phase_0_0_6:
     user_explicitly_accepted: true
     result: PASS
 
+phase_0_0_7:
+  status: IN_PROGRESS
+  start_authorization: APPROVED_BY_USER
+  approved_decision_count: 0
+  approved_decisions: {}
+  closure_gate: NOT_READY
+  authorizes_tool_registry_changes: false
+  authorizes_txx_or_workflow_construction: false
+  authorizes_starting_0_8: false
+
 legacy_policy_established:
   origin_subphase: 0.2
   mode: READ_ONLY
@@ -850,11 +861,13 @@ next_action:
   type: USER_DECISION_GATE
   phase: 0
   subphase: 0.7
-  action: await_explicit_user_instruction_and_authorization_to_start_0_7
+  work_block: tool_governance_and_mandatory_tool_plan
+  action: review_proposed_0_7_decisions_and_explicitly_approve_modify_or_reject
   blocked_until_user: true
 
 prohibited_progression:
-  - do_not_start_0_7_without_explicit_user_approval
+  - do_not_close_0_7_without_explicit_user_acceptance
+  - do_not_start_0_8_without_explicit_user_approval
   - do_not_patch_or_apply_workaround_for_error_without_explicit_prior_user_acceptance
   - do_not_declare_error_resolved_without_root_cause_correct_fix_and_applicable_validation
   - do_not_create_or_change_variables_or_secrets_without_explicit_user_approval
