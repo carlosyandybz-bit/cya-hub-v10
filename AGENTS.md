@@ -54,6 +54,18 @@ Never create parallel workflows, services, tools or conventions silently.
 - If no approved route exists, return `BLOCKED TOOLING` instead of improvising.
 - Connected access does not authorize using a tool outside its approved purpose.
 
+## Codex implementation boundary
+
+- While Codex is available for CYA Hub v10 and sufficient included plan usage remains, Codex is the primary execution agent for **creating or modifying application implementation**.
+- This assignment is implementation-only. Codex must not execute tests, audits, QA, security scans, Browser Lab, Visual QA, Accessibility Lab, Performance Lab, runtime checks, observability, deployments, gates, acceptance or other validation/operational work.
+- ChatGPT chats remain responsible for planning, specification, Codex prompt preparation, review of changes and evidence, coordination, tests, audits, QA, documentation, gates and acceptance through the approved routes and Txx capabilities.
+- While the approved Codex route is available under these conditions, ChatGPT chats must not silently replace Codex by creating implementation. Any implementation fallback requires explicit user approval for the exact case and scope.
+- Codex may use only included plan usage. Purchasing credits, enabling auto-recharge, accepting paid overage, knowingly consuming flexible/purchased credits, or starting a new implementation task that requires paid credits is prohibited unless the user explicitly approves that exact spend.
+- If included Codex usage is exhausted or insufficient for the next implementation task, return `BLOCKED COST` and stop implementation until included usage resets or the user explicitly authorizes another spending scope.
+- A Codex prompt is not a billing control. Account-level usage/credit settings govern actual charging. Do not assume that an existing purchased credit balance can be technically reserved from Codex unless the platform provides an explicit control for that purpose.
+- Before a Codex implementation task, check the available usage status when the client exposes it. If usage status is unknown and paid-credit consumption is a realistic risk, return to the user instead of assuming free capacity.
+- Codex implements only accepted CYA Hub v10 decisions and specifications. Legacy remains prohibited as an implementation source.
+
 ## Cost discipline
 
 - Default incremental project cost: **0 EUR**.
