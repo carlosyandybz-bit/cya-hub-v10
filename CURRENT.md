@@ -8,8 +8,8 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
-**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment, secret exposure/documentation policy, secret lifecycle policy, access-to-secrets policy and configuration inventory/registration policy approved; inventory residence, format and maintenance policy selected as next decision; concrete rules pending  
-**Active action:** define the exact inventory residence, format and maintenance policy with user approval without inferring canonical/physical location, concrete format, file/tool, update/maintenance procedure, maintenance owner or inventory creation  
+**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment, secret exposure/documentation policy, secret lifecycle policy, access-to-secrets policy, configuration inventory/registration policy and inventory residence/format/maintenance policy approved; remaining concrete policy decisions pending  
+**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific secret managers, variable values, inventory filename, automation, concrete environment mappings, access changes or operational procedures  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -173,19 +173,30 @@ The user explicitly approved the complete configuration inventory and registrati
 - This policy does not yet select the inventory's physical location, concrete format, file, tool or maintenance owner; those decisions remain separate.
 - Approving this policy does not create variables, secrets, secret managers, physical inventories or modify existing configuration.
 
-### 0.4 — Inventory residence, format and maintenance policy selected as next decision
+### 0.4 — Approved inventory residence, format and maintenance policy
 
-The user explicitly approved that the next decision to work on is the **residence, format and maintenance of the configuration inventory**. This approval selects only the next decision focus. It does not approve any canonical or physical inventory location, concrete format, file or tool, update/maintenance procedure, maintenance owner, or creation of the inventory.
+The user explicitly approved the complete residence, format and maintenance policy for the configuration inventory:
 
-Opening 0.4 and approving these policies or decision focus do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, creating a physical inventory, or executing any Txx capability.
+- The canonical source of the inventory will be a single versioned file inside the `cya-hub-v10` repository.
+- The format will be **YAML**, so it is human-readable and directly usable by chats/agents without maintaining a second representation.
+- The file will reside inside `.cya/`, separate from `project-state.yaml` and `tool-registry.yaml`.
+- The inventory continues to contain only the previously approved metadata and never real secret values.
+- No second canonical copy of the inventory will be maintained in Google Drive. Drive may document or reference its existence where appropriate, but the technical inventory has one canonical source to avoid divergence.
+- Every approved change that creates, retires, renames, reclassifies or changes the state, environment or approved residence of a configuration item must include the corresponding inventory update within that same authorized documentary/technical change.
+- There is no permanent personal owner. Responsibility for updating the inventory belongs to the chat, agent or process that executes the expressly approved configuration change, within the scope of that authorization.
+- No agent may update the inventory merely because it detects a discrepancy. It must present the discrepancy and obtain the applicable authorization before modifying the inventory.
+- Inventory changes are traced through GitHub version history; no parallel history is created.
+- This policy does not yet create the file, decide its exact filename, introduce automation or modify any existing configuration.
+
+Opening 0.4 and approving these policies do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, creating the inventory file, or executing any Txx capability.
 
 Existing universal rules already recorded in the Guía Maestra and repository governance remain in force unless the user explicitly approves a change.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact residence, format and maintenance policy for the configuration inventory. No canonical/physical location, concrete format, file/tool, update/maintenance procedure, maintenance owner or inventory creation may be selected automatically.
+**PENDING USER DECISION:** define the next exact concrete decision for the variables-and-secrets policy. No specific secret manager, variable value, inventory filename, automation, concrete environment mapping, access change or operational procedure may be selected automatically.
 
-Do **not** close 0.4, start 0.5, create/change variables or secrets, modify access, create a physical inventory, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
+Do **not** close 0.4, start 0.5, create/change variables or secrets, modify access, create the configuration inventory file, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
 ## Deferred — do not execute without explicit approval
 
