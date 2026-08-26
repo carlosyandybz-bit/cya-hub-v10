@@ -8,8 +8,8 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
-**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment and secret exposure/documentation policy approved; secret lifecycle policy selected as next decision; concrete lifecycle rules pending  
-**Active action:** define the exact secret lifecycle policy with user approval without inferring rules for creation, replacement, rotation, revocation, expiration, retirement, deletion, cadence, triggers, ownership or operational procedures  
+**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment, secret exposure/documentation policy and secret lifecycle policy approved; remaining concrete policy decisions pending  
+**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific managers, values, concrete environment mappings or operational procedures  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -129,17 +129,27 @@ The user explicitly approved the complete exposure and documentation policy for 
 - If a real secret is detected in an unauthorized location, propagation is stopped and the case returns to the user as a security decision. This rule does not itself authorize rotating, revoking, deleting or modifying credentials.
 - This policy does not select secret managers, create values, rotate credentials or configure services.
 
-### 0.4 — Secret lifecycle policy selected as next decision
+### 0.4 — Approved secret lifecycle policy
 
-The user explicitly approved that the next decision to work on is the **secret lifecycle policy**. This approval selects only the next decision focus. It does not approve any concrete rule for creation, replacement, rotation, revocation, expiration, retirement, deletion, cadence, triggers, ownership or operational handling of credentials or secrets.
+The user explicitly approved the complete lifecycle policy for secrets:
 
-Opening 0.4 and approving these policies or decision focus do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
+- A secret is created only when there is a concrete and approved need for a specific service and environment.
+- Each secret must be documented without exposing its value, identifying its name, purpose, service, environment and state.
+- No universal calendar-based periodic rotation is established. If a provider requires a specific expiration or rotation rule, that rule is defined for that service.
+- Rotation must be proposed when there is real or suspected exposure, compromise, unauthorized access, a provider requirement, or a change that makes the current credential invalid. Detecting such a trigger does not automatically authorize executing the rotation.
+- When a credential is to be replaced and the service permits temporary coexistence, replacement must be capable of validating the new credential before retiring the previous one. The concrete execution still requires authorization.
+- A credential that is no longer needed moves to pending revocation/retirement and is not kept active for convenience.
+- Revoking, deleting or destroying a credential remains an explicit and separately authorized action; this policy does not make those acts automatic.
+- After an approved replacement or revocation, evidence retains only name, environment, reason, state and result, never the old or new value.
+- This policy does not select managers, values, personal owners, specific frequencies or procedures for services that have not yet been approved, and does not itself authorize creating, replacing, rotating, revoking, deleting or retiring credentials or secrets.
+
+Opening 0.4 and approving these policies do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
 
 Existing universal rules already recorded in the Guía Maestra and repository governance remain in force unless the user explicitly approves a change.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact secret lifecycle policy. No rule for creation, replacement, rotation, revocation, expiration, retirement, deletion, cadence, triggers, ownership or operational procedures may be selected automatically.
+**PENDING USER DECISION:** define the next exact concrete decision for the variables-and-secrets policy. No specific storage mechanism, secret manager, value, concrete environment mapping or operational procedure may be selected automatically.
 
 Do **not** close 0.4, start 0.5, create/change variables or secrets, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
