@@ -334,7 +334,7 @@ Future metadata requires a concrete need and explicit user approval.
 4. selecting a concrete secret manager is not required for closure;
 5. creating variables, secrets, credentials or real environments is not required for closure;
 6. creating `.cya/configuration-inventory.yaml` is not required and remains a separately authorized future action;
-7. Roadmap Vivo, `CURRENT.md` and `.cya/project-state.yaml` are synchronized;
+7. Roadmap, `CURRENT.md` and `.cya/project-state.yaml` are synchronized;
 8. closure evidence is presented to the user and explicit user acceptance is required.
 
 Decision 22 itself did not close 0.4; the user subsequently reviewed the closure evidence and explicitly accepted the closure.
