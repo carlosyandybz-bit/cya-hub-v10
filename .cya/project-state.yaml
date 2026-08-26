@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: define_exact_configuration_inventory_and_registration_policy_with_user_approval
+active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -122,11 +122,7 @@ phase_0_0_4:
       - secret_exposure_and_documentation_policy
       - secret_lifecycle_policy
       - access_to_secrets_policy
-    next_decision_focus:
-      name: configuration_inventory_and_registration_policy
-      selection_status: APPROVED_BY_USER
-      selection_scope: decision_focus_only
-      concrete_inventory_rules_approved: NONE_YET
+      - configuration_inventory_and_registration_policy
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -402,6 +398,59 @@ phase_0_0_4:
         - access_reduction
         - access_revocation
         - secret_manager_selection
+    configuration_inventory_and_registration_policy:
+      status: APPROVED_BY_USER
+      inventory_entry_required:
+        for_every_variable_or_secret_once_existence_is_approved: true
+      required_metadata_without_real_value:
+        - name
+        - classification
+        - purpose
+        - related_service_or_system
+        - applicable_environments
+        - state
+      secret_sensitive_entries:
+        authorized_residence_or_manager_reference_may_be_recorded_once_approved: true
+        real_value_allowed: false
+        real_value_fragments_allowed: false
+        reconstructable_information_allowed: false
+      approved_item_rules_reference:
+        may_record_existence_or_documentary_reference_for:
+          - expiration
+          - rotation
+          - access
+        duplicate_sensitive_values: false
+      same_logical_name_across_environments:
+        register_as_different_variables_only_due_to_multiple_environments: false
+        show_applicable_environments_and_state_per_environment: true
+      inventory_update_triggers_require_proposal:
+        - configuration_created
+        - configuration_renamed
+        - configuration_reclassified
+        - configuration_added_to_environment
+        - configuration_removed_from_environment
+        - configuration_state_changed
+        - approved_residence_changed
+      inventory_update_trigger_automatically_authorizes_technical_change: false
+      inventory_update_trigger_automatically_authorizes_documentary_change: false
+      retired_configuration:
+        silently_disappear_from_history: false
+        preserve_traceability_of_existence_and_final_state_without_values: true
+      inventory_role:
+        replaces_actual_secret_manager: false
+        credential_store: false
+      does_not_select:
+        - physical_inventory_location
+        - concrete_format
+        - inventory_file
+        - inventory_tool
+        - maintenance_owner
+      does_not_authorize:
+        - variable_creation
+        - secret_creation
+        - secret_manager_creation_or_selection
+        - physical_inventory_creation
+        - existing_configuration_modification
   internal_decisions_approved:
     - variable_classification
     - residence_policy
@@ -410,6 +459,7 @@ phase_0_0_4:
     - secret_exposure_and_documentation_policy
     - secret_lifecycle_policy
     - access_to_secrets_policy
+    - configuration_inventory_and_registration_policy
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
@@ -443,8 +493,7 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  decision_focus: configuration_inventory_and_registration_policy
-  action: define_exact_configuration_inventory_and_registration_policy
+  action: define_next_exact_concrete_variables_and_secrets_policy_decision
   blocked_until_user: true
 
 prohibited_progression:
