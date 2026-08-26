@@ -9,8 +9,8 @@
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
 **Active work block:** política de variables y secretos  
-**Approved concrete decisions in 0.4:** 14  
-**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific secret managers, variable values, automation, concrete environment mappings, access changes or operational procedures  
+**Approved concrete decisions in 0.4:** 22  
+**Active action:** verify the approved 0.4 closure criteria and present evidence to the user; do not close 0.4 or start 0.5 without explicit user acceptance  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -183,107 +183,184 @@ This does **not** create the file.
 
 ### Decision 12 — Logical YAML inventory structure
 
-Approved logical structure:
-
-```yaml
-configuration_items:
-  - name:
-    classification:
-    purpose:
-    service_or_system:
-    environments:
-      VALIDATION:
-        state:
-      STAGING:
-        state:
-      PRODUCTION:
-        state:
-    residence_reference:
-    rules_references:
-      expiration:
-      rotation:
-      access:
-```
-
-Approved meaning:
-
-- root: `configuration_items`;
-- fields per item: `name`, `classification`, `purpose`, `service_or_system`, `environments`, `residence_reference`, `rules_references`;
-- environments are represented separately with `state`;
-- `classification` uses only the three approved categories;
-- `residence_reference` only references an approved residence when applicable and never a value;
-- `rules_references` may reference approved `expiration`, `rotation` and `access` rules;
-- reference type values/syntax, further required/optional rules, schema version and additional metadata remain undecided.
-
-Decision 12 does **not** authorize creating `.cya/configuration-inventory.yaml`, adding real variables, values, secrets, services, managers or automation.
+Original approved logical structure established the inventory root and base fields. Decisions 17–19 refine the current residence and environment representation without deleting historical traceability.
 
 ### Decision 13 — Inventory state vocabulary per environment
 
-The `state` field admits exactly these five values:
+The `state` field admits exactly:
 
-- `NOT_CONFIGURED` — the item applies to the environment but is not yet configured.
-- `CONFIGURED` — it is configured, but there is not yet sufficient validation evidence to consider it operational.
-- `ACTIVE` — it is configured and validated for its intended use.
-- `PENDING_REMOVAL` — it has been determined that the item should be removed, but removal has not yet been executed.
-- `RETIRED` — it is no longer operational in that environment and is retained only for historical traceability.
+- `NOT_CONFIGURED`
+- `CONFIGURED`
+- `ACTIVE`
+- `PENDING_REMOVAL`
+- `RETIRED`
 
-No chat, agent, tool or process may change `state` automatically or by inference. Every state change remains subject to the applicable authorization.
-
-Decision 13 does **not** authorize creating `.cya/configuration-inventory.yaml`, creating/changing variables or secrets, executing removals, changing access, selecting managers/environment mechanisms, deploying environments or activating Txx tooling.
+No chat, agent, tool or process may change `state` automatically or by inference.
 
 ### Decision 14 — Structured inventory reference format
 
-`residence_reference` uses this structure:
+References use structured `type` + `reference`. Decision 17 supersedes only the singular residence shape by introducing `residence_references`; the structured reference rule remains applicable to each residence/rule/evidence reference.
+
+### Decision 15 — Allowed reference types
+
+Allowed values only:
+
+- `DRIVE_DOCUMENT`
+- `GITHUB_FILE`
+- `GITHUB_COMMIT`
+- `GITHUB_PULL_REQUEST`
+- `GITHUB_ACTIONS_RUN`
+- `SECRET_MANAGER_ENTRY`
+- `ENVIRONMENT_CONFIGURATION`
+- `SERVICE_CONFIGURATION`
+
+No `OTHER` and no free-text type. New types require explicit user approval.
+
+### Decision 16 — Reference syntax by type
+
+- `DRIVE_DOCUMENT`: canonical Google Drive document URL.
+- `GITHUB_FILE`: repository-relative path inside `cya-hub-v10`.
+- `GITHUB_COMMIT`: full commit SHA.
+- `GITHUB_PULL_REQUEST`: repository PR number.
+- `GITHUB_ACTIONS_RUN`: workflow-run ID.
+- `SECRET_MANAGER_ENTRY`: approved non-sensitive logical identifier once the manager exists.
+- `ENVIRONMENT_CONFIGURATION`: approved non-sensitive logical identifier once the environment mechanism exists.
+- `SERVICE_CONFIGURATION`: approved non-sensitive logical identifier once the service exists.
+
+The last three do not receive an invented technical syntax before their concrete approved mechanism exists. References never contain secrets or reconstructable secret fragments.
+
+### Decision 17 — Residence representation by classification/environment
+
+The current schema uses `residence_references` instead of singular `residence_reference`:
 
 ```yaml
-residence_reference:
-  type:
-  reference:
+residence_references:
+  GLOBAL:
+    type:
+    reference:
+  VALIDATION:
+    type:
+    reference:
+  STAGING:
+    type:
+    reference:
+  PRODUCTION:
+    type:
+    reference:
 ```
 
-Each applicable `rules_references` entry uses the same structure:
+- `PUBLIC / VERSIONABLE` may use `GLOBAL`.
+- `ENVIRONMENT-SPECIFIC / NON-SECRET` does not use `GLOBAL` and is represented separately per environment.
+- `SECRET / SENSITIVE` does not use `GLOBAL` and is represented separately per environment.
+- Only approved/applicable residence references are included; never real values.
+
+### Decision 18 — Applicability and state evidence per environment
+
+Each environment may use:
 
 ```yaml
-rules_references:
-  expiration:
-    type:
-    reference:
-  rotation:
-    type:
-    reference:
-  access:
-    type:
-    reference:
+environments:
+  VALIDATION:
+    applicable:
+    state:
+    state_evidence_reference:
+      type:
+      reference:
 ```
 
-- `type` identifies the class/origin of the reference.
-- `reference` contains only the corresponding pointer/reference and never a real secret value or reconstructable sensitive information.
-- Allowed `type` values and the concrete syntax/format of `reference` remain undecided.
-- No concrete manager, URL, ID, path or environment mechanism is selected by this decision.
+Equivalent structure applies to `STAGING` and `PRODUCTION`.
 
-Decision 14 does **not** authorize creating `.cya/configuration-inventory.yaml`, creating/changing variables or secrets, selecting concrete managers/residences, changing access, deploying environments or activating Txx tooling.
+- `applicable` is `true` or `false` only.
+- If `applicable: false`, `state` is absent.
+- If `applicable: true`, `state` is mandatory.
+- `ACTIVE` requires `state_evidence_reference`.
+- `RETIRED` requires `state_evidence_reference`.
+- Evidence is optional for `CONFIGURED` and `PENDING_REMOVAL` when useful.
+- Evidence is not required for `NOT_CONFIGURED`.
+- Evidence references use Decisions 15–16.
+
+### Decision 19 — Required/optional fields and omitted optionals
+
+Always required per item:
+
+- `name`
+- `classification`
+- `purpose`
+- `service_or_system`
+- `environments`
+
+Rules:
+
+- `residence_references` appears only when an approved residence exists; configured/active items reflect the necessary residence(s) by classification/environment.
+- `rules_references` appears only when at least one approved rule reference exists.
+- Inside `rules_references`, only the actually applicable `expiration`, `rotation` or `access` entries appear.
+- Optional non-applicable fields are omitted; do not use `null`, `TBD`, `N/A`, empty strings or invented values.
+
+### Decision 20 — Inventory schema versioning
+
+- No `schema_version` field in the initial schema.
+- Git is the canonical change history.
+- A future incompatible schema change requires explicit user decision.
+- Formal schema versioning, if needed, is decided only at that point.
+
+### Decision 21 — Additional inventory metadata
+
+No additional metadata is added now. In particular, do not add:
+
+- `created_at`
+- `updated_at`
+- `owner`
+- `created_by`
+- `last_validated_at`
+- `notes`
+- artificial IDs
+- personal owners
+- secret hashes
+- information already duplicated by Git
+- real values
+
+Future metadata requires a concrete need and explicit user approval.
+
+### Decision 22 — 0.4 closure criteria
+
+0.4 may only be submitted for closure when:
+
+1. intrinsic classification, residence, naming, environment separation, exposure, lifecycle, access and inventory rules are approved;
+2. the logical inventory schema is coherent and contradiction-free;
+3. technology/service/infrastructure-dependent details remain explicitly deferred rather than inferred;
+4. selecting a concrete secret manager is not required for closure;
+5. creating variables, secrets, credentials or real environments is not required for closure;
+6. creating `.cya/configuration-inventory.yaml` is not required and remains a separately authorized future action;
+7. Roadmap, `CURRENT.md` and `.cya/project-state.yaml` are synchronized;
+8. closure evidence is presented to the user and explicit user acceptance is required.
+
+Decision 22 does **not** itself close 0.4, record PASS or open 0.5.
 
 ## 0.4 — Current gate
 
 **Status:** EN CURSO.  
-**Closure gate:** NOT READY.
+**Closure gate:** NOT READY until closure evidence is presented and explicitly accepted by the user.
 
-The 14 approved decisions do not authorize:
+The 22 approved decisions do not authorize:
 
 - creating `.cya/configuration-inventory.yaml`;
-- creating or changing variables or secrets;
+- creating or changing variables, secrets or credentials;
 - selecting/configuring concrete secret managers or environment mechanisms;
 - changing secret access or security settings;
 - creating/deploying environments;
 - constructing or activating T01–T11;
 - closing 0.4 or starting 0.5.
 
+Concrete managers, operational URLs/IDs, real values, physical STAGING/PRODUCTION mechanisms and real credentials remain deferred until their applicable approved decisions/actions.
+
 ## Next action
 
-**PENDING USER DECISION:** define the next exact concrete variables-and-secrets policy decision. No specific manager, value, automation, environment mapping/mechanism, access change or operational procedure may be selected automatically.
+Verify the approved Decision 22 closure criteria, present evidence to the user, and request explicit acceptance or rejection of the 0.4 closure. Do not mark PASS or start 0.5 without that acceptance.
 
 ## Deferred — do not execute without explicit approval
 
+- Creation of `.cya/configuration-inventory.yaml`.
+- Concrete secret/environment/service configuration mechanisms and real configuration values.
 - 0.5 and every later Phase 0 subphase.
 - T01–T11 and any other technical capability not explicitly approved for execution.
 - Physical staging implementation and environment deployment details until their applicable approved subphase/action.
