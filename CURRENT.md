@@ -13,7 +13,8 @@
 **Approved concrete decisions in 0.5:** 13  
 **Approved concrete decisions in 0.6:** 20  
 **Approved concrete decisions in 0.7:** 21  
-**Active action:** define and submit the 0.8 acceptance criteria and T01 technical TOOL PLAN for explicit user approval before any technical construction or test  
+**Approved concrete decisions in 0.8:** 1  
+**Active action:** incorporate approved 0.8 Decision 1 into the complete T01 acceptance-criteria package and submit that package plus the technical TOOL PLAN for explicit user approval before any technical construction or test  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -334,7 +335,7 @@ Future metadata requires a concrete need and explicit user approval.
 4. selecting a concrete secret manager is not required for closure;
 5. creating variables, secrets, credentials or real environments is not required for closure;
 6. creating `.cya/configuration-inventory.yaml` is not required and remains a separately authorized future action;
-7. Roadmap, `CURRENT.md` and `.cya/project-state.yaml` are synchronized;
+7. Roadmap Vivo, `CURRENT.md` and `.cya/project-state.yaml` are synchronized;
 8. closure evidence is presented to the user and explicit user acceptance is required.
 
 Decision 22 itself did not close 0.4; the user subsequently reviewed the closure evidence and explicitly accepted the closure.
@@ -554,15 +555,25 @@ The approved 0.7 decisions did **not** by themselves authorize T01–T11/workflo
 ## 0.8 — Construcción y prueba de T01 CYA Browser Lab — EN CURSO
 
 **Start authorization:** explicitly approved by the user.  
+**Approved intrinsic decisions:** 1.  
 **T01 lifecycle state:** `PENDING`; construction and validation have not yet been executed.  
-**Current gate:** acceptance criteria and the technical TOOL PLAN must be explicitly approved before technical construction or testing begins.  
+**Current gate:** the complete acceptance-criteria package, including approved Decision 1, and the technical TOOL PLAN must be explicitly approved before technical construction or testing begins.  
 **Technical execution status:** NOT_STARTED.
+
+### Decision 1 — Visible/interface errors and possible UI/UX improvements
+
+- During navigation, T01 must detect and report visible/interface errors and possible observable UI/UX improvements.
+- Errors may include broken navigation/content, elements not loading, clipped content, overlaps, apparently unusable controls, defective visual states, or other observable problems.
+- Possible improvements may include clarity, visual hierarchy, legibility, spacing, alignment, consistency, user feedback, control placement, or other reasonably improvable interface aspects.
+- Each finding must clearly distinguish `ERROR` from `POSSIBLE_IMPROVEMENT`, state where it was observed, what occurred or could improve, and include visual evidence when useful.
+- T01 performs this as part of navigation and observable interface review. T06 CYA Visual QA remains specialized for systematic visual QA, viewport validation and visual regression.
+- This decision does not activate T01 or T06, build workflows, approve the full acceptance-criteria package, or approve the technical TOOL PLAN.
 
 Starting 0.8 does not by itself select versions, package manager, file layout, workflow inputs, target URL, dependency versions, artifact retention settings or any other implementation detail not already approved.
 
 ## Next action
 
-Define and submit the exact acceptance criteria and technical TOOL PLAN for T01 CYA Browser Lab for explicit user approval. Do not construct or test T01 before that approval.
+Submit the complete T01 acceptance-criteria package, incorporating approved 0.8 Decision 1, plus the technical TOOL PLAN for explicit user approval. Do not construct or test T01 before that approval.
 
 ## Deferred — do not execute without explicit approval
 
