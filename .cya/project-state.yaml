@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: define_exact_secret_exposure_and_documentation_policy_with_user_approval
+active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -119,11 +119,7 @@ phase_0_0_4:
       - residence_policy
       - naming_convention
       - sensitive_credential_separation_by_environment
-    next_decision_focus:
-      name: secret_exposure_and_documentation_policy
-      selection_status: APPROVED_BY_USER
-      selection_scope: decision_focus_only
-      concrete_exposure_rules_approved: NONE_YET
+      - secret_exposure_and_documentation_policy
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -236,11 +232,64 @@ phase_0_0_4:
         - credential_value_definition
         - service_configuration
         - variable_or_secret_changes
+    secret_exposure_and_documentation_policy:
+      status: APPROVED_BY_USER
+      real_secret_values:
+        allowed_in_logs: false
+        allowed_in_documentation: false
+        allowed_in_github_issues_prs_or_comments: false
+        allowed_in_screenshots: false
+        allowed_in_evidence: false
+        allowed_in_traces_or_artifacts: false
+        allowed_in_versioned_files: false
+        allowed_in_project_documentary_outputs: false
+      secret_names:
+        may_be_documented_if_name_itself_is_not_sensitive: true
+        purpose_category_and_applicable_environment_may_be_documented: true
+      example_files:
+        env_example_and_equivalents_may_contain_variable_names: true
+        placeholders_must_be_unequivocally_fake: true
+        real_values_allowed: false
+        real_fragments_allowed: false
+        partially_hidden_real_secret_copies_allowed: false
+      evidence_of_configuration:
+        allowed_metadata:
+          - name
+          - environment
+          - presence_or_absence
+          - verification_result
+        secret_value_allowed: false
+      accidental_exposure_in_evidence:
+        redact_before_retention_or_sharing: true
+        if_safe_redaction_cannot_be_guaranteed: do_not_retain_artifact_as_evidence
+      credential_carriers_same_treatment:
+        - authentication_headers
+        - cookies
+        - tokens_in_urls_or_query_strings
+        - any_other_credential_carrier
+      masking:
+        may_preserve_real_reconstructable_or_identifying_fragments: false
+        neutral_documentation_representations:
+          - "***"
+          - fictitious_placeholders
+      unauthorized_secret_exposure:
+        stop_propagation: true
+        return_case_to_user_as_security_decision: true
+        automatically_authorizes_rotation_revocation_deletion_or_modification: false
+      does_not_authorize:
+        - secret_manager_selection
+        - value_creation
+        - credential_rotation
+        - credential_revocation
+        - credential_deletion
+        - credential_modification
+        - service_configuration
   internal_decisions_approved:
     - variable_classification
     - residence_policy
     - naming_convention
     - sensitive_credential_separation_by_environment
+    - secret_exposure_and_documentation_policy
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
@@ -274,8 +323,7 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  decision_focus: secret_exposure_and_documentation_policy
-  action: define_exact_secret_exposure_and_documentation_policy
+  action: define_next_exact_concrete_variables_and_secrets_policy_decision
   blocked_until_user: true
 
 prohibited_progression:
