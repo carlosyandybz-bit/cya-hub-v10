@@ -9,6 +9,19 @@ sources_of_truth:
   tool_guide_drive: https://docs.google.com/document/d/1eDWjwqQhk8lQNeiDuzShzD9tJbtvzlqIk-jEazGXF0A/edit
   code_repository: https://github.com/carlosyandybz-bit/cya-hub-v10
 
+decision_documentation_policy:
+  status: APPROVED_BY_USER
+  canonical_location: exact_roadmap_phase_subphase_audit_or_point
+  roadmap_current_point_is_summary_only: true
+  accepted_decision_may_remain_only_in_chat: false
+  transversal_decision:
+    single_canonical_owner_required: true
+    cross_references_allowed: true
+    competing_canonical_copies_prohibited: true
+  current_md_role: operational_summary
+  project_state_role: machine_readable_operational_summary
+  applies_to_future_decisions: true
+
 user_authority_policy:
   no_assumptions: true
   missing_ambiguous_or_conflicting_information: ask_user_before_action
@@ -18,7 +31,32 @@ user_authority_policy:
   pass_requires_user_acceptance: true
   progression_requires_user_acceptance: true
   pending_approval_state: PENDING_USER_APPROVAL
+  connected_access_is_not_authorization: true
   antigravity: not_part_of_project
+
+pre_phase_0:
+  status: PASS
+  decisions_and_results:
+    progressive_ordered_working_model: APPROVED
+    google_drive_living_documentary_source: APPROVED
+    github_versioned_technical_operational_source: APPROVED
+    roadmap_created: true
+    mandatory_tool_guide_created: true
+    persistent_repository_context_installed: true
+    project_instructions_configured: true
+    drive_context_available: true
+    clean_context_reconstruction_gate: PASS
+  phase_0_entry_gate:
+    result: PASS
+    starts_at: 0.1
+    requires:
+      - review_tool_guide
+      - review_roadmap
+      - read_current
+      - read_project_state
+      - read_tool_registry
+      - read_agents_md_when_repository_involved
+      - identify_acceptance_gate
 
 phase_0_current:
   status: IN_PROGRESS
@@ -28,527 +66,113 @@ phase_0_current:
   active_subphase: 0.4
   active_subphase_name: variables_secretos_accesos_seguridad_y_limites_operativos
   active_subphase_status: IN_PROGRESS
-  closure_gate_0_3: PASS
+  closure_gate_0_4: NOT_READY
   next_subphase: 0.5
   next_subphase_status: PENDING_NOT_STARTED
 
-phase_0_0_3_approved_decisions:
-  naming:
-    status: APPROVED_BY_USER
-    project_name: CYA Hub v10
-    repository_name: cya-hub-v10
-  workspace:
-    status: APPROVED_BY_USER
-    technical_workspace: cya-hub-v10_repository
-    single_versioned_technical_workspace: true
-    internal_subdivision_established_in_0_3: false
-    monorepo_established_in_0_3: false
-    additional_workspace_system_established_in_0_3: false
-    future_internal_structure_requires_architectural_need_and_explicit_user_approval: true
-  branches:
-    status: APPROVED_BY_USER
-    stable_principal_branch: main
-    change_branches: temporary_per_specific_change
-    integration_target: main
-    permanent_develop_branch: false
-    scope: all_versioned_repository_artifacts
-    includes:
-      - code
-      - documentation
-      - github_actions_workflows
-      - project_tooling_when_separately_authorized
-    cya_browser_lab_covered_when_built: true
-    authorizes_t01_construction_or_activation: false
-  environments:
-    status: APPROVED_BY_USER
-    logical_environments:
-      - VALIDATION
-      - STAGING
-      - PRODUCTION
-    validation:
-      type: temporary_logical_environment
-      associated_with: change_branches_and_authorized_github_actions_tooling
-      permanent_server_required: false
-    staging:
-      type: deployed_preproduction_environment
-      purpose: integral_validation_and_acceptance
-      production_equivalence_required: sufficient_for_valid_acceptance
-      physical_location: DEFERRED_UNTIL_INFRASTRUCTURE_CAPABILITY_VERIFICATION
-      deployment_mechanism: DEFERRED_UNTIL_INFRASTRUCTURE_CAPABILITY_VERIFICATION
-    production:
-      type: real_environment
-      hosting_target: hostinger
-      hosting_target_subject_to_capability_verification: true
-    main_integration_authorizes_or_triggers_production_deploy: false
-    permanent_development_environment_established: false
-    mandatory_preview_environments_established: false
-    future_preview_or_development_environment_requires_explicit_user_approval: true
-    variables_secrets_and_per_environment_credentials_in_scope_of_0_3: false
-    authorizes_environment_creation_or_deployment: false
-    authorizes_pending_txx_tooling: false
-  acceptance_criteria:
-    status: APPROVED_BY_USER
-    naming_repository_workspace_branches_and_environments_registered_and_coherent: true
-    no_intrinsic_0_3_decision_pending_required: true
-    roadmap_current_and_project_state_must_agree: true
-    user_must_review_closeout_evidence: true
-    explicit_user_closeout_acceptance_required: true
-    approval_of_criteria_itself_closes_0_3: false
-
-phase_0_0_3_pending_decisions:
-  status: NONE
-
-phase_0_0_3_closeout:
+phase_0_0_1:
   status: PASS
-  evidence_presented_to_user: true
-  user_explicitly_accepted_closeout: true
-  starts_0_4: false
-  authorizes_t01_to_t11: false
-  authorizes_environment_creation_or_deployment: false
+  decisions:
+    no_assumptions: true
+    ask_user_on_missing_ambiguity_or_conflict: true
+    connected_access_best_practice_convention_not_authority: true
+    all_proposals_decisions_changes_actions_criteria_audits_state_changes_and_progression_require_explicit_user_acceptance: true
+    explicit_instruction_scope_exact_only: true
+    pass_gate_or_progression_without_user_acceptance: prohibited
+    antigravity_part_of_project: false
+    guide_review_before_relevant_action: required
+    tool_plan_for_significant_technical_work: required
+    default_incremental_cost_eur: 0
+    evidence_replaces_user_acceptance: false
+    user_action_required_protocol: required_for_user_only_operations
+    controlled_conversation_handoff: true
+  closeout:
+    evidence_presented: true
+    user_explicitly_accepted: true
+    result: PASS
+
+phase_0_0_2:
+  status: PASS
+  decisions:
+    legacy_mode: READ_ONLY
+    includes_all_legacy: true
+    cya_hub_v3_included: true
+    consultation_requires_explicit_user_authorization: true
+    consultation_location: user_designated_decision_area
+    consultation_purpose: decision_reference_only
+    legacy_as_implementation_source: prohibited
+    implementation_decision_source: cya_hub_v10_accepted_decision_documents
+    direct_legacy_reuse_authorized: false
+    prohibited:
+      - modify_legacy
+      - migrate_legacy
+      - deploy_into_legacy
+      - write_to_legacy
+      - reuse_legacy_secrets
+      - directly_reuse_legacy_code_components_assets_configuration_or_technical_structures
+  closeout:
+    evidence_presented: true
+    user_explicitly_accepted: true
+    result: PASS
+
+phase_0_0_3:
+  status: PASS
+  approved_decisions:
+    naming:
+      project_name: CYA Hub v10
+      repository_name: cya-hub-v10
+    workspace:
+      technical_workspace: cya-hub-v10_repository
+      single_versioned_technical_workspace: true
+      internal_subdivision_established: false
+      monorepo_established: false
+      additional_workspace_system_established: false
+      future_internal_structure_requires_explicit_user_approval: true
+    branches:
+      stable_principal_branch: main
+      change_branches: temporary_per_specific_change
+      integration_target: main
+      permanent_develop_branch: false
+      applies_to_all_versioned_artifacts: true
+      authorizes_pending_txx_tooling: false
+    environments:
+      logical_environments:
+        - VALIDATION
+        - STAGING
+        - PRODUCTION
+      validation:
+        type: temporary_logical_environment
+        permanent_server_required: false
+      staging:
+        type: deployed_preproduction_environment
+        purpose: integral_validation_and_acceptance
+        production_equivalence_required: sufficient_for_valid_acceptance
+        physical_location: DEFERRED_UNTIL_INFRASTRUCTURE_CAPABILITY_VERIFICATION
+        deployment_mechanism: DEFERRED_UNTIL_INFRASTRUCTURE_CAPABILITY_VERIFICATION
+      production:
+        type: real_environment
+        hosting_target: hostinger
+        hosting_target_subject_to_capability_verification: true
+      main_integration_authorizes_or_triggers_production_deploy: false
+      permanent_development_environment_established: false
+      mandatory_preview_environments_established: false
+      variables_secrets_and_per_environment_credentials_in_scope: false
+      authorizes_environment_creation_or_deployment: false
+  closeout:
+    criteria_registered_and_coherent: true
+    intrinsic_decisions_pending: false
+    roadmap_current_project_state_coherent_at_closeout: true
+    evidence_presented: true
+    user_explicitly_accepted: true
+    result: PASS
 
 phase_0_0_4:
   status: IN_PROGRESS
   start_authorization: APPROVED_BY_USER
-  user_explicitly_authorized_start: true
   active_work_block:
     name: variables_and_secrets_policy
     selection_status: APPROVED_BY_USER
-    selection_scope: work_focus_only
-    concrete_policy_decisions_approved:
-      - variable_classification
-      - residence_policy
-      - naming_convention
-      - sensitive_credential_separation_by_environment
-      - secret_exposure_and_documentation_policy
-      - secret_lifecycle_policy
-      - access_to_secrets_policy
-      - configuration_inventory_and_registration_policy
-      - inventory_residence_format_and_maintenance_policy
-      - configuration_inventory_filename
-      - environment_specific_non_secret_residence_policy
-  approved_decisions:
-    variable_classification:
-      status: APPROVED_BY_USER
-      applies_to: all_cya_hub_v10_configuration_items
-      categories:
-        public_versionable:
-          label: PUBLIC / VERSIONABLE
-          definition: non_sensitive_information_that_may_exist_in_github
-        environment_specific_non_secret:
-          label: ENVIRONMENT-SPECIFIC / NON-SECRET
-          definition: non_secret_information_whose_value_may_vary_by_environment
-          environments:
-            - VALIDATION
-            - STAGING
-            - PRODUCTION
-        secret_sensitive:
-          label: SECRET / SENSITIVE
-          definition: tokens_passwords_keys_credentials_and_any_value_that_must_not_be_exposed
-          versionable: false
-      does_not_define:
-        - storage_locations
-        - secret_managers
-        - variable_names
-        - values
-        - concrete_environment_mappings
-        - variable_or_secret_change_procedures
-    residence_policy:
-      status: APPROVED_BY_USER
-      public_versionable:
-        repository_residence_allowed: true
-      environment_specific_non_secret:
-        must_be_separated_by_environment: true
-        environments:
-          - VALIDATION
-          - STAGING
-          - PRODUCTION
-        physical_storage_location: UNDEFINED
-      secret_sensitive:
-        allowed_residence: authorized_secret_manager_for_corresponding_environment_or_service_only
-        versioned_github_content_allowed: false
-      specific_manager_or_mechanism_selected: false
-      explicitly_not_selected:
-        - github_secrets
-        - hostinger
-        - any_other_specific_manager_or_mechanism
-      does_not_define:
-        - variable_names
-        - values
-        - concrete_environment_mappings
-        - variable_or_secret_change_procedures
-    naming_convention:
-      status: APPROVED_BY_USER
-      format: UPPER_SNAKE_CASE
-      allowed_characters:
-        - A_Z
-        - digits
-        - underscore
-      name_must_describe_configuration_stably_and_understandably: true
-      environment_in_variable_name: false
-      same_logical_key_name_across_environments: true
-      environments:
-        - VALIDATION
-        - STAGING
-        - PRODUCTION
-      classification_prefixes_required: false
-      classification_prefix_examples_not_added_by_default:
-        - PUBLIC_
-        - SECRET_
-      global_cya_prefix_established_by_default: false
-      future_technology_specific_prefix_or_format_exception:
-        allowed_only_if_future_technology_is_approved: true
-        exception_requires_decision_when_technology_is_approved: true
-      generic_context_free_names_prohibited_examples:
-        - KEY
-        - TOKEN
-        - URL
-        - SECRET
-      structural_example:
-        preferred: SERVICE_API_KEY
-        avoid: KEY
-        introduces_real_service: false
-      does_not_authorize:
-        - variable_creation
-        - secret_creation
-        - manager_selection
-        - value_definition
-        - variable_or_secret_changes
-    sensitive_credential_separation_by_environment:
-      status: APPROVED_BY_USER
-      production_credentials:
-        exclusive_to_production: true
-        allowed_in_validation: false
-        allowed_in_staging: false
-      validation_and_staging:
-        use_separate_credentials_when_service_allows_independent_credentials: true
-      cross_environment_reuse_for_convenience: prohibited
-      external_service_without_independent_credentials:
-        automatic_exception_allowed: false
-        specific_service_analysis_required: true
-        explicit_user_approval_required_before_use: true
-      validation_staging_exception:
-        may_be_proposed_only_if_real_service_limitation_exists: true
-        automatic_approval: false
-      production_nonproduction_sharing:
-        permitted_by_policy: false
-        if_future_integration_makes_separation_impossible: stop_and_present_concrete_case_to_user
-      does_not_authorize:
-        - secret_manager_selection
-        - credential_creation
-        - credential_value_definition
-        - service_configuration
-        - variable_or_secret_changes
-    secret_exposure_and_documentation_policy:
-      status: APPROVED_BY_USER
-      real_secret_values:
-        allowed_in_logs: false
-        allowed_in_documentation: false
-        allowed_in_github_issues_prs_or_comments: false
-        allowed_in_screenshots: false
-        allowed_in_evidence: false
-        allowed_in_traces_or_artifacts: false
-        allowed_in_versioned_files: false
-        allowed_in_project_documentary_outputs: false
-      secret_names:
-        may_be_documented_if_name_itself_is_not_sensitive: true
-        purpose_category_and_applicable_environment_may_be_documented: true
-      example_files:
-        env_example_and_equivalents_may_contain_variable_names: true
-        placeholders_must_be_unequivocally_fake: true
-        real_values_allowed: false
-        real_fragments_allowed: false
-        partially_hidden_real_secret_copies_allowed: false
-      evidence_of_configuration:
-        allowed_metadata:
-          - name
-          - environment
-          - presence_or_absence
-          - verification_result
-        secret_value_allowed: false
-      accidental_exposure_in_evidence:
-        redact_before_retention_or_sharing: true
-        if_safe_redaction_cannot_be_guaranteed: do_not_retain_artifact_as_evidence
-      credential_carriers_same_treatment:
-        - authentication_headers
-        - cookies
-        - tokens_in_urls_or_query_strings
-        - any_other_credential_carrier
-      masking:
-        may_preserve_real_reconstructable_or_identifying_fragments: false
-        neutral_documentation_representations:
-          - "***"
-          - fictitious_placeholders
-      unauthorized_secret_exposure:
-        stop_propagation: true
-        return_case_to_user_as_security_decision: true
-        automatically_authorizes_rotation_revocation_deletion_or_modification: false
-      does_not_authorize:
-        - secret_manager_selection
-        - value_creation
-        - credential_rotation
-        - credential_revocation
-        - credential_deletion
-        - credential_modification
-        - service_configuration
-    secret_lifecycle_policy:
-      status: APPROVED_BY_USER
-      creation:
-        only_when_concrete_and_approved_need_exists_for_specific_service_and_environment: true
-      required_documented_metadata_without_value:
-        - name
-        - purpose
-        - service
-        - environment
-        - state
-      universal_calendar_based_periodic_rotation: false
-      provider_specific_expiration_or_rotation:
-        define_for_that_service_when_required: true
-      rotation_triggers_that_require_proposal:
-        - real_or_suspected_exposure
-        - compromise
-        - unauthorized_access
-        - provider_requirement
-        - change_that_makes_current_credential_invalid
-      detecting_rotation_trigger_automatically_authorizes_execution: false
-      replacement_when_temporary_coexistence_is_supported:
-        validate_new_credential_before_retiring_previous_one: true
-        concrete_execution_requires_authorization: true
-      credential_no_longer_needed:
-        state: pending_revocation_or_retirement
-        keep_active_for_convenience: false
-      revocation_deletion_or_destruction:
-        explicit_and_separately_authorized_action_required: true
-        automatic_by_policy: false
-      evidence_after_approved_replacement_or_revocation:
-        allowed_metadata:
-          - name
-          - environment
-          - reason
-          - state
-          - result
-        old_value_allowed: false
-        new_value_allowed: false
-      does_not_select:
-        - secret_managers
-        - values
-        - personal_owners
-        - specific_frequencies
-        - procedures_for_services_not_yet_approved
-      does_not_authorize:
-        - credential_creation
-        - credential_replacement
-        - credential_rotation
-        - credential_revocation
-        - credential_deletion
-        - credential_retirement
-        - secret_creation
-        - secret_replacement
-        - secret_rotation
-        - secret_revocation
-        - secret_deletion
-        - secret_retirement
-    access_to_secrets_policy:
-      status: APPROVED_BY_USER
-      access_subjects:
-        allowed_only_when_specifically_authorized_and_approved_need_exists: true
-        possible_subject_types:
-          - person
-          - service
-          - tool
-          - process
-      authorization_scope:
-        limited_to_necessary_secret_service_and_environment: true
-        system_or_application_access_implies_all_secret_access: false
-      production_secret_access:
-        reinforced_isolation: true
-        derived_from_validation_access: false
-        derived_from_staging_access: false
-        derived_from_repository_access: false
-      access_for_convenience_or_technical_possibility_only: prohibited
-      secret_value_disclosure:
-        when_process_can_operate_without_exposing_value: not_necessary
-      connected_project_actors:
-        chatgpt_agents_automations_and_tools_receive_secret_values_by_connection_alone: false
-        future_effective_access_requires_expressly_authorized_action_and_scope: true
-      access_authorization_documentation_without_secret_value:
-        required_metadata:
-          - authorized_subject
-          - secret_name
-          - environment
-          - purpose
-          - scope
-          - state
-      access_no_longer_needed:
-        state: pending_removal_or_reduction
-        automatic_permission_modification_or_revocation_authorized: false
-        exact_execution_authorization_required: true
-      access_change_actions:
-        separate_action_required_for:
-          - grant
-          - expand
-          - reduce
-          - revoke
-        policy_approval_executes_any_access_change: false
-      does_not_select:
-        - secret_managers
-        - concrete_users
-        - concrete_roles
-        - provider_permissions
-        - technology_specific_procedures
-      does_not_authorize:
-        - access_grant
-        - access_expansion
-        - access_reduction
-        - access_revocation
-        - secret_manager_selection
-    configuration_inventory_and_registration_policy:
-      status: APPROVED_BY_USER
-      inventory_entry_required:
-        for_every_variable_or_secret_once_existence_is_approved: true
-      required_metadata_without_real_value:
-        - name
-        - classification
-        - purpose
-        - related_service_or_system
-        - applicable_environments
-        - state
-      secret_sensitive_entries:
-        authorized_residence_or_manager_reference_may_be_recorded_once_approved: true
-        real_value_allowed: false
-        real_value_fragments_allowed: false
-        reconstructable_information_allowed: false
-      approved_item_rules_reference:
-        may_record_existence_or_documentary_reference_for:
-          - expiration
-          - rotation
-          - access
-        duplicate_sensitive_values: false
-      same_logical_name_across_environments:
-        register_as_different_variables_only_due_to_multiple_environments: false
-        show_applicable_environments_and_state_per_environment: true
-      inventory_update_triggers_require_proposal:
-        - configuration_created
-        - configuration_renamed
-        - configuration_reclassified
-        - configuration_added_to_environment
-        - configuration_removed_from_environment
-        - configuration_state_changed
-        - approved_residence_changed
-      inventory_update_trigger_automatically_authorizes_technical_change: false
-      inventory_update_trigger_automatically_authorizes_documentary_change: false
-      retired_configuration:
-        silently_disappear_from_history: false
-        preserve_traceability_of_existence_and_final_state_without_values: true
-      inventory_role:
-        replaces_actual_secret_manager: false
-        credential_store: false
-      does_not_select:
-        - physical_inventory_location
-        - concrete_format
-        - inventory_file
-        - inventory_tool
-        - maintenance_owner
-      does_not_authorize:
-        - variable_creation
-        - secret_creation
-        - secret_manager_creation_or_selection
-        - physical_inventory_creation
-        - existing_configuration_modification
-    inventory_residence_format_and_maintenance_policy:
-      status: APPROVED_BY_USER
-      canonical_source:
-        type: single_versioned_file
-        repository: cya-hub-v10
-      format: YAML
-      location:
-        directory: .cya/
-        separate_from:
-          - project-state.yaml
-          - tool-registry.yaml
-      contents:
-        only_previously_approved_metadata: true
-        real_secret_values_allowed: false
-      google_drive:
-        second_canonical_copy: false
-        may_document_or_reference_inventory_existence: true
-      update_with_same_authorized_change_required_when:
-        - configuration_created
-        - configuration_retired
-        - configuration_renamed
-        - configuration_reclassified
-        - configuration_state_changed
-        - configuration_environment_changed
-        - approved_residence_changed
-      maintenance_responsibility:
-        permanent_personal_owner: false
-        responsible_actor: chat_agent_or_process_executing_expressly_approved_configuration_change
-        responsibility_limited_to_authorized_scope: true
-      discrepancy_detection:
-        agent_may_modify_inventory_automatically: false
-        present_discrepancy_before_modification: true
-        applicable_authorization_required_before_modification: true
-      history:
-        source: github_version_history
-        parallel_history: false
-      does_not_decide:
-        - exact_filename
-      does_not_authorize:
-        - inventory_file_creation
-        - automation
-        - existing_configuration_modification
-    configuration_inventory_filename:
-      status: APPROVED_BY_USER
-      scope: exact_filename_and_path_only
-      directory: .cya/
-      filename: configuration-inventory.yaml
-      path: .cya/configuration-inventory.yaml
-      format: YAML
-      authorizes_inventory_file_creation: false
-      does_not_authorize:
-        - inventory_file_creation
-        - automation
-        - existing_configuration_modification
-        - variable_or_secret_changes
-        - access_changes
-        - security_setting_changes
-        - environment_creation_or_deployment
-        - txx_construction_or_activation
-    environment_specific_non_secret_residence_policy:
-      status: APPROVED_BY_USER
-      global_shared_residence: false
-      each_environment_keeps_own_value: true
-      cross_environment_value_read_or_reuse: false
-      environments:
-        VALIDATION:
-          concrete_mechanism: DEFERRED_UNTIL_TOOL_OR_PROCESS_FOR_TEMPORARY_CONTEXT_IS_APPROVED
-        STAGING:
-          concrete_residence: DEFERRED_WITH_PHYSICAL_STAGING_INFRASTRUCTURE
-        PRODUCTION:
-          concrete_residence: DEFERRED_UNTIL_REAL_PRODUCTION_HOSTING_CONFIGURATION_CAPABILITY_IS_VERIFIED_AND_APPROVED
-      residence_rule:
-        concrete_physical_residence_uses_environment_own_configuration_mechanism_once_approved: true
-      github_versioning:
-        non_secret_classification_automatically_authorizes_versioning_concrete_values: false
-        versioned_residence_for_concrete_values_requires_explicit_user_approval: true
-      inventory_role:
-        records_name_classification_environments_and_state: true
-        replaces_operational_value_residence: false
-      later_residence_change:
-        treated_as_configuration_change: true
-        authorization_required: true
-      does_not_select:
-        - github_actions_variables
-        - env_files
-        - hostinger
-        - any_other_platform
-        - concrete_values
-      does_not_authorize:
-        - variable_creation
-        - variable_modification
-        - environment_configuration
-        - concrete_residence_mechanism_selection
-        - concrete_residence_mechanism_configuration
-  internal_decisions_approved:
+  concrete_policy_decisions_approved:
     - variable_classification
     - residence_policy
     - naming_convention
@@ -558,8 +182,137 @@ phase_0_0_4:
     - access_to_secrets_policy
     - configuration_inventory_and_registration_policy
     - inventory_residence_format_and_maintenance_policy
-    - configuration_inventory_filename
     - environment_specific_non_secret_residence_policy
+    - configuration_inventory_filename
+    - configuration_inventory_logical_structure
+  approved_decisions:
+    variable_classification:
+      status: APPROVED_BY_USER
+      categories:
+        - PUBLIC / VERSIONABLE
+        - ENVIRONMENT-SPECIFIC / NON-SECRET
+        - SECRET / SENSITIVE
+      secret_sensitive_versionable: false
+    residence_policy:
+      status: APPROVED_BY_USER
+      public_versionable_repository_residence_allowed: true
+      environment_specific_non_secret_separated_by_environment: true
+      secret_sensitive_allowed_residence: authorized_secret_manager_for_corresponding_environment_or_service_only
+      secret_sensitive_versioned_github_content_allowed: false
+      specific_manager_selected: false
+    naming_convention:
+      status: APPROVED_BY_USER
+      format: UPPER_SNAKE_CASE
+      environment_in_variable_name: false
+      classification_prefix_required: false
+      global_cya_prefix_established: false
+      future_technology_exception_requires_explicit_approval: true
+    sensitive_credential_separation_by_environment:
+      status: APPROVED_BY_USER
+      production_credentials_exclusive_to_production: true
+      validation_and_staging_separate_when_service_allows: true
+      cross_environment_reuse_for_convenience: prohibited
+      provider_limitation_requires_concrete_user_approved_exception: true
+      production_nonproduction_sharing_permitted: false
+    secret_exposure_and_documentation_policy:
+      status: APPROVED_BY_USER
+      real_values_allowed_in_versioned_documentary_or_evidence_outputs: false
+      non_sensitive_name_purpose_classification_environment_may_be_documented: true
+      example_placeholders_must_be_fake: true
+      accidental_exposure_requires_redaction_or_artifact_rejection: true
+      exposure_detection_automatically_authorizes_rotation_or_revocation: false
+    secret_lifecycle_policy:
+      status: APPROVED_BY_USER
+      creation_requires_concrete_approved_service_and_environment_need: true
+      universal_calendar_rotation: false
+      rotation_trigger_requires_proposal_not_automatic_execution: true
+      revocation_deletion_retirement_require_separate_authorization: true
+      evidence_retains_secret_values: false
+    access_to_secrets_policy:
+      status: APPROVED_BY_USER
+      access_requires_specific_authorized_subject_and_approved_need: true
+      scope_limited_to_secret_service_environment: true
+      production_isolation: reinforced
+      project_connection_grants_secret_values: false
+      grant_expand_reduce_revoke_are_separate_actions: true
+    configuration_inventory_and_registration_policy:
+      status: APPROVED_BY_USER
+      inventory_entry_required_once_configuration_existence_approved: true
+      required_metadata:
+        - name
+        - classification
+        - purpose
+        - related_service_or_system
+        - applicable_environments
+        - state
+      secret_entry_may_reference_approved_residence_without_value: true
+      same_logical_name_duplicated_only_due_to_environments: false
+      retired_configuration_traceability_preserved_without_values: true
+      credential_store: false
+    inventory_residence_format_and_maintenance_policy:
+      status: APPROVED_BY_USER
+      canonical_source: single_versioned_repository_file
+      format: YAML
+      directory: .cya/
+      second_canonical_drive_copy: false
+      real_secret_values_allowed: false
+      update_responsibility_follows_expressly_authorized_change_actor: true
+      automatic_discrepancy_correction: false
+      history_source: github_version_history
+    environment_specific_non_secret_residence_policy:
+      status: APPROVED_BY_USER
+      global_shared_residence: false
+      each_environment_keeps_own_value: true
+      cross_environment_value_read_or_reuse: false
+      concrete_mechanisms:
+        VALIDATION: DEFERRED_UNTIL_TOOL_OR_PROCESS_FOR_TEMPORARY_CONTEXT_IS_APPROVED
+        STAGING: DEFERRED_WITH_PHYSICAL_STAGING_INFRASTRUCTURE
+        PRODUCTION: DEFERRED_UNTIL_REAL_PRODUCTION_HOSTING_CONFIGURATION_CAPABILITY_IS_VERIFIED_AND_APPROVED
+      non_secret_classification_automatically_authorizes_versioning_values: false
+    configuration_inventory_filename:
+      status: APPROVED_BY_USER
+      path: .cya/configuration-inventory.yaml
+      format: YAML
+      authorizes_inventory_file_creation: false
+    configuration_inventory_logical_structure:
+      status: APPROVED_BY_USER
+      root: configuration_items
+      item_fields:
+        - name
+        - classification
+        - purpose
+        - service_or_system
+        - environments
+        - residence_reference
+        - rules_references
+      environments:
+        VALIDATION:
+          field: state
+        STAGING:
+          field: state
+        PRODUCTION:
+          field: state
+      classification_values:
+        - PUBLIC / VERSIONABLE
+        - ENVIRONMENT-SPECIFIC / NON-SECRET
+        - SECRET / SENSITIVE
+      residence_reference:
+        only_approved_residence_when_applicable: true
+        real_values_allowed: false
+      rules_references:
+        possible_approved_references:
+          - expiration
+          - rotation
+          - access
+      explicitly_undecided:
+        - allowed_state_values
+        - reference_format
+        - additional_required_or_optional_rules
+        - schema_version
+        - additional_metadata
+      authorizes_inventory_file_creation: false
+      authorizes_real_configuration_items_or_values: false
+      authorizes_secret_manager_or_automation: false
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
@@ -570,25 +323,15 @@ phase_0_0_4:
   authorizes_environment_creation_or_deployment: false
 
 legacy_policy_established:
+  origin_subphase: 0.2
   mode: READ_ONLY
-  includes_all_legacy: true
-  cya_hub_v3_included: true
-  consultation_requires_explicit_user_authorization: true
-  consultation_location: user_designated_decision_area
-  consultation_purpose: decision_reference_only
   implementation_source_from_legacy: prohibited
   direct_legacy_reuse_authorized: false
-  prohibited:
-    - modify_legacy
-    - migrate_legacy
-    - deploy_into_legacy
-    - write_to_legacy
-    - reuse_legacy_secrets
 
 implementation_decision_source_policy:
-  source_of_truth_for_decisions: cya_hub_v10_decision_documents
+  origin_subphase: 0.2
+  source_of_truth_for_decisions: cya_hub_v10_accepted_decision_documents
   legacy_is_not_implementation_source: true
-  implementation_chats_use_decision_documents: true
 
 next_action:
   type: USER_DECISION_GATE
