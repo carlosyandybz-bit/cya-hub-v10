@@ -186,6 +186,7 @@ phase_0_0_4:
     - configuration_inventory_filename
     - configuration_inventory_logical_structure
     - configuration_inventory_state_vocabulary
+    - configuration_inventory_structured_reference_format
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -306,7 +307,8 @@ phase_0_0_4:
           - rotation
           - access
       explicitly_undecided:
-        - reference_format
+        - reference_type_values
+        - reference_syntax
         - additional_required_or_optional_rules
         - schema_version
         - additional_metadata
@@ -335,6 +337,30 @@ phase_0_0_4:
       authorizes_removal_execution: false
       authorizes_access_changes: false
       authorizes_secret_manager_or_environment_mechanism_selection: false
+      authorizes_environment_deployment: false
+      authorizes_txx_activation: false
+    configuration_inventory_structured_reference_format:
+      status: APPROVED_BY_USER
+      format: structured
+      applies_to:
+        - residence_reference
+        - rules_references.expiration
+        - rules_references.rotation
+        - rules_references.access
+      fields:
+        - type
+        - reference
+      semantics:
+        type: identifies_reference_class_or_origin
+        reference: pointer_or_reference_only
+      real_secret_values_allowed: false
+      reconstructable_sensitive_information_allowed: false
+      allowed_type_values: UNDECIDED
+      reference_syntax: UNDECIDED
+      concrete_manager_url_id_path_or_environment_mechanism_selected: false
+      authorizes_inventory_file_creation: false
+      authorizes_variable_or_secret_changes: false
+      authorizes_access_changes: false
       authorizes_environment_deployment: false
       authorizes_txx_activation: false
   closure_gate: NOT_READY
