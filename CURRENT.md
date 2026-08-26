@@ -6,11 +6,11 @@
 
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
-**Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
-**Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
-**Active work block:** política de variables y secretos  
+**Last completed subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — PASS  
+**Active subphase:** none; 0.5 — Convenciones técnicas mínimas y baseline de calidad — PENDING / NOT STARTED  
+**Active work block:** none  
 **Approved concrete decisions in 0.4:** 22  
-**Active action:** verify the approved 0.4 closure criteria and present evidence to the user; do not close 0.4 or start 0.5 without explicit user acceptance  
+**Active action:** await an explicit user instruction and authorization before starting 0.5  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -86,7 +86,7 @@ Canonical decisions are recorded directly under **0.3** in the Roadmap. Operatio
 
 **Closeout:** PASS after criteria/evidence review and explicit user acceptance.
 
-## 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO
+## 0.4 — Variables, secretos, accesos, seguridad y límites operativos — PASS
 
 The user explicitly authorized starting 0.4 and selected the **variables-and-secrets policy** work block.
 
@@ -334,14 +334,14 @@ Future metadata requires a concrete need and explicit user approval.
 7. Roadmap, `CURRENT.md` and `.cya/project-state.yaml` are synchronized;
 8. closure evidence is presented to the user and explicit user acceptance is required.
 
-Decision 22 does **not** itself close 0.4, record PASS or open 0.5.
+Decision 22 itself did not close 0.4; the user subsequently reviewed the closure evidence and explicitly accepted the closure.
 
-## 0.4 — Current gate
+## 0.4 — Closeout
 
-**Status:** EN CURSO.  
-**Closure gate:** NOT READY until closure evidence is presented and explicitly accepted by the user.
+**Status:** PASS.  
+**Closure gate:** PASS after evidence review and explicit user acceptance.
 
-The 22 approved decisions do not authorize:
+The 22 approved decisions remain governing policy and do not authorize:
 
 - creating `.cya/configuration-inventory.yaml`;
 - creating or changing variables, secrets or credentials;
@@ -349,13 +349,13 @@ The 22 approved decisions do not authorize:
 - changing secret access or security settings;
 - creating/deploying environments;
 - constructing or activating T01–T11;
-- closing 0.4 or starting 0.5.
+- starting 0.5.
 
 Concrete managers, operational URLs/IDs, real values, physical STAGING/PRODUCTION mechanisms and real credentials remain deferred until their applicable approved decisions/actions.
 
 ## Next action
 
-Verify the approved Decision 22 closure criteria, present evidence to the user, and request explicit acceptance or rejection of the 0.4 closure. Do not mark PASS or start 0.5 without that acceptance.
+No new subphase has been started. Await an explicit user instruction and authorization before starting **0.5 — Convenciones técnicas mínimas y baseline de calidad**.
 
 ## Deferred — do not execute without explicit approval
 
