@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: define_exact_secret_lifecycle_policy_with_user_approval
+active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -120,11 +120,7 @@ phase_0_0_4:
       - naming_convention
       - sensitive_credential_separation_by_environment
       - secret_exposure_and_documentation_policy
-    next_decision_focus:
-      name: secret_lifecycle_policy
-      selection_status: APPROVED_BY_USER
-      selection_scope: decision_focus_only
-      concrete_lifecycle_rules_approved: NONE_YET
+      - secret_lifecycle_policy
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -289,12 +285,70 @@ phase_0_0_4:
         - credential_deletion
         - credential_modification
         - service_configuration
+    secret_lifecycle_policy:
+      status: APPROVED_BY_USER
+      creation:
+        only_when_concrete_and_approved_need_exists_for_specific_service_and_environment: true
+      required_documented_metadata_without_value:
+        - name
+        - purpose
+        - service
+        - environment
+        - state
+      universal_calendar_based_periodic_rotation: false
+      provider_specific_expiration_or_rotation:
+        define_for_that_service_when_required: true
+      rotation_triggers_that_require_proposal:
+        - real_or_suspected_exposure
+        - compromise
+        - unauthorized_access
+        - provider_requirement
+        - change_that_makes_current_credential_invalid
+      detecting_rotation_trigger_automatically_authorizes_execution: false
+      replacement_when_temporary_coexistence_is_supported:
+        validate_new_credential_before_retiring_previous_one: true
+        concrete_execution_requires_authorization: true
+      credential_no_longer_needed:
+        state: pending_revocation_or_retirement
+        keep_active_for_convenience: false
+      revocation_deletion_or_destruction:
+        explicit_and_separately_authorized_action_required: true
+        automatic_by_policy: false
+      evidence_after_approved_replacement_or_revocation:
+        allowed_metadata:
+          - name
+          - environment
+          - reason
+          - state
+          - result
+        old_value_allowed: false
+        new_value_allowed: false
+      does_not_select:
+        - secret_managers
+        - values
+        - personal_owners
+        - specific_frequencies
+        - procedures_for_services_not_yet_approved
+      does_not_authorize:
+        - credential_creation
+        - credential_replacement
+        - credential_rotation
+        - credential_revocation
+        - credential_deletion
+        - credential_retirement
+        - secret_creation
+        - secret_replacement
+        - secret_rotation
+        - secret_revocation
+        - secret_deletion
+        - secret_retirement
   internal_decisions_approved:
     - variable_classification
     - residence_policy
     - naming_convention
     - sensitive_credential_separation_by_environment
     - secret_exposure_and_documentation_policy
+    - secret_lifecycle_policy
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
@@ -328,8 +382,7 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  decision_focus: secret_lifecycle_policy
-  action: define_exact_secret_lifecycle_policy
+  action: define_next_exact_concrete_variables_and_secrets_policy_decision
   blocked_until_user: true
 
 prohibited_progression:
