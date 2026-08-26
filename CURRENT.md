@@ -7,7 +7,7 @@
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PASS  
-**Active subphase:** none — 0.8 remains PENDING / NOT STARTED  
+**Active subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PASS (closed; no later subphase started)  
 **Active work block:** none — awaiting explicit user authorization to start 0.8  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
@@ -20,7 +20,7 @@
 
 - Every approved decision is documented under the exact phase, subphase, audit or Roadmap point that owns it.
 - `PUNTO ACTUAL DEL PROYECTO` is a position/next-action summary, not an accumulated decision archive.
-- A transversal decision has one canonical owning point plus cross-references where needed.
+- A transversal decision has one canonical owner plus cross-references where needed.
 - An accepted decision must not remain only in chat or in a generic summary.
 - `CURRENT.md` and `.cya/project-state.yaml` mirror operational state; they do not replace the Roadmap's canonical phase/subphase placement.
 
