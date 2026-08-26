@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: define_exact_inventory_residence_format_and_maintenance_policy_with_user_approval
+active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -123,11 +123,7 @@ phase_0_0_4:
       - secret_lifecycle_policy
       - access_to_secrets_policy
       - configuration_inventory_and_registration_policy
-    next_decision_focus:
-      name: inventory_residence_format_and_maintenance_policy
-      selection_status: APPROVED_BY_USER
-      selection_scope: decision_focus_only
-      concrete_residence_format_maintenance_rules_approved: NONE_YET
+      - inventory_residence_format_and_maintenance_policy
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -456,6 +452,48 @@ phase_0_0_4:
         - secret_manager_creation_or_selection
         - physical_inventory_creation
         - existing_configuration_modification
+    inventory_residence_format_and_maintenance_policy:
+      status: APPROVED_BY_USER
+      canonical_source:
+        type: single_versioned_file
+        repository: cya-hub-v10
+      format: YAML
+      location:
+        directory: .cya/
+        separate_from:
+          - project-state.yaml
+          - tool-registry.yaml
+      contents:
+        only_previously_approved_metadata: true
+        real_secret_values_allowed: false
+      google_drive:
+        second_canonical_copy: false
+        may_document_or_reference_inventory_existence: true
+      update_with_same_authorized_change_required_when:
+        - configuration_created
+        - configuration_retired
+        - configuration_renamed
+        - configuration_reclassified
+        - configuration_state_changed
+        - configuration_environment_changed
+        - approved_residence_changed
+      maintenance_responsibility:
+        permanent_personal_owner: false
+        responsible_actor: chat_agent_or_process_executing_expressly_approved_configuration_change
+        responsibility_limited_to_authorized_scope: true
+      discrepancy_detection:
+        agent_may_modify_inventory_automatically: false
+        present_discrepancy_before_modification: true
+        applicable_authorization_required_before_modification: true
+      history:
+        source: github_version_history
+        parallel_history: false
+      does_not_decide:
+        - exact_filename
+      does_not_authorize:
+        - inventory_file_creation
+        - automation
+        - existing_configuration_modification
   internal_decisions_approved:
     - variable_classification
     - residence_policy
@@ -465,10 +503,12 @@ phase_0_0_4:
     - secret_lifecycle_policy
     - access_to_secrets_policy
     - configuration_inventory_and_registration_policy
+    - inventory_residence_format_and_maintenance_policy
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
   authorizes_security_setting_changes: false
+  authorizes_inventory_file_creation: false
   authorizes_txx_construction_or_activation: false
   authorizes_environment_creation_or_deployment: false
 
@@ -498,8 +538,7 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  decision_focus: inventory_residence_format_and_maintenance_policy
-  action: define_exact_inventory_residence_format_and_maintenance_policy
+  action: define_next_exact_concrete_variables_and_secrets_policy_decision
   blocked_until_user: true
 
 prohibited_progression:
@@ -507,7 +546,7 @@ prohibited_progression:
   - do_not_start_0_5_without_explicit_user_approval
   - do_not_create_or_change_variables_or_secrets_without_explicit_user_approval
   - do_not_modify_access_without_explicit_user_approval
-  - do_not_create_physical_configuration_inventory_without_explicit_user_approval
+  - do_not_create_configuration_inventory_file_without_explicit_user_approval
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
   - do_not_create_or_deploy_environments_without_explicit_user_approval_for_the_exact_action
 
