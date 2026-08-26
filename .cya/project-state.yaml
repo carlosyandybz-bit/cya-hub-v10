@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
+active_action: verify_0_4_closure_criteria_present_evidence_and_request_explicit_user_acceptance
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -187,6 +187,15 @@ phase_0_0_4:
     - configuration_inventory_logical_structure
     - configuration_inventory_state_vocabulary
     - configuration_inventory_structured_reference_format
+    - configuration_inventory_reference_type_vocabulary
+    - configuration_inventory_reference_syntax
+    - configuration_inventory_residence_representation
+    - configuration_inventory_environment_applicability_and_state_evidence
+    - configuration_inventory_required_optional_field_rules
+    - configuration_inventory_schema_versioning_policy
+    - configuration_inventory_additional_metadata_policy
+    - subphase_0_4_closure_criteria
+  approved_decision_count: 22
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -279,45 +288,32 @@ phase_0_0_4:
     configuration_inventory_logical_structure:
       status: APPROVED_BY_USER
       root: configuration_items
-      item_fields:
+      item_fields_current:
         - name
         - classification
         - purpose
         - service_or_system
         - environments
-        - residence_reference
+        - residence_references
         - rules_references
-      environments:
-        VALIDATION:
-          field: state
-        STAGING:
-          field: state
-        PRODUCTION:
-          field: state
+      environments_current_fields:
+        - applicable
+        - state
+        - state_evidence_reference
       classification_values:
         - PUBLIC / VERSIONABLE
         - ENVIRONMENT-SPECIFIC / NON-SECRET
         - SECRET / SENSITIVE
-      residence_reference:
-        only_approved_residence_when_applicable: true
-        real_values_allowed: false
-      rules_references:
-        possible_approved_references:
-          - expiration
-          - rotation
-          - access
-      explicitly_undecided:
-        - reference_type_values
-        - reference_syntax
-        - additional_required_or_optional_rules
-        - schema_version
-        - additional_metadata
+      residence_shape_history:
+        original_decision_12_field: residence_reference
+        current_field_after_decision_17: residence_references
+        original_history_preserved: true
       authorizes_inventory_file_creation: false
       authorizes_real_configuration_items_or_values: false
       authorizes_secret_manager_or_automation: false
     configuration_inventory_state_vocabulary:
       status: APPROVED_BY_USER
-      applies_to: environments_each_state_field
+      applies_to: environments_state_when_applicable_true
       allowed_values:
         - NOT_CONFIGURED
         - CONFIGURED
@@ -332,37 +328,166 @@ phase_0_0_4:
         RETIRED: no_longer_operational_in_environment_retained_only_for_historical_traceability
       automatic_or_inferred_state_changes: prohibited
       state_change_requires_applicable_authorization: true
-      authorizes_inventory_file_creation: false
-      authorizes_variable_or_secret_changes: false
-      authorizes_removal_execution: false
-      authorizes_access_changes: false
-      authorizes_secret_manager_or_environment_mechanism_selection: false
-      authorizes_environment_deployment: false
-      authorizes_txx_activation: false
     configuration_inventory_structured_reference_format:
       status: APPROVED_BY_USER
       format: structured
-      applies_to:
-        - residence_reference
-        - rules_references.expiration
-        - rules_references.rotation
-        - rules_references.access
       fields:
         - type
         - reference
       semantics:
         type: identifies_reference_class_or_origin
         reference: pointer_or_reference_only
+      applies_to_current:
+        - residence_references.GLOBAL
+        - residence_references.VALIDATION
+        - residence_references.STAGING
+        - residence_references.PRODUCTION
+        - rules_references.expiration
+        - rules_references.rotation
+        - rules_references.access
+        - environments.state_evidence_reference
       real_secret_values_allowed: false
       reconstructable_sensitive_information_allowed: false
-      allowed_type_values: UNDECIDED
-      reference_syntax: UNDECIDED
-      concrete_manager_url_id_path_or_environment_mechanism_selected: false
-      authorizes_inventory_file_creation: false
-      authorizes_variable_or_secret_changes: false
-      authorizes_access_changes: false
-      authorizes_environment_deployment: false
-      authorizes_txx_activation: false
+      residence_singular_shape_superseded_by_decision_17: true
+    configuration_inventory_reference_type_vocabulary:
+      status: APPROVED_BY_USER
+      allowed_values:
+        - DRIVE_DOCUMENT
+        - GITHUB_FILE
+        - GITHUB_COMMIT
+        - GITHUB_PULL_REQUEST
+        - GITHUB_ACTIONS_RUN
+        - SECRET_MANAGER_ENTRY
+        - ENVIRONMENT_CONFIGURATION
+        - SERVICE_CONFIGURATION
+      free_text_type_allowed: false
+      other_type_allowed: false
+      new_type_requires_explicit_user_approval: true
+    configuration_inventory_reference_syntax:
+      status: APPROVED_BY_USER
+      syntax:
+        DRIVE_DOCUMENT: canonical_google_drive_document_url
+        GITHUB_FILE: repository_relative_path_inside_cya_hub_v10
+        GITHUB_COMMIT: full_commit_sha
+        GITHUB_PULL_REQUEST: repository_pr_number
+        GITHUB_ACTIONS_RUN: workflow_run_id
+        SECRET_MANAGER_ENTRY: non_sensitive_logical_identifier_defined_when_manager_is_approved
+        ENVIRONMENT_CONFIGURATION: non_sensitive_logical_identifier_defined_when_environment_mechanism_is_approved
+        SERVICE_CONFIGURATION: non_sensitive_logical_identifier_defined_when_service_is_approved
+      deferred_additional_technical_syntax_until_concrete_approved_mechanism:
+        - SECRET_MANAGER_ENTRY
+        - ENVIRONMENT_CONFIGURATION
+        - SERVICE_CONFIGURATION
+      secrets_or_reconstructable_secret_fragments_allowed: false
+    configuration_inventory_residence_representation:
+      status: APPROVED_BY_USER
+      current_field: residence_references
+      supersedes_original_singular_residence_shape_only: true
+      keys:
+        - GLOBAL
+        - VALIDATION
+        - STAGING
+        - PRODUCTION
+      classification_rules:
+        PUBLIC / VERSIONABLE:
+          global_allowed: true
+        ENVIRONMENT-SPECIFIC / NON-SECRET:
+          global_allowed: false
+          per_environment_required_when_residence_exists: true
+        SECRET / SENSITIVE:
+          global_allowed: false
+          per_environment_required_when_residence_exists: true
+      include_only_approved_applicable_references: true
+      real_values_allowed: false
+    configuration_inventory_environment_applicability_and_state_evidence:
+      status: APPROVED_BY_USER
+      applicable_values:
+        - true
+        - false
+      when_applicable_false:
+        state_present: false
+      when_applicable_true:
+        state_required: true
+      state_evidence_reference:
+        ACTIVE: required
+        RETIRED: required
+        CONFIGURED: optional_when_useful
+        PENDING_REMOVAL: optional_when_useful
+        NOT_CONFIGURED: not_required
+      evidence_reference_uses_decisions_15_and_16: true
+    configuration_inventory_required_optional_field_rules:
+      status: APPROVED_BY_USER
+      always_required_per_item:
+        - name
+        - classification
+        - purpose
+        - service_or_system
+        - environments
+      residence_references:
+        include_only_when_approved_residence_exists: true
+        configured_or_active_reflect_needed_residences_by_classification_environment: true
+      rules_references:
+        include_only_when_at_least_one_approved_rule_reference_exists: true
+        include_only_actual_entries:
+          - expiration
+          - rotation
+          - access
+      optional_non_applicable_representation: omitted
+      prohibited_placeholders:
+        - null
+        - TBD
+        - N/A
+        - empty_string
+        - invented_value
+    configuration_inventory_schema_versioning_policy:
+      status: APPROVED_BY_USER
+      initial_schema_version_field_present: false
+      canonical_history: git
+      incompatible_future_change_requires_explicit_user_decision: true
+      formal_versioning_decided_only_if_needed_for_incompatible_change: true
+    configuration_inventory_additional_metadata_policy:
+      status: APPROVED_BY_USER
+      additional_metadata_now: none
+      not_added:
+        - created_at
+        - updated_at
+        - owner
+        - created_by
+        - last_validated_at
+        - notes
+        - artificial_ids
+        - personal_owners
+        - secret_hashes
+        - git_duplicated_information
+        - real_values
+      future_metadata_requires_concrete_need_and_explicit_user_approval: true
+    subphase_0_4_closure_criteria:
+      status: APPROVED_BY_USER
+      criteria:
+        intrinsic_rules_approved: true_required_for_closure
+        inventory_schema_coherent_without_internal_contradictions: true_required_for_closure
+        technology_service_infrastructure_dependent_details_explicitly_deferred_not_inferred: true_required_for_closure
+        concrete_secret_manager_selection_required_for_closure: false
+        real_variables_secrets_credentials_or_environment_creation_required_for_closure: false
+        configuration_inventory_file_creation_required_for_closure: false
+        roadmap_current_project_state_synchronized: true_required_for_closure
+        closure_evidence_and_explicit_user_acceptance_required: true
+      decision_itself_closes_0_4: false
+      decision_itself_records_pass: false
+      decision_itself_opens_0_5: false
+  common_scope_decisions_15_22:
+    authorizes_inventory_file_creation: false
+    authorizes_variable_secret_or_credential_changes: false
+    authorizes_secret_manager_selection_or_configuration: false
+    authorizes_access_or_security_changes: false
+    authorizes_environment_creation_or_deployment: false
+    authorizes_txx_activation: false
+    deferred_until_applicable_approved_action:
+      - concrete_managers
+      - operational_urls_or_ids
+      - real_values
+      - physical_staging_production_mechanisms
+      - real_credentials
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
@@ -388,7 +513,7 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  action: define_next_exact_concrete_variables_and_secrets_policy_decision
+  action: review_0_4_closure_evidence_and_explicitly_accept_or_reject_closure
   blocked_until_user: true
 
 prohibited_progression:
