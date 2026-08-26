@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
+active_action: define_exact_environment_specific_non_secret_residence_policy_with_user_approval
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -124,6 +124,11 @@ phase_0_0_4:
       - access_to_secrets_policy
       - configuration_inventory_and_registration_policy
       - inventory_residence_format_and_maintenance_policy
+    next_decision_focus:
+      name: environment_specific_non_secret_residence_policy
+      selection_status: APPROVED_BY_USER
+      selection_scope: decision_focus_only
+      concrete_residence_rules_approved: NONE_YET
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -538,7 +543,8 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  action: define_next_exact_concrete_variables_and_secrets_policy_decision
+  decision_focus: environment_specific_non_secret_residence_policy
+  action: define_exact_environment_specific_non_secret_residence_policy
   blocked_until_user: true
 
 prohibited_progression:
@@ -547,6 +553,7 @@ prohibited_progression:
   - do_not_create_or_change_variables_or_secrets_without_explicit_user_approval
   - do_not_modify_access_without_explicit_user_approval
   - do_not_create_configuration_inventory_file_without_explicit_user_approval
+  - do_not_select_or_configure_environment_specific_non_secret_residence_without_explicit_user_approval
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
   - do_not_create_or_deploy_environments_without_explicit_user_approval_for_the_exact_action
 
