@@ -7,12 +7,13 @@
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — PASS  
-**Active subphase:** none; 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PENDING / NOT STARTED  
-**Active work block:** none  
+**Active subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — EN CURSO  
+**Active work block:** gobernanza de herramientas y TOOL PLAN  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
 **Approved concrete decisions in 0.6:** 20  
-**Active action:** await an explicit user instruction and authorization before starting 0.7  
+**Approved concrete decisions in 0.7:** 0  
+**Active action:** define and submit the intrinsic 0.7 tool-governance and TOOL PLAN decisions for explicit user review and approval; do not close 0.7 or start 0.8 without explicit user acceptance  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -512,16 +513,22 @@ The 20 approved decisions do not authorize:
 - changing the application, environments, variables, secrets, access or deployments;
 - starting 0.7.
 
+## 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — EN CURSO
+
+**Start authorization:** explicitly approved by the user.
+
+No intrinsic 0.7 decision has been approved yet. The current task is to define the complete 0.7 decision set and submit it to the user for explicit review and approval. Starting 0.7 does not construct or activate T01–T11, does not change `.cya/tool-registry.yaml`, and does not authorize 0.8.
+
 ## Next action
 
-No new subphase has been started. Await an explicit user instruction and authorization before starting **0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio**.
+Define and present all intrinsic decisions for **0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio**, with recommendations, for explicit user review and approval. Do not register those decisions as approved, close 0.7 or start 0.8 without explicit user acceptance.
 
 ## Deferred — do not execute without explicit approval
 
 - Creation of `.cya/configuration-inventory.yaml`.
 - Concrete secret/environment/service configuration mechanisms and real configuration values.
 - Stack-specific choices deferred by 0.5, including language/framework/runtime/package manager/formatter/linter/backend/database/architecture/library decisions.
-- 0.7 and every later Phase 0 subphase.
+- 0.8 and every later Phase 0 subphase.
 - T01–T11 and any other technical capability not explicitly approved for execution.
 - Physical staging implementation and environment deployment details until their applicable approved subphase/action.
 
