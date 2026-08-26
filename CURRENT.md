@@ -7,13 +7,13 @@
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PASS  
-**Active subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PASS (closed; no later subphase started)  
-**Active work block:** none — awaiting explicit user authorization to start 0.8  
+**Active subphase:** 0.8 — Construcción y prueba de T01 CYA Browser Lab — EN CURSO  
+**Active work block:** T01 acceptance criteria and technical TOOL PLAN definition  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
 **Approved concrete decisions in 0.6:** 20  
 **Approved concrete decisions in 0.7:** 21  
-**Active action:** await explicit user authorization before starting 0.8; do not start 0.8 automatically  
+**Active action:** define and submit the 0.8 acceptance criteria and T01 technical TOOL PLAN for explicit user approval before any technical construction or test  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -549,19 +549,28 @@ The approved 0.7 decisions did **not** by themselves authorize T01–T11/workflo
 
 **Status:** PASS.  
 **Closure gate:** PASS after evidence review and explicit user acceptance.  
-**Starts 0.8:** no. 0.8 remains PENDING / NOT STARTED until explicit user authorization.
+**Starts 0.8:** no. At the moment 0.7 was closed, 0.8 remained PENDING / NOT STARTED until explicit user authorization.
+
+## 0.8 — Construcción y prueba de T01 CYA Browser Lab — EN CURSO
+
+**Start authorization:** explicitly approved by the user.  
+**T01 lifecycle state:** `PENDING`; construction and validation have not yet been executed.  
+**Current gate:** acceptance criteria and the technical TOOL PLAN must be explicitly approved before technical construction or testing begins.  
+**Technical execution status:** NOT_STARTED.
+
+Starting 0.8 does not by itself select versions, package manager, file layout, workflow inputs, target URL, dependency versions, artifact retention settings or any other implementation detail not already approved.
 
 ## Next action
 
-Await explicit user authorization to start **0.8 — Construcción y prueba de T01 CYA Browser Lab**. Do not start 0.8 automatically.
+Define and submit the exact acceptance criteria and technical TOOL PLAN for T01 CYA Browser Lab for explicit user approval. Do not construct or test T01 before that approval.
 
 ## Deferred — do not execute without explicit approval
 
 - Creation of `.cya/configuration-inventory.yaml`.
 - Concrete secret/environment/service configuration mechanisms and real configuration values.
 - Stack-specific choices deferred by 0.5, including language/framework/runtime/package manager/formatter/linter/backend/database/architecture/library decisions.
-- 0.8 and every later Phase 0 subphase until explicitly started/authorized.
-- T01–T11 and any other technical capability not explicitly approved for execution.
+- 0.9 and every later Phase 0 subphase until explicitly started/authorized.
+- T01–T11 technical construction/activation except within an exact separately approved execution scope.
 - Physical staging implementation and environment deployment details until their applicable approved subphase/action.
 
 ## Living sources
