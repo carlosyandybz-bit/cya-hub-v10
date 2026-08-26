@@ -1,10 +1,48 @@
-version: 1
+version: 2
 project: CYA Hub v10
+
+schema:
+  lifecycle_states:
+    - PENDING
+    - ACTIVE
+    - DEFERRED
+    - RETIRED
+  action_result_states:
+    - NOT_STARTED
+    - IN_PROGRESS
+    - PASS
+    - FAIL
+    - BLOCKED_TOOLING
+    - BLOCKED_USER_ACTION
+    - BLOCKED_COST
+  incompatible_change_requires_explicit_user_decision_and_version_increment: true
+  compatible_change_may_remain_within_current_version: true
+
 policy:
   default_incremental_cost_eur: 0
   require_guide_review_before_action: true
   require_tool_plan_before_significant_action: true
+  pure_read_only_inspection_may_omit_full_tool_plan_unless_applicable_point_requires_it: true
   unregistered_action_behavior: propose_and_obtain_user_approval_before_registration_or_execution
+  one_primary_route_per_action: true
+  supporting_tools_require_explicit_registration_for_action: true
+  primary_route_selection_by_agent_convenience: prohibited
+  primary_failure_behavior: BLOCKED_TOOLING
+  primary_failure_requires_root_cause_identification_under_0_6: true
+  fallback_requires_explicit_user_approval_for_exact_case_and_scope: true
+  one_off_fallback_approval_creates_permanent_fallback: false
+  connected_access_is_not_authorization: true
+  tool_success_equals_pass: false
+  evidence_replaces_user_acceptance: false
+  require_user_approval_before_execution: true
+  technical_execution_requires_explicit_user_authorization: true
+  proposal_or_decision_approval_automatically_authorizes_technical_execution: false
+  tool_plan_approval_automatically_authorizes_execution: false
+  documentary_sync_predeclared_with_decision_may_be_covered_by_decision_acceptance: true
+  material_tool_plan_change_requires_stop_and_user_reapproval: true
+  tool_plan_retroactive_rewrite_to_match_execution: prohibited
+  governance_inconsistency_behavior: stop_affected_use_and_return_to_user
+  governance_inconsistency_resolution_by_inference: prohibited
   legacy_mode: read_only_reference_only
   legacy_consultation_requires_explicit_user_authorization: true
   legacy_consultation_location: user_designated_decision_area
@@ -16,29 +54,104 @@ policy:
   no_assumptions: true
   missing_ambiguous_or_conflicting_authority_behavior: ask_user_before_action
   require_explicit_user_review_and_acceptance: true
-  require_user_approval_before_execution: true
   require_user_approval_before_pass_or_progression: true
   explicit_user_instruction_scope: exact_action_and_scope_only
   pending_user_approval_state: PENDING_USER_APPROVAL
-  connected_access_is_not_authorization: true
   unapproved_tool_workflow_service_or_procedure: prohibited
+  secrets_policy_source: phase_0_0_4
+  root_cause_and_no_unauthorized_patching_policy_source: phase_0_0_6_decision_20
+  patch_or_workaround_requires_explicit_prior_user_acceptance: true
+  user_action_required_only_when_user_intervention_is_actually_required_and_approved_tool_cannot_safely_execute: true
+
+cost_governance:
+  default_incremental_cost_eur: 0
+  paid_action_result_until_approved: BLOCKED_COST
+  free_trial_or_small_spend_automatically_authorized: false
+  before_paid_approval_requires_documentation_of:
+    - free_alternative_limitation
+    - cost
+    - lock_in
+    - impact_of_stopping_payment
+    - exit_strategy
+
+activation_policy:
+  active_transition_requires:
+    - explicit_authorization_to_build_connect_or_activate
+    - access_confirmed
+    - zero_incremental_cost_or_explicitly_approved_spend
+    - invocation_known
+    - limits_documented
+    - dependencies_documented
+    - minimum_successful_test
+    - evidence
+    - guide_and_registry_synchronized
+    - explicit_user_acceptance_of_active_transition
+  no_automatic_state_transition: true
+
+retirement_policy:
+  retired_state: RETIRED
+  conceptual_history_preserved: true
+  replacement_reference_required_when_replacement_exists: true
+  marking_retired_automatically_authorizes_workflow_disable: false
+  marking_retired_automatically_authorizes_access_revocation: false
+  marking_retired_automatically_authorizes_infrastructure_deletion: false
+
+registry_metadata_policy:
+  tool_fields:
+    - id
+    - status
+    - activation
+    - condition_when_not_active
+    - requirements
+    - evidence
+    - cost_eur
+  active_tool_additional_fields:
+    - invocation
+    - limits
+    - dependencies
+    - access_requirements
+  action_routing_fields:
+    - primary
+    - supporting
+    - requirements
+    - evidence
+    - cost_eur
+
+significant_tool_plan_triggers:
+  - repository_write_modify_or_delete
+  - configuration_change
+  - data_change
+  - infrastructure_change
+  - secret_change
+  - access_change
+  - security_change
+  - deployment
+  - tooling_or_workflow_change
+  - destructive_or_irreversible_action
+  - fallback_use
+  - incremental_spend
+  - technical_gate_or_state_change
+  - significant_governance_change
 
 actions:
   documentation_governance:
     primary: google_drive
-    secondary: github_markdown
+    supporting:
+      - github_markdown_when_operational_mirror_is_affected
+    requirements:
+      - explicit_user_approval_for_exact_change
     evidence:
       - updated_living_document
-    requires:
-      - explicit_user_approval_for_exact_change
     cost_eur: 0
 
   repository_read_write:
     primary: github
+    supporting: []
+    requirements:
+      - explicit_user_approval_for_exact_change
+      - temporary_branch_for_versioned_change_when_applicable
     evidence:
       - commit_or_diff_or_pr
-    requires:
-      - explicit_user_approval_for_exact_change
     cost_eur: 0
 
   technical_planning:
@@ -46,176 +159,314 @@ actions:
     supporting:
       - google_drive
       - github
-    requires:
+    requirements:
       - guide_review
-      - tool_plan
+      - tool_plan_when_required
       - explicit_user_approval_before_execution
     evidence:
       - recorded_plan
+    cost_eur: 0
 
   automated_build_lint_test:
     primary: cya_quality_gate
+    supporting: []
     runner: github_actions
-    status: pending
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - explicit_user_approval_for_exact_execution
     evidence:
       - workflow_run
       - job_status
       - relevant_logs
+    cost_eur: 0
 
   browser_real_url_test:
     primary: cya_browser_lab
+    supporting: []
     engine: playwright_chromium
     runner: github_actions
-    status: pending
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - explicit_user_approval_for_exact_execution
     evidence:
       - structured_result
       - console_errors_when_present
-      - screenshot_on_failure
+      - screenshot_on_failure_when_useful
       - trace_when_needed
+    cost_eur: 0
 
   visual_qa:
     primary: cya_visual_qa
+    supporting: []
     engine: playwright
-    status: pending
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - explicit_user_approval_for_exact_execution
     evidence:
       - viewport_result
       - selective_screenshots
+    cost_eur: 0
 
   accessibility_qa:
     primary: cya_accessibility_lab
+    supporting: []
     engine: axe_core_playwright
-    status: pending
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - explicit_user_approval_for_exact_execution
     evidence:
       - findings
-      - severity
+      - severity_when_tool_provides_it
       - rerun_after_fix
+    cost_eur: 0
 
   performance_qa:
     primary: cya_performance_lab
+    supporting: []
     engine: lighthouse_ci
-    status: pending
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - explicit_user_approval_for_exact_execution
     evidence:
       - metrics
       - budget_result_when_defined
+    cost_eur: 0
 
   security_scan:
     primary: cya_security_gate
+    supporting: []
     runner: github_security_and_actions
-    status: pending
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - explicit_user_approval_for_exact_execution
     evidence:
       - findings
-      - severity
+      - severity_when_applicable
       - remediation_status
       - rerun
+    cost_eur: 0
 
   backend_change:
     primary: cya_backend_control
-    status: deferred_until_phase_2_architecture
+    supporting: []
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - approved_phase_2_architecture
+      - explicit_user_approval_for_exact_change
     evidence:
       - versioned_migration_or_reproducible_procedure
       - validation
+    cost_eur: 0
 
   authentication_authorization_change:
     primary: cya_backend_control
     supporting:
       - cya_security_gate
-    status: deferred_until_phase_2_architecture
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - supporting_tool_status_must_be_ACTIVE
+      - approved_phase_2_architecture
+      - explicit_user_approval_for_exact_change
     evidence:
       - authorization_tests
       - security_validation
+    cost_eur: 0
 
   deployment:
     primary: cya_deploy_bridge
+    supporting: []
     target: hostinger
-    status: pending_hosting_capability_verification
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - approved_hosting_capability_and_route
+      - explicit_user_approval_for_exact_deployment
     evidence:
       - deployed_commit_or_release
       - deployment_result
       - post_deploy_smoke
+    cost_eur: 0
 
   runtime_health:
     primary: cya_runtime_health
     supporting:
       - cya_browser_lab
-    status: deferred_until_executable_app
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - executable_application
+      - explicit_user_approval_for_exact_execution
     evidence:
       - health_result
       - smoke_result
+    cost_eur: 0
 
   observability:
     primary: cya_observability_bridge
-    status: deferred_until_executable_app
+    supporting: []
+    requirements:
+      - primary_tool_status_must_be_ACTIVE
+      - executable_application
+      - concrete_approved_observability_need
+      - explicit_user_approval_for_exact_execution
     evidence:
       - traceable_event_error_request_or_metric
+    cost_eur: 0
 
   design_work:
     primary: chatgpt_specification
-    secondary: cya_design_bridge
-    status: design_bridge_deferred_until_phase_3
+    supporting:
+      - cya_design_bridge_when_ACTIVE_and_approved_for_exact_use
+    requirements:
+      - explicit_user_approval_for_exact_design_scope
     evidence:
       - design_reference
-      - implementation_correspondence
+      - implementation_correspondence_when_applicable
+    cost_eur: 0
 
   user_only_operation:
     primary: user_action_required_protocol
+    supporting: []
+    requirements:
+      - operation_really_requires_user_intervention
+      - approved_connected_tool_cannot_safely_execute_under_governance
     evidence:
       - user_confirmation_or_requested_artifact
     rules:
       - exact_steps_required
       - expected_result_required
       - prohibited_changes_required
+      - required_evidence_specified_when_needed
+    cost_eur: 0
 
   destructive_action:
     primary: owning_service_tool
-    requires:
+    supporting: []
+    requirements:
       - explicit_user_approval_for_exact_action
       - explicit_scope
       - pre_verification
       - rollback_when_available
       - evidence
+    cost_eur: 0
 
 capabilities:
   cya_browser_lab:
     id: T01
-    status: pending
-    activation: phase_0
+    status: PENDING
+    activation: phase_0_subphase_0_8
+    condition_when_not_active: construction_and_validation_not_yet_authorized_or_completed
+    requirements:
+      - activation_policy
+    evidence:
+      - minimum_successful_browser_lab_test
+    cost_eur: 0
+
   cya_quality_gate:
     id: T02
-    status: pending
-    activation: phase_0_progressive
+    status: PENDING
+    activation: phase_0_subphase_0_9
+    condition_when_not_active: construction_and_validation_not_yet_authorized_or_completed
+    requirements:
+      - activation_policy
+    evidence:
+      - minimum_successful_quality_gate_test
+    cost_eur: 0
+
   cya_security_gate:
     id: T03
-    status: pending
-    activation: phase_0
+    status: PENDING
+    activation: phase_0_subphase_0_10
+    condition_when_not_active: construction_and_validation_not_yet_authorized_or_completed
+    requirements:
+      - activation_policy
+    evidence:
+      - minimum_successful_security_gate_test
+    cost_eur: 0
+
   cya_deploy_bridge:
     id: T04
-    status: pending
-    activation: phase_0_bootstrap_then_phase_4_completion
+    status: PENDING
+    activation: phase_0_subphase_0_11_bootstrap_then_phase_4_completion
+    condition_when_not_active: hosting_capability_verification_and_authorized_bootstrap_pending
+    requirements:
+      - activation_policy
+    evidence:
+      - approved_deployment_route_test_when_applicable
+    cost_eur: 0
+
   cya_runtime_health:
     id: T05
-    status: deferred
+    status: DEFERRED
     activation: phase_4
+    condition_when_not_active: executable_application_required
+    requirements:
+      - activation_policy
+    evidence:
+      - health_and_smoke_validation_when_activated
+    cost_eur: 0
+
   cya_visual_qa:
     id: T06
-    status: pending_base
-    activation: phase_0_base_phase_3_intensive
+    status: PENDING
+    activation: phase_0_subphase_0_12_base_then_phase_3_intensive_use
+    condition_when_not_active: base_construction_and_validation_not_yet_authorized_or_completed
+    requirements:
+      - activation_policy
+    evidence:
+      - minimum_successful_visual_qa_test
+    cost_eur: 0
+
   cya_performance_lab:
     id: T07
-    status: deferred
+    status: DEFERRED
     activation: phase_4_and_phase_8
+    condition_when_not_active: executable_application_and_performance_baseline_required
+    requirements:
+      - activation_policy
+    evidence:
+      - performance_baseline_validation_when_activated
+    cost_eur: 0
+
   cya_accessibility_lab:
     id: T08
-    status: pending_base
-    activation: phase_0_base_phase_3_rules
+    status: PENDING
+    activation: phase_0_subphase_0_12_base_then_phase_3_rules
+    condition_when_not_active: base_construction_and_validation_not_yet_authorized_or_completed
+    requirements:
+      - activation_policy
+    evidence:
+      - minimum_successful_accessibility_lab_test
+    cost_eur: 0
+
   cya_backend_control:
     id: T09
-    status: deferred
+    status: DEFERRED
     activation: phase_2
+    condition_when_not_active: architecture_decision_required
+    requirements:
+      - activation_policy
+      - approved_phase_2_architecture
+    evidence:
+      - backend_control_validation_when_activated
+    cost_eur: 0
+
   cya_observability_bridge:
     id: T10
-    status: deferred
+    status: DEFERRED
     activation: phase_4_to_8
+    condition_when_not_active: executable_application_and_concrete_observability_need_required
+    requirements:
+      - activation_policy
+    evidence:
+      - observability_validation_when_activated
+    cost_eur: 0
+
   cya_design_bridge:
     id: T11
-    status: deferred
+    status: DEFERRED
     activation: phase_3
+    condition_when_not_active: phase_3_value_and_zero_incremental_cost_assessment_required
+    requirements:
+      - activation_policy
+    evidence:
+      - design_bridge_validation_when_activated
+    cost_eur: 0

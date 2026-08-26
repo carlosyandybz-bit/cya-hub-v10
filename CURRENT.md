@@ -12,8 +12,8 @@
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
 **Approved concrete decisions in 0.6:** 20  
-**Approved concrete decisions in 0.7:** 0  
-**Active action:** define and submit the intrinsic 0.7 tool-governance and TOOL PLAN decisions for explicit user review and approval; do not close 0.7 or start 0.8 without explicit user acceptance  
+**Approved concrete decisions in 0.7:** 21  
+**Active action:** verify the approved 0.7 governance synchronization and present closure evidence; do not close 0.7 or start 0.8 without explicit user acceptance  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -515,13 +515,39 @@ The 20 approved decisions do not authorize:
 
 ## 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — EN CURSO
 
-**Start authorization:** explicitly approved by the user.
+**Start authorization:** explicitly approved by the user.  
+**Approved intrinsic decisions:** 21.  
+**Closure gate:** NOT READY — evidence and explicit user acceptance are still required before PASS.
 
-No intrinsic 0.7 decision has been approved yet. The current task is to define the complete 0.7 decision set and submit it to the user for explicit review and approval. Starting 0.7 does not construct or activate T01–T11, does not change `.cya/tool-registry.yaml`, and does not authorize 0.8.
+The complete canonical text is recorded under **0.7** in the Roadmap. Operational summary:
+
+1. 0.7 governs tools, routing, lifecycle, activation/retirement, the machine-readable registry and TOOL PLAN rules only; it does not build or activate T01–T11 or select stack.
+2. Governance hierarchy is Roadmap → decisions/position; Guide → human routing/evidence policy; `tool-registry.yaml` → machine-readable mirror; `planning-template.md` → TOOL PLAN structural contract; CURRENT/project-state → operational state.
+3. Tool use requires registered exact action, approved route, sufficient access, exact user authorization and permitted cost; connector availability is not authorization.
+4. Each action has one primary route; supporting tools require explicit registration for that use.
+5. Primary failure/no access stops execution as `BLOCKED_TOOLING`; root cause is identified under 0.6 and fallback requires explicit user approval for the exact case/scope.
+6. Unregistered tools/actions/workflows/services/procedures are not used before proposal, approval and applicable registration/execution authorization.
+7. Tool lifecycle vocabulary is exactly `PENDING`, `ACTIVE`, `DEFERRED`, `RETIRED`; blocking tokens are action results, not tool lifecycle states.
+8. Lifecycle semantics and non-active conditions are explicit; no invented lifecycle states.
+9. `ACTIVE` requires authorized build/connect/activation, access, cost compliance, invocation, limits/dependencies, minimum successful test, evidence, Guide+registry sync and explicit user acceptance.
+10. `RETIRED` preserves history; workflow disable, access revocation and infrastructure deletion remain separate actions.
+11. Registry v2 carries required tool/action metadata; ACTIVE tools additionally require invocation, limits, dependencies and access requirements.
+12. `.cya/tool-registry.yaml` schema is `version: 2`; incompatible future changes require explicit decision and version increment.
+13. Full TOOL PLAN is mandatory for significant technical/governance actions; pure READ-ONLY inspection may omit it unless specifically required.
+14. TOOL PLAN includes authorization, primary/supporting/fallback, scope, evidence/validation, rollback, secrets/access, cost, result/evidence IDs and next action; error correction also references 0.6 root-cause rules and any approved patch exception.
+15. Approved TOOL PLAN is an execution contract; material changes stop affected work and return to user approval rather than retroactive rewriting.
+16. Proposal/decision, TOOL PLAN and technical execution are distinct authorizations; predeclared exact documentary synchronization may be covered by the decision acceptance.
+17. Tool execution success does not equal PASS; criteria, evidence and user acceptance remain separate.
+18. Incremental cost defaults to 0 EUR; paid actions remain `BLOCKED_COST` until the approved cost-analysis and user authorization exist.
+19. Access is limited to approved need; secrets remain under 0.4; USER ACTION REQUIRED is used only when user intervention is actually necessary and an approved connected tool cannot safely perform it.
+20. Governance changes require explicit approval and affected-source synchronization; contradictions stop affected use and return to the user rather than being resolved by inference.
+21. 0.7 may be submitted for closure only after Guide/registry/template/state coherence, lifecycle/routing verification, synchronized Roadmap/CURRENT/project-state, evidence presentation and explicit user acceptance. Closing 0.7 does not start 0.8.
+
+The approved 0.7 decisions do **not** authorize T01–T11/workflow construction or activation, stack or architecture selection, application/environment/configuration/secret/access/infrastructure/deployment changes, closing 0.7, or starting 0.8.
 
 ## Next action
 
-Define and present all intrinsic decisions for **0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio**, with recommendations, for explicit user review and approval. Do not register those decisions as approved, close 0.7 or start 0.8 without explicit user acceptance.
+Verify the complete 0.7 governance synchronization, present the evidence package for the 0.7 closure gate, and await explicit user acceptance. Do not mark 0.7 PASS or start 0.8 without that acceptance.
 
 ## Deferred — do not execute without explicit approval
 
