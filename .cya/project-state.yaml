@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.7
-active_action: verify_0_7_governance_sync_and_present_closure_evidence
+active_action: await_explicit_user_authorization_to_start_0_8
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -60,16 +60,16 @@ pre_phase_0:
 
 phase_0_current:
   status: IN_PROGRESS
-  last_completed_subphase: 0.6
-  last_completed_subphase_name: definition_of_done_evidencias_qa_y_protocolo_de_cambios
+  last_completed_subphase: 0.7
+  last_completed_subphase_name: gobernanza_de_herramientas_y_tool_plan_obligatorio
   last_completed_subphase_status: PASS
   active_subphase: 0.7
   active_subphase_name: gobernanza_de_herramientas_y_tool_plan_obligatorio
-  active_subphase_status: IN_PROGRESS
+  active_subphase_status: PASS
   closure_gate_0_4: PASS
   closure_gate_0_5: PASS
   closure_gate_0_6: PASS
-  closure_gate_0_7: NOT_READY
+  closure_gate_0_7: PASS
   next_subphase: 0.8
   next_subphase_status: PENDING_NOT_STARTED
 
@@ -837,7 +837,7 @@ phase_0_0_6:
     result: PASS
 
 phase_0_0_7:
-  status: IN_PROGRESS
+  status: PASS
   start_authorization: APPROVED_BY_USER
   decision_package_authorization: APPROVED_BY_USER
   approved_decision_count: 21
@@ -1060,9 +1060,15 @@ phase_0_0_7:
     agents_md_change_required: false
   tool_registry_v2_sync_authorized_and_executed_in_approved_change: true
   future_tool_registry_changes_require_explicit_user_approval: true
-  closure_gate: NOT_READY
+  closure_gate: PASS
   authorizes_txx_or_workflow_construction: false
   authorizes_starting_0_8: false
+  closeout:
+    criteria_verified: true
+    evidence_presented: true
+    user_explicitly_accepted: true
+    result: PASS
+    starts_0_8: false
 
 legacy_policy_established:
   origin_subphase: 0.2
@@ -1076,15 +1082,14 @@ implementation_decision_source_policy:
   legacy_is_not_implementation_source: true
 
 next_action:
-  type: USER_CLOSURE_GATE
+  type: USER_DECISION_GATE
   phase: 0
-  subphase: 0.7
-  work_block: tool_governance_and_mandatory_tool_plan
-  action: verify_sync_present_closure_evidence_and_await_explicit_user_acceptance
+  subphase: 0.8
+  work_block: cya_browser_lab
+  action: await_explicit_user_authorization_to_start_0_8
   blocked_until_user: true
 
 prohibited_progression:
-  - do_not_close_0_7_without_explicit_user_acceptance
   - do_not_start_0_8_without_explicit_user_approval
   - do_not_patch_or_apply_workaround_for_error_without_explicit_prior_user_acceptance
   - do_not_declare_error_resolved_without_root_cause_correct_fix_and_applicable_validation
