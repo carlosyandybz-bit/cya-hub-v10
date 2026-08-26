@@ -8,8 +8,8 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
-**Active work block:** política de variables y secretos — classification, residence policy and naming convention approved; credential separation by environment selected as next decision; concrete separation rules pending  
-**Active action:** define the exact sensitive-credential separation policy by environment with user approval without inferring isolation rules, exceptions, credential reuse, managers, values or operational procedures  
+**Active work block:** política de variables y secretos — classification, residence policy, naming convention and sensitive-credential separation by environment approved; remaining concrete policy decisions pending  
+**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific managers, values, concrete environment mappings or operational procedures  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -101,17 +101,27 @@ The user explicitly approved the complete naming convention for variables and se
 
 This naming convention does not create variables, select managers, define values or authorize creating or changing variables or secrets.
 
-### 0.4 — Credential separation selected as next decision
+### 0.4 — Approved sensitive-credential separation policy
 
-The user explicitly approved that the next decision to work on is the **separation of sensitive credentials by environment**. This approval selects only the next decision focus. It does not approve any concrete isolation rule between `VALIDATION`, `STAGING` and `PRODUCTION`, any exception for external services, any credential reuse, any manager, value or operational procedure.
+The user explicitly approved the complete separation policy for sensitive credentials by environment:
 
-Opening 0.4 and approving these policies or decision focus do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
+- `PRODUCTION` credentials are exclusive to `PRODUCTION` and may never be used in `VALIDATION` or `STAGING`.
+- `VALIDATION` and `STAGING` use their own separate credentials when the service permits independent credentials.
+- No environment may read, receive or reuse another environment's credentials for convenience.
+- If an external service technically prevents independent credentials, no automatic exception is created.
+- Any possible exception must be analyzed and explicitly approved for that specific service before the credential is used.
+- An exception between `VALIDATION` and `STAGING` may be proposed only when a real service limitation exists.
+- Sharing a `PRODUCTION` credential with any non-production environment is not permitted by this policy; if a future integration makes separation impossible, the decision stops and the concrete case is presented to the user.
+
+This separation policy does not select secret managers, create credentials, define credential values or configure any service.
+
+Opening 0.4 and approving these policies do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
 
 Existing universal rules already recorded in the Guía Maestra and repository governance remain in force unless the user explicitly approves a change.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact sensitive-credential separation policy by environment. No isolation rule, exception, credential-reuse rule, manager, value or operational procedure may be selected automatically.
+**PENDING USER DECISION:** define the next exact concrete decision for the variables-and-secrets policy. No specific storage mechanism, secret manager, value, concrete environment mapping or operational procedure may be selected automatically.
 
 Do **not** close 0.4, start 0.5, create/change variables or secrets, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
