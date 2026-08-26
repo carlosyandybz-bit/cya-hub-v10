@@ -8,8 +8,8 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
-**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment, secret exposure/documentation policy, secret lifecycle policy, access-to-secrets policy and configuration inventory/registration policy approved; remaining concrete policy decisions pending  
-**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific managers, values, physical inventory location, inventory format/tool, maintenance ownership, concrete environment mappings, access changes or operational procedures  
+**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment, secret exposure/documentation policy, secret lifecycle policy, access-to-secrets policy and configuration inventory/registration policy approved; inventory residence, format and maintenance policy selected as next decision; concrete rules pending  
+**Active action:** define the exact inventory residence, format and maintenance policy with user approval without inferring canonical/physical location, concrete format, file/tool, update/maintenance procedure, maintenance owner or inventory creation  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -173,15 +173,19 @@ The user explicitly approved the complete configuration inventory and registrati
 - This policy does not yet select the inventory's physical location, concrete format, file, tool or maintenance owner; those decisions remain separate.
 - Approving this policy does not create variables, secrets, secret managers, physical inventories or modify existing configuration.
 
-Opening 0.4 and approving these policies do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
+### 0.4 — Inventory residence, format and maintenance policy selected as next decision
+
+The user explicitly approved that the next decision to work on is the **residence, format and maintenance of the configuration inventory**. This approval selects only the next decision focus. It does not approve any canonical or physical inventory location, concrete format, file or tool, update/maintenance procedure, maintenance owner, or creation of the inventory.
+
+Opening 0.4 and approving these policies or decision focus do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, creating a physical inventory, or executing any Txx capability.
 
 Existing universal rules already recorded in the Guía Maestra and repository governance remain in force unless the user explicitly approves a change.
 
 ## Next action
 
-**PENDING USER DECISION:** define the next exact concrete decision for the variables-and-secrets policy. No specific storage mechanism, secret manager, physical inventory location, inventory format/tool, maintenance owner, value, concrete environment mapping, access change or operational procedure may be selected automatically.
+**PENDING USER DECISION:** define the exact residence, format and maintenance policy for the configuration inventory. No canonical/physical location, concrete format, file/tool, update/maintenance procedure, maintenance owner or inventory creation may be selected automatically.
 
-Do **not** close 0.4, start 0.5, create/change variables or secrets, modify access, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
+Do **not** close 0.4, start 0.5, create/change variables or secrets, modify access, create a physical inventory, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
 ## Deferred — do not execute without explicit approval
 
