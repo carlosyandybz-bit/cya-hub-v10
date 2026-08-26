@@ -50,6 +50,14 @@ policy:
   legacy_direct_reuse_authorized: false
   legacy_implementation_source: prohibited
   implementation_decision_source: cya_hub_v10_decision_documents
+  implementation_creation_primary_agent: codex_when_available_with_included_usage
+  implementation_creation_chatgpt_fallback: prohibited_without_explicit_user_approval_for_exact_case_and_scope
+  codex_scope: implementation_creation_and_modification_only
+  codex_validation_operations: prohibited
+  codex_included_plan_usage_only: true
+  codex_paid_or_flexible_credit_use: prohibited_without_explicit_user_approval
+  codex_credit_purchase_or_auto_recharge: prohibited_without_explicit_user_approval
+  codex_included_usage_exhausted_result: BLOCKED_COST
   evidence_required_for_pass: true
   no_assumptions: true
   missing_ambiguous_or_conflicting_authority_behavior: ask_user_before_action
@@ -67,6 +75,15 @@ cost_governance:
   default_incremental_cost_eur: 0
   paid_action_result_until_approved: BLOCKED_COST
   free_trial_or_small_spend_automatically_authorized: false
+  codex:
+    included_plan_usage_allowed: true
+    purchased_or_flexible_credits_authorized_by_default: false
+    paid_overage_authorized_by_default: false
+    credit_purchase_authorized_by_default: false
+    auto_recharge_authorized_by_default: false
+    included_usage_exhausted_behavior: BLOCKED_COST
+    prompt_is_billing_control: false
+    account_level_credit_controls_required_for_actual_spend_protection: true
   before_paid_approval_requires_documentation_of:
     - free_alternative_limitation
     - cost
@@ -165,6 +182,44 @@ actions:
       - explicit_user_approval_before_execution
     evidence:
       - recorded_plan
+    cost_eur: 0
+
+  implementation_creation:
+    primary: codex
+    supporting:
+      - github
+    scope:
+      - create_application_implementation
+      - modify_application_implementation
+    excluded_scope:
+      - automated_build_lint_test
+      - browser_real_url_test
+      - visual_qa
+      - accessibility_qa
+      - performance_qa
+      - security_scan
+      - runtime_health
+      - observability
+      - deployment
+      - audit
+      - acceptance_gate
+    requirements:
+      - codex_available
+      - included_plan_usage_available
+      - approved_cya_hub_v10_decision_documents_only
+      - explicit_user_approval_for_exact_implementation_scope
+      - temporary_branch_for_versioned_change_when_applicable
+      - no_legacy_as_implementation_source
+      - no_paid_or_flexible_credit_consumption_without_explicit_user_approval
+      - no_tests_audits_or_validation_operations_in_codex
+    failure_behavior:
+      codex_unavailable: BLOCKED_TOOLING
+      included_usage_exhausted_or_paid_credits_required: BLOCKED_COST
+      implementation_fallback_to_chatgpt: requires_explicit_user_approval_for_exact_case_and_scope
+    evidence:
+      - changed_files
+      - diff_or_commit_or_pr
+      - implementation_summary
     cost_eur: 0
 
   automated_build_lint_test:
