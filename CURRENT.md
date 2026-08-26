@@ -6,14 +6,14 @@
 
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
-**Last completed subphase:** 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — PASS  
-**Active subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — EN CURSO  
-**Active work block:** gobernanza de herramientas y TOOL PLAN  
+**Last completed subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PASS  
+**Active subphase:** none — 0.8 remains PENDING / NOT STARTED  
+**Active work block:** none — awaiting explicit user authorization to start 0.8  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
 **Approved concrete decisions in 0.6:** 20  
 **Approved concrete decisions in 0.7:** 21  
-**Active action:** verify the approved 0.7 governance synchronization and present closure evidence; do not close 0.7 or start 0.8 without explicit user acceptance  
+**Active action:** await explicit user authorization before starting 0.8; do not start 0.8 automatically  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -513,11 +513,11 @@ The 20 approved decisions do not authorize:
 - changing the application, environments, variables, secrets, access or deployments;
 - starting 0.7.
 
-## 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — EN CURSO
+## 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PASS
 
 **Start authorization:** explicitly approved by the user.  
 **Approved intrinsic decisions:** 21.  
-**Closure gate:** NOT READY — evidence and explicit user acceptance are still required before PASS.
+**Closure gate:** PASS after closure-evidence review and explicit user acceptance.
 
 The complete canonical text is recorded under **0.7** in the Roadmap. Operational summary:
 
@@ -543,18 +543,24 @@ The complete canonical text is recorded under **0.7** in the Roadmap. Operationa
 20. Governance changes require explicit approval and affected-source synchronization; contradictions stop affected use and return to the user rather than being resolved by inference.
 21. 0.7 may be submitted for closure only after Guide/registry/template/state coherence, lifecycle/routing verification, synchronized Roadmap/CURRENT/project-state, evidence presentation and explicit user acceptance. Closing 0.7 does not start 0.8.
 
-The approved 0.7 decisions do **not** authorize T01–T11/workflow construction or activation, stack or architecture selection, application/environment/configuration/secret/access/infrastructure/deployment changes, closing 0.7, or starting 0.8.
+The approved 0.7 decisions did **not** by themselves authorize T01–T11/workflow construction or activation, stack or architecture selection, application/environment/configuration/secret/access/infrastructure/deployment changes, closing 0.7, or starting 0.8. The user subsequently reviewed the closure evidence and explicitly accepted closing 0.7 only.
+
+## 0.7 — Closeout
+
+**Status:** PASS.  
+**Closure gate:** PASS after evidence review and explicit user acceptance.  
+**Starts 0.8:** no. 0.8 remains PENDING / NOT STARTED until explicit user authorization.
 
 ## Next action
 
-Verify the complete 0.7 governance synchronization, present the evidence package for the 0.7 closure gate, and await explicit user acceptance. Do not mark 0.7 PASS or start 0.8 without that acceptance.
+Await explicit user authorization to start **0.8 — Construcción y prueba de T01 CYA Browser Lab**. Do not start 0.8 automatically.
 
 ## Deferred — do not execute without explicit approval
 
 - Creation of `.cya/configuration-inventory.yaml`.
 - Concrete secret/environment/service configuration mechanisms and real configuration values.
 - Stack-specific choices deferred by 0.5, including language/framework/runtime/package manager/formatter/linter/backend/database/architecture/library decisions.
-- 0.8 and every later Phase 0 subphase.
+- 0.8 and every later Phase 0 subphase until explicitly started/authorized.
 - T01–T11 and any other technical capability not explicitly approved for execution.
 - Physical staging implementation and environment deployment details until their applicable approved subphase/action.
 
