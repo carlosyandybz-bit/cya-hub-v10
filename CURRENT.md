@@ -8,8 +8,8 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
-**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment, secret exposure/documentation policy, secret lifecycle policy and access-to-secrets policy approved; configuration inventory and registration policy selected as next decision; concrete inventory rules pending  
-**Active action:** define the exact configuration inventory and registration policy with user approval without inferring required metadata, storage location, format, structure, maintenance process, ownership or any variable/secret values  
+**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment, secret exposure/documentation policy, secret lifecycle policy, access-to-secrets policy and configuration inventory/registration policy approved; remaining concrete policy decisions pending  
+**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific managers, values, physical inventory location, inventory format/tool, maintenance ownership, concrete environment mappings, access changes or operational procedures  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -158,17 +158,28 @@ The user explicitly approved the complete access-to-secrets policy:
 - Granting, expanding, reducing or revoking access to secrets is a separate action; approving this policy executes none of those actions.
 - This policy does not select secret managers, concrete users, concrete roles, provider permissions or technology-specific procedures.
 
-### 0.4 — Configuration inventory and registration policy selected as next decision
+### 0.4 — Approved configuration inventory and registration policy
 
-The user explicitly approved that the next decision to work on is the **configuration inventory and registration policy**. This approval selects only the next decision focus. It does not approve any concrete inventory metadata, storage location, document or file format, structure, update/maintenance procedure, ownership/responsibility model, or any variable/secret value.
+The user explicitly approved the complete configuration inventory and registration policy:
 
-Opening 0.4 and approving these policies or decision focus do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
+- Every variable or secret that forms part of CYA Hub v10 must have an entry in the configuration inventory once its existence has been approved.
+- Each entry identifies, without ever including the real value: name, classification, purpose, related service/system, applicable environments and state.
+- For `SECRET / SENSITIVE` items, the inventory may additionally record a reference to its authorized residence or secret manager once that residence/manager has been approved, but never the value, value fragments or information that could reconstruct it.
+- If approved expiration, rotation or access rules exist for an item, the inventory may record their existence or documentary reference without duplicating sensitive values.
+- The same logical name is not registered as different variables solely because it exists in multiple environments; the inventory must show clearly which environments it applies to and its state in each.
+- When configuration is created, renamed, reclassified, added to or removed from an environment, changes state or changes approved residence, the corresponding inventory update must be proposed. This rule does not automatically authorize the technical or documentary change.
+- Retired configuration does not silently disappear from history; traceability that it existed and its final state must be preservable without retaining values.
+- The inventory never replaces the actual secret manager and does not function as a credential store.
+- This policy does not yet select the inventory's physical location, concrete format, file, tool or maintenance owner; those decisions remain separate.
+- Approving this policy does not create variables, secrets, secret managers, physical inventories or modify existing configuration.
+
+Opening 0.4 and approving these policies do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, or executing any Txx capability.
 
 Existing universal rules already recorded in the Guía Maestra and repository governance remain in force unless the user explicitly approves a change.
 
 ## Next action
 
-**PENDING USER DECISION:** define the exact configuration inventory and registration policy. No required metadata set, storage location, format, structure, maintenance/update procedure, ownership model or variable/secret value may be selected automatically.
+**PENDING USER DECISION:** define the next exact concrete decision for the variables-and-secrets policy. No specific storage mechanism, secret manager, physical inventory location, inventory format/tool, maintenance owner, value, concrete environment mapping, access change or operational procedure may be selected automatically.
 
 Do **not** close 0.4, start 0.5, create/change variables or secrets, modify access, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 
