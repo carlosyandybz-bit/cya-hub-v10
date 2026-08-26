@@ -20,7 +20,7 @@
 
 - Every approved decision is documented under the exact phase, subphase, audit or Roadmap point that owns it.
 - `PUNTO ACTUAL DEL PROYECTO` is a position/next-action summary, not an accumulated decision archive.
-- A transversal decision has one canonical owner plus cross-references where needed.
+- A transversal decision has one canonical owning point plus cross-references where needed.
 - An accepted decision must not remain only in chat or in a generic summary.
 - `CURRENT.md` and `.cya/project-state.yaml` mirror operational state; they do not replace the Roadmap's canonical phase/subphase placement.
 
