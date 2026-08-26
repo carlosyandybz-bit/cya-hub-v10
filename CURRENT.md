@@ -8,13 +8,13 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PASS  
 **Active subphase:** 0.8 — Construcción y prueba de T01 CYA Browser Lab — EN CURSO  
-**Active work block:** T01 acceptance criteria and technical TOOL PLAN definition  
+**Active work block:** T01 representative mobile/desktop context definition and execution-authorization gate  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
 **Approved concrete decisions in 0.6:** 20  
 **Approved concrete decisions in 0.7:** 21  
-**Approved concrete decisions in 0.8:** 1  
-**Active action:** incorporate approved 0.8 Decision 1 into the complete T01 acceptance-criteria package and submit that package plus the technical TOOL PLAN for explicit user approval before any technical construction or test  
+**Approved concrete decisions in 0.8:** 16  
+**Active action:** obtain explicit user approval for the exact representative mobile and desktop profiles/dimensions and explicit authorization to execute T01 construction/testing before any technical execution  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -537,7 +537,7 @@ The complete canonical text is recorded under **0.7** in the Roadmap. Operationa
 13. Full TOOL PLAN is mandatory for significant technical/governance actions; pure READ-ONLY inspection may omit it unless specifically required.
 14. TOOL PLAN includes authorization, primary/supporting/fallback, scope, evidence/validation, rollback, secrets/access, cost, result/evidence IDs and next action; error correction also references 0.6 root-cause rules and any approved patch exception.
 15. Approved TOOL PLAN is an execution contract; material changes stop affected work and return to user approval rather than retroactive rewriting.
-16. Proposal/decision, TOOL PLAN and technical execution are distinct authorizations; predeclared exact documentary synchronization may be covered by the decision acceptance.
+16. Proposal/decision, TOOL PLAN and technical execution are distinct authorizations; predeclared exact documentary synchronization may be covered by decision acceptance.
 17. Tool execution success does not equal PASS; criteria, evidence and user acceptance remain separate.
 18. Incremental cost defaults to 0 EUR; paid actions remain `BLOCKED_COST` until the approved cost-analysis and user authorization exist.
 19. Access is limited to approved need; secrets remain under 0.4; USER ACTION REQUIRED is used only when user intervention is actually necessary and an approved connected tool cannot safely perform it.
@@ -555,25 +555,47 @@ The approved 0.7 decisions did **not** by themselves authorize T01–T11/workflo
 ## 0.8 — Construcción y prueba de T01 CYA Browser Lab — EN CURSO
 
 **Start authorization:** explicitly approved by the user.  
-**Approved intrinsic decisions:** 1.  
+**Approved intrinsic decisions:** 16.  
 **T01 lifecycle state:** `PENDING`; construction and validation have not yet been executed.  
-**Current gate:** the complete acceptance-criteria package, including approved Decision 1, and the technical TOOL PLAN must be explicitly approved before technical construction or testing begins.  
+**Technical TOOL PLAN:** APPROVED_BY_USER, but its approval does not authorize execution under 0.7.  
+**Current gate:** exact representative mobile and desktop profiles/dimensions must be explicitly approved, and technical construction/testing must then receive explicit execution authorization.  
 **Technical execution status:** NOT_STARTED.
 
-### Decision 1 — Visible/interface errors and possible UI/UX improvements
+### Approved operational summary — Decisions 1–16
 
-- During navigation, T01 must detect and report visible/interface errors and possible observable UI/UX improvements.
-- Errors may include broken navigation/content, elements not loading, clipped content, overlaps, apparently unusable controls, defective visual states, or other observable problems.
-- Possible improvements may include clarity, visual hierarchy, legibility, spacing, alignment, consistency, user feedback, control placement, or other reasonably improvable interface aspects.
-- Each finding must clearly distinguish `ERROR` from `POSSIBLE_IMPROVEMENT`, state where it was observed, what occurred or could improve, and include visual evidence when useful.
-- T01 performs this as part of navigation and observable interface review. T06 CYA Visual QA remains specialized for systematic visual QA, viewport validation and visual regression.
-- This decision does not activate T01 or T06, build workflows, approve the full acceptance-criteria package, or approve the technical TOOL PLAN.
+1. **Visible/interface errors and possible UI/UX improvements:** T01 distinguishes `ERROR` from `POSSIBLE_IMPROVEMENT`, records observation location/problem or improvement, and adds visual evidence when useful; T06 remains specialized for systematic visual QA, viewport validation and visual regression.
+2. **Composition:** Playwright + Chromium captures navigation/technical/browser evidence; ChatGPT reviews visual evidence for subjective UI/UX improvement suggestions; no external paid AI API is added.
+3. **T01-only technical versions:** Node.js 24.20.0 LTS, npm 11.19.0, Playwright 1.62.1 + bundled Chromium, `ubuntu-24.04`; approved Actions are pinned to the exact SHAs recorded canonically in Roadmap 0.8. These choices do not select the application stack.
+4. **Isolation:** T01 is technically isolated from the future application stack; npm for T01 does not force npm for the app; no app framework/backend/database/architecture is selected.
+5. **Planned versioned structure:** `tools/browser-lab/` plus `.github/workflows/t01-browser-lab.yml`; approval defines location but does not itself authorize file creation.
+6. **Invocation:** initial version uses manual `workflow_dispatch`; GitHub Issues interface remains deferred.
+7. **Input:** only public HTTPS `target_url`; no credentials, cookies, tokens, auth headers or secrets.
+8. **URL safety:** reject embedded credentials and localhost/loopback/link-local/private/reserved destinations; redirects may not bypass the restriction; no authenticated/private-network targets.
+9. **Mobile-first representative smoke + desktop:** T01 must cover one representative mobile context as priority and one representative desktop context. Exact profiles/dimensions remain pending user approval. T06 retains the exhaustive responsive/tablet/multi-viewport/regression role. T01 remains Chromium and does not by itself validate Safari/WebKit compatibility for iPhone.
+10. **Technical errors:** capture `console.error`, uncaught page exceptions, failed requests and problematic HTTP responses, distinguishing main navigation from resource/subrequest failures.
+11. **Objective UI anomaly heuristics:** detect reasonable signs of horizontal overflow, apparently clipped content, elements outside relevant bounds and apparently unusable/covered/inaccessible controls without overstating what a heuristic proves.
+12. **UI/UX improvement review:** inspect visual evidence for clarity, hierarchy, legibility, spacing, alignment, consistency, feedback and control placement; `POSSIBLE_IMPROVEMENT` does not automatically fail a run.
+13. **Evidence:** structured JSON + GitHub Step Summary + representative screenshots for executed contexts; trace only when diagnostically useful; video off; artifact retention 7 days; generated artifacts are not canonical versioned sources.
+14. **Validation:** deterministic self-test must intentionally produce a console error, failed request and UI anomaly; real HTTPS validation target is `https://example.com`, solely for initial validation.
+15. **Activation prerequisites:** reproducible install, successful self-test, successful real HTTPS run, evidence generation/review, documented invocation/limits/dependencies/access, affected governance synchronization, then explicit user acceptance before `PENDING → ACTIVE`.
+16. **First-version limits:** no auth, secrets, sessions, automatic multi-page crawling, Issues commands, exhaustive responsive matrix, systematic tablet, visual regression, accessibility, performance, deployment or external AI API; any expansion requires new explicit approval.
 
-Starting 0.8 does not by itself select versions, package manager, file layout, workflow inputs, target URL, dependency versions, artifact retention settings or any other implementation detail not already approved.
+### Transversal product requirement referenced from Roadmap 1.8
+
+The canonical owner is **Roadmap 1.8 — Reconciliación transversal y cierre funcional**. CYA Hub v10 is mobile-first in practical use: smartphones iPhone/Android are the primary functional context, while PC must remain complete and correct rather than degraded. This anticipated decision does **not** start Phase 1 or select PWA/native architecture, breakpoints, device profiles, Safari/WebKit coverage or a concrete compatibility matrix.
+
+### Approved TOOL PLAN status
+
+- The technical TOOL PLAN for T01 Decisions 1–16 is approved.
+- Approval of the TOOL PLAN is not technical execution authorization.
+- No T01 workflow, package, lockfile, runner or self-test has been created under this authorization.
+- No T01 test has been executed.
+- T01 remains `PENDING`.
+- Before technical execution, exact representative mobile and desktop profiles/dimensions must be approved and the user must explicitly authorize execution.
 
 ## Next action
 
-Submit the complete T01 acceptance-criteria package, incorporating approved 0.8 Decision 1, plus the technical TOOL PLAN for explicit user approval. Do not construct or test T01 before that approval.
+Submit the exact representative mobile profile/dimensions and desktop profile/dimensions for user approval. After those are approved, obtain explicit authorization to execute T01 construction/testing. Do not construct or test T01 before both gates are satisfied.
 
 ## Deferred — do not execute without explicit approval
 
