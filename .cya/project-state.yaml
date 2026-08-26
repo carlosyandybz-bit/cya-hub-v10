@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.7
-active_action: present_complete_0_7_tool_governance_decision_set_for_explicit_user_review_and_approval
+active_action: verify_0_7_governance_sync_and_present_closure_evidence
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -839,10 +839,228 @@ phase_0_0_6:
 phase_0_0_7:
   status: IN_PROGRESS
   start_authorization: APPROVED_BY_USER
-  approved_decision_count: 0
-  approved_decisions: {}
+  decision_package_authorization: APPROVED_BY_USER
+  approved_decision_count: 21
+  approved_decisions:
+    scope_boundary:
+      status: APPROVED_BY_USER
+      tool_governance_routing_lifecycle_registry_and_tool_plan_only: true
+      constructs_connects_or_activates_txx: false
+      selects_stack: false
+      executes_pending_tools: false
+    governance_source_hierarchy:
+      status: APPROVED_BY_USER
+      roadmap: decisions_and_project_position
+      guide: human_tool_routing_and_evidence_policy
+      tool_registry: machine_readable_tool_and_action_mirror
+      planning_template: tool_plan_structural_contract
+      current_and_project_state: operational_state
+      silent_source_replacement: prohibited
+    tool_use_conditions:
+      status: APPROVED_BY_USER
+      exact_action_registered: required
+      approved_route: required
+      sufficient_access: required
+      exact_user_authorization: required
+      permitted_cost: required
+      connector_availability_is_authorization: false
+    one_primary_route_per_action:
+      status: APPROVED_BY_USER
+      one_primary_required: true
+      supporting_requires_explicit_registration: true
+      agent_convenience_primary_switching: prohibited
+    fallback_and_primary_failure:
+      status: APPROVED_BY_USER
+      primary_failure_or_insufficient_access_result: BLOCKED_TOOLING
+      root_cause_identification_under_0_6: required
+      silent_tool_switching: prohibited
+      fallback_requires_explicit_user_approval_for_exact_case_and_scope: true
+      one_off_fallback_becomes_permanent: false
+    unregistered_action_or_tool:
+      status: APPROVED_BY_USER
+      use_before_registration_and_approval: prohibited
+      proposal_requires:
+        - purpose
+        - governance_placement
+        - scope
+        - cost
+        - risks
+        - evidence
+        - registry_proposal
+      registration_and_execution_have_separate_applicable_approvals: true
+    tool_lifecycle_vocabulary:
+      status: APPROVED_BY_USER
+      allowed_values:
+        - PENDING
+        - ACTIVE
+        - DEFERRED
+        - RETIRED
+      action_results_not_tool_lifecycle_states:
+        - BLOCKED_TOOLING
+        - BLOCKED_COST
+        - BLOCKED_USER_ACTION
+    tool_lifecycle_semantics:
+      status: APPROVED_BY_USER
+      PENDING: planned_not_operational
+      ACTIVE: available_validated_and_authorized_for_registered_uses
+      DEFERRED: deliberately_postponed_until_approved_trigger_or_phase
+      RETIRED: no_longer_used_traceability_preserved
+      reason_or_condition_stored_separately: true
+      invented_lifecycle_states: prohibited
+    tool_activation_criteria:
+      status: APPROVED_BY_USER
+      requires:
+        - explicit_build_connect_or_activate_authorization
+        - confirmed_access
+        - zero_cost_or_approved_spend
+        - known_invocation
+        - documented_limits
+        - documented_dependencies
+        - minimum_successful_test
+        - evidence
+        - guide_and_registry_sync
+        - explicit_user_acceptance_for_ACTIVE_transition
+    tool_retirement_and_replacement:
+      status: APPROVED_BY_USER
+      retired_state: RETIRED
+      conceptual_history_preserved: true
+      replacement_referenced_when_exists: true
+      workflow_disable_is_separate_action: true
+      access_revocation_is_separate_action: true
+      infrastructure_deletion_is_separate_action: true
+    registry_minimum_metadata:
+      status: APPROVED_BY_USER
+      required_tool_metadata:
+        - id
+        - status
+        - activation
+        - condition_when_not_active
+        - requirements
+        - evidence
+        - cost_eur
+      required_action_routing_metadata:
+        - primary
+        - supporting
+        - requirements
+        - evidence
+        - cost_eur
+      active_tool_additional_metadata:
+        - invocation
+        - limits
+        - dependencies
+        - access_requirements
+    tool_registry_schema_version:
+      status: APPROVED_BY_USER
+      version: 2
+      incompatible_future_change_requires_explicit_decision_and_version_increment: true
+      compatible_change_may_stay_on_current_version: true
+    full_tool_plan_trigger:
+      status: APPROVED_BY_USER
+      required_for_significant_technical_or_governance_action: true
+      pure_read_only_may_omit_unless_point_requires: true
+    tool_plan_required_content:
+      status: APPROVED_BY_USER
+      includes:
+        - phase_and_subphase
+        - action
+        - acceptance_criterion_or_gate
+        - guide_review
+        - action_registration
+        - applicable_authorization
+        - primary_supporting_and_fallback
+        - access
+        - allowed_and_forbidden_scope
+        - legacy_interaction
+        - inputs_outputs_and_destination
+        - evidence
+        - validation_tool_or_method
+        - pass_condition
+        - destructive_effects
+        - rollback
+        - secrets
+        - cost
+        - result
+        - evidence_ids
+        - next_action
+      error_correction_additionally_references_0_6_root_cause_and_approved_patch_exception: true
+    tool_plan_as_execution_contract:
+      status: APPROVED_BY_USER
+      retrospective_rewrite: prohibited
+      material_change_requires_stop_and_user_reapproval: true
+      material_change_dimensions:
+        - tool
+        - scope
+        - cost
+        - evidence
+        - rollback
+        - environment
+        - permissions
+        - gate
+    authorization_separation:
+      status: APPROVED_BY_USER
+      proposal_or_decision_approval_auto_executes_technical_action: false
+      tool_plan_approval_auto_executes: false
+      execution_requires_explicit_instruction: true
+      predeclared_exact_documentary_sync_may_be_covered_by_decision_acceptance: true
+    tool_success_not_pass:
+      status: APPROVED_BY_USER
+      successful_call_workflow_or_command_only_proves_execution: true
+      acceptance_criterion_and_evidence_still_required: true
+      user_acceptance_still_required: true
+    cost_governance:
+      status: APPROVED_BY_USER
+      default_incremental_cost_eur: 0
+      paid_action_state_until_approved: BLOCKED_COST
+      free_trial_or_small_spend_auto_authorized: false
+      paid_approval_requires:
+        - free_alternative_limitation
+        - cost
+        - lock_in
+        - impact_of_stopping_payment
+        - exit_strategy
+    access_permissions_secrets_and_user_action_required:
+      status: APPROVED_BY_USER
+      access_limited_to_approved_need: true
+      broad_connection_permissions_expand_scope: false
+      secrets_policy_source: phase_0_0_4
+      user_action_required_only_when_user_intervention_actually_required_and_approved_tool_cannot_safely_execute: true
+    governance_changes_and_inconsistencies:
+      status: APPROVED_BY_USER
+      explicit_approval_and_affected_source_sync_required_for:
+        - add_or_retire_tool
+        - routing_change
+        - primary_supporting_or_fallback_change
+        - lifecycle_state_change
+        - cost_change
+        - evidence_change
+        - tool_plan_field_change
+        - registry_semantics_change
+      contradiction_behavior: stop_affected_use_and_return_to_user
+      resolve_by_inference: prohibited
+    subphase_0_7_closure_criteria:
+      status: APPROVED_BY_USER
+      criteria:
+        all_intrinsic_rules_approved: true_required_for_closure
+        guide_registry_template_and_state_coherent: true_required_for_closure
+        registry_reflects_approved_schema_and_states: true_required_for_closure
+        t01_to_t11_construction_required_for_closure: false
+        t01_to_t11_remain_pending_or_deferred_as_applicable: true_required_for_closure
+        no_routing_inconsistency: true_required_for_closure
+        roadmap_current_project_state_synchronized: true_required_for_closure
+        evidence_presented_to_user: true_required_for_closure
+        explicit_user_acceptance_required_for_pass: true
+        closeout_automatically_starts_0_8: false
+  governance_sync:
+    roadmap_21_decisions_registered: true
+    guide_updated_for_0_7: true
+    tool_registry_v2_sync_authorized: true
+    planning_template_sync_authorized: true
+    current_sync_authorized: true
+    project_state_sync_authorized: true
+    agents_md_change_required: false
+  tool_registry_v2_sync_authorized_and_executed_in_approved_change: true
+  future_tool_registry_changes_require_explicit_user_approval: true
   closure_gate: NOT_READY
-  authorizes_tool_registry_changes: false
   authorizes_txx_or_workflow_construction: false
   authorizes_starting_0_8: false
 
@@ -858,11 +1076,11 @@ implementation_decision_source_policy:
   legacy_is_not_implementation_source: true
 
 next_action:
-  type: USER_DECISION_GATE
+  type: USER_CLOSURE_GATE
   phase: 0
   subphase: 0.7
   work_block: tool_governance_and_mandatory_tool_plan
-  action: review_proposed_0_7_decisions_and_explicitly_approve_modify_or_reject
+  action: verify_sync_present_closure_evidence_and_await_explicit_user_acceptance
   blocked_until_user: true
 
 prohibited_progression:
