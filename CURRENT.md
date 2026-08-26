@@ -6,13 +6,13 @@
 
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
-**Last completed subphase:** 0.5 — Convenciones técnicas mínimas y baseline de calidad — PASS  
-**Active subphase:** 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — EN CURSO  
-**Active work block:** Definition of Done, evidencias, QA y protocolo de cambios  
+**Last completed subphase:** 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — PASS  
+**Active subphase:** none; 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PENDING / NOT STARTED  
+**Active work block:** none  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
 **Approved concrete decisions in 0.6:** 20  
-**Active action:** verify the approved 0.6 closure criteria and present evidence to the user; do not close 0.6 or start 0.7 without explicit user acceptance  
+**Active action:** await an explicit user instruction and authorization before starting 0.7  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -473,7 +473,7 @@ The 13 approved decisions remain governing policy and did not themselves authori
 - creating or changing environments, variables, secrets, access or deployments;
 - starting 0.6.
 
-## 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — EN CURSO
+## 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — PASS
 
 The complete canonical text of the 20 approved decisions is recorded directly under **0.6** in the Roadmap. Operational summary:
 
@@ -498,18 +498,23 @@ The complete canonical text of the 20 approved decisions is recorded directly un
 19. 0.6 closeout requires all intrinsic 0.6 rules approved, no intrinsic decision pending, stack/tool-specific matrices explicitly deferred, synchronized Roadmap/CURRENT/project-state, evidence presentation and explicit user acceptance; closing 0.6 does not start 0.7.
 20. **Root-cause-first / no unauthorized patching:** an error must be investigated to identify its root cause and corrected properly at that cause. A patch, workaround, superficial hotfix or symptom-masking fix is not accepted as a final solution. Any temporary patch/workaround requires explicit prior user acceptance for that exact case and scope. If root cause is not yet known, the error remains open/blocked as applicable rather than being declared resolved by superficial mitigation.
 
-**Closure gate:** NOT READY. The 20 decisions are approved, but 0.6 remains EN CURSO until closure evidence is verified and the user explicitly accepts closure.
+## 0.6 — Closeout
+
+**Status:** PASS.  
+**Closure gate:** PASS after closure evidence review and explicit user acceptance.
+
+The 20 approved decisions remain governing policy. The decisions themselves did not authorize closing 0.6 or starting 0.7; the subsequent explicit user acceptance authorized only the closeout of 0.6.
 
 The 20 approved decisions do not authorize:
 
 - constructing or activating T01–T11 or workflows;
 - selecting language, framework, backend, runtime, package manager, formatter, linter, database, architecture or concrete libraries;
 - changing the application, environments, variables, secrets, access or deployments;
-- closing 0.6 or starting 0.7.
+- starting 0.7.
 
 ## Next action
 
-Verify the approved 0.6 closure criteria, present evidence to the user, and request explicit acceptance or rejection of the 0.6 closure. Do not mark PASS or start 0.7 without that acceptance.
+No new subphase has been started. Await an explicit user instruction and authorization before starting **0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio**.
 
 ## Deferred — do not execute without explicit approval
 
