@@ -1087,11 +1087,34 @@ phase_0_0_8:
         - observation_location
         - observed_problem_or_improvement
         - visual_evidence_when_useful
+      example_error_classes:
+        - broken_navigation_or_content
+        - element_not_loading
+        - clipped_content
+        - overlap
+        - apparently_unusable_control
+        - defective_visual_state
+        - other_observable_interface_problem
+      example_improvement_classes:
+        - clarity
+        - visual_hierarchy
+        - legibility
+        - spacing
+        - alignment
+        - consistency
+        - user_feedback
+        - control_placement
+        - other_reasonably_improvable_interface_aspect
       t01_scope: navigation_and_observable_interface_review
       t06_reserved_scope:
         - systematic_visual_qa
         - viewport_validation
         - visual_regression
+      authorizes_t01_activation: false
+      authorizes_t06_activation: false
+      authorizes_workflow_construction: false
+      approves_complete_acceptance_criteria_package: false
+      approves_technical_tool_plan: false
     composition:
       status: APPROVED_BY_USER
       automatic_capture: playwright_chromium
