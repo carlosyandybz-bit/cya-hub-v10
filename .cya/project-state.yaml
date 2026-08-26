@@ -1,8 +1,8 @@
 project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
-subphase: 0.4
-active_action: await_explicit_user_instruction_and_authorization_before_starting_0_5
+subphase: 0.5
+active_action: verify_0_5_closure_criteria_present_evidence_and_request_explicit_user_acceptance
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -63,11 +63,12 @@ phase_0_current:
   last_completed_subphase: 0.4
   last_completed_subphase_name: variables_secretos_accesos_seguridad_y_limites_operativos
   last_completed_subphase_status: PASS
-  active_subphase: 0.4
-  active_subphase_name: variables_secretos_accesos_seguridad_y_limites_operativos
-  active_subphase_status: PASS
+  active_subphase: 0.5
+  active_subphase_name: convenciones_tecnicas_minimas_y_baseline_de_calidad
+  active_subphase_status: IN_PROGRESS
   closure_gate_0_4: PASS
-  next_subphase: 0.5
+  closure_gate_0_5: NOT_READY
+  next_subphase: 0.6
   next_subphase_status: PENDING_NOT_STARTED
 
 phase_0_0_1:
@@ -502,6 +503,149 @@ phase_0_0_4:
     user_explicitly_accepted: true
     result: PASS
 
+phase_0_0_5:
+  status: IN_PROGRESS
+  start_basis: USER_APPROVED_ALL_13_PROPOSED_DECISIONS
+  approved_decision_count: 13
+  approved_decisions:
+    scope_boundary:
+      status: APPROVED_BY_USER
+      technology_neutral_minimal_transversal_only: true
+      deferred_to_applicable_future_point:
+        - language
+        - frontend
+        - backend
+        - framework
+        - concrete_runtime
+        - concrete_package_manager
+        - database
+        - application_folder_structure
+        - architecture
+        - libraries
+        - concrete_formatter
+        - concrete_linter
+      selects_txx_tools: false
+      replaces_phase_2_architecture_decisions: false
+    text_file_normalization:
+      status: APPROVED_BY_USER
+      encoding: UTF-8
+      bom_required: false
+      line_endings: LF
+      final_newline_required: true
+      trailing_whitespace_retained: false
+      excludes_binary_formats: true
+      future_explicit_format_or_tool_exception_possible_with_approval: true
+    canonical_technical_style_source:
+      status: APPROVED_BY_USER
+      shared_versioned_repository_configuration_required_when_applicable: true
+      personal_editor_configuration_as_sole_authority: prohibited
+      local_extension_as_sole_authority: prohibited
+      one_formatting_authority_per_artifact_type: true
+      concrete_formatter_or_linter_selected: false
+    technical_naming_for_code_and_files:
+      status: APPROVED_BY_USER
+      global_casing_imposed_now: false
+      casing_decided_with_approved_language_or_framework: true
+      existing_approved_conventions_remain_valid: true
+      configuration_upper_snake_case_from_0_4_unchanged: true
+    runtime_and_tool_versioning:
+      status: APPROVED_BY_USER
+      latest_as_reproducible_operational_version: prohibited
+      selected_runtime_package_manager_or_critical_tool_version_must_be_canonically_knowable: true
+      upgrades_explicit_and_traceable: true
+      concrete_version_selected_now: false
+      concrete_tool_selected_now: false
+    dependencies_and_lockfile:
+      status: APPROVED_BY_USER
+      one_canonical_package_manager_per_technical_context_when_selected: true
+      incompatible_lockfiles_same_context: prohibited
+      canonical_lockfile_versioned: true
+      installation_reproducible_from_manifest_and_lockfile: true
+      future_automation_respects_lockfile: true
+      concrete_package_manager_selected_now: false
+    generated_artifacts_caches_and_local_state:
+      status: APPROVED_BY_USER
+      not_versioned_by_default:
+        - build_outputs
+        - caches
+        - temporary_files
+        - local_logs
+        - operating_system_artifacts
+        - personal_ide_files
+        - other_regenerable_outputs
+      version_generated_artifact_requires_concrete_need_and_explicit_approval: true
+      generated_artifact_manual_edit_when_canonical_source_or_generator_exists: prohibited
+    conceptual_minimum_quality_baseline:
+      status: APPROVED_BY_USER
+      signals:
+        - reproducible_installation
+        - format_check
+        - build
+        - lint
+        - typecheck_when_applicable
+        - relevant_tests
+      unit_and_integration_tests_when_relevant: true
+      constructs_workflows: false
+      activates_t02: false
+      t02_construction_remains_subphase: 0.9
+    no_bypass_for_pass:
+      status: APPROVED_BY_USER
+      prohibited_as_pass_mechanism:
+        - force_flag_only_to_pass
+        - ignored_exit_codes
+        - disable_rule_only_to_pass
+        - unjustified_problematic_code_exclusion
+        - skipped_tests_only_to_pass
+        - broad_suppressions_only_to_pass
+      real_technical_exception_requires_concrete_analysis_and_applicable_approval: true
+    warnings_policy:
+      status: APPROVED_BY_USER
+      mandatory_check_warning_silently_ignored: false
+      mandatory_check_warning_auto_permanent_debt: false
+      allowed_resolution:
+        - corrected
+        - documented_and_explicitly_accepted_as_known_finding
+      every_warning_universally_blocking: false
+      exact_pass_fail_and_evidence_mechanics_deferred_to_applicable_dod_qa_tooling_point: true
+    test_coverage_policy:
+      status: APPROVED_BY_USER
+      arbitrary_global_percentage_established_in_0_5: false
+      global_coverage_alone_sufficient_quality_evidence: false
+      concrete_thresholds_deferred_until_architecture_code_and_real_risk_exist: true
+      critical_logic_may_have_differentiated_thresholds_later: true
+    baseline_evolution:
+      status: APPROVED_BY_USER
+      baseline_is_minimum_not_maximum: true
+      later_approved_decisions_may_expand_or_harden: true
+      later_phases_may_add:
+        - technology_specific_conventions
+        - checks
+        - test_types
+        - thresholds
+      silent_weakening_of_approved_0_5_rule: prohibited
+      incompatibility_requires_explicit_decision: true
+    subphase_0_5_closure_criteria:
+      status: APPROVED_BY_USER
+      criteria:
+        all_intrinsic_technology_neutral_conventions_approved: true_required_for_closure
+        no_intrinsic_0_5_decision_pending: true_required_for_closure
+        stack_dependent_decisions_explicitly_deferred_not_inferred: true_required_for_closure
+        framework_runtime_package_manager_formatter_linter_backend_architecture_selection_required_for_closure: false
+        t01_to_t11_workflow_or_application_bootstrap_required_for_closure: false
+        roadmap_current_project_state_synchronized: true_required_for_closure
+        closure_evidence_presented_to_user: true_required_for_closure
+        explicit_user_acceptance_required_for_pass: true
+        closeout_automatically_starts_0_6: false
+  common_scope_decisions_1_13:
+    selects_concrete_stack_or_architecture: false
+    selects_language_framework_backend_runtime_package_manager_formatter_linter_database_or_library: false
+    authorizes_workflow_or_txx_changes: false
+    authorizes_application_bootstrap: false
+    authorizes_environment_variable_secret_access_or_deployment_changes: false
+    authorizes_closing_0_5: false
+    authorizes_starting_0_6: false
+  closure_gate: NOT_READY
+
 legacy_policy_established:
   origin_subphase: 0.2
   mode: READ_ONLY
@@ -517,17 +661,20 @@ next_action:
   type: USER_DECISION_GATE
   phase: 0
   subphase: 0.5
-  action: await_explicit_user_instruction_and_authorization_to_start_0_5
+  work_block: technical_conventions_and_quality_baseline
+  action: review_0_5_closure_evidence_and_explicitly_accept_or_reject_closure
   blocked_until_user: true
 
 prohibited_progression:
-  - do_not_start_0_5_without_explicit_user_approval
+  - do_not_close_0_5_without_explicit_user_acceptance
+  - do_not_start_0_6_without_explicit_user_approval
   - do_not_create_or_change_variables_or_secrets_without_explicit_user_approval
   - do_not_modify_access_without_explicit_user_approval
   - do_not_create_configuration_inventory_file_without_explicit_user_approval
   - do_not_select_or_configure_environment_specific_non_secret_residence_without_explicit_user_approval
   - do_not_build_t01_to_t11_without_explicit_user_approval_for_the_exact_action
   - do_not_create_or_deploy_environments_without_explicit_user_approval_for_the_exact_action
+  - do_not_select_stack_framework_runtime_package_manager_formatter_linter_backend_database_architecture_or_libraries_without_explicit_user_approval
 
 blockers: []
 
