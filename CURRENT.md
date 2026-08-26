@@ -7,10 +7,11 @@
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — PASS  
-**Active subphase:** none; 0.5 — Convenciones técnicas mínimas y baseline de calidad — PENDING / NOT STARTED  
-**Active work block:** none  
+**Active subphase:** 0.5 — Convenciones técnicas mínimas y baseline de calidad — EN CURSO  
+**Active work block:** convenciones técnicas mínimas y baseline conceptual de calidad  
 **Approved concrete decisions in 0.4:** 22  
-**Active action:** await an explicit user instruction and authorization before starting 0.5  
+**Approved concrete decisions in 0.5:** 13  
+**Active action:** verify the approved 0.5 closure criteria and present evidence to the user; do not close 0.5 or start 0.6 without explicit user acceptance  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -341,7 +342,7 @@ Decision 22 itself did not close 0.4; the user subsequently reviewed the closure
 **Status:** PASS.  
 **Closure gate:** PASS after evidence review and explicit user acceptance.
 
-The 22 approved decisions remain governing policy and do not authorize:
+The 22 approved decisions remain governing policy and did not themselves authorize:
 
 - creating `.cya/configuration-inventory.yaml`;
 - creating or changing variables, secrets or credentials;
@@ -351,17 +352,136 @@ The 22 approved decisions remain governing policy and do not authorize:
 - constructing or activating T01–T11;
 - starting 0.5.
 
+The user subsequently approved the 13 decisions belonging to 0.5; that later approval is the authority for the current 0.5 work and does not alter the historical scope of the 0.4 closeout.
+
 Concrete managers, operational URLs/IDs, real values, physical STAGING/PRODUCTION mechanisms and real credentials remain deferred until their applicable approved decisions/actions.
+
+## 0.5 — Convenciones técnicas mínimas y baseline de calidad — EN CURSO
+
+The complete canonical text of the approved decisions is recorded directly under **0.5** in the Roadmap.
+
+### Decision 1 — Scope of 0.5
+
+- 0.5 is limited to minimal, transversal, technology-neutral technical conventions.
+- Language, frontend, backend, framework, concrete runtime, concrete package manager, database, application folder structure, architecture, libraries and concrete formatter/linter selection remain deferred to their applicable approved point.
+- 0.5 does not select Txx tools or replace Phase 2 decisions.
+
+### Decision 2 — Text-file normalization
+
+- Versioned text files use UTF-8, without requiring BOM.
+- Line endings are LF.
+- Versioned text files end with a final newline.
+- Trailing whitespace is not retained.
+- Binary formats and future explicitly approved format/tool requirements are excluded from this general rule.
+
+### Decision 3 — Canonical technical-style source
+
+- Formatting, lint and typecheck rules, once applicable, live in shared versioned repository configuration.
+- Personal editor configuration, local extensions or `format on save` cannot be the sole source of a project rule.
+- One formatting authority applies per artifact type to avoid competing formatters.
+- No concrete formatter/linter/typecheck product is selected by this decision.
+
+### Decision 4 — Technical naming for code/files
+
+- No global casing rule is imposed before language/framework selection.
+- `camelCase`, `PascalCase`, `kebab-case` or equivalent conventions are decided with the applicable approved technology.
+- Existing conventions approved elsewhere, including `UPPER_SNAKE_CASE` for 0.4 configuration naming, remain unchanged.
+
+### Decision 5 — Runtime/tool versioning
+
+- `latest` is not used as an operational reproducible version.
+- Once a runtime, package manager or critical tool is selected, its relevant version must be knowable from repository or canonical configuration.
+- Upgrades are explicit traceable changes rather than accidental effects of floating versions.
+- No concrete version or tool is selected now.
+
+### Decision 6 — Dependencies and lockfile
+
+- One canonical package manager is used per technical context once selected.
+- Incompatible lockfiles are not mixed for the same context.
+- The canonical lockfile is versioned.
+- Installations must be reproducible from the approved manifest and lockfile.
+- Future automation must respect the lockfile rather than freely re-resolve dependencies.
+- No concrete package manager is selected now.
+
+### Decision 7 — Generated artifacts, caches and local state
+
+- Build outputs, caches, temporary files, local logs, OS artifacts, personal IDE files and other regenerable outputs are not versioned by default.
+- Versioning a generated artifact requires a concrete need and explicit approved exception.
+- A declared generated artifact is not manually edited when an approved canonical source/generator exists.
+
+### Decision 8 — Conceptual minimum quality baseline
+
+The baseline signals are:
+
+- reproducible installation;
+- format check;
+- build;
+- lint;
+- typecheck when applicable;
+- relevant tests, including unit/integration tests when relevant to the approved stack and change.
+
+0.5 defines these conceptual signals only. It does not construct workflows or activate T02; T02 construction remains in 0.9.
+
+### Decision 9 — No bypass to obtain PASS
+
+- A baseline is not considered satisfied by `--force`, ignored exit codes, disabling a rule merely to pass, unjustified exclusion of problematic code, skipping tests or broad suppressions whose purpose is only to obtain PASS.
+- A real technical exception must be analyzed as a concrete case and requires the applicable approval.
+
+### Decision 10 — Warnings
+
+- A warning from a mandatory check is not silently ignored or automatically accepted as permanent debt.
+- It must be corrected or documented and explicitly accepted as a known finding.
+- Not every warning is declared universally blocking; exact PASS/FAIL/evidence mechanics belong to the applicable DoD/QA/tooling points.
+
+### Decision 11 — Test coverage
+
+- 0.5 establishes no arbitrary global coverage percentage.
+- Global coverage percentage alone is not sufficient evidence of quality.
+- Concrete thresholds are decided when architecture, code and real risk exist and may differ for critical logic.
+
+### Decision 12 — Baseline evolution
+
+- The 0.5 baseline is a minimum and may be expanded or hardened by later approved decisions.
+- Later phases may add technology-specific conventions, checks, test types and thresholds.
+- A later decision may not silently weaken an approved 0.5 rule; any incompatibility must be exposed and explicitly decided.
+
+### Decision 13 — 0.5 closure criteria
+
+0.5 may only be submitted for closure when:
+
+1. all intrinsic technology-neutral 0.5 conventions are approved;
+2. no intrinsic 0.5 decision remains pending;
+3. stack-dependent decisions are explicitly deferred rather than inferred;
+4. framework, runtime, package manager, formatter, linter, backend and architecture selection are not required for closure;
+5. constructing T01–T11, workflows or application bootstrap is not required for closure;
+6. Roadmap Vivo, `CURRENT.md` and `.cya/project-state.yaml` are synchronized;
+7. closure evidence is presented to the user;
+8. explicit user acceptance is required to mark 0.5 PASS;
+9. closing 0.5 does not automatically start 0.6.
+
+## 0.5 — Current gate
+
+**Status:** EN CURSO.  
+**Closure gate:** NOT READY until the approved closure criteria are verified, evidence is presented and the user explicitly accepts closure.
+
+The 13 approved decisions do not authorize:
+
+- selecting language, framework, backend, runtime, package manager, formatter, linter, database, architecture or concrete libraries;
+- creating or modifying workflows or Txx tooling;
+- bootstrapping the application;
+- creating or changing environments, variables, secrets, access or deployments;
+- closing 0.5 or starting 0.6.
 
 ## Next action
 
-No new subphase has been started. Await an explicit user instruction and authorization before starting **0.5 — Convenciones técnicas mínimas y baseline de calidad**.
+Verify the approved Decision 13 closure criteria, present evidence to the user, and request explicit acceptance or rejection of the 0.5 closure. Do not mark PASS or start 0.6 without that acceptance.
 
 ## Deferred — do not execute without explicit approval
 
 - Creation of `.cya/configuration-inventory.yaml`.
 - Concrete secret/environment/service configuration mechanisms and real configuration values.
-- 0.5 and every later Phase 0 subphase.
+- Stack-specific choices deferred by 0.5, including language/framework/runtime/package manager/formatter/linter/backend/database/architecture/library decisions.
+- 0.6 and every later Phase 0 subphase.
 - T01–T11 and any other technical capability not explicitly approved for execution.
 - Physical staging implementation and environment deployment details until their applicable approved subphase/action.
 
