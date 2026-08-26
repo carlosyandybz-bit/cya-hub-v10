@@ -8,8 +8,8 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.3 — Naming, repositorio, workspace, ramas y entornos — PASS  
 **Active subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — EN CURSO  
-**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment, secret exposure/documentation policy, secret lifecycle policy, access-to-secrets policy, configuration inventory/registration policy, inventory residence/format/maintenance policy and ENVIRONMENT-SPECIFIC / NON-SECRET residence policy approved; remaining concrete policy decisions pending  
-**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific secret managers, variable values, inventory filename, automation, concrete environment mappings, access changes or operational procedures  
+**Active work block:** política de variables y secretos — classification, residence policy, naming convention, sensitive-credential separation by environment, secret exposure/documentation policy, secret lifecycle policy, access-to-secrets policy, configuration inventory/registration policy, inventory residence/format/maintenance policy, configuration inventory filename and ENVIRONMENT-SPECIFIC / NON-SECRET residence policy approved; remaining concrete policy decisions pending  
+**Active action:** obtain the next exact user-approved variables-and-secrets policy decision without inferring specific secret managers, variable values, automation, concrete environment mappings, access changes or operational procedures  
 **Incremental cost target:** 0 EUR
 
 ## Mandatory no-assumptions and user-approval policy
@@ -188,6 +188,12 @@ The user explicitly approved the complete residence, format and maintenance poli
 - Inventory changes are traced through GitHub version history; no parallel history is created.
 - This policy does not yet create the file, decide its exact filename, introduce automation or modify any existing configuration.
 
+### 0.4 — Approved configuration inventory filename
+
+The user explicitly approved the exact inventory path: `.cya/configuration-inventory.yaml`.
+
+This decision fixes only the exact filename/path of the already-approved YAML inventory. It does **not** create the file, introduce automation, modify configuration, or authorize any variable, secret, access, security-setting, environment or Txx change.
+
 ### 0.4 — Approved ENVIRONMENT-SPECIFIC / NON-SECRET residence policy
 
 The user explicitly approved the complete residence policy for `ENVIRONMENT-SPECIFIC / NON-SECRET` configuration:
@@ -203,13 +209,13 @@ The user explicitly approved the complete residence policy for `ENVIRONMENT-SPEC
 - Once an environment mechanism has been approved, any later residence change is treated as a configuration change subject to authorization.
 - This policy does not yet select GitHub Actions Variables, `.env` files, Hostinger, another platform or any concrete value, and it does not create or modify configuration.
 
-Opening 0.4 and approving these policies do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, creating the inventory file, selecting/configuring a concrete `ENVIRONMENT-SPECIFIC / NON-SECRET` residence mechanism, or executing any Txx capability.
+Opening 0.4 and approving these policies and the inventory filename do not themselves authorize creating or changing variables or secrets, modifying access, changing security settings, constructing security tooling, creating/deploying environments, creating the inventory file, selecting/configuring a concrete `ENVIRONMENT-SPECIFIC / NON-SECRET` residence mechanism, or executing any Txx capability.
 
 Existing universal rules already recorded in the Guía Maestra and repository governance remain in force unless the user explicitly approves a change.
 
 ## Next action
 
-**PENDING USER DECISION:** define the next exact concrete decision for the variables-and-secrets policy. No specific secret manager, variable value, inventory filename, automation, concrete environment mechanism/mapping, access change or operational procedure may be selected automatically.
+**PENDING USER DECISION:** define the next exact concrete decision for the variables-and-secrets policy. No specific secret manager, variable value, automation, concrete environment mechanism/mapping, access change or operational procedure may be selected automatically.
 
 Do **not** close 0.4, start 0.5, create/change variables or secrets, modify access, create the configuration inventory file, select/configure a concrete `ENVIRONMENT-SPECIFIC / NON-SECRET` residence mechanism, construct T01–T11, create/deploy environments or execute any other new project action without explicit user approval for that exact action.
 

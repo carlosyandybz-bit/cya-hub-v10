@@ -124,6 +124,7 @@ phase_0_0_4:
       - access_to_secrets_policy
       - configuration_inventory_and_registration_policy
       - inventory_residence_format_and_maintenance_policy
+      - configuration_inventory_filename
       - environment_specific_non_secret_residence_policy
   approved_decisions:
     variable_classification:
@@ -495,6 +496,23 @@ phase_0_0_4:
         - inventory_file_creation
         - automation
         - existing_configuration_modification
+    configuration_inventory_filename:
+      status: APPROVED_BY_USER
+      scope: exact_filename_and_path_only
+      directory: .cya/
+      filename: configuration-inventory.yaml
+      path: .cya/configuration-inventory.yaml
+      format: YAML
+      authorizes_inventory_file_creation: false
+      does_not_authorize:
+        - inventory_file_creation
+        - automation
+        - existing_configuration_modification
+        - variable_or_secret_changes
+        - access_changes
+        - security_setting_changes
+        - environment_creation_or_deployment
+        - txx_construction_or_activation
     environment_specific_non_secret_residence_policy:
       status: APPROVED_BY_USER
       global_shared_residence: false
@@ -540,6 +558,7 @@ phase_0_0_4:
     - access_to_secrets_policy
     - configuration_inventory_and_registration_policy
     - inventory_residence_format_and_maintenance_policy
+    - configuration_inventory_filename
     - environment_specific_non_secret_residence_policy
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
