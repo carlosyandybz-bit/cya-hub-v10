@@ -6,12 +6,12 @@
 
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
-**Last completed subphase:** 0.4 — Variables, secretos, accesos, seguridad y límites operativos — PASS  
-**Active subphase:** 0.5 — Convenciones técnicas mínimas y baseline de calidad — EN CURSO  
-**Active work block:** convenciones técnicas mínimas y baseline conceptual de calidad  
+**Last completed subphase:** 0.5 — Convenciones técnicas mínimas y baseline de calidad — PASS  
+**Active subphase:** none; 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — PENDING / NOT STARTED  
+**Active work block:** none  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
-**Active action:** verify the approved 0.5 closure criteria and present evidence to the user; do not close 0.5 or start 0.6 without explicit user acceptance  
+**Active action:** await an explicit user instruction and authorization before starting 0.6  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -352,11 +352,11 @@ The 22 approved decisions remain governing policy and did not themselves authori
 - constructing or activating T01–T11;
 - starting 0.5.
 
-The user subsequently approved the 13 decisions belonging to 0.5; that later approval is the authority for the current 0.5 work and does not alter the historical scope of the 0.4 closeout.
+The user subsequently approved the 13 decisions belonging to 0.5; that later approval is the authority for the 0.5 work and does not alter the historical scope of the 0.4 closeout.
 
 Concrete managers, operational URLs/IDs, real values, physical STAGING/PRODUCTION mechanisms and real credentials remain deferred until their applicable approved decisions/actions.
 
-## 0.5 — Convenciones técnicas mínimas y baseline de calidad — EN CURSO
+## 0.5 — Convenciones técnicas mínimas y baseline de calidad — PASS
 
 The complete canonical text of the approved decisions is recorded directly under **0.5** in the Roadmap.
 
@@ -459,22 +459,22 @@ The baseline signals are:
 8. explicit user acceptance is required to mark 0.5 PASS;
 9. closing 0.5 does not automatically start 0.6.
 
-## 0.5 — Current gate
+## 0.5 — Closeout
 
-**Status:** EN CURSO.  
-**Closure gate:** NOT READY until the approved closure criteria are verified, evidence is presented and the user explicitly accepts closure.
+**Status:** PASS.  
+**Closure gate:** PASS after evidence review and explicit user acceptance.
 
-The 13 approved decisions do not authorize:
+The 13 approved decisions remain governing policy and did not themselves authorize:
 
 - selecting language, framework, backend, runtime, package manager, formatter, linter, database, architecture or concrete libraries;
 - creating or modifying workflows or Txx tooling;
 - bootstrapping the application;
 - creating or changing environments, variables, secrets, access or deployments;
-- closing 0.5 or starting 0.6.
+- starting 0.6.
 
 ## Next action
 
-Verify the approved Decision 13 closure criteria, present evidence to the user, and request explicit acceptance or rejection of the 0.5 closure. Do not mark PASS or start 0.6 without that acceptance.
+No new subphase has been started. Await an explicit user instruction and authorization before starting **0.6 — Definition of Done, evidencias, QA y protocolo de cambios**.
 
 ## Deferred — do not execute without explicit approval
 
