@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.4
-active_action: define_exact_environment_specific_non_secret_residence_policy_with_user_approval
+active_action: obtain_next_exact_user_approved_variables_and_secrets_policy_decision
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -124,11 +124,7 @@ phase_0_0_4:
       - access_to_secrets_policy
       - configuration_inventory_and_registration_policy
       - inventory_residence_format_and_maintenance_policy
-    next_decision_focus:
-      name: environment_specific_non_secret_residence_policy
-      selection_status: APPROVED_BY_USER
-      selection_scope: decision_focus_only
-      concrete_residence_rules_approved: NONE_YET
+      - environment_specific_non_secret_residence_policy
   approved_decisions:
     variable_classification:
       status: APPROVED_BY_USER
@@ -499,6 +495,41 @@ phase_0_0_4:
         - inventory_file_creation
         - automation
         - existing_configuration_modification
+    environment_specific_non_secret_residence_policy:
+      status: APPROVED_BY_USER
+      global_shared_residence: false
+      each_environment_keeps_own_value: true
+      cross_environment_value_read_or_reuse: false
+      environments:
+        VALIDATION:
+          concrete_mechanism: DEFERRED_UNTIL_TOOL_OR_PROCESS_FOR_TEMPORARY_CONTEXT_IS_APPROVED
+        STAGING:
+          concrete_residence: DEFERRED_WITH_PHYSICAL_STAGING_INFRASTRUCTURE
+        PRODUCTION:
+          concrete_residence: DEFERRED_UNTIL_REAL_PRODUCTION_HOSTING_CONFIGURATION_CAPABILITY_IS_VERIFIED_AND_APPROVED
+      residence_rule:
+        concrete_physical_residence_uses_environment_own_configuration_mechanism_once_approved: true
+      github_versioning:
+        non_secret_classification_automatically_authorizes_versioning_concrete_values: false
+        versioned_residence_for_concrete_values_requires_explicit_user_approval: true
+      inventory_role:
+        records_name_classification_environments_and_state: true
+        replaces_operational_value_residence: false
+      later_residence_change:
+        treated_as_configuration_change: true
+        authorization_required: true
+      does_not_select:
+        - github_actions_variables
+        - env_files
+        - hostinger
+        - any_other_platform
+        - concrete_values
+      does_not_authorize:
+        - variable_creation
+        - variable_modification
+        - environment_configuration
+        - concrete_residence_mechanism_selection
+        - concrete_residence_mechanism_configuration
   internal_decisions_approved:
     - variable_classification
     - residence_policy
@@ -509,11 +540,13 @@ phase_0_0_4:
     - access_to_secrets_policy
     - configuration_inventory_and_registration_policy
     - inventory_residence_format_and_maintenance_policy
+    - environment_specific_non_secret_residence_policy
   closure_gate: NOT_READY
   authorizes_variable_or_secret_changes: false
   authorizes_access_changes: false
   authorizes_security_setting_changes: false
   authorizes_inventory_file_creation: false
+  authorizes_environment_specific_non_secret_residence_configuration: false
   authorizes_txx_construction_or_activation: false
   authorizes_environment_creation_or_deployment: false
 
@@ -543,8 +576,7 @@ next_action:
   phase: 0
   subphase: 0.4
   work_block: variables_and_secrets_policy
-  decision_focus: environment_specific_non_secret_residence_policy
-  action: define_exact_environment_specific_non_secret_residence_policy
+  action: define_next_exact_concrete_variables_and_secrets_policy_decision
   blocked_until_user: true
 
 prohibited_progression:
