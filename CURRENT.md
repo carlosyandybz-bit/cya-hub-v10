@@ -7,11 +7,12 @@
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.5 — Convenciones técnicas mínimas y baseline de calidad — PASS  
-**Active subphase:** none; 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — PENDING / NOT STARTED  
-**Active work block:** none  
+**Active subphase:** 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — EN CURSO  
+**Active work block:** Definition of Done, evidencias, QA y protocolo de cambios  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
-**Active action:** await an explicit user instruction and authorization before starting 0.6  
+**Approved concrete decisions in 0.6:** 20  
+**Active action:** verify the approved 0.6 closure criteria and present evidence to the user; do not close 0.6 or start 0.7 without explicit user acceptance  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -472,16 +473,50 @@ The 13 approved decisions remain governing policy and did not themselves authori
 - creating or changing environments, variables, secrets, access or deployments;
 - starting 0.6.
 
+## 0.6 — Definition of Done, evidencias, QA y protocolo de cambios — EN CURSO
+
+The complete canonical text of the 20 approved decisions is recorded directly under **0.6** in the Roadmap. Operational summary:
+
+1. Scope is limited to technology-neutral DoD, acceptance criteria, evidence, QA, findings, reruns, rollback, change protocol and closeout rules.
+2. Implemented does not equal DONE; DONE requires approved scope, acceptance criteria, applicable QA, traceable evidence, no blocking findings, affected-source synchronization and known rollback/reversibility state.
+3. Significant technical changes require acceptance criteria approved before execution; criteria cannot be silently changed or retrofitted to justify PASS.
+4. Each claim requires evidence appropriate to its nature; one evidence type cannot substitute a different validation.
+5. Evidence is tied to the exact revision/change validated; affected evidence becomes stale after relevant subsequent changes and requires rerun.
+6. Evidence is minimum sufficient and must remain safe; no secrets or reconstructable sensitive values.
+7. QA is impact-driven and covers the changed behavior, directly affected interfaces/behaviors and identified dependent areas.
+8. Selective regression is required for reasonably affected areas; integral regression applies when the gate, risk, phase or approved scope requires it.
+9. Automated QA and manual QA are complementary; automation does not replace a validation it cannot actually demonstrate.
+10. Gate effect of findings is `BLOCKING` or `NON_BLOCKING`; `BLOCKING` prevents DONE/PASS, while `NON_BLOCKING` can coexist with PASS WITH FINDINGS only under the approved conditions and explicit user acceptance.
+11. A failed mandatory check remains unsatisfied until correction plus applicable rerun produces new valid evidence.
+12. QA exceptions require documented scope, reason, risk and compensating validation when available plus explicit user approval; no silent bypass.
+13. Standard change protocol: scope → acceptance criteria → TOOL PLAN when applicable → approval → temporary branch for versioned change → minimum change → QA → evidence → state/document synchronization → result presentation → acceptance/closure gate.
+14. Newly discovered scope is not opportunistically added; it returns to the user for explicit approval.
+15. Significant changes require known rollback/reversibility; failure detection does not automatically authorize rollback unless that rollback and its conditions were explicitly approved.
+16. Only actually affected canonical/documentary/operational sources are synchronized; no competing canonical copies.
+17. Closeout evidence package must summarize approved scope, implemented criterion/decision, technical reference, QA, results, open findings, reruns, rollback state, updated documentation/state, deferred items and pending user gate; no new mandatory evidence file is created by 0.6.
+18. A PASS remains historically attached to the revision/state/evidence/scope evaluated at that time; later regression creates a new finding/change rather than rewriting history.
+19. 0.6 closeout requires all intrinsic 0.6 rules approved, no intrinsic decision pending, stack/tool-specific matrices explicitly deferred, synchronized Roadmap/CURRENT/project-state, evidence presentation and explicit user acceptance; closing 0.6 does not start 0.7.
+20. **Root-cause-first / no unauthorized patching:** an error must be investigated to identify its root cause and corrected properly at that cause. A patch, workaround, superficial hotfix or symptom-masking fix is not accepted as a final solution. Any temporary patch/workaround requires explicit prior user acceptance for that exact case and scope. If root cause is not yet known, the error remains open/blocked as applicable rather than being declared resolved by superficial mitigation.
+
+**Closure gate:** NOT READY. The 20 decisions are approved, but 0.6 remains EN CURSO until closure evidence is verified and the user explicitly accepts closure.
+
+The 20 approved decisions do not authorize:
+
+- constructing or activating T01–T11 or workflows;
+- selecting language, framework, backend, runtime, package manager, formatter, linter, database, architecture or concrete libraries;
+- changing the application, environments, variables, secrets, access or deployments;
+- closing 0.6 or starting 0.7.
+
 ## Next action
 
-No new subphase has been started. Await an explicit user instruction and authorization before starting **0.6 — Definition of Done, evidencias, QA y protocolo de cambios**.
+Verify the approved 0.6 closure criteria, present evidence to the user, and request explicit acceptance or rejection of the 0.6 closure. Do not mark PASS or start 0.7 without that acceptance.
 
 ## Deferred — do not execute without explicit approval
 
 - Creation of `.cya/configuration-inventory.yaml`.
 - Concrete secret/environment/service configuration mechanisms and real configuration values.
 - Stack-specific choices deferred by 0.5, including language/framework/runtime/package manager/formatter/linter/backend/database/architecture/library decisions.
-- 0.6 and every later Phase 0 subphase.
+- 0.7 and every later Phase 0 subphase.
 - T01–T11 and any other technical capability not explicitly approved for execution.
 - Physical staging implementation and environment deployment details until their applicable approved subphase/action.
 
