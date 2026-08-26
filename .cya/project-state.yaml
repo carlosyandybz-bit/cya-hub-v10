@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.8
-active_action: define_and_submit_0_8_acceptance_criteria_and_t01_tool_plan_for_user_approval
+active_action: incorporate_approved_0_8_decision_1_into_complete_t01_acceptance_criteria_and_submit_with_technical_tool_plan_for_user_approval
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -1073,6 +1073,47 @@ phase_0_0_7:
 phase_0_0_8:
   status: IN_PROGRESS
   start_authorization: APPROVED_BY_USER
+  approved_decision_count: 1
+  approved_decisions:
+    visual_interface_errors_and_uiux_improvements:
+      status: APPROVED_BY_USER
+      detect_visible_or_interface_errors_during_navigation: true
+      detect_possible_ui_ux_improvements_during_navigation: true
+      finding_categories:
+        - ERROR
+        - POSSIBLE_IMPROVEMENT
+      each_finding_requires:
+        - observation_location
+        - observed_problem_or_improvement
+        - visual_evidence_when_useful
+      example_error_classes:
+        - broken_navigation_or_content
+        - element_not_loading
+        - clipped_content
+        - overlap
+        - apparently_unusable_control
+        - defective_visual_state
+        - other_observable_interface_problem
+      example_improvement_classes:
+        - clarity
+        - visual_hierarchy
+        - legibility
+        - spacing
+        - alignment
+        - consistency
+        - user_feedback
+        - control_placement
+        - other_reasonably_improvable_interface_aspect
+      t01_scope: navigation_and_observable_interface_review
+      t06_reserved_scope:
+        - systematic_visual_qa
+        - viewport_validation
+        - visual_regression
+      authorizes_t01_activation: false
+      authorizes_t06_activation: false
+      authorizes_workflow_construction: false
+      approves_complete_acceptance_criteria_package: false
+      approves_technical_tool_plan: false
   t01_status: PENDING
   current_gate: acceptance_criteria_and_technical_tool_plan_pending_explicit_user_approval
   technical_execution_authorized: false
@@ -1094,7 +1135,7 @@ next_action:
   phase: 0
   subphase: 0.8
   work_block: cya_browser_lab
-  action: approve_0_8_acceptance_criteria_and_t01_technical_tool_plan_before_execution
+  action: approve_complete_0_8_t01_acceptance_criteria_including_decision_1_and_technical_tool_plan_before_execution
   blocked_until_user: true
 
 prohibited_progression:
