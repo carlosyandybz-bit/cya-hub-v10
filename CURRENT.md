@@ -8,13 +8,13 @@
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
 **Last completed subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PASS  
 **Active subphase:** 0.8 — Construcción y prueba de T01 CYA Browser Lab — EN CURSO  
-**Active work block:** T01 representative mobile/desktop context definition and execution-authorization gate  
+**Active work block:** T01 execution-authorization gate  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
 **Approved concrete decisions in 0.6:** 20  
 **Approved concrete decisions in 0.7:** 21  
 **Approved concrete decisions in 0.8:** 16  
-**Active action:** obtain explicit user approval for the exact representative mobile and desktop profiles/dimensions and explicit authorization to execute T01 construction/testing before any technical execution  
+**Active action:** await explicit user authorization to execute T01 construction/testing under the approved TOOL PLAN and approved representative mobile/desktop profiles  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -558,7 +558,7 @@ The approved 0.7 decisions did **not** by themselves authorize T01–T11/workflo
 **Approved intrinsic decisions:** 16.  
 **T01 lifecycle state:** `PENDING`; construction and validation have not yet been executed.  
 **Technical TOOL PLAN:** APPROVED_BY_USER, but its approval does not authorize execution under 0.7.  
-**Current gate:** exact representative mobile and desktop profiles/dimensions must be explicitly approved, and technical construction/testing must then receive explicit execution authorization.  
+**Current gate:** explicit user authorization to execute T01 construction/testing.  
 **Technical execution status:** NOT_STARTED.
 
 ### Approved operational summary — Decisions 1–16
@@ -571,7 +571,7 @@ The approved 0.7 decisions did **not** by themselves authorize T01–T11/workflo
 6. **Invocation:** initial version uses manual `workflow_dispatch`; GitHub Issues interface remains deferred.
 7. **Input:** only public HTTPS `target_url`; no credentials, cookies, tokens, auth headers or secrets.
 8. **URL safety:** reject embedded credentials and localhost/loopback/link-local/private/reserved destinations; redirects may not bypass the restriction; no authenticated/private-network targets.
-9. **Mobile-first representative smoke + desktop:** T01 must cover one representative mobile context as priority and one representative desktop context. Exact profiles/dimensions remain pending user approval. T06 retains the exhaustive responsive/tablet/multi-viewport/regression role. T01 remains Chromium and does not by itself validate Safari/WebKit compatibility for iPhone.
+9. **Mobile-first representative smoke + desktop:** T01 covers an approved representative mobile viewport of **390 × 844 CSS px** in a Chromium mobile context with touch interaction, plus an approved representative desktop viewport of **1440 × 900 CSS px** in Chromium desktop. These profiles are representative for T01 smoke only; they do not by themselves certify complete iPhone/Android or Safari/WebKit compatibility. T06 retains the exhaustive responsive/tablet/multi-viewport/regression role.
 10. **Technical errors:** capture `console.error`, uncaught page exceptions, failed requests and problematic HTTP responses, distinguishing main navigation from resource/subrequest failures.
 11. **Objective UI anomaly heuristics:** detect reasonable signs of horizontal overflow, apparently clipped content, elements outside relevant bounds and apparently unusable/covered/inaccessible controls without overstating what a heuristic proves.
 12. **UI/UX improvement review:** inspect visual evidence for clarity, hierarchy, legibility, spacing, alignment, consistency, feedback and control placement; `POSSIBLE_IMPROVEMENT` does not automatically fail a run.
@@ -591,11 +591,11 @@ The canonical owner is **Roadmap 1.8 — Reconciliación transversal y cierre fu
 - No T01 workflow, package, lockfile, runner or self-test has been created under this authorization.
 - No T01 test has been executed.
 - T01 remains `PENDING`.
-- Before technical execution, exact representative mobile and desktop profiles/dimensions must be approved and the user must explicitly authorize execution.
+- The representative mobile and desktop profiles are approved; the only remaining pre-execution gate is explicit user authorization to execute T01 construction/testing.
 
 ## Next action
 
-Submit the exact representative mobile profile/dimensions and desktop profile/dimensions for user approval. After those are approved, obtain explicit authorization to execute T01 construction/testing. Do not construct or test T01 before both gates are satisfied.
+Obtain explicit user authorization to execute T01 construction/testing under the approved TOOL PLAN and representative profiles. Do not construct or test T01 before that authorization.
 
 ## Deferred — do not execute without explicit approval
 

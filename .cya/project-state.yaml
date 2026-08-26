@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.8
-active_action: obtain_explicit_user_approval_for_exact_representative_mobile_and_desktop_profiles_then_explicit_execution_authorization_for_t01
+active_action: await_explicit_user_authorization_to_execute_t01_construction_and_testing
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -1158,12 +1158,16 @@ phase_0_0_8:
       redirects_may_bypass_restrictions: false
       authenticated_or_private_network_targets: prohibited
     representative_contexts:
-      status: APPROVED_BY_USER_WITH_EXACT_PROFILES_PENDING
+      status: APPROVED_BY_USER
       mobile_context_priority: true
       representative_mobile_context_required: true
       representative_desktop_context_required: true
-      exact_mobile_profile_or_dimensions: PENDING_USER_APPROVAL
-      exact_desktop_profile_or_dimensions: PENDING_USER_APPROVAL
+      exact_mobile_profile_or_dimensions: 390x844_css_px
+      mobile_browser_context: chromium_mobile
+      mobile_touch_interaction: true
+      exact_desktop_profile_or_dimensions: 1440x900_css_px
+      desktop_browser_context: chromium_desktop
+      representative_profiles_only_not_complete_compatibility_certification: true
       t06_retains_exhaustive_responsive_tablet_multi_viewport_and_visual_regression: true
       t01_engine: chromium
       t01_proves_iphone_safari_webkit_compatibility: false
@@ -1264,11 +1268,9 @@ phase_0_0_8:
     workflow_or_tool_files_created_under_this_authorization: false
     tests_executed_under_this_authorization: false
     pre_execution_gates:
-      - exact_representative_mobile_profile_or_dimensions_approved
-      - exact_representative_desktop_profile_or_dimensions_approved
       - explicit_user_authorization_to_execute_t01_construction_and_testing
   t01_status: PENDING
-  current_gate: exact_representative_mobile_and_desktop_profiles_and_explicit_execution_authorization_pending_user_approval
+  current_gate: explicit_execution_authorization_pending_user_approval
   technical_execution_authorized: false
   authorizes_starting_0_9: false
 
@@ -1288,7 +1290,7 @@ next_action:
   phase: 0
   subphase: 0.8
   work_block: cya_browser_lab
-  action: approve_exact_representative_mobile_and_desktop_profiles_then_explicitly_authorize_t01_construction_and_testing
+  action: explicitly_authorize_t01_construction_and_testing
   blocked_until_user: true
 
 prohibited_progression:
