@@ -1,0 +1,53 @@
+tool:
+  key: cya_browser_lab
+  id: T01
+  status: ACTIVE
+  activation: phase_0_subphase_0_8
+  requirements:
+    - activation_policy
+  evidence:
+    - minimum_successful_browser_lab_test
+    - github_actions_run_33037856169_self_test_success
+    - github_actions_run_33057054675_issue_https_success
+  invocation:
+    pull_request: deterministic_self_test
+    workflow_dispatch: browser_lab_against_public_https_target_url
+    github_issue:
+      event: issues.opened
+      title: '[CYA:T01] RUN'
+      body:
+        exact_json_properties:
+          - command
+          - target_url
+        command: browser_lab.run
+        target_url: required_string
+      authorized_actor: carlosyandybz-bit
+  limits:
+    - public_https_only
+    - no_authentication
+    - no_cookies
+    - no_tokens
+    - no_secrets
+    - block_localhost_loopback_private_link_local_reserved
+    - no_automatic_multi_page_crawling
+    - representative_mobile_390x844_chromium_touch
+    - representative_desktop_1440x900_chromium
+    - no_complete_safari_webkit_certification
+    - does_not_replace_t06_systematic_visual_qa
+    - screenshots_and_structured_result_json
+    - traces_only_when_diagnostically_useful
+    - video_disabled
+    - artifact_retention_7_days
+  dependencies:
+    - github_actions
+    - node_24_20_0
+    - npm_11_19_0
+    - playwright_1_62_1
+    - bundled_chromium
+    - ubuntu_24_04
+  access_requirements:
+    - github_repository_accessible
+    - github_actions_available
+    - authorized_issue_actor_carlosyandybz_bit
+    - public_https_target_accessible
+  cost_eur: 0
