@@ -6,6 +6,8 @@ An approved TOOL PLAN is an execution contract. It must not be rewritten retrosp
 
 The mutable operational STATE CONTRACT is canonical only in `.cya/current-state.yaml`. A TOOL PLAN may reference the current state, but it must not become a competing authority or require manual synchronization of mutable phase/subphase fields into `CURRENT.md` or `.cya/project-state.yaml`.
 
+Tool routing/schema/policy are read from `.cya/tool-registry.yaml`. When a Txx capability is involved, its lifecycle state and tool-specific metadata are read from the indexed `.cya/tools/Txx.yaml` record. A TOOL PLAN must not create a competing embedded copy of either authority.
+
 ## Context
 
 **Canonical mutable state reviewed in `.cya/current-state.yaml`:** yes / no<br>
@@ -25,6 +27,7 @@ The mutable operational STATE CONTRACT is canonical only in `.cya/current-state.
 ## Tool selection
 
 **Primary tool / route:**<br>
+**Relevant indexed Txx record reviewed:** not applicable / `.cya/tools/Txx.yaml`<br>
 **Supporting tool(s):** none / list<br>
 **Fallback:** none / proposed fallback<br>
 **Fallback explicitly approved for this exact case and scope:** not applicable / yes — approval reference:<br>
@@ -78,9 +81,10 @@ A successful tool call, command or workflow does not by itself establish PASS. T
 **Other documents whose decisions or stable context actually changed:** none / list<br>
 **`CURRENT.md` mutable-state copy required:** no<br>
 **`.cya/project-state.yaml` mutable-state copy required:** no<br>
-**Tool registry lifecycle/routing/metadata change actually occurred:** no / yes — if yes, exact approved change:
+**Global tool registry schema/policy/routing/index change actually occurred:** no / yes — if yes, exact approved change:<br>
+**Individual Txx lifecycle/tool-metadata change actually occurred:** no / yes — if yes, exact `.cya/tools/Txx.yaml` file and approved change:
 
-Do not update `CURRENT.md`, `.cya/project-state.yaml` or `.cya/tool-registry.yaml` merely because a phase/subphase transition occurred. Update them only when their own approved role/content changed.
+Do not update `CURRENT.md` or `.cya/project-state.yaml` merely because a phase/subphase transition occurred. Do not update `.cya/tool-registry.yaml` for a tool lifecycle-only change; update the affected `.cya/tools/Txx.yaml` record unless global schema, policy, routing or index also changed.
 
 ## Error / root-cause handling
 
