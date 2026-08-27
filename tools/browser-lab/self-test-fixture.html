@@ -7,12 +7,19 @@
     <style>
       body { margin: 0; font-family: sans-serif; }
       .content { width: 1200px; padding: 16px; }
+      .control-wrap { position: relative; width: 180px; height: 40px; }
+      .control-wrap button { width: 180px; height: 40px; }
+      .control-cover { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.12); }
     </style>
   </head>
   <body>
     <main class="content">
       <h1>CYA Browser Lab self-test</h1>
       <p id="status">Self-test fixture loaded.</p>
+      <div class="control-wrap">
+        <button type="button">Covered control</button>
+        <div class="control-cover" aria-hidden="true"></div>
+      </div>
     </main>
     <script>
       console.error('CYA Browser Lab controlled self-test console error');

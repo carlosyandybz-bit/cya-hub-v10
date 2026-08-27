@@ -1,6 +1,7 @@
 name: T01 CYA Browser Lab
 
 on:
+  pull_request:
   workflow_dispatch:
     inputs:
       target_url:
@@ -28,7 +29,12 @@ jobs:
       - name: Install Chromium
         working-directory: tools/browser-lab
         run: npx playwright install --with-deps chromium
-      - name: Run T01
+      - name: Run T01 self-test
+        if: github.event_name == 'pull_request'
+        working-directory: tools/browser-lab
+        run: node runner.mjs --self-test --output-dir browser-lab-output
+      - name: Run T01 against target URL
+        if: github.event_name == 'workflow_dispatch'
         working-directory: tools/browser-lab
         run: node runner.mjs --target-url "${{ inputs.target_url }}" --output-dir browser-lab-output
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a

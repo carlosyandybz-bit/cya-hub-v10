@@ -23,6 +23,8 @@ const observations = [];
 const failures = [];
 const screenshots = [];
 const startedAt = new Date().toISOString();
+const selfTestExpectedKinds = new Set(['console', 'request', 'layout', 'control-heuristic']);
+const selfTestDetections = new Set();
 let selfTestOrigin = null;
 let selfTestServerHandle = null;
 
@@ -83,8 +85,11 @@ async function validateUrl(value, { allowSelfTest = false } = {}) {
 }
 
 function addObservation(kind, severity, message, details = {}) {
-  observations.push({ kind, severity, message: safeText(message), ...details });
-  if (severity === 'ERROR') failures.push(observations.at(-1));
+  const controlled = selfTest && selfTestExpectedKinds.has(kind);
+  const observation = { kind, severity, message: safeText(message), controlled, ...details };
+  observations.push(observation);
+  if (controlled) selfTestDetections.add(kind);
+  if (severity === 'ERROR' && !controlled) failures.push(observation);
 }
 
 function inspectLayout(page, contextId) {
@@ -99,11 +104,31 @@ function inspectLayout(page, contextId) {
       const style = getComputedStyle(element);
       return style.overflow === 'hidden' && element.scrollHeight > element.clientHeight + 2;
     }).length;
-    return { horizontalOverflow, outOfBounds, clipped };
+    const controls = [...document.querySelectorAll('a, button, input, select, textarea, summary, [role="button"]')];
+    const controlIssues = controls.flatMap((element) => {
+      const rect = element.getBoundingClientRect();
+      const style = getComputedStyle(element);
+      if (rect.width <= 0 || rect.height <= 0 || style.visibility === 'hidden' || style.display === 'none') return [];
+      const point = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+      const topElement = document.elementFromPoint(point.x, point.y);
+      const covered = topElement && topElement !== element && !element.contains(topElement);
+      const inaccessible = element.matches(':disabled, [aria-disabled="true"], [aria-hidden="true"]') || element.tabIndex < 0;
+      if (!covered && !inaccessible) return [];
+      return [{ issue: covered ? 'apparently-covered' : 'apparently-inaccessible', tag: element.tagName.toLowerCase() }];
+    });
+    return { horizontalOverflow, outOfBounds, clipped, controlIssues };
   }).then((layout) => {
     if (layout.horizontalOverflow) addObservation('layout', 'ERROR', 'Horizontal overflow detected', { context: contextId });
     if (layout.outOfBounds) addObservation('layout', 'POSSIBLE_IMPROVEMENT', 'Visible content appears outside the viewport', { context: contextId, count: layout.outOfBounds });
     if (layout.clipped) addObservation('layout', 'POSSIBLE_IMPROVEMENT', 'Content may be clipped by an overflowing container', { context: contextId, count: layout.clipped });
+    for (const issue of layout.controlIssues) {
+      addObservation('control-heuristic', 'POSSIBLE_IMPROVEMENT', `Interactive control is apparently ${issue.issue}`, {
+        context: contextId,
+        heuristic: true,
+        issue: issue.issue,
+        control: issue.tag,
+      });
+    }
   });
 }
 
@@ -151,7 +176,16 @@ async function run() {
         if (message.type() === 'error') addObservation('console', 'ERROR', message.text(), { context: profile.id });
       });
       page.on('pageerror', (error) => addObservation('page-exception', 'ERROR', error.message, { context: profile.id }));
-      page.on('requestfailed', (request) => addObservation('request', 'ERROR', request.failure()?.errorText ?? 'Request failed', { context: profile.id, url: safeUrl(request.url()), resourceType: request.resourceType() }));
+      page.on('requestfailed', (request) => {
+        const mainFrameNavigation = request.isNavigationRequest() && request.frame() === page.mainFrame();
+        addObservation('request', 'ERROR', request.failure()?.errorText ?? 'Request failed', {
+          context: profile.id,
+          url: safeUrl(request.url()),
+          resourceType: request.resourceType(),
+          requestKind: mainFrameNavigation ? 'main-navigation' : 'resource-or-subrequest',
+          navigation: request.isNavigationRequest(),
+        });
+      });
       page.on('response', (response) => {
         if (response.status() >= 400) addObservation('response', response.status() >= 500 ? 'ERROR' : 'POSSIBLE_IMPROVEMENT', `HTTP ${response.status()} response`, { context: profile.id, url: safeUrl(response.url()), resourceType: response.request().resourceType(), navigation: response.request().isNavigationRequest() });
       });
@@ -172,7 +206,16 @@ async function run() {
     await browser.close();
     if (selfTestServerHandle) await new Promise((resolve) => selfTestServerHandle.close(resolve));
   }
-  const result = { tool: 'T01 CYA Browser Lab', playwright: PLAYWRIGHT_VERSION, target: safeUrl(requestedUrl), startedAt, finishedAt: new Date().toISOString(), contexts: contexts.map(({ id, viewport }) => ({ id, viewport })), observations, screenshots, result: failures.length ? 'ERROR' : 'READY_FOR_REVIEW' };
+  const selfTestResult = selfTest ? {
+    expectedDetections: [...selfTestExpectedKinds],
+    detectedDetections: [...selfTestDetections],
+    missingDetections: [...selfTestExpectedKinds].filter((kind) => !selfTestDetections.has(kind)),
+  } : null;
+  if (selfTest && selfTestResult.missingDetections.length) {
+    failures.push({ kind: 'self-test', severity: 'ERROR', message: 'A required T01 detector did not produce its controlled observation', controlled: false, missingDetections: selfTestResult.missingDetections });
+  }
+  if (selfTest) selfTestResult.passed = failures.length === 0;
+  const result = { tool: 'T01 CYA Browser Lab', playwright: PLAYWRIGHT_VERSION, target: safeUrl(requestedUrl), startedAt, finishedAt: new Date().toISOString(), contexts: contexts.map(({ id, viewport }) => ({ id, viewport })), observations, screenshots, selfTest: selfTestResult, result: failures.length ? 'ERROR' : selfTest ? 'SELF_TEST_PASSED' : 'READY_FOR_REVIEW' };
   await (await import('node:fs/promises')).writeFile(`${outputDir}/result.json`, `${JSON.stringify(result, null, 2)}\n`);
   if (process.env.GITHUB_STEP_SUMMARY) await (await import('node:fs/promises')).writeFile(process.env.GITHUB_STEP_SUMMARY, `## T01 CYA Browser Lab\n\n- Result: **${result.result}**\n- Target: \`${result.target}\`\n- Contexts: mobile 390×844, desktop 1440×900\n- Observations: ${observations.length}\n`);
   if (failures.length) process.exitCode = 1;
