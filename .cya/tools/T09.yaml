@@ -1,0 +1,12 @@
+tool:
+  key: cya_backend_control
+  id: T09
+  status: DEFERRED
+  activation: phase_2
+  condition_when_not_active: architecture_decision_required
+  requirements:
+    - activation_policy
+    - approved_phase_2_architecture
+  evidence:
+    - backend_control_validation_when_activated
+  cost_eur: 0
