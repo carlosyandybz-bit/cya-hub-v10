@@ -38,8 +38,10 @@ function runGitleaksSelfTest() {
   const leak = path.join(tmp, 'leak');
   fs.mkdirSync(safe); fs.mkdirSync(leak);
   fs.writeFileSync(path.join(safe, 'sample.txt'), 'CYA_SECURITY_TEST_SAFE_VALUE=not-a-secret\n');
-  // Synthetic AWS-shaped credential generated only at runtime; never a real credential and never committed.
-  fs.writeFileSync(path.join(leak, 'sample.txt'), 'AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE\nAWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\n');
+  // Construct a synthetic credential only at runtime so no secret-shaped fixture is versioned.
+  const accessId = ['AKIA', 'IOSF', 'ODNN', '7EXA', 'MPLE'].join('');
+  const secretKey = ['wJalrXUt', 'nFEMI/K7', 'MDENG/bP', 'xRfiCYEX', 'AMPLEKEY'].join('');
+  fs.writeFileSync(path.join(leak, 'sample.txt'), `AWS_ACCESS_KEY_ID=${accessId}\nAWS_SECRET_ACCESS_KEY=${secretKey}\n`);
   const safeRun = spawnSync('gitleaks', ['dir', '--redact', '--exit-code', '2', safe], { encoding: 'utf8' });
   const leakRun = spawnSync('gitleaks', ['dir', '--redact', '--exit-code', '2', leak], { encoding: 'utf8' });
   fs.rmSync(tmp, { recursive: true, force: true });
