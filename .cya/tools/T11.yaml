@@ -1,0 +1,11 @@
+tool:
+  key: cya_design_bridge
+  id: T11
+  status: DEFERRED
+  activation: phase_3
+  condition_when_not_active: phase_3_value_and_zero_incremental_cost_assessment_required
+  requirements:
+    - activation_policy
+  evidence:
+    - design_bridge_validation_when_activated
+  cost_eur: 0
