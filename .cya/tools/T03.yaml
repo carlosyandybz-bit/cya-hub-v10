@@ -1,11 +1,35 @@
 tool:
   key: cya_security_gate
   id: T03
-  status: PENDING
+  status: ACTIVE
   activation: phase_0_subphase_0_10
-  condition_when_not_active: construction_and_validation_not_yet_authorized_or_completed
   requirements:
     - activation_policy
   evidence:
     - minimum_successful_security_gate_test
+    - github_actions_run_33117446183_success
+    - artifact_9665066406_sha256_b9162e58df33eda59cbb07c678685b208368460a610c3811b4a79900ffef6d6b
+    - pull_request_26_merge_commit_47000aa17fcf73bdedce59d470ec5e4d72eaeb0e
+  invocation:
+    pull_request: automatic_security_gate
+    workflow_dispatch: manual_controlled_rerun_or_diagnosis
+    workflow: .github/workflows/t03-security-gate.yml
+  limits:
+    - phase_0_universal_security_baseline
+    - no_application_secrets_or_operational_credentials_in_v1
+    - dependency_security_not_applicable_until_compatible_manifest_or_lockfile_and_approved_control_exist
+    - sast_not_applicable_until_compatible_code_and_approved_analyzer_exist
+    - not_a_required_main_check_until_separately_approved
+    - evidence_must_not_reveal_secret_values
+  dependencies:
+    - github_actions
+    - ubuntu_24_04
+    - node_24_20_0
+    - npm_11_19_0
+    - gitleaks_8_30_1_verified_by_sha256
+    - zizmor_1_29_0_offline_container_pinned_by_digest
+  access_requirements:
+    - github_repository_accessible
+    - github_actions_available
+    - repository_contents_read_only_for_gate
   cost_eur: 0
