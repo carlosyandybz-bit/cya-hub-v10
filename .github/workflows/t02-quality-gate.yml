@@ -1,0 +1,50 @@
+name: T02 CYA Quality Gate
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality-gate:
+    name: T02 Quality Gate
+    runs-on: ubuntu-24.04
+    env:
+      CYA_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 24.20.0
+
+      - name: Pin npm
+        run: npm install --global npm@11.19.0 --ignore-scripts
+
+      - name: Verify runtime versions
+        shell: bash
+        run: |
+          test "$(node --version)" = "v24.20.0"
+          test "$(npm --version)" = "11.19.0"
+
+      - name: Prepare evidence directory
+        run: mkdir -p quality-gate-evidence
+
+      - name: Run deterministic self-test
+        run: node tools/quality-gate/runner.mjs --self-test --output quality-gate-evidence/self-test-result.json
+
+      - name: Run repository quality gate
+        run: node tools/quality-gate/runner.mjs --output quality-gate-evidence/result.json
+
+      - name: Upload T02 evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: t02-quality-gate-evidence
+          path: quality-gate-evidence/
+          if-no-files-found: error
+          retention-days: 7

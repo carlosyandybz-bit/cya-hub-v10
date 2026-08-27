@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "scenarios": [
+    {"name": "controlled-pass", "expected": "PASS", "purpose": "baseline contract plus normalized text must pass"},
+    {"name": "controlled-failure", "expected": "FAIL", "purpose": "controlled text-normalization violation must fail"},
+    {"name": "required-check-fail-closed", "expected": "FAIL", "purpose": "required applicable check without an executable handler must fail closed"},
+    {"name": "bypass-attempt-remains-fail", "expected": "FAIL", "purpose": "forbidden failure-absorption configuration plus an actual violation must remain failed"}
+  ]
+}
