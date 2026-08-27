@@ -13,6 +13,12 @@
     "requiredControlUnavailable":"FAIL",
     "redactSecrets":true,
     "allowSilentBypass":false,
+    "selfTestExternalDetectorStrategy":"controlled_runtime_rule_and_fixture",
+    "selfTestMustNotDependOnVendorRuleCatalog":true,
+    "productionRuleCatalogSeparatedFromSelfTest":true,
+    "syntheticSecretsRuntimeOnly":true,
+    "selfTestEvidenceMustOmitSyntheticSecretValue":true,
+    "checkoutPersistCredentials":false,
     "incrementalCostEur":0
   }
 }
