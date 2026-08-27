@@ -8,6 +8,9 @@ on:
         description: Public HTTPS URL to inspect
         required: true
         type: string
+  issues:
+    types:
+      - opened
 
 permissions:
   contents: read
@@ -37,6 +40,10 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         working-directory: tools/browser-lab
         run: node runner.mjs --target-url "${{ inputs.target_url }}" --output-dir browser-lab-output
+      - name: Run T01 from authorized issue command
+        if: github.event_name == 'issues'
+        working-directory: tools/browser-lab
+        run: node issue-command.mjs
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
