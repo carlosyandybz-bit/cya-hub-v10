@@ -28,9 +28,6 @@ jobs:
         with:
           node-version: 24.20.0
 
-      - name: Pin npm
-        run: npm install --global npm@11.19.0 --ignore-scripts
-
       - name: Verify runtime versions
         shell: bash
         run: |
