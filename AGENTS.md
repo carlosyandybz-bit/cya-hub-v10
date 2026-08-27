@@ -7,13 +7,14 @@ This repository belongs exclusively to **CYA Hub v10**.
 1. Read `.cya/current-state.yaml` first. It is the single machine-readable authority for mutable phase/subphase state and `active_action`.
 2. Read `CURRENT.md` for human navigation/context only; do not treat it as a competing mutable-state source.
 3. Read `.cya/project-state.yaml` for stable operational context and policies; it must not duplicate the STATE CONTRACT.
-4. Read `.cya/tool-registry.yaml`.
-5. Read `.cya/planning-template.md` before technical execution.
-6. Consult the living Google Drive governance documents when the connected environment provides access:
+4. Read `.cya/tool-registry.yaml` for registry schema, policy, routing and the canonical `tool_index`.
+5. If the action uses, activates, retires or changes a Txx capability, read the indexed `.cya/tools/Txx.yaml` file. That individual file is the single machine-readable authority for that tool's lifecycle state and tool-specific metadata.
+6. Read `.cya/planning-template.md` before technical execution.
+7. Consult the living Google Drive governance documents when the connected environment provides access:
    - Roadmap Vivo de Fases, Subfases y Auditorías.
    - Guía Maestra de Herramientas, Agentes y Planning Operativo.
-7. Identify the current phase, subphase, action and acceptance gate from `.cya/current-state.yaml` plus the canonical Roadmap decision context.
-8. Produce a `TOOL PLAN` before any significant technical action.
+8. Identify the current phase, subphase, action and acceptance gate from `.cya/current-state.yaml` plus the canonical Roadmap decision context.
+9. Produce a `TOOL PLAN` before any significant technical action.
 
 ## Canonical mutable-state rule
 
@@ -22,6 +23,13 @@ This repository belongs exclusively to **CYA Hub v10**.
 - `CURRENT.md` is a human navigation/context panel. `.cya/project-state.yaml` contains stable operational context and references. The Roadmap Vivo remains the canonical documentary source for approved decisions and phase/subphase history.
 - A normal state transition updates `.cya/current-state.yaml` first and only updates other sources whose decisions, stable context, tool lifecycle or documentary scope actually changed.
 - Validate the approved STATE CONTRACT invariants against `.cya/current-state.yaml` before a PR or final state synchronization.
+
+## Canonical tool-registry rule
+
+- `.cya/tool-registry.yaml` contains registry schema, global tool policy, action routing and `tool_index`; it does not duplicate per-tool lifecycle blocks.
+- `.cya/tools/T01.yaml` through `.cya/tools/T11.yaml` are the individual machine-readable records for each capability.
+- A lifecycle or tool-specific metadata change modifies only the affected Txx file unless global schema, policy, routing or the index itself also changes.
+- Never recreate embedded competing copies of Txx lifecycle state inside `.cya/tool-registry.yaml`, `CURRENT.md`, `.cya/project-state.yaml` or other files.
 
 ## Mandatory user authority gate
 
@@ -58,7 +66,8 @@ Never create parallel workflows, services, tools or conventions silently.
 
 ## Tool discipline
 
-- Use the primary tool defined in `.cya/tool-registry.yaml` only for an approved action.
+- Use the primary tool defined by `.cya/tool-registry.yaml` routing only for an approved action.
+- Resolve the tool's operational state and metadata through the indexed `.cya/tools/Txx.yaml` file before use.
 - Use a fallback only after explicit user approval.
 - If no approved route exists, return `BLOCKED TOOLING` instead of improvising.
 - Connected access does not authorize using a tool outside its approved purpose.
@@ -90,7 +99,7 @@ Never create parallel workflows, services, tools or conventions silently.
 
 ## Evidence and completion
 
-A claim is not evidence. Relevant work must produce the evidence defined by the tool registry and approved phase acceptance criteria.
+A claim is not evidence. Relevant work must produce the evidence defined by the tool registry, the affected Txx record and approved phase acceptance criteria.
 
 Evidence does not replace user acceptance. Present the result and evidence to the user, and do not mark the work closed, `PASS`, ✅ or advance until the user explicitly accepts it.
 
