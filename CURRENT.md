@@ -6,15 +6,15 @@
 
 **Global status:** FASE 0 — EN CURSO  
 **Phase:** FASE 0 — FUNDACIÓN, GOBERNANZA Y BOOTSTRAP  
-**Last completed subphase:** 0.7 — Gobernanza de herramientas y TOOL PLAN obligatorio — PASS  
-**Active subphase:** 0.8 — Construcción y prueba de T01 CYA Browser Lab — EN CURSO  
-**Active work block:** T01 execution-authorization gate  
+**Last completed subphase:** 0.8 — Construcción y prueba de T01 CYA Browser Lab — PASS  
+**Active subphase:** none; 0.9 — Construcción y prueba de T02 CYA Quality Gate — PENDING / NOT STARTED  
+**Active work block:** awaiting explicit authorization to start 0.9  
 **Approved concrete decisions in 0.4:** 22  
 **Approved concrete decisions in 0.5:** 13  
 **Approved concrete decisions in 0.6:** 20  
 **Approved concrete decisions in 0.7:** 21  
 **Approved concrete decisions in 0.8:** 16  
-**Active action:** await explicit user authorization to execute T01 construction/testing under the approved TOOL PLAN and approved representative mobile/desktop profiles  
+**Active action:** obtain explicit user authorization to start 0.9  
 **Incremental cost target:** 0 EUR
 
 ## Canonical decision-organization rule
@@ -552,14 +552,14 @@ The approved 0.7 decisions did **not** by themselves authorize T01–T11/workflo
 **Closure gate:** PASS after evidence review and explicit user acceptance.  
 **Starts 0.8:** no. At the moment 0.7 was closed, 0.8 remained PENDING / NOT STARTED until explicit user authorization.
 
-## 0.8 — Construcción y prueba de T01 CYA Browser Lab — EN CURSO
+## 0.8 — Construcción y prueba de T01 CYA Browser Lab — PASS
 
 **Start authorization:** explicitly approved by the user.  
 **Approved intrinsic decisions:** 16.  
-**T01 lifecycle state:** `PENDING`; construction and validation have not yet been executed.  
+**T01 lifecycle state:** `ACTIVE`; construction, self-test and real HTTPS validation have been completed and accepted.  
 **Technical TOOL PLAN:** APPROVED_BY_USER, but its approval does not authorize execution under 0.7.  
-**Current gate:** explicit user authorization to execute T01 construction/testing.  
-**Technical execution status:** NOT_STARTED.
+**Current gate:** 0.8 closure accepted by the user.  
+**Technical execution status:** COMPLETED.
 
 ### Approved operational summary — Decisions 1–16
 
@@ -568,7 +568,7 @@ The approved 0.7 decisions did **not** by themselves authorize T01–T11/workflo
 3. **T01-only technical versions:** Node.js 24.20.0 LTS, npm 11.19.0, Playwright 1.62.1 + bundled Chromium, `ubuntu-24.04`; approved Actions are pinned to the exact SHAs recorded canonically in Roadmap 0.8. These choices do not select the application stack.
 4. **Isolation:** T01 is technically isolated from the future application stack; npm for T01 does not force npm for the app; no app framework/backend/database/architecture is selected.
 5. **Planned versioned structure:** `tools/browser-lab/` plus `.github/workflows/t01-browser-lab.yml`; approval defines location but does not itself authorize file creation.
-6. **Invocation:** initial version uses manual `workflow_dispatch`; GitHub Issues interface remains deferred.
+6. **Invocation:** `pull_request` runs the deterministic self-test; `workflow_dispatch` runs Browser Lab against a public HTTPS `target_url`; the authorized GitHub Issue command interface uses exact title/body/author checks and reuses the same Browser Lab runner.
 7. **Input:** only public HTTPS `target_url`; no credentials, cookies, tokens, auth headers or secrets.
 8. **URL safety:** reject embedded credentials and localhost/loopback/link-local/private/reserved destinations; redirects may not bypass the restriction; no authenticated/private-network targets.
 9. **Mobile-first representative smoke + desktop:** T01 covers an approved representative mobile viewport of **390 × 844 CSS px** in a Chromium mobile context with touch interaction, plus an approved representative desktop viewport of **1440 × 900 CSS px** in Chromium desktop. These profiles are representative for T01 smoke only; they do not by themselves certify complete iPhone/Android or Safari/WebKit compatibility. T06 retains the exhaustive responsive/tablet/multi-viewport/regression role.
@@ -578,7 +578,7 @@ The approved 0.7 decisions did **not** by themselves authorize T01–T11/workflo
 13. **Evidence:** structured JSON + GitHub Step Summary + representative screenshots for executed contexts; trace only when diagnostically useful; video off; artifact retention 7 days; generated artifacts are not canonical versioned sources.
 14. **Validation:** deterministic self-test must intentionally produce a console error, failed request and UI anomaly; real HTTPS validation target is `https://example.com`, solely for initial validation.
 15. **Activation prerequisites:** reproducible install, successful self-test, successful real HTTPS run, evidence generation/review, documented invocation/limits/dependencies/access, affected governance synchronization, then explicit user acceptance before `PENDING → ACTIVE`.
-16. **First-version limits:** no auth, secrets, sessions, automatic multi-page crawling, Issues commands, exhaustive responsive matrix, systematic tablet, visual regression, accessibility, performance, deployment or external AI API; any expansion requires new explicit approval.
+16. **First-version limits:** no auth, secrets, sessions, automatic multi-page crawling, exhaustive responsive matrix, systematic tablet, visual regression, accessibility, performance, deployment or external AI API; the GitHub Issue interface is limited to its exact authorized contract; any expansion requires new explicit approval.
 
 ### Transversal product requirement referenced from Roadmap 1.8
 
@@ -588,14 +588,14 @@ The canonical owner is **Roadmap 1.8 — Reconciliación transversal y cierre fu
 
 - The technical TOOL PLAN for T01 Decisions 1–16 is approved.
 - Approval of the TOOL PLAN is not technical execution authorization.
-- No T01 workflow, package, lockfile, runner or self-test has been created under this authorization.
-- No T01 test has been executed.
-- T01 remains `PENDING`.
-- The representative mobile and desktop profiles are approved; the only remaining pre-execution gate is explicit user authorization to execute T01 construction/testing.
+- T01 workflow, package, lockfile, runner and self-test were created and the authorized Issue interface was added.
+- T01 self-test and real HTTPS execution were validated successfully, with structured evidence and artifacts generated.
+- The representative mobile and desktop profiles were exercised; the GitHub Issue interface was validated.
+- The user explicitly accepted the evidence and T01 activation; T01 is `ACTIVE`.
 
 ## Next action
 
-Obtain explicit user authorization to execute T01 construction/testing under the approved TOOL PLAN and representative profiles. Do not construct or test T01 before that authorization.
+Obtain explicit user authorization to start 0.9. Do not start 0.9 before that authorization.
 
 ## Deferred — do not execute without explicit approval
 

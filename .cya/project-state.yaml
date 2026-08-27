@@ -2,7 +2,7 @@ project: CYA Hub v10
 status: PHASE_0_IN_PROGRESS
 phase: 0
 subphase: 0.8
-active_action: await_explicit_user_authorization_to_execute_t01_construction_and_testing
+active_action: await_explicit_user_authorization_to_start_0_9
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -60,16 +60,17 @@ pre_phase_0:
 
 phase_0_current:
   status: IN_PROGRESS
-  last_completed_subphase: 0.7
-  last_completed_subphase_name: gobernanza_de_herramientas_y_tool_plan_obligatorio
+  last_completed_subphase: 0.8
+  last_completed_subphase_name: construccion_y_prueba_de_t01_cya_browser_lab
   last_completed_subphase_status: PASS
   active_subphase: 0.8
   active_subphase_name: construccion_y_prueba_de_t01_cya_browser_lab
-  active_subphase_status: IN_PROGRESS
+  active_subphase_status: PASS
   closure_gate_0_4: PASS
   closure_gate_0_5: PASS
   closure_gate_0_6: PASS
   closure_gate_0_7: PASS
+  closure_gate_0_8: PASS
   next_subphase: 0.9
   next_subphase_status: PENDING_NOT_STARTED
 
@@ -1071,7 +1072,7 @@ phase_0_0_7:
     starts_0_8: false
 
 phase_0_0_8:
-  status: IN_PROGRESS
+  status: PASS
   start_authorization: APPROVED_BY_USER
   approved_decision_count: 16
   decision_package_status: APPROVED_BY_USER
@@ -1144,8 +1145,8 @@ phase_0_0_8:
       authorizes_file_creation_by_decision_alone: false
     initial_invocation:
       status: APPROVED_BY_USER
-      trigger: workflow_dispatch_manual_only
-      github_issues_interface: DEFERRED_REQUIRES_FUTURE_APPROVAL
+      trigger: pull_request_self_test_workflow_dispatch_manual_and_authorized_github_issue
+      github_issues_interface: APPROVED_BY_USER_AND_VALIDATED
     initial_input:
       status: APPROVED_BY_USER
       input: target_url
@@ -1236,7 +1237,6 @@ phase_0_0_8:
         - secrets
         - sessions
         - automatic_multi_page_crawling
-        - github_issues_commands
         - exhaustive_responsive_matrix
         - systematic_tablet
         - visual_regression
@@ -1264,14 +1264,31 @@ phase_0_0_8:
   technical_tool_plan:
     status: APPROVED_BY_USER
     approval_automatically_authorizes_execution: false
-    technical_execution_status: NOT_STARTED
-    workflow_or_tool_files_created_under_this_authorization: false
-    tests_executed_under_this_authorization: false
+    technical_execution_status: COMPLETED
+    workflow_or_tool_files_created_under_this_authorization: true
+    tests_executed_under_this_authorization: true
     pre_execution_gates:
       - explicit_user_authorization_to_execute_t01_construction_and_testing
-  t01_status: PENDING
-  current_gate: explicit_execution_authorization_pending_user_approval
-  technical_execution_authorized: false
+  closure:
+    status: PASS
+    construction_completed: true
+    validation_completed: true
+    t01_status: ACTIVE
+    explicit_user_acceptance: true
+    closure_result: PASS
+    evidence:
+      implementation_pr: 20
+      implementation_head: aa322be4ea0036a9563af9d9f9ec555fd8a99036
+      merge_commit: 21da4479f2f454db52e336e16348df892d8be08e
+      self_test_run: 33037856169
+      real_https_issue: 21
+      real_https_run: 33057054675
+      target: https://example.com
+      result: success
+      evidence_artifact: t01-browser-lab-evidence
+  t01_status: ACTIVE
+  current_gate: 0_8_closure_accepted_by_user
+  technical_execution_authorized: true
   authorizes_starting_0_9: false
 
 legacy_policy_established:
@@ -1288,9 +1305,9 @@ implementation_decision_source_policy:
 next_action:
   type: USER_DECISION_GATE
   phase: 0
-  subphase: 0.8
-  work_block: cya_browser_lab
-  action: explicitly_authorize_t01_construction_and_testing
+  subphase: 0.9
+  work_block: cya_quality_gate
+  action: explicitly_authorize_starting_0_9
   blocked_until_user: true
 
 prohibited_progression:
