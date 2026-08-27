@@ -13,7 +13,14 @@ const contexts = [
 const args = new Map();
 for (let index = 2; index < process.argv.length; index += 1) {
   const key = process.argv[index];
-  if (key.startsWith('--')) args.set(key.slice(2), process.argv[index + 1] ?? true);
+  const value = process.argv[index + 1];
+  if (key.startsWith('--')) {
+    if (value === undefined || value.startsWith('--')) args.set(key.slice(2), true);
+    else {
+      args.set(key.slice(2), value);
+      index += 1;
+    }
+  }
 }
 
 const outputDir = String(args.get('output-dir') ?? 'browser-lab-output');
