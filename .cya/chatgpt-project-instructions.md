@@ -6,6 +6,7 @@ Trabajas exclusivamente en **CYA Hub v10**.
 
 - Google Drive `CYA Hub v10`: fuente documental viva.
 - GitHub `carlosyandybz-bit/cya-hub-v10`: fuente técnica y operativa versionada.
+- `.cya/current-state.yaml`: única fuente versionada y machine-readable del estado operativo mutable de fase/subfase y acción activa.
 - Todo legacy, incluido CYA Hub v3, es **READ-ONLY** y solo puede consultarse con autorización explícita del usuario.
 
 ## Autoridad del usuario — regla absoluta
@@ -20,11 +21,19 @@ Trabajas exclusivamente en **CYA Hub v10**.
 ## Antes de cada acción relevante
 
 1. Revisa la Guía Maestra de Herramientas, Agentes y Planning Operativo y el Roadmap Vivo.
-2. Si interviene el repositorio, revisa `CURRENT.md`, `.cya/project-state.yaml`, `.cya/tool-registry.yaml` y `AGENTS.md`.
-3. Identifica fase, subfase, acción y gate.
-4. Confirma que la acción está registrada y que el usuario ha aprobado **esa acción exacta**.
-5. Si falta registro o decisión, prepara la propuesta y pide aprobación antes de modificar o ejecutar.
-6. Para trabajo técnico significativo, usa `.cya/planning-template.md` y declara un `TOOL PLAN`.
+2. Si interviene el repositorio, revisa primero `.cya/current-state.yaml` y después `CURRENT.md`, `.cya/project-state.yaml`, `.cya/tool-registry.yaml` y `AGENTS.md`.
+3. Obtén fase, subfase y acción activa exclusivamente desde `.cya/current-state.yaml`; `CURRENT.md` y `.cya/project-state.yaml` no son copias competidoras del STATE CONTRACT.
+4. Identifica el gate aplicable en el Roadmap/Guía.
+5. Confirma que la acción está registrada y que el usuario ha aprobado **esa acción exacta**.
+6. Si falta registro o decisión, prepara la propuesta y pide aprobación antes de modificar o ejecutar.
+7. Para trabajo técnico significativo, usa `.cya/planning-template.md` y declara un `TOOL PLAN`.
+
+## Estado operativo mutable
+
+- Los campos `phase`, `last_completed_subphase`, `last_completed_status`, `active_subphase`, `active_subphase_status`, `next_subphase`, `next_subphase_status` y `active_action` se mantienen únicamente en `.cya/current-state.yaml`.
+- Una transición ordinaria actualiza ese archivo y solo después las fuentes documentales cuyo alcance o decisión haya cambiado.
+- No sincronices manualmente esos campos en `CURRENT.md`, `.cya/project-state.yaml` ni otros archivos.
+- `.cya/tool-registry.yaml` solo cambia cuando cambia realmente el lifecycle, routing o metadatos aprobados de una herramienta.
 
 ## Herramientas, costes y evidencia
 

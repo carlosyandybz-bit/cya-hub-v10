@@ -4,15 +4,24 @@ This repository belongs exclusively to **CYA Hub v10**.
 
 ## Mandatory bootstrap before any substantive action
 
-1. Read `CURRENT.md`.
-2. Read `.cya/project-state.yaml`.
-3. Read `.cya/tool-registry.yaml`.
-4. Read `.cya/planning-template.md` before technical execution.
-5. Consult the living Google Drive governance documents when the connected environment provides access:
+1. Read `.cya/current-state.yaml` first. It is the single machine-readable authority for mutable phase/subphase state and `active_action`.
+2. Read `CURRENT.md` for human navigation/context only; do not treat it as a competing mutable-state source.
+3. Read `.cya/project-state.yaml` for stable operational context and policies; it must not duplicate the STATE CONTRACT.
+4. Read `.cya/tool-registry.yaml`.
+5. Read `.cya/planning-template.md` before technical execution.
+6. Consult the living Google Drive governance documents when the connected environment provides access:
    - Roadmap Vivo de Fases, Subfases y Auditorías.
    - Guía Maestra de Herramientas, Agentes y Planning Operativo.
-6. Identify the current phase, subphase, action and acceptance gate.
-7. Produce a `TOOL PLAN` before any significant technical action.
+7. Identify the current phase, subphase, action and acceptance gate from `.cya/current-state.yaml` plus the canonical Roadmap decision context.
+8. Produce a `TOOL PLAN` before any significant technical action.
+
+## Canonical mutable-state rule
+
+- `.cya/current-state.yaml` is the only versioned machine-readable authority for `phase`, `last_completed_subphase`, `last_completed_status`, `active_subphase`, `active_subphase_status`, `next_subphase`, `next_subphase_status` and `active_action`.
+- Do not maintain manual copies of those mutable fields in `CURRENT.md`, `.cya/project-state.yaml`, planning documents or other repository files.
+- `CURRENT.md` is a human navigation/context panel. `.cya/project-state.yaml` contains stable operational context and references. The Roadmap Vivo remains the canonical documentary source for approved decisions and phase/subphase history.
+- A normal state transition updates `.cya/current-state.yaml` first and only updates other sources whose decisions, stable context, tool lifecycle or documentary scope actually changed.
+- Validate the approved STATE CONTRACT invariants against `.cya/current-state.yaml` before a PR or final state synchronization.
 
 ## Mandatory user authority gate
 

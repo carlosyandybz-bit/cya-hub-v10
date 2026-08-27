@@ -4,16 +4,19 @@ Use this complete template before any significant technical action or significan
 
 An approved TOOL PLAN is an execution contract. It must not be rewritten retrospectively to accommodate what occurred. If the tool, scope, cost, evidence, rollback, environment, permissions or gate changes materially, stop the affected work and return to the user for explicit approval.
 
+The mutable operational STATE CONTRACT is canonical only in `.cya/current-state.yaml`. A TOOL PLAN may reference the current state, but it must not become a competing authority or require manual synchronization of mutable phase/subphase fields into `CURRENT.md` or `.cya/project-state.yaml`.
+
 ## Context
 
-**Phase:**  
-**Subphase:**  
+**Canonical mutable state reviewed in `.cya/current-state.yaml`:** yes / no  
+**Phase/subphase and active action resolved from canonical state:**  
 **Action:**  
 **Acceptance criterion / gate:**  
 
 ## Governance and authorization
 
 **Guide reviewed:** yes / no  
+**Roadmap reviewed:** yes / no  
 **Action already registered:** yes / no  
 **If no, where was it proposed and approved before registration/execution:**  
 **Applicable explicit user authorization:**  
@@ -68,6 +71,17 @@ A prompt or agent instruction is not an account-level billing control. The TOOL 
 
 A successful tool call, command or workflow does not by itself establish PASS. The result must satisfy the applicable acceptance criterion and evidence requirements, and user acceptance remains separate.
 
+## State synchronization
+
+**Does this action change the mutable STATE CONTRACT:** no / yes  
+**If yes, `.cya/current-state.yaml` is the only mutable-state file to update:** not applicable / yes  
+**Other documents whose decisions or stable context actually changed:** none / list  
+**`CURRENT.md` mutable-state copy required:** no  
+**`.cya/project-state.yaml` mutable-state copy required:** no  
+**Tool registry lifecycle/routing/metadata change actually occurred:** no / yes — if yes, exact approved change:  
+
+Do not update `CURRENT.md`, `.cya/project-state.yaml` or `.cya/tool-registry.yaml` merely because a phase/subphase transition occurred. Update them only when their own approved role/content changed.
+
 ## Error / root-cause handling
 
 **Is this action correcting an error:** no / yes  
@@ -93,4 +107,5 @@ A successful tool call, command or workflow does not by itself establish PASS. T
 
 **Execution status:** NOT_STARTED / IN_PROGRESS / PASS / FAIL / BLOCKED_TOOLING / BLOCKED_USER_ACTION / BLOCKED_COST  
 **Material TOOL PLAN change discovered during execution:** no / yes — if yes, affected work stopped pending user approval  
+**Canonical mutable state updated if and only if authorized transition occurred:** not applicable / yes / no  
 **Next action:**  
