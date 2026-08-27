@@ -2,8 +2,8 @@
   "version": 1,
   "gate": "T03 CYA Security Gate",
   "checks": [
-    {"id":"secret-scan","required":true,"applicable":true,"engine":"gitleaks","version":"8.30.1"},
-    {"id":"github-actions-security","required":true,"applicable":true,"engine":"zizmor","version":"1.29.0"},
+    {"id":"secret-scan","required":true,"applicable":true,"engine":"gitleaks","version":"8.30.1","execution":"direct_pinned_cli"},
+    {"id":"github-actions-security","required":true,"applicable":true,"engine":"zizmor","version":"1.29.0","execution":"direct_pinned_container","imageDigest":"sha256:863026d54f91271b10b60b67ad8054cb37120167e162482597db102b3026a284"},
     {"id":"dependency-security","required":false,"applicable":false,"status":"NOT_APPLICABLE"},
     {"id":"sast","required":false,"applicable":false,"status":"NOT_APPLICABLE"},
     {"id":"aggregate-result","required":true,"applicable":true,"engine":"cya-security-gate-runner"}
@@ -19,6 +19,9 @@
     "syntheticSecretsRuntimeOnly":true,
     "selfTestEvidenceMustOmitSyntheticSecretValue":true,
     "checkoutPersistCredentials":false,
+    "offlineCapableSecurityEnginesMustNotReceiveCredentials":true,
+    "securityWrappersMustNotBeUsedWhenTheyInjectUnneededCredentials":true,
+    "repositoryMountReadOnlyForContainerAudits":true,
     "incrementalCostEur":0
   }
 }
