@@ -1,0 +1,11 @@
+tool:
+  key: cya_deploy_bridge
+  id: T04
+  status: PENDING
+  activation: phase_0_subphase_0_11_bootstrap_then_phase_4_completion
+  condition_when_not_active: hosting_capability_verification_and_authorized_bootstrap_pending
+  requirements:
+    - activation_policy
+  evidence:
+    - approved_deployment_route_test_when_applicable
+  cost_eur: 0
