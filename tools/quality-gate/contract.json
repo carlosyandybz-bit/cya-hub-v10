@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "resultStatuses": ["PASS", "FAIL", "NOT_APPLICABLE"],
+  "checks": [
+    {"id": "quality-contract", "required": true, "applicable": true, "handler": "quality-contract"},
+    {"id": "required-check-resolution", "required": true, "applicable": true, "handler": "required-check-resolution"},
+    {"id": "text-normalization", "required": true, "applicable": true, "handler": "text-normalization"},
+    {"id": "aggregate-result", "required": true, "applicable": true, "handler": "aggregate-result"},
+    {"id": "reproducible-installation", "required": true, "applicable": false, "handler": "deferred"},
+    {"id": "format-check", "required": true, "applicable": false, "handler": "deferred"},
+    {"id": "build", "required": true, "applicable": false, "handler": "deferred"},
+    {"id": "lint", "required": true, "applicable": false, "handler": "deferred"},
+    {"id": "typecheck", "required": true, "applicable": false, "handler": "deferred"},
+    {"id": "unit-tests", "required": true, "applicable": false, "handler": "deferred"},
+    {"id": "integration-tests", "required": true, "applicable": false, "handler": "deferred"}
+  ]
+}
