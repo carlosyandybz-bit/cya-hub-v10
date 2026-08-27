@@ -1,5 +1,6 @@
 version: 2
 project: CYA Hub v10
+registry_layout: modular
 
 schema:
   lifecycle_states:
@@ -70,6 +71,9 @@ policy:
   root_cause_and_no_unauthorized_patching_policy_source: phase_0_0_6_decision_20
   patch_or_workaround_requires_explicit_prior_user_acceptance: true
   user_action_required_only_when_user_intervention_is_actually_required_and_approved_tool_cannot_safely_execute: true
+  tool_lifecycle_authority: individual_tool_file
+  tool_file_directory: .cya/tools
+  embedded_tool_lifecycle_copies: prohibited
 
 cost_governance:
   default_incremental_cost_eur: 0
@@ -403,167 +407,15 @@ actions:
       - evidence
     cost_eur: 0
 
-capabilities:
-  cya_browser_lab:
-    id: T01
-    status: ACTIVE
-    activation: phase_0_subphase_0_8
-    requirements:
-      - activation_policy
-    evidence:
-      - minimum_successful_browser_lab_test
-      - github_actions_run_33037856169_self_test_success
-      - github_actions_run_33057054675_issue_https_success
-    invocation:
-      pull_request: deterministic_self_test
-      workflow_dispatch: browser_lab_against_public_https_target_url
-      github_issue:
-        event: issues.opened
-        title: '[CYA:T01] RUN'
-        body:
-          exact_json_properties:
-            - command
-            - target_url
-          command: browser_lab.run
-          target_url: required_string
-        authorized_actor: carlosyandybz-bit
-    limits:
-      - public_https_only
-      - no_authentication
-      - no_cookies
-      - no_tokens
-      - no_secrets
-      - block_localhost_loopback_private_link_local_reserved
-      - no_automatic_multi_page_crawling
-      - representative_mobile_390x844_chromium_touch
-      - representative_desktop_1440x900_chromium
-      - no_complete_safari_webkit_certification
-      - does_not_replace_t06_systematic_visual_qa
-      - screenshots_and_structured_result_json
-      - traces_only_when_diagnostically_useful
-      - video_disabled
-      - artifact_retention_7_days
-    dependencies:
-      - github_actions
-      - node_24_20_0
-      - npm_11_19_0
-      - playwright_1_62_1
-      - bundled_chromium
-      - ubuntu_24_04
-    access_requirements:
-      - github_repository_accessible
-      - github_actions_available
-      - authorized_issue_actor_carlosyandybz_bit
-      - public_https_target_accessible
-    cost_eur: 0
-
-  cya_quality_gate:
-    id: T02
-    status: PENDING
-    activation: phase_0_subphase_0_9
-    condition_when_not_active: construction_and_validation_not_yet_authorized_or_completed
-    requirements:
-      - activation_policy
-    evidence:
-      - minimum_successful_quality_gate_test
-    cost_eur: 0
-
-  cya_security_gate:
-    id: T03
-    status: PENDING
-    activation: phase_0_subphase_0_10
-    condition_when_not_active: construction_and_validation_not_yet_authorized_or_completed
-    requirements:
-      - activation_policy
-    evidence:
-      - minimum_successful_security_gate_test
-    cost_eur: 0
-
-  cya_deploy_bridge:
-    id: T04
-    status: PENDING
-    activation: phase_0_subphase_0_11_bootstrap_then_phase_4_completion
-    condition_when_not_active: hosting_capability_verification_and_authorized_bootstrap_pending
-    requirements:
-      - activation_policy
-    evidence:
-      - approved_deployment_route_test_when_applicable
-    cost_eur: 0
-
-  cya_runtime_health:
-    id: T05
-    status: DEFERRED
-    activation: phase_4
-    condition_when_not_active: executable_application_required
-    requirements:
-      - activation_policy
-    evidence:
-      - health_and_smoke_validation_when_activated
-    cost_eur: 0
-
-  cya_visual_qa:
-    id: T06
-    status: PENDING
-    activation: phase_0_subphase_0_12_base_then_phase_3_intensive_use
-    condition_when_not_active: base_construction_and_validation_not_yet_authorized_or_completed
-    requirements:
-      - activation_policy
-    evidence:
-      - minimum_successful_visual_qa_test
-    cost_eur: 0
-
-  cya_performance_lab:
-    id: T07
-    status: DEFERRED
-    activation: phase_4_and_phase_8
-    condition_when_not_active: executable_application_and_performance_baseline_required
-    requirements:
-      - activation_policy
-    evidence:
-      - performance_baseline_validation_when_activated
-    cost_eur: 0
-
-  cya_accessibility_lab:
-    id: T08
-    status: PENDING
-    activation: phase_0_subphase_0_12_base_then_phase_3_rules
-    condition_when_not_active: base_construction_and_validation_not_yet_authorized_or_completed
-    requirements:
-      - activation_policy
-    evidence:
-      - minimum_successful_accessibility_lab_test
-    cost_eur: 0
-
-  cya_backend_control:
-    id: T09
-    status: DEFERRED
-    activation: phase_2
-    condition_when_not_active: architecture_decision_required
-    requirements:
-      - activation_policy
-      - approved_phase_2_architecture
-    evidence:
-      - backend_control_validation_when_activated
-    cost_eur: 0
-
-  cya_observability_bridge:
-    id: T10
-    status: DEFERRED
-    activation: phase_4_to_8
-    condition_when_not_active: executable_application_and_concrete_observability_need_required
-    requirements:
-      - activation_policy
-    evidence:
-      - observability_validation_when_activated
-    cost_eur: 0
-
-  cya_design_bridge:
-    id: T11
-    status: DEFERRED
-    activation: phase_3
-    condition_when_not_active: phase_3_value_and_zero_incremental_cost_assessment_required
-    requirements:
-      - activation_policy
-    evidence:
-      - design_bridge_validation_when_activated
-    cost_eur: 0
+tool_index:
+  cya_browser_lab: .cya/tools/T01.yaml
+  cya_quality_gate: .cya/tools/T02.yaml
+  cya_security_gate: .cya/tools/T03.yaml
+  cya_deploy_bridge: .cya/tools/T04.yaml
+  cya_runtime_health: .cya/tools/T05.yaml
+  cya_visual_qa: .cya/tools/T06.yaml
+  cya_performance_lab: .cya/tools/T07.yaml
+  cya_accessibility_lab: .cya/tools/T08.yaml
+  cya_backend_control: .cya/tools/T09.yaml
+  cya_observability_bridge: .cya/tools/T10.yaml
+  cya_design_bridge: .cya/tools/T11.yaml
