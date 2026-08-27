@@ -63,9 +63,6 @@ phase_0_current:
   last_completed_subphase: 0.8
   last_completed_subphase_name: construccion_y_prueba_de_t01_cya_browser_lab
   last_completed_subphase_status: PASS
-  active_subphase: 0.8
-  active_subphase_name: construccion_y_prueba_de_t01_cya_browser_lab
-  active_subphase_status: PASS
   closure_gate_0_4: PASS
   closure_gate_0_5: PASS
   closure_gate_0_6: PASS
