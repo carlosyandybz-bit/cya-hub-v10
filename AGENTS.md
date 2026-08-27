@@ -97,6 +97,14 @@ Never create parallel workflows, services, tools or conventions silently.
 - Use placeholders in `.env.example` and authorized secret stores for real values.
 - Avoid unrelated refactors and speculative changes.
 
+## GitHub Actions security invariants
+
+- Do not interpolate attacker-controllable or user-supplied GitHub expressions directly inside `run:` script bodies. Move the expression into a step/job `env` value and consume the environment variable from the shell or runtime.
+- `actions/checkout` must use `persist-credentials: false` by default. Any workflow that genuinely requires persisted Git credentials needs an explicit, separately approved exception with documented scope.
+- Do not install or repin runtime packages ad hoc inside a workflow when the already pinned runtime distribution provides the exact required version. Verify the supplied version instead.
+- Security engines capable of offline execution must not receive GitHub tokens, application credentials or other secrets merely because a wrapper injects them. Prefer the approved direct offline execution path.
+- Never suppress T03 findings merely to obtain a green workflow. Findings must be corrected or handled through an explicit approved exception under the security governance.
+
 ## Evidence and completion
 
 A claim is not evidence. Relevant work must produce the evidence defined by the tool registry, the affected Txx record and approved phase acceptance criteria.

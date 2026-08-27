@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "gate": "T03 CYA Security Gate",
+  "checks": [
+    {"id":"secret-scan","required":true,"applicable":true,"engine":"gitleaks","version":"8.30.1"},
+    {"id":"github-actions-security","required":true,"applicable":true,"engine":"zizmor","version":"1.29.0"},
+    {"id":"dependency-security","required":false,"applicable":false,"status":"NOT_APPLICABLE"},
+    {"id":"sast","required":false,"applicable":false,"status":"NOT_APPLICABLE"},
+    {"id":"aggregate-result","required":true,"applicable":true,"engine":"cya-security-gate-runner"}
+  ],
+  "policy": {
+    "blockingFinding":"FAIL",
+    "requiredControlUnavailable":"FAIL",
+    "redactSecrets":true,
+    "allowSilentBypass":false,
+    "selfTestExternalDetectorStrategy":"controlled_runtime_rule_and_fixture",
+    "selfTestMustNotDependOnVendorRuleCatalog":true,
+    "productionRuleCatalogSeparatedFromSelfTest":true,
+    "syntheticSecretsRuntimeOnly":true,
+    "selfTestEvidenceMustOmitSyntheticSecretValue":true,
+    "checkoutPersistCredentials":false,
+    "untrustedWorkflowInputsMustUseEnvironmentBoundary":true,
+    "directTemplateInterpolationInsideRunForbidden":true,
+    "redundantAdHocRuntimePackageInstallForbidden":true,
+    "offlineSecurityEngineMustNotReceiveUnnecessaryCredentials":true,
+    "incrementalCostEur":0
+  }
+}
