@@ -1,0 +1,11 @@
+tool:
+  key: cya_visual_qa
+  id: T06
+  status: PENDING
+  activation: phase_0_subphase_0_12_base_then_phase_3_intensive_use
+  condition_when_not_active: base_construction_and_validation_not_yet_authorized_or_completed
+  requirements:
+    - activation_policy
+  evidence:
+    - minimum_successful_visual_qa_test
+  cost_eur: 0
