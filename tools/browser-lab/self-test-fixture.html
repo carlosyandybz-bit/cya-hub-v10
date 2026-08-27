@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CYA Browser Lab self-test</title>
+    <style>
+      body { margin: 0; font-family: sans-serif; }
+      .content { width: 1200px; padding: 16px; }
+      .control-wrap { position: relative; width: 180px; height: 40px; }
+      .control-wrap button { width: 180px; height: 40px; }
+      .control-cover { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.12); }
+      .layout-anomaly { position: absolute; left: calc(100vw + 10px); top: 0; width: 20px; height: 20px; }
+    </style>
+  </head>
+  <body>
+    <main class="content">
+      <h1>CYA Browser Lab self-test</h1>
+      <p id="status">Self-test fixture loaded.</p>
+      <div class="control-wrap">
+        <button type="button">Covered control</button>
+        <div class="control-cover" aria-hidden="true"></div>
+      </div>
+      <div class="layout-anomaly" aria-hidden="true"></div>
+    </main>
+    <script>
+      console.error('CYA Browser Lab controlled self-test console error');
+      fetch('/cya-browser-lab-controlled-failure', { cache: 'no-store' });
+    </script>
+  </body>
+</html>
