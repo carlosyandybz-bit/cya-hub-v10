@@ -1,0 +1,11 @@
+tool:
+  key: cya_observability_bridge
+  id: T10
+  status: DEFERRED
+  activation: phase_4_to_8
+  condition_when_not_active: executable_application_and_concrete_observability_need_required
+  requirements:
+    - activation_policy
+  evidence:
+    - observability_validation_when_activated
+  cost_eur: 0
