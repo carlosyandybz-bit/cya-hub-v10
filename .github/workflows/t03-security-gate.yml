@@ -1,0 +1,89 @@
+name: T03 CYA Security Gate
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  security-gate:
+    name: T03 Security Gate
+    runs-on: ubuntu-24.04
+    env:
+      CYA_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      GITLEAKS_VERSION: 8.30.1
+      GITLEAKS_ARCHIVE_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 24.20.0
+
+      - name: Pin npm
+        run: npm install --global npm@11.19.0 --ignore-scripts
+
+      - name: Verify runtime versions
+        shell: bash
+        run: |
+          test "$(node --version)" = "v24.20.0"
+          test "$(npm --version)" = "11.19.0"
+
+      - name: Install pinned Gitleaks CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          archive="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/${archive}"
+          curl --fail --location --silent --show-error "$url" --output "$RUNNER_TEMP/$archive"
+          echo "${GITLEAKS_ARCHIVE_SHA256}  $RUNNER_TEMP/$archive" | sha256sum --check --strict
+          mkdir -p "$RUNNER_TEMP/gitleaks"
+          tar -xzf "$RUNNER_TEMP/$archive" -C "$RUNNER_TEMP/gitleaks" gitleaks
+          echo "$RUNNER_TEMP/gitleaks" >> "$GITHUB_PATH"
+
+      - name: Verify Gitleaks version
+        shell: bash
+        run: gitleaks version | grep -F "8.30.1"
+
+      - name: Prepare evidence directory
+        run: mkdir -p security-gate-evidence
+
+      - name: Run deterministic T03 self-test
+        run: node tools/security-gate/runner.mjs --self-test --output security-gate-evidence/self-test-result.json
+
+      - name: Scan repository for secrets
+        id: gitleaks
+        shell: bash
+        run: gitleaks dir --redact --exit-code 2 --report-format json --report-path security-gate-evidence/gitleaks.json .
+
+      - name: Audit GitHub Actions security
+        id: zizmor
+        uses: zizmorcore/zizmor-action@3dc1ecc9bcb9e94e9b2c709687979e1298497054
+        with:
+          inputs: .
+          collect: workflows
+          online-audits: false
+          advanced-security: false
+          annotations: true
+          version: 1.29.0
+          token: ''
+          fail-on-no-inputs: true
+
+      - name: Aggregate T03 result
+        if: always()
+        env:
+          EXTERNAL_STATUS: ${{ steps.gitleaks.outcome == 'success' && steps.zizmor.outcome == 'success' && 'PASS' || 'FAIL' }}
+        run: node tools/security-gate/runner.mjs --external-status "$EXTERNAL_STATUS" --output security-gate-evidence/result.json
+
+      - name: Upload T03 evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: t03-security-gate-evidence
+          path: security-gate-evidence/
+          if-no-files-found: error
+          retention-days: 7
