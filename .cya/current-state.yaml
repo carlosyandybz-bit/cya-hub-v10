@@ -1,8 +1,6 @@
 phase: 0
-last_completed_subphase: 0.8
+last_completed_subphase: 0.9
 last_completed_status: PASS
-active_subphase: 0.9
-active_subphase_status: EN_CURSO
 next_subphase: 0.10
 next_subphase_status: PENDING_NOT_STARTED
-active_action: specify_and_construct_t02_cya_quality_gate
+active_action: await_explicit_user_authorization_to_start_0_10
