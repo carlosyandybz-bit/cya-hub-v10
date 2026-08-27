@@ -1,0 +1,11 @@
+tool:
+  key: cya_performance_lab
+  id: T07
+  status: DEFERRED
+  activation: phase_4_and_phase_8
+  condition_when_not_active: executable_application_and_performance_baseline_required
+  requirements:
+    - activation_policy
+  evidence:
+    - performance_baseline_validation_when_activated
+  cost_eur: 0
