@@ -10,6 +10,7 @@
       .control-wrap { position: relative; width: 180px; height: 40px; }
       .control-wrap button { width: 180px; height: 40px; }
       .control-cover { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.12); }
+      .layout-anomaly { position: absolute; left: calc(100vw + 10px); top: 0; width: 20px; height: 20px; }
     </style>
   </head>
   <body>
@@ -20,6 +21,7 @@
         <button type="button">Covered control</button>
         <div class="control-cover" aria-hidden="true"></div>
       </div>
+      <div class="layout-anomaly" aria-hidden="true"></div>
     </main>
     <script>
       console.error('CYA Browser Lab controlled self-test console error');

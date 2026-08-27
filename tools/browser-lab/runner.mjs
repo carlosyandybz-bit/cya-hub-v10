@@ -34,6 +34,7 @@ const selfTestExpectedKinds = new Set(['console', 'request', 'layout', 'control-
 const selfTestDetections = new Set();
 let selfTestOrigin = null;
 let selfTestServerHandle = null;
+let selfTestControlledRequestPending = 0;
 
 function safeText(value, limit = 500) {
   return String(value ?? '').replace(/https?:\/\/[^\s]+/gi, '[URL]').replace(/[\w.+-]+@[\w.-]+/g, '[EMAIL]').slice(0, limit);
@@ -92,8 +93,8 @@ async function validateUrl(value, { allowSelfTest = false } = {}) {
 }
 
 function addObservation(kind, severity, message, details = {}) {
-  const controlled = selfTest && selfTestExpectedKinds.has(kind);
-  const observation = { kind, severity, message: safeText(message), controlled, ...details };
+  const controlled = details.controlled ?? (selfTest && selfTestExpectedKinds.has(kind));
+  const observation = { kind, severity, message: safeText(message), ...details, controlled };
   observations.push(observation);
   if (controlled) selfTestDetections.add(kind);
   if (severity === 'ERROR' && !controlled) failures.push(observation);
@@ -143,6 +144,7 @@ async function startSelfTestServer() {
   const fixture = await readFile(new URL('./self-test-fixture.html', import.meta.url));
   const server = createServer((request, response) => {
     if (request.url === '/cya-browser-lab-controlled-failure') {
+      selfTestControlledRequestPending += 1;
       response.destroy();
       return;
     }
@@ -182,7 +184,11 @@ async function run() {
       page.on('console', (message) => {
         if (message.type() === 'error') addObservation('console', 'ERROR', message.text(), { context: profile.id });
       });
-      page.on('pageerror', (error) => addObservation('page-exception', 'ERROR', error.message, { context: profile.id }));
+      page.on('pageerror', (error) => {
+        const controlled = selfTest && selfTestControlledRequestPending > 0 && error.message.includes('Failed to fetch');
+        if (controlled) selfTestControlledRequestPending -= 1;
+        addObservation('page-exception', 'ERROR', error.message, { context: profile.id, controlled });
+      });
       page.on('requestfailed', (request) => {
         const mainFrameNavigation = request.isNavigationRequest() && request.frame() === page.mainFrame();
         addObservation('request', 'ERROR', request.failure()?.errorText ?? 'Request failed', {
