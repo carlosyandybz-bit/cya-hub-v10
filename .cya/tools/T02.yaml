@@ -1,0 +1,37 @@
+tool:
+  key: cya_quality_gate
+  id: T02
+  status: ACTIVE
+  activation: phase_0_subphase_0_9
+  requirements:
+    - activation_policy
+  evidence:
+    - minimum_successful_quality_gate_test
+    - pull_request_24
+    - github_actions_run_33090488312_success
+    - artifact_9654113425
+  invocation:
+    pull_request: automatic_quality_gate
+    workflow_dispatch: manual_rerun_or_diagnostic
+  limits:
+    - progressive_quality_gate
+    - universal_baseline_until_stack_is_approved
+    - stack_aware_checks_require_explicit_approved_contract
+    - no_stack_inference
+    - check_states_pass_fail_not_applicable
+    - required_check_failure_is_blocking
+    - required_unresolvable_check_fails_closed
+    - no_bypass_for_green
+    - warnings_remain_visible
+    - no_secrets_required_in_v1
+    - lightweight_structured_evidence
+    - source_sha_and_validated_checkout_sha_recorded
+  dependencies:
+    - github_actions
+    - node_24_20_0
+    - npm_11_19_0
+    - ubuntu_24_04
+  access_requirements:
+    - github_repository_accessible
+    - github_actions_available
+  cost_eur: 0
