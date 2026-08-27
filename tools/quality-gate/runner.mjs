@@ -154,10 +154,14 @@ function evaluate(contract, options = {}) {
     return definition?.required && definition?.applicable && checkResult.status === 'FAIL';
   });
 
+  const validatedCheckoutSha = process.env.GITHUB_SHA || safeGitSha(options.root ?? ROOT);
+  const sourceSha = process.env.CYA_SOURCE_SHA || validatedCheckoutSha;
+
   return {
     schemaVersion: 1,
     result: requiredFailure ? 'FAIL' : 'PASS',
-    sha: process.env.GITHUB_SHA || safeGitSha(options.root ?? ROOT),
+    sourceSha,
+    validatedCheckoutSha,
     durationMs: nowMs() - startedAt,
     checks,
   };
@@ -217,7 +221,7 @@ function markdownSummary(title, payload) {
   } else {
     lines.push('| Check | Status |', '| --- | --- |');
     for (const check of payload.checks ?? []) lines.push(`| ${check.id} | ${check.status} |`);
-    lines.push('', `**SHA:** ${payload.sha ?? 'unknown'}`, `**Duration:** ${payload.durationMs} ms`);
+    lines.push('', `**Source SHA:** ${payload.sourceSha ?? 'unknown'}`, `**Validated checkout SHA:** ${payload.validatedCheckoutSha ?? 'unknown'}`, `**Duration:** ${payload.durationMs} ms`);
   }
   return `${lines.join('\n')}\n`;
 }
