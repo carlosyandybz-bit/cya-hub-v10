@@ -1,0 +1,11 @@
+tool:
+  key: cya_runtime_health
+  id: T05
+  status: DEFERRED
+  activation: phase_4
+  condition_when_not_active: executable_application_required
+  requirements:
+    - activation_policy
+  evidence:
+    - health_and_smoke_validation_when_activated
+  cost_eur: 0
