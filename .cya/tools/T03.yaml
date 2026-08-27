@@ -1,0 +1,11 @@
+tool:
+  key: cya_security_gate
+  id: T03
+  status: PENDING
+  activation: phase_0_subphase_0_10
+  condition_when_not_active: construction_and_validation_not_yet_authorized_or_completed
+  requirements:
+    - activation_policy
+  evidence:
+    - minimum_successful_security_gate_test
+  cost_eur: 0
