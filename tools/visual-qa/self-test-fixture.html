@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T06 deterministic visual fixture</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      width: 280px;
+      padding: 24px;
+      border: 2px solid #222;
+      background: #fff;
+      text-align: center;
+    }
+    .marker {
+      width: 96px;
+      height: 32px;
+      margin: 16px auto 0;
+      background: #222;
+    }
+    body.anomaly .marker {
+      width: 168px;
+      height: 48px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="Visual QA fixture">
+    <h1>CYA Visual QA</h1>
+    <p>Deterministic Phase 0 fixture</p>
+    <div class="marker" aria-hidden="true"></div>
+  </main>
+  <script>
+    const variant = new URLSearchParams(location.search).get('variant');
+    if (variant === 'anomaly') document.body.classList.add('anomaly');
+  </script>
+</body>
+</html>

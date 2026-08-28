@@ -1,0 +1,58 @@
+name: T06 CYA Visual QA
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual-qa:
+    name: T06 Visual QA
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CYA_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 24.20.0
+
+      - name: Verify runtime versions
+        shell: bash
+        run: |
+          test "$(node --version)" = "v24.20.0"
+          test "$(npm --version)" = "11.19.0"
+
+      - name: Install T06 dependencies
+        working-directory: tools/visual-qa
+        run: npm install --no-audit --no-fund --ignore-scripts
+
+      - name: Verify Playwright version
+        working-directory: tools/visual-qa
+        shell: bash
+        run: test "$(node -p "require('./node_modules/playwright/package.json').version")" = "1.62.1"
+
+      - name: Install Chromium
+        working-directory: tools/visual-qa
+        run: npx playwright install --with-deps chromium
+
+      - name: Run deterministic T06 self-test
+        working-directory: tools/visual-qa
+        run: node runner.mjs --self-test --output-dir visual-qa-output
+
+      - name: Upload T06 evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: t06-visual-qa-evidence
+          path: tools/visual-qa/visual-qa-output/
+          if-no-files-found: error
+          retention-days: 7
