@@ -3,9 +3,14 @@ tool:
   id: T04
   status: PENDING
   activation: phase_0_subphase_0_11_bootstrap_then_phase_4_completion
-  condition_when_not_active: hosting_capability_verification_and_authorized_bootstrap_pending
+  condition_when_not_active: bootstrap_route_approved_and_hosting_capability_verified_but_executable_application_and_completion_validation_pending
   requirements:
     - activation_policy
+    - staging_target_desarrollo.carlosyandy.com_on_hostinger
+    - deployment_source_main
+    - hostinger_native_github_integration
+    - manual_controlled_deployment_until_explicit_policy_change
   evidence:
+    - hostinger_native_github_route_capability_verified_by_user_evidence
     - approved_deployment_route_test_when_applicable
   cost_eur: 0
