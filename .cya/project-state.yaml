@@ -65,8 +65,8 @@ logical_environments:
 
 environment_policy:
   validation: temporary_logical_environment
-  staging_physical_location: deferred_until_infrastructure_capability_verification
-  staging_deployment_mechanism: deferred_until_infrastructure_capability_verification
+  staging_physical_location: hostinger_at_desarrollo.carlosyandy.com
+  staging_deployment_mechanism: hostinger_native_github_integration_from_main_manual_controlled
   production_hosting_target: hostinger
   production_target_subject_to_capability_verification: true
 
