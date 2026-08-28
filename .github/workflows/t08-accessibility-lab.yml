@@ -1,0 +1,60 @@
+name: T08 CYA Accessibility Lab
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  accessibility-lab:
+    name: T08 Accessibility Lab
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CYA_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 24.20.0
+
+      - name: Verify runtime versions
+        shell: bash
+        run: |
+          test "$(node --version)" = "v24.20.0"
+          test "$(npm --version)" = "11.19.0"
+
+      - name: Install T08 dependencies
+        working-directory: tools/accessibility-lab
+        run: npm ci --no-audit --no-fund --ignore-scripts
+
+      - name: Verify Playwright and axe-core versions
+        working-directory: tools/accessibility-lab
+        shell: bash
+        run: |
+          test "$(node -p "require('./node_modules/playwright/package.json').version")" = "1.62.1"
+          test "$(node -p "require('./node_modules/axe-core/package.json').version")" = "4.13.0"
+
+      - name: Install Chromium
+        working-directory: tools/accessibility-lab
+        run: npx playwright install --with-deps chromium
+
+      - name: Run deterministic T08 self-test
+        working-directory: tools/accessibility-lab
+        run: node runner.mjs --self-test --output-dir accessibility-lab-output
+
+      - name: Upload T08 evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: t08-accessibility-lab-evidence
+          path: tools/accessibility-lab/accessibility-lab-output/
+          if-no-files-found: error
+          retention-days: 7

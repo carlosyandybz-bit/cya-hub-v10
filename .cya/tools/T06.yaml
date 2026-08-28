@@ -1,9 +1,9 @@
 tool:
   key: cya_visual_qa
   id: T06
-  status: PENDING
+  status: ACTIVE
   activation: phase_0_subphase_0_12_base_then_phase_3_intensive_use
-  condition_when_not_active: acceptance_criteria_and_tool_plan_approved_but_base_construction_and_validation_not_yet_authorized_or_completed
+
   requirements:
     - activation_policy
     - approved_phase_0_12_acceptance_criteria_and_tool_plan
@@ -16,9 +16,53 @@ tool:
     - selective_screenshots_video_disabled_trace_only_when_needed
     - evidence_bound_to_exact_sha_and_rerun_after_fix
     - no_application_stack_selection
+
+  invocation:
+    automatic:
+      trigger: pull_request
+      workflow: .github/workflows/t06-visual-qa.yml
+      mode: phase_0_deterministic_self_test_only
+    manual:
+      trigger: workflow_dispatch
+      workflow: .github/workflows/t06-visual-qa.yml
+      mode: phase_0_deterministic_self_test_only
+
+  limits:
+    - phase_0_base_only
+    - automatic_pull_request_execution_is_tool_self_test_not_application_visual_qa
+    - no_real_target_url_execution_in_current_base
+    - mobile_390x844_and_desktop_1440x900_only
+    - tablet_and_full_responsive_coverage_deferred_to_phase_3
+    - does_not_replace_t01_browser_lab
+    - selective_screenshots_only
+    - video_disabled
+    - trace_only_when_needed
+    - workflow_timeout_15_minutes
+    - artifact_retention_7_days
+
+  dependencies:
+    - github_actions
+    - ubuntu_24_04
+    - node_24_20_0
+    - npm_11_19_0
+    - playwright_1_62_1
+    - playwright_managed_chromium
+    - npm_lockfile
+
+  access_requirements:
+    - github_actions_enabled_for_repository
+    - repository_contents_read
+    - outbound_network_for_npm_playwright_and_runner_package_mirrors
+    - authorized_actor_for_manual_workflow_dispatch
+    - no_application_secrets_required
+
   evidence:
     - minimum_successful_visual_qa_test
     - deterministic_visual_fixture_pass_and_anomaly_detection
     - structured_result_for_approved_viewports_bound_to_exact_sha
     - selective_screenshots_for_approved_viewports
+    - pr_35_head_74a1a175ef4dce97f2082b5f77df19b62598e8ef
+    - github_actions_run_33188787439_success
+    - artifact_9692850145_t06_visual_qa_evidence
+
   cost_eur: 0

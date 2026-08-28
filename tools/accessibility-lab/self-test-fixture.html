@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T08 deterministic accessibility fixture</title>
+</head>
+<body>
+  <main>
+    <h1>CYA Accessibility Lab</h1>
+    <p>Deterministic Phase 0 fixture</p>
+    <img id="target-image" alt="CYA deterministic fixture" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3C/svg%3E">
+  </main>
+  <script>
+    const variant = new URLSearchParams(location.search).get('variant');
+    if (variant === 'violation') document.getElementById('target-image').removeAttribute('alt');
+  </script>
+</body>
+</html>
