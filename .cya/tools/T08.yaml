@@ -10,7 +10,7 @@ tool:
     - explicit_execution_authorization_before_construction
     - separate_tool_and_workflow_from_t06
     - tooling_runtime_ubuntu_24_04_node_24_20_0_npm_11_19_0_playwright_1_62_1
-    - axe_core_with_exact_version_pending_user_review_before_construction
+    - axe_core_exact_version_4_13_0_approved
     - deterministic_local_fixture_self_test
     - structured_json_and_github_step_summary
     - native_axe_severity_informational_cya_gate_effect_per_phase_0_6
