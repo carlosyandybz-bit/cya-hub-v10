@@ -6,6 +6,16 @@ tool:
   condition_when_not_active: executable_application_required
   requirements:
     - activation_policy
+    - executable_application
+    - approved_health_contract_endpoint_or_equivalent
+    - critical_dependencies_explicitly_defined
+    - authorized_concrete_target_or_environment
+    - approved_minimum_smoke
+    - zero_incremental_cost_or_explicitly_approved_spend
   evidence:
-    - health_and_smoke_validation_when_activated
+    - health_response_bound_to_exact_revision
+    - availability_and_status_validation
+    - defined_critical_dependencies_validation
+    - minimum_smoke_on_same_target
+    - unhealthy_state_not_falsely_reported_healthy
   cost_eur: 0

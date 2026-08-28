@@ -6,6 +6,19 @@ tool:
   condition_when_not_active: executable_application_and_performance_baseline_required
   requirements:
     - activation_policy
+    - executable_application
+    - approved_representative_target_or_flow
+    - exact_performance_engine_selected_under_cost_governance
+    - approved_metric_set
+    - initial_baseline_bound_to_exact_revision
+    - budgets_or_thresholds_defined_only_after_baseline
+    - reproducible_comparison_against_baseline
+    - zero_incremental_cost_or_explicitly_approved_spend
   evidence:
-    - performance_baseline_validation_when_activated
+    - exact_revision_and_target
+    - reproducible_performance_metrics
+    - approved_performance_baseline
+    - applicable_budgets_or_thresholds
+    - comparison_result_against_baseline
+    - regression_detection_evidence_when_applicable
   cost_eur: 0

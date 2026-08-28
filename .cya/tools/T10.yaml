@@ -6,6 +6,17 @@ tool:
   condition_when_not_active: executable_application_and_concrete_observability_need_required
   requirements:
     - activation_policy
+    - executable_application
+    - concrete_approved_observability_need
+    - required_signal_identified_event_error_request_or_metric
+    - exact_observability_mechanism_selected_only_after_need_is_known
+    - secrets_and_data_policy_compliance
+    - no_secrets_or_credentials_in_evidence
+    - zero_incremental_cost_or_explicitly_approved_spend
+    - invocation_limits_retention_and_access_documented_before_active
   evidence:
-    - observability_validation_when_activated
+    - controlled_observation_or_induction_of_approved_signal
+    - signal_traceability_from_source_to_evidence
+    - environment_revision_and_context_traceability
+    - evidence_supports_approved_investigation_need
   cost_eur: 0

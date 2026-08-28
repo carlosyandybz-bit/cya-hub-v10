@@ -6,6 +6,17 @@ tool:
   condition_when_not_active: phase_3_value_and_zero_incremental_cost_assessment_required
   requirements:
     - activation_policy
+    - phase_3_design_system_context_sufficiently_defined
+    - real_need_for_spec_editable_design_and_implementation_separation
+    - explicit_value_assessment_in_favor_of_bridge
+    - concrete_tool_explicitly_approved
+    - zero_incremental_cost_mode_sufficient_or_explicitly_approved_spend
+    - access_confirmed
+    - bridge_does_not_replace_specification_implementation_or_visual_qa
   evidence:
-    - design_bridge_validation_when_activated
+    - approved_screen_or_component
+    - identifiable_source_specification
+    - editable_or_reference_representation_produced_through_bridge
+    - demonstrable_specification_to_design_correspondence
+    - implementation_correspondence_when_implementation_exists
   cost_eur: 0

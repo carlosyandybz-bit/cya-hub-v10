@@ -5,4 +5,4 @@ active_subphase: 0.13
 active_subphase_status: EN_CURSO
 next_subphase: 0.14
 next_subphase_status: PENDING_NOT_STARTED
-active_action: define_operational_registration_and_activation_criteria_for_t05_t07_t09_t10_t11
+active_action: request_explicit_subphase_0_13_closeout_acceptance

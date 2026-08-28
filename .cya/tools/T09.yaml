@@ -7,6 +7,17 @@ tool:
   requirements:
     - activation_policy
     - approved_phase_2_architecture
+    - selected_real_backend
+    - reproducible_backend_change_mechanism_defined
+    - environment_and_credential_separation_per_phase_0_4
+    - no_manual_production_change_without_migration_procedure_or_reproducible_evidence
+    - rollback_or_reversibility_known_when_applicable
+    - t03_and_authorization_tests_for_auth_rls_or_permission_changes_when_applicable
+    - zero_incremental_cost_or_explicitly_approved_spend
   evidence:
-    - backend_control_validation_when_activated
+    - versioned_migration_procedure_or_equivalent_reproducible_mechanism
+    - controlled_execution_in_approved_environment
+    - resulting_state_validation
+    - rollback_or_reversibility_evidence_when_applicable
+    - exact_change_traceability
   cost_eur: 0
