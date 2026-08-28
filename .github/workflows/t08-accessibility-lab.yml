@@ -33,7 +33,7 @@ jobs:
 
       - name: Install T08 dependencies
         working-directory: tools/accessibility-lab
-        run: npm install --no-audit --no-fund --ignore-scripts
+        run: npm ci --no-audit --no-fund --ignore-scripts
 
       - name: Verify Playwright and axe-core versions
         working-directory: tools/accessibility-lab

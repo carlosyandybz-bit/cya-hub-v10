@@ -33,7 +33,7 @@ jobs:
 
       - name: Install T06 dependencies
         working-directory: tools/visual-qa
-        run: npm install --no-audit --no-fund --ignore-scripts
+        run: npm ci --no-audit --no-fund --ignore-scripts
 
       - name: Verify Playwright version
         working-directory: tools/visual-qa
