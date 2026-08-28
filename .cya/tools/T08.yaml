@@ -1,9 +1,9 @@
 tool:
   key: cya_accessibility_lab
   id: T08
-  status: PENDING
+  status: ACTIVE
   activation: phase_0_subphase_0_12_base_then_phase_3_rules
-  condition_when_not_active: acceptance_criteria_and_tool_plan_approved_but_base_construction_and_validation_not_yet_authorized_or_completed
+
   requirements:
     - activation_policy
     - approved_phase_0_12_acceptance_criteria_and_tool_plan
@@ -16,9 +16,54 @@ tool:
     - native_axe_severity_informational_cya_gate_effect_per_phase_0_6
     - evidence_bound_to_exact_sha_and_rerun_after_fix
     - no_application_stack_selection
+
+  invocation:
+    automatic:
+      trigger: pull_request
+      workflow: .github/workflows/t08-accessibility-lab.yml
+      mode: phase_0_deterministic_self_test_only
+    manual:
+      trigger: workflow_dispatch
+      workflow: .github/workflows/t08-accessibility-lab.yml
+      mode: phase_0_deterministic_self_test_only
+
+  limits:
+    - phase_0_base_only
+    - automatic_pull_request_execution_is_tool_self_test_not_application_accessibility_qa
+    - no_real_target_url_execution_in_current_base
+    - deterministic_self_test_rule_scope_image_alt_only
+    - comprehensive_axe_rules_deferred_to_phase_3
+    - native_axe_severity_is_informational
+    - cya_blocking_or_non_blocking_classification_not_inferred_from_axe_severity
+    - does_not_replace_manual_accessibility_review_when_required
+    - phase_0_base_does_not_certify_comprehensive_accessibility
+    - workflow_timeout_15_minutes
+    - artifact_retention_7_days
+
+  dependencies:
+    - github_actions
+    - ubuntu_24_04
+    - node_24_20_0
+    - npm_11_19_0
+    - playwright_1_62_1
+    - axe_core_4_13_0
+    - playwright_managed_chromium
+    - npm_lockfile
+
+  access_requirements:
+    - github_actions_enabled_for_repository
+    - repository_contents_read
+    - outbound_network_for_npm_playwright_and_runner_package_mirrors
+    - authorized_actor_for_manual_workflow_dispatch
+    - no_application_secrets_required
+
   evidence:
     - minimum_successful_accessibility_lab_test
     - deterministic_fixture_without_target_violation_and_with_detectable_violation
     - structured_findings_rule_location_and_native_severity_when_available
     - exact_sha_rerun_evidence_after_fix
+    - pr_35_head_74a1a175ef4dce97f2082b5f77df19b62598e8ef
+    - github_actions_run_33188787403_success
+    - artifact_9692848422_t08_accessibility_lab_evidence
+
   cost_eur: 0
