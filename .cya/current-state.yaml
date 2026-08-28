@@ -1,8 +1,6 @@
 phase: 0
-last_completed_subphase: 0.11
+last_completed_subphase: 0.12
 last_completed_status: PASS
-active_subphase: 0.12
-active_subphase_status: EN_CURSO
 next_subphase: 0.13
 next_subphase_status: PENDING_NOT_STARTED
-active_action: request_explicit_subphase_0_12_closeout_acceptance
+active_action: await_explicit_user_authorization_to_start_0_13
