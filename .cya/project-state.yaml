@@ -105,7 +105,8 @@ tool_governance:
   connected_access_is_authorization: false
   significant_technical_work_requires_tool_plan: true
   tool_plan_template: .cya/planning-template.md
-  tool_registry_changes_only_when_tool_state_routing_or_metadata_changes: true
+  tool_registry_changes_only_when_global_schema_policy_routing_or_index_changes: true
+  tool_lifecycle_and_tool_specific_metadata_change_only_in_individual_txx_file: true
 
 codex_policy:
   primary_for_application_implementation_when_included_usage_available: true
