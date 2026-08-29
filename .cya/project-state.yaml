@@ -17,7 +17,7 @@ state_authority:
   ordinary_transition_updates_current_state_first: true
   current_md_role: human_navigation_and_context_panel
   project_state_role: stable_operational_context_and_references
-  roadmap_role: canonical_documentary_decisions_and_phase_history
+  roadmap_role: phase_subphase_audit_gate_trajectory_and_progress
   historical_traceability:
     - git_history
     - roadmap_drive
@@ -134,6 +134,6 @@ state_transition_invariants:
   validate_current_state_before_pr_or_final_state_sync: true
 
 notes:
-  - Detailed approved decisions and historical closeouts are canonical in the Drive Roadmap Vivo.
+  - Detailed approved decisions are canonical in their corresponding final decision documents in Drive; the Drive Roadmap Vivo preserves phase/subphase/audit/gate trajectory and progress.
   - Prior expanded project-state snapshots remain available through Git history.
   - This file intentionally excludes mutable phase/subphase fields to prevent competing state mirrors.
