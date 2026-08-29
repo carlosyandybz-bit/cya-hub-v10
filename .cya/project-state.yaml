@@ -17,10 +17,13 @@ state_authority:
   ordinary_transition_updates_current_state_first: true
   current_md_role: human_navigation_and_context_panel
   project_state_role: stable_operational_context_and_references
-  roadmap_role: phase_subphase_audit_gate_trajectory_and_progress
+  roadmap_role: master_human_progress_map_for_phase_subphase_audit_gate_trajectory_and_references
+  detailed_decision_role: final_owner_documents_in_drive
   historical_traceability:
     - git_history
-    - roadmap_drive
+    - drive_revision_history
+    - final_owner_documents
+    - accepted_technical_evidence
 
 sources_of_truth:
   roadmap_drive: https://docs.google.com/document/d/1yTYr1eS_b3cuODTyC2yz1uEGsB2-n0Ba0WdrPrPs4Bo/edit
@@ -29,6 +32,17 @@ sources_of_truth:
   mutable_operational_state: .cya/current-state.yaml
   tool_registry: .cya/tool-registry.yaml
   tool_plan_template: .cya/planning-template.md
+
+final_owner_documents:
+  pre_phase_0:
+    folder_name: DOCUMENTOS FINALES DE PRE-FASE 0
+    folder_url: https://drive.google.com/drive/folders/1kFrtdMaE2UlqOZTWPXMG1EgK2ISfhwdo
+  phase_0_foundation_and_governance:
+    folder_name: DOCUMENTOS FINALES DE FUNDACIÓN Y GOBERNANZA — FASE 0
+    folder_url: https://drive.google.com/drive/folders/1Hu5bZnwtGWuJQ-pxn9O9JZcXBv41hPLu
+  tools:
+    folder_name: DOCUMENTOS FINALES DE HERRAMIENTAS UTILIZADAS
+    folder_url: https://drive.google.com/drive/folders/1RI64uSB0DOYbpiz4dpsNSAm8hGG5kyDi
 
 user_authority_policy:
   no_assumptions: true
@@ -134,6 +148,6 @@ state_transition_invariants:
   validate_current_state_before_pr_or_final_state_sync: true
 
 notes:
-  - Detailed approved decisions are canonical in their corresponding final decision documents in Drive; the Drive Roadmap Vivo preserves phase/subphase/audit/gate trajectory and progress.
-  - Prior expanded project-state snapshots remain available through Git history.
+  - Detailed approved decisions are canonical in their corresponding final owner documents in Drive; the Drive Roadmap Vivo preserves phase/subphase/audit/gate trajectory, progress and navigation references.
+  - Prior expanded documentary states remain traceable through Drive revisions, Git history and accepted evidence rather than duplicated in the live Roadmap.
   - This file intentionally excludes mutable phase/subphase fields to prevent competing state mirrors.
