@@ -8,6 +8,8 @@ The mutable operational STATE CONTRACT is canonical only in `.cya/current-state.
 
 Tool routing/schema/policy are read from `.cya/tool-registry.yaml`. When a Txx capability is involved, its lifecycle state and tool-specific metadata are read from the indexed `.cya/tools/Txx.yaml` record. A TOOL PLAN must not create a competing embedded copy of either authority.
 
+Detailed approved decisions are read from the applicable final owner documents in Drive. The Roadmap Vivo supplies trajectory, gates, current progress and navigation references; it is not a substitute for the detailed final owner contract.
+
 ## Context
 
 **Canonical mutable state reviewed in `.cya/current-state.yaml`:** yes / no<br>
@@ -19,6 +21,7 @@ Tool routing/schema/policy are read from `.cya/tool-registry.yaml`. When a Txx c
 
 **Guide reviewed:** yes / no<br>
 **Roadmap reviewed:** yes / no<br>
+**Applicable final owner document(s) reviewed:** none / list<br>
 **Action already registered:** yes / no<br>
 **If no, where was it proposed and approved before registration/execution:**<br>
 **Applicable explicit user authorization:**<br>
@@ -63,7 +66,8 @@ A prompt or agent instruction is not an account-level billing control. The TOOL 
 
 **Required inputs:**<br>
 **Expected output:**<br>
-**Destination of changes:**
+**Destination of changes:**<br>
+**Canonical final owner document(s) affected:** none / list
 
 ## Evidence and validation
 
@@ -78,13 +82,15 @@ A successful tool call, command or workflow does not by itself establish PASS. T
 
 **Does this action change the mutable STATE CONTRACT:** no / yes<br>
 **If yes, `.cya/current-state.yaml` is the only mutable-state file to update:** not applicable / yes<br>
-**Other documents whose decisions or stable context actually changed:** none / list<br>
+**Final owner documents whose approved decisions/rules actually changed:** none / list<br>
+**Other documents whose stable context or navigation references actually changed:** none / list<br>
+**Roadmap trajectory/gate/progress summary actually changed:** no / yes<br>
 **`CURRENT.md` mutable-state copy required:** no<br>
 **`.cya/project-state.yaml` mutable-state copy required:** no<br>
 **Global tool registry schema/policy/routing/index change actually occurred:** no / yes — if yes, exact approved change:<br>
 **Individual Txx lifecycle/tool-metadata change actually occurred:** no / yes — if yes, exact `.cya/tools/Txx.yaml` file and approved change:
 
-Do not update `CURRENT.md` or `.cya/project-state.yaml` merely because a phase/subphase transition occurred. Do not update `.cya/tool-registry.yaml` for a tool lifecycle-only change; update the affected `.cya/tools/Txx.yaml` record unless global schema, policy, routing or index also changed.
+Do not update `CURRENT.md` or `.cya/project-state.yaml` merely because a phase/subphase transition occurred. Do not expand the Roadmap with detailed decision content that belongs in a final owner document. Do not update `.cya/tool-registry.yaml` for a tool lifecycle-only change; update the affected `.cya/tools/Txx.yaml` record unless global schema, policy, routing or index also changed.
 
 ## Error / root-cause handling
 
@@ -112,4 +118,5 @@ Do not update `CURRENT.md` or `.cya/project-state.yaml` merely because a phase/s
 **Execution status:** NOT_STARTED / IN_PROGRESS / PASS / FAIL / BLOCKED_TOOLING / BLOCKED_USER_ACTION / BLOCKED_COST<br>
 **Material TOOL PLAN change discovered during execution:** no / yes — if yes, affected work stopped pending user approval<br>
 **Canonical mutable state updated if and only if authorized transition occurred:** not applicable / yes / no<br>
+**Final owner documents synchronized if and only if their approved content changed:** not applicable / yes / no<br>
 **Next action:**
