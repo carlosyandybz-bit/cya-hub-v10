@@ -13,14 +13,14 @@ This repository belongs exclusively to **CYA Hub v10**.
 7. Consult the living Google Drive governance documents when the connected environment provides access:
    - Roadmap Vivo de Fases, Subfases y Auditorías.
    - Guía Maestra de Herramientas, Agentes y Planning Operativo.
-8. Identify the current phase, subphase, action and acceptance gate from `.cya/current-state.yaml` plus the canonical Roadmap decision context.
+8. Identify the current phase, subphase, action and acceptance gate from `.cya/current-state.yaml`, the Roadmap phase/gate context and the applicable final decision documents in Drive.
 9. Produce a `TOOL PLAN` before any significant technical action.
 
 ## Canonical mutable-state rule
 
 - `.cya/current-state.yaml` is the only versioned machine-readable authority for `phase`, `last_completed_subphase`, `last_completed_status`, `active_subphase`, `active_subphase_status`, `next_subphase`, `next_subphase_status` and `active_action`.
 - Do not maintain manual copies of those mutable fields in `CURRENT.md`, `.cya/project-state.yaml`, planning documents or other repository files.
-- `CURRENT.md` is a human navigation/context panel. `.cya/project-state.yaml` contains stable operational context and references. The Roadmap Vivo remains the canonical documentary source for approved decisions and phase/subphase history.
+- `CURRENT.md` is a human navigation/context panel. `.cya/project-state.yaml` contains stable operational context and references. The Roadmap Vivo remains the canonical documentary source for phase/subphase/audit/gate trajectory and current progress; detailed approved decisions belong in the corresponding final decision documents in Drive.
 - A normal state transition updates `.cya/current-state.yaml` first and only updates other sources whose decisions, stable context, tool lifecycle or documentary scope actually changed.
 - Validate the approved STATE CONTRACT invariants against `.cya/current-state.yaml` before a PR or final state synchronization.
 

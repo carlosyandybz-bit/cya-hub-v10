@@ -1,6 +1,6 @@
 # CYA Hub v10 — CURRENT STATUS
 
-> Human-readable control panel. The mutable operational state is canonical only in [`.cya/current-state.yaml`](.cya/current-state.yaml). The Drive Roadmap Vivo remains the canonical documentary source for approved decisions and phase/subphase history.
+> Human-readable control panel. The mutable operational state is canonical only in [`.cya/current-state.yaml`](.cya/current-state.yaml). The Drive Roadmap Vivo remains the canonical documentary source for phase/subphase/audit/gate trajectory and current project progress; detailed approved decisions belong in the corresponding final decision documents in Drive.
 
 ## Start with the canonical live state
 
@@ -9,7 +9,7 @@
 - **Tool/action registry and Txx lifecycle:** [`.cya/tool-registry.yaml`](.cya/tool-registry.yaml)
 - **Agent operating rules:** [`AGENTS.md`](AGENTS.md)
 - **Mandatory TOOL PLAN:** [`.cya/planning-template.md`](.cya/planning-template.md)
-- **Roadmap Vivo / canonical decisions:** Google Drive `CYA HUB v10 — ROADMAP VIVO DE FASES, SUBFASES Y AUDITORÍAS`
+- **Roadmap Vivo / phase, subphase, audit, gate and progress trajectory:** Google Drive `CYA HUB v10 — ROADMAP VIVO DE FASES, SUBFASES Y AUDITORÍAS`
 - **Tool governance:** Google Drive `CYA HUB v10 — GUÍA MAESTRA DE HERRAMIENTAS, AGENTES Y PLANNING OPERATIVO`
 
 ## State authority rule
@@ -30,4 +30,4 @@ A normal phase/subphase transition updates `.cya/current-state.yaml` first and t
 
 ## History and traceability
 
-Detailed approved decisions and historical phase/subphase closeouts belong in the Roadmap Vivo. Prior versions of this file remain available through Git history. This file is intentionally kept small so mutable state cannot diverge across multiple manually maintained mirrors.
+Detailed approved decisions belong in the corresponding final decision documents in Drive. The Roadmap Vivo retains phase/subphase/audit/gate history and the progress information required to know where the project is and what comes next. Prior versions of this file remain available through Git history. This file is intentionally kept small so mutable state cannot diverge across multiple manually maintained mirrors.
