@@ -1,6 +1,6 @@
 phase: 0
-last_completed_subphase: 0.15
-last_completed_status: PASS
-active_subphase: AUDIT_0
-active_subphase_status: EN_AUDITORIA
-active_action: await_explicit_user_acceptance_of_AUDIT_0_revalidation_result
+last_completed_subphase: AUDIT_0
+last_completed_status: PASS_WITH_FINDINGS
+next_subphase: 1.1
+next_subphase_status: PENDING_NOT_STARTED
+active_action: await_explicit_user_decision_on_FORMAL_PHASE_1_start
