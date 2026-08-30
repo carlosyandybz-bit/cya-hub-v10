@@ -3,4 +3,4 @@ last_completed_subphase: 0.15
 last_completed_status: PASS
 active_subphase: AUDIT_0
 active_subphase_status: EN_AUDITORIA
-active_action: await_explicit_user_approval_for_AUDIT_0_scope_criteria_and_tool_plan
+active_action: await_explicit_user_acceptance_of_AUDIT_0_revalidation_result
